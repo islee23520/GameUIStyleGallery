@@ -1,21 +1,21 @@
 // HTML
-<name-header></name-header>
+    // when home-link is not needed(ex. main page)
+    <name-header></name-header>
+
+    // when home-link is needed
+    <name-header home-link></name-header>
+
 
 
 
 
 
 // CSS
-.logo_wrapper {
-    max-height: 4rem;
-    aspect-ratio: 1 / 1;
-}
+.header_left_area {max-height: 4rem; aspect-ratio: 1 / 1;}
+header {align-items: center; box-sizing: border-box; display: flex; justify-content: space-between; width: 100%; padding: 0 0.5rem;}
+header > .logo {box-sizing: content-box; width: 100%; height: 100%; }
+#header_right_area {align-items: center; display: flex; height: 100%;}
 
-header .logo {
-    box-sizing: content-box;
-    width: 100%;
-    height: 100%;
-}
 
 
 // JS
@@ -24,13 +24,14 @@ class NameHeader extends HTMLElement {
         if (this.dataset.rendered) return;
         this.dataset.rendered = "true";
         const logoMarkup = this.hasAttribute('home-link')
-            ? '<a href="/"><div class="logo_wrapper"><img src="/m/_favicon.png" class="logo" alt="로고"></div></a>'
-            : '<div class="logo_wrapper"><img src="/m/_favicon.png" class="logo" alt="로고"></div>';
+            ? '<a href="/"><div class="header_left_area"><img src="/m/_favicon.png" class="logo" alt="name 로고"></div></a>'
+            : '<div class="header_left_area"><img src="/m/_favicon.png" class="logo" alt="name 로고"></div>';
         this.innerHTML = `
             <header class="bg-soft-off-white">
                 ${logoMarkup}
-                <div id="header_auth_area" class="header_auth_area"></div>
+                <div id="header_right_area"></div>
             </header>`;
     }
 }
 customElements.define('name-header', NameHeader);
+
