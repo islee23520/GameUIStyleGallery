@@ -1,0 +1,19 @@
+/* Use Ctrl+F to find '30rem' and Ctrl+D to select all occurrences, then update them to your preferred screen width. */
+
+/* HTML */
+<body>
+  <div class="screen_shell">
+  </div>
+</body>
+
+
+
+/* CSS */
+body {margin: 0; min-height: 100svh; width: 100%;}
+.screen_shell {box-sizing: border-box; display: flex; flex-direction: column; min-height: 100svh; max-width: 30rem; width: 100%;}
+
+@media (min-width: 30rem) {
+    body {display: flex; justify-content: center;}
+    .screen_shell {max-width: 30rem; display: flex;}
+}
+
