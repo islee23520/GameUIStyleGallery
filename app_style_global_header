@@ -1,0 +1,36 @@
+// HTML
+<name-header></name-header>
+
+
+
+
+
+// CSS
+.logo_wrapper {
+    max-height: 4rem;
+    aspect-ratio: 1 / 1;
+}
+
+header .logo {
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+}
+
+
+// JS
+class NameHeader extends HTMLElement {
+    connectedCallback() {
+        if (this.dataset.rendered) return;
+        this.dataset.rendered = "true";
+        const logoMarkup = this.hasAttribute('home-link')
+            ? '<a href="/"><div class="logo_wrapper"><img src="/m/_favicon.png" class="logo" alt="로고"></div></a>'
+            : '<div class="logo_wrapper"><img src="/m/_favicon.png" class="logo" alt="로고"></div>';
+        this.innerHTML = `
+            <header class="bg-soft-off-white">
+                ${logoMarkup}
+                <div id="header_auth_area" class="header_auth_area"></div>
+            </header>`;
+    }
+}
+customElements.define('name-header', NameHeader);
