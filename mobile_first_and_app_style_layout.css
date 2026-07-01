@@ -8,9 +8,8 @@
 
 
 /* CSS */
-html {height:100svh; max-width:30rem; width:100%; margin: 0 auto;}
+html {height:100svh; margin: 0 auto; max-width:30rem; width:100%;}
 body {margin: 0; min-height: 100svh; width: 100%;}
 @media (min-width: 30rem) {
-    .screen_shell {max-width: 30rem; display: flex;}
+    .screen_shell {display: flex; max-width: 30rem;}
 }
-
