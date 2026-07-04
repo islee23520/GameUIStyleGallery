@@ -51,6 +51,18 @@ const cases = [
     expect: "is missing from HTML block",
   },
   {
+    name: "missing_contract_section",
+    file: "patterns/stacking/bad.md",
+    content: legacyPattern("bad", "Stacking", ".bad {\n    display: grid;\n}"),
+    expect: "missing Core Properties section",
+  },
+  {
+    name: "reflow_without_reflow_mechanic",
+    file: "patterns/split-sidebar/bad.md",
+    content: pattern("bad", "Split / Sidebar", ".bad {\n    display: grid;\n    grid-template-columns: 16rem minmax(0, 1fr);\n}", "<section class=\"bad\"><article>Customer queue</article><article>Selected customer</article></section>", "reflow"),
+    expect: "responsiveness reflow requires",
+  },
+  {
     name: "unused_html_class",
     file: "patterns/stacking/bad.md",
     content: pattern("bad", "Stacking", ".bad {\n    display: grid;\n}", "<section class=\"bad\"><div class=\"bad_extra\"></div></section>"),
@@ -77,9 +89,14 @@ const cases = [
   },
 ];
 
-function pattern(name, category, css, html = `<section class="${name}"></section>`) {
+function legacyPattern(name, category, css, html = `<section class="${name}"></section>`, responsiveness = "fluid") {
   const cssBlock = css ? `\n\`\`\`css\n${css}\n\`\`\`\n` : "\n";
-  return `---\nname: ${name}\ncategory: ${category}\nprimary_spatial_problem: Test spatial problem.\nsecondary_spatial_problems: none\nlayout_axis: block\ncontent_shape: mixed\nresponsiveness: fluid\nconstraints: Test constraints.\nscroll_ownership: No internal scroll container.\nsource_lineage: test\n---\n\n# ${name}\n\n## When To Use\n\nUse for validation tests.\n\n## HTML\n\n\`\`\`html\n${html}\n\`\`\`\n\n## CSS\n${cssBlock}\n## Failure Mode\n\nBad layout.\n\n## Accessibility Notes\n\nKeep semantic order.\n`;
+  return `---\nname: ${name}\ncategory: ${category}\nprimary_spatial_problem: Test spatial problem.\nsecondary_spatial_problems: none\nlayout_axis: block\ncontent_shape: mixed\nresponsiveness: ${responsiveness}\nconstraints: Test constraints.\nscroll_ownership: No internal scroll container.\nsource_lineage: test\n---\n\n# ${name}\n\n## When To Use\n\nUse for validation tests.\n\n## HTML\n\n\`\`\`html\n${html}\n\`\`\`\n\n## CSS\n${cssBlock}\n## Failure Mode\n\nBad layout.\n\n## Accessibility Notes\n\nKeep semantic order.\n`;
+}
+
+function pattern(name, category, css, html = `<section class="${name}"></section>`, responsiveness = "fluid") {
+  const cssBlock = css ? `\n\`\`\`css\n${css}\n\`\`\`\n` : "\n";
+  return `---\nname: ${name}\ncategory: ${category}\nprimary_spatial_problem: Test spatial problem.\nsecondary_spatial_problems: none\nlayout_axis: block\ncontent_shape: mixed\nresponsiveness: ${responsiveness}\nconstraints: Test constraints.\nscroll_ownership: No internal scroll container.\nsource_lineage: test\n---\n\n# ${name}\n\n## When To Use\n\nUse for validation tests.\n\n## HTML\n\n\`\`\`html\n${html}\n\`\`\`\n\n## CSS\n${cssBlock}\n## Core Properties\n\n- \`display\` establishes the layout context.\n\n## Properties That Break The Layout If Removed\n\n- Removing \`display\` removes the layout behavior.\n\n## Constraints And Change Points\n\nTest constraints.\n\n## Scroll Ownership\n\nNo internal scroll container.\n\n## Accessibility And Source Order Notes\n\nKeep semantic order.\n\n## Browser And Fallback Notes\n\nUse a simpler block fallback when needed.\n\n## Composition Notes\n\nCompose with semantic regions.\n\n## Anti-patterns\n\nDo not use for unrelated visual styling.\n`;
 }
 
 function runCase(testCase) {

@@ -28,7 +28,56 @@ function slugDir(category) {
 function normalize(raw) {
   const [slug, category, problem, axis, responsiveness, source, rawRules, scrollOwnership] = raw;
   const css = rawRules.map(([selector, declarations]) => rule(selector, declarations)).join("\n\n");
-  return { axis, category, css, problem, responsiveness, scrollOwnership, slug, source };
+  return { axis, category, css, problem, responsiveness, rules: rawRules, scrollOwnership, slug, source };
+}
+
+function declarationNames(pattern) {
+  return [...new Set(pattern.rules.flatMap(([, declarations]) => Object.keys(declarations)))];
+}
+
+function inlineCodeList(values) {
+  return values.map((value) => `\`${value}\``).join(", ");
+}
+
+function contractSections(pattern, rootClass) {
+  const properties = declarationNames(pattern);
+  const core = inlineCodeList(properties);
+  return [
+    "## Core Properties",
+    "",
+    `- ${core} define the spatial behavior for this pattern.`,
+    "",
+    "## Properties That Break The Layout If Removed",
+    "",
+    `- Removing ${core} changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.`,
+    "",
+    "## Constraints And Change Points",
+    "",
+    `- ${pattern.responsiveness} responsiveness is part of the contract; change sizing values only when the new minimum, maximum, or wrap point is documented with the pattern.`,
+    "- Keep the HTML class hooks and CSS selectors in one-to-one agreement.",
+    "",
+    "## Scroll Ownership",
+    "",
+    pattern.scrollOwnership ?? "No internal scroll container.",
+    "",
+    "## Accessibility And Source Order Notes",
+    "",
+    "Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.",
+    "",
+    "## Browser And Fallback Notes",
+    "",
+    "The CSS uses modern grid, flex, intrinsic sizing, logical properties, or positioning. If a target browser cannot support a property, fall back to ordinary block flow before adding decorative or script-driven layout behavior.",
+    "",
+    "## Composition Notes",
+    "",
+    `Use \`${rootClass}\` as the stable pattern root and compose additional layout behavior outside that root unless the child class is part of the documented relationship.`,
+    "",
+    "## Anti-patterns",
+    "",
+    "- Do not add color, border, shadow, typography, or animation rules to reusable pattern CSS.",
+    "- Do not use this pattern to repair unclear HTML structure; make the DOM roles legible first.",
+    "",
+  ];
 }
 
 function render(raw) {
@@ -70,14 +119,7 @@ function render(raw) {
     pattern.css,
     "```",
     "",
-    "## Failure Mode",
-    "",
-    `If the core layout declarations are removed, \`${rootClass}\` stops preserving its primary spatial responsibility and its children fall back to ordinary document flow.`,
-    "",
-    "## Accessibility Notes",
-    "",
-    "Keep semantic elements and reading order in the HTML. The layout classes only control spatial behavior and do not replace landmarks, headings, links, buttons, or form controls.",
-    "",
+    ...contractSections(pattern, rootClass),
   ].join("\n");
 }
 

@@ -49,10 +49,36 @@ Use this pattern when you need to keep related aside content visible during long
 }
 ```
 
-## Failure Mode
+## Core Properties
 
-If the core layout declarations are removed, `sticky_aside` stops preserving its primary spatial responsibility and its children fall back to ordinary document flow.
+- `align-items`, `display`, `gap`, `grid-template-columns`, `min-inline-size`, `inset-block-start`, `position` define the spatial behavior for this pattern.
 
-## Accessibility Notes
+## Properties That Break The Layout If Removed
 
-Keep semantic elements and reading order in the HTML. The layout classes only control spatial behavior and do not replace landmarks, headings, links, buttons, or form controls.
+- Removing `align-items`, `display`, `gap`, `grid-template-columns`, `min-inline-size`, `inset-block-start`, `position` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+
+## Constraints And Change Points
+
+- fluid responsiveness is part of the contract; change sizing values only when the new minimum, maximum, or wrap point is documented with the pattern.
+- Keep the HTML class hooks and CSS selectors in one-to-one agreement.
+
+## Scroll Ownership
+
+No internal scroll container.
+
+## Accessibility And Source Order Notes
+
+Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.
+
+## Browser And Fallback Notes
+
+The CSS uses modern grid, flex, intrinsic sizing, logical properties, or positioning. If a target browser cannot support a property, fall back to ordinary block flow before adding decorative or script-driven layout behavior.
+
+## Composition Notes
+
+Use `sticky_aside` as the stable pattern root and compose additional layout behavior outside that root unless the child class is part of the documented relationship.
+
+## Anti-patterns
+
+- Do not add color, border, shadow, typography, or animation rules to reusable pattern CSS.
+- Do not use this pattern to repair unclear HTML structure; make the DOM roles legible first.

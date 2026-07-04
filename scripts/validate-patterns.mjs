@@ -24,6 +24,20 @@ const requiredFields = [
   "source_lineage",
 ];
 
+const requiredSections = [
+  "## When To Use",
+  "## HTML",
+  "## CSS",
+  "## Core Properties",
+  "## Properties That Break The Layout If Removed",
+  "## Constraints And Change Points",
+  "## Scroll Ownership",
+  "## Accessibility And Source Order Notes",
+  "## Browser And Fallback Notes",
+  "## Composition Notes",
+  "## Anti-patterns",
+];
+
 const forbiddenProperties = [
   "animation",
   "background",
@@ -143,6 +157,21 @@ function checkHtmlSample(file, html) {
   if (html.includes("media-placeholder")) failures.push(`${file}: placeholder media reference in HTML block`);
 }
 
+function checkReflowClaim(file, meta, css) {
+  if (meta.responsiveness !== "reflow") return;
+  const hasReflowMechanic = [
+    "@container",
+    "@media",
+    "auto-fit",
+    "auto-fill",
+    "flex-wrap",
+  ].some((mechanic) => css.includes(mechanic));
+  const hasNarrowGuard = css.includes("min(") || css.includes("100%") || css.includes("flex-wrap");
+  if (!hasReflowMechanic || !hasNarrowGuard) {
+    failures.push(`${file}: responsiveness reflow requires a stack, wrap, container query, media query, or intrinsic repeat guard`);
+  }
+}
+
 const files = walk(patternsDir);
 for (const absolute of files) {
   const file = path.relative(root, absolute);
@@ -155,17 +184,16 @@ for (const absolute of files) {
   for (const field of requiredFields) {
     if (!meta[field]) failures.push(`${file}: missing ${field}`);
   }
-  if (!content.includes("## When To Use")) failures.push(`${file}: missing When To Use section`);
-  if (!content.includes("## HTML")) failures.push(`${file}: missing HTML section`);
-  if (!content.includes("## CSS")) failures.push(`${file}: missing CSS section`);
-  if (!content.includes("## Failure Mode")) failures.push(`${file}: missing Failure Mode section`);
-  if (!content.includes("## Accessibility Notes")) failures.push(`${file}: missing Accessibility Notes section`);
+  for (const section of requiredSections) {
+    if (!content.includes(section)) failures.push(`${file}: missing ${section.replace("## ", "")} section`);
+  }
   const html = codeBlock(content, "html");
   if (!html) failures.push(`${file}: missing html code block`);
   const css = codeBlock(content, "css");
   if (!css) failures.push(`${file}: missing css code block`);
   if (html) checkHtmlSample(file, html);
   if (css) checkCss(file, css);
+  if (css) checkReflowClaim(file, meta, css);
   if (html && css) checkHtmlCssHooks(file, html, css);
 }
 
