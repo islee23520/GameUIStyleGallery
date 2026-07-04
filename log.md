@@ -2,6 +2,11 @@
 
 ## 2026-07-04
 
+- Fixed fixed-sidenav-shell scroll activation by constraining grid-template-rows with minmax(0, 1fr) and min-block-size on panes.
+- Fixed imposter positioning anchor by wrapping sample and adding positioned ancestor rule.
+- Fixed frame media fit by adding block-size, inline-size, and object-fit properties to frame_media.
+- Fixed columns redundancy by removing duplicate column-width declaration.
+- Fixed reel declaration order by alphabetizing gap before grid-auto-columns/grid-auto-flow.
 - Added a pre-design layout planning layer for issue #1.
 - Added a decision tree, layout brief template, and screen-type recipes.
 - Linked the planning layer from root repository entry points.

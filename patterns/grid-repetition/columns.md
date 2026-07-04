@@ -35,18 +35,17 @@ Use this pattern when you need to flow long content into balanced text columns.
 ```css
 .columns {
     column-gap: 2rem;
-    column-width: 18rem;
     columns: 18rem;
 }
 ```
 
 ## Core Properties
 
-- `column-gap`, `column-width`, `columns` define the spatial behavior for this pattern.
+- `column-gap`, `columns` define the spatial behavior for this pattern.
 
 ## Properties That Break The Layout If Removed
 
-- Removing `column-gap`, `column-width`, `columns` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+- Removing `column-gap`, `columns` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
 
 ## Constraints And Change Points
 

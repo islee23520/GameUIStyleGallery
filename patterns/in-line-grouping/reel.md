@@ -44,11 +44,11 @@ Use this pattern when you need to let a row scroll horizontally instead of wrapp
 
 ## Core Properties
 
-- `display`, `grid-auto-columns`, `grid-auto-flow`, `gap`, `overflow-x` define the spatial behavior for this pattern.
+- `display`, `gap`, `grid-auto-columns`, `grid-auto-flow`, `overflow-x` define the spatial behavior for this pattern.
 
 ## Properties That Break The Layout If Removed
 
-- Removing `display`, `grid-auto-columns`, `grid-auto-flow`, `gap`, `overflow-x` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+- Removing `display`, `gap`, `grid-auto-columns`, `grid-auto-flow`, `overflow-x` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
 
 ## Constraints And Change Points
 

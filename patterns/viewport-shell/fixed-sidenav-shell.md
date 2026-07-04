@@ -35,6 +35,7 @@ Use this pattern when you need to keep side navigation stable while main content
 .fixed_sidenav_shell {
     display: grid;
     grid-template-columns: 16rem minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
     max-block-size: 100dvh;
 }
 
@@ -43,17 +44,18 @@ Use this pattern when you need to keep side navigation stable while main content
 }
 
 .fixed_sidenav_shell_main {
+    min-block-size: 0;
     overflow: auto;
 }
 ```
 
 ## Core Properties
 
-- `display`, `grid-template-columns`, `max-block-size`, `min-block-size`, `overflow` define the spatial behavior for this pattern.
+- `display`, `grid-template-columns`, `grid-template-rows`, `max-block-size`, `min-block-size`, `overflow` define the spatial behavior for this pattern.
 
 ## Properties That Break The Layout If Removed
 
-- Removing `display`, `grid-template-columns`, `max-block-size`, `min-block-size`, `overflow` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+- Removing `display`, `grid-template-columns`, `grid-template-rows`, `max-block-size`, `min-block-size`, `overflow` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
 
 ## Constraints And Change Points
 
