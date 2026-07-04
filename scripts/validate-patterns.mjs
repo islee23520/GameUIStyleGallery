@@ -5,7 +5,8 @@ import path from "node:path";
 
 const args = new Set(process.argv.slice(2));
 const minCountArg = process.argv.find((arg) => arg.startsWith("--min-count="));
-const minCount = minCountArg ? Number(minCountArg.split("=")[1]) : Number(process.argv[process.argv.indexOf("--min-count") + 1] || 1);
+const minCountIndex = process.argv.indexOf("--min-count");
+const minCount = minCountArg ? Number(minCountArg.split("=")[1]) : minCountIndex === -1 ? 1 : Number(process.argv[minCountIndex + 1] || 1);
 const json = args.has("--json");
 const root = process.cwd();
 const patternsDir = path.join(root, "patterns");

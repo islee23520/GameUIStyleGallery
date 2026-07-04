@@ -68,6 +68,13 @@ const cases = [
     content: pattern("good", "Stacking", ".good {\n    display: grid;\n    gap: 1rem;\n}", "<section class=\"good\"><article>Quarterly review</article></section>"),
     expect: null,
   },
+  {
+    name: "default_min_count",
+    file: "patterns/stacking/good.md",
+    content: pattern("good", "Stacking", ".good {\n    display: grid;\n    gap: 1rem;\n}", "<section class=\"good\"><article>Quarterly review</article></section>"),
+    expect: null,
+    useDefaultMinCount: true,
+  },
 ];
 
 function pattern(name, category, css, html = `<section class="${name}"></section>`) {
@@ -80,13 +87,16 @@ function runCase(testCase) {
   const absolute = path.join(dir, testCase.file);
   fs.mkdirSync(path.dirname(absolute), { recursive: true });
   fs.writeFileSync(absolute, testCase.content);
-  const result = spawnSync(process.execPath, [validator, "--min-count", "1", "--json"], {
+  const args = testCase.useDefaultMinCount ? [validator, "--json"] : [validator, "--min-count", "1", "--json"];
+  const result = spawnSync(process.execPath, args, {
     cwd: dir,
     encoding: "utf8",
   });
   fs.rmSync(dir, { force: true, recursive: true });
   const output = JSON.parse(result.stdout);
-  const passed = testCase.expect ? !output.ok && output.failures.some((failure) => failure.includes(testCase.expect)) : output.ok;
+  const passed = testCase.expect
+    ? !output.ok && output.failures.some((failure) => failure.includes(testCase.expect))
+    : output.ok && (!testCase.useDefaultMinCount || output.minCount === 1);
   return {
     name: testCase.name,
     ok: passed,

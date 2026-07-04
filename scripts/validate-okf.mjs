@@ -7,7 +7,6 @@ const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
 const root = process.cwd();
 const ignoredDirs = new Set([".git", ".omo", "node_modules"]);
-const reservedFiles = new Set(["index.md", "log.md"]);
 const failures = [];
 
 function walk(dir) {
