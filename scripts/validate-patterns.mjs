@@ -116,6 +116,19 @@ function codeBlock(content, lang) {
   return match?.[1] ?? "";
 }
 
+function stripFencedCodeBlocks(content) {
+  return content.replace(/```[\s\S]*?```/g, "");
+}
+
+function stripCssComments(css) {
+  return css.replace(/\/\*[\s\S]*?\*\//g, "");
+}
+
+function hasHeading(content, heading) {
+  const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`^${escaped}$`, "m").test(content);
+}
+
 function checkCss(file, css) {
   const rulePattern = /([^{}]+)\{([^{}]+)\}/g;
   let match;
@@ -159,14 +172,15 @@ function checkHtmlSample(file, html) {
 
 function checkReflowClaim(file, meta, css) {
   if (meta.responsiveness !== "reflow") return;
+  const inspectableCss = stripCssComments(css);
   const hasReflowMechanic = [
     "@container",
     "@media",
     "auto-fit",
     "auto-fill",
     "flex-wrap",
-  ].some((mechanic) => css.includes(mechanic));
-  const hasNarrowGuard = css.includes("min(") || css.includes("100%") || css.includes("flex-wrap");
+  ].some((mechanic) => inspectableCss.includes(mechanic));
+  const hasNarrowGuard = inspectableCss.includes("min(") || inspectableCss.includes("100%") || inspectableCss.includes("flex-wrap");
   if (!hasReflowMechanic || !hasNarrowGuard) {
     failures.push(`${file}: responsiveness reflow requires a stack, wrap, container query, media query, or intrinsic repeat guard`);
   }
@@ -184,8 +198,9 @@ for (const absolute of files) {
   for (const field of requiredFields) {
     if (!meta[field]) failures.push(`${file}: missing ${field}`);
   }
+  const markdown = stripFencedCodeBlocks(content);
   for (const section of requiredSections) {
-    if (!content.includes(section)) failures.push(`${file}: missing ${section.replace("## ", "")} section`);
+    if (!hasHeading(markdown, section)) failures.push(`${file}: missing ${section.replace("## ", "")} section`);
   }
   const html = codeBlock(content, "html");
   if (!html) failures.push(`${file}: missing html code block`);

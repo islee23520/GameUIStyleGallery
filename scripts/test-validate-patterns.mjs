@@ -57,9 +57,25 @@ const cases = [
     expect: "missing Core Properties section",
   },
   {
+    name: "contract_sections_inside_code_block",
+    file: "patterns/stacking/bad.md",
+    content: legacyPattern(
+      "bad",
+      "Stacking",
+      ".bad {\n    display: grid;\n}\n\n/*\n## Core Properties\n## Properties That Break The Layout If Removed\n## Constraints And Change Points\n## Scroll Ownership\n## Accessibility And Source Order Notes\n## Browser And Fallback Notes\n## Composition Notes\n## Anti-patterns\n*/",
+    ),
+    expect: "missing Core Properties section",
+  },
+  {
     name: "reflow_without_reflow_mechanic",
     file: "patterns/split-sidebar/bad.md",
     content: pattern("bad", "Split / Sidebar", ".bad {\n    display: grid;\n    grid-template-columns: 16rem minmax(0, 1fr);\n}", "<section class=\"bad\"><article>Customer queue</article><article>Selected customer</article></section>", "reflow"),
+    expect: "responsiveness reflow requires",
+  },
+  {
+    name: "reflow_tokens_inside_css_comment",
+    file: "patterns/split-sidebar/bad.md",
+    content: pattern("bad", "Split / Sidebar", ".bad {\n    display: grid;\n    grid-template-columns: 24rem 24rem;\n}\n\n/* auto-fit 100% */", "<section class=\"bad\"><article>Customer queue</article><article>Selected customer</article></section>", "reflow"),
     expect: "responsiveness reflow requires",
   },
   {
