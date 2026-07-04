@@ -1,0 +1,55 @@
+name: Validate Layout Gallery
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate layout-gallery contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Syntax and whitespace
+        run: |
+          node -c scripts/generate-patterns.mjs
+          node -c scripts/pattern-data.mjs
+          node -c scripts/validate-okf.mjs
+          node -c scripts/test-validate-okf.mjs
+          node -c scripts/validate-patterns.mjs
+          node -c scripts/test-validate-patterns.mjs
+          node -c scripts/validate-links.mjs
+          node -c scripts/validate-catalog.mjs
+          git diff --check
+
+      - name: Generated artifacts are current
+        run: |
+          node scripts/generate-patterns.mjs
+          git diff --exit-code
+
+      - name: OKF structure validation
+        run: |
+          node scripts/validate-okf.mjs --json
+          node scripts/test-validate-okf.mjs --json
+
+      - name: Pattern contract validation
+        run: |
+          node scripts/validate-patterns.mjs --min-count 30 --json
+
+      - name: Markdown link check
+        run: node scripts/validate-links.mjs --json
+
+      - name: Pattern count and category coverage
+        run: node scripts/validate-catalog.mjs --json
+
+      - name: Adversarial validator fixtures
+        run: node scripts/test-validate-patterns.mjs --json
