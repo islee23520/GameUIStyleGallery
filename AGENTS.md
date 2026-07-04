@@ -1,3 +1,9 @@
+---
+type: Agent Instructions
+title: layout-gallery agent instructions
+description: Rules coding agents must follow when editing this layout pattern library.
+---
+
 # Agent Instructions
 
 This repository is `layout-gallery`: a gallery of minimal, portable CSS layout patterns.

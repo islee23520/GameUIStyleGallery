@@ -1,8 +1,22 @@
+---
+type: Repository Guide
+title: layout-gallery
+description: Principles and authoring policy for the layout pattern library.
+---
+
 # layout-gallery
 
 `layout-gallery` is a gallery of minimal, portable CSS layout patterns.
 
 Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. The gallery is not a visual design system: reusable pattern CSS should stabilize structure, flow, sizing, alignment, spacing, scrolling, ratio, and containment while leaving brand, typography, color, shadow, animation, and decoration outside the core pattern.
+
+## How To Use This Repository
+
+- Start with [Layout Planning Guide](GUIDE.md) when you are designing a screen before a layout problem is obvious.
+- Use the [Decision Tree](guides/decision-tree.md) when you do not know the pattern name yet.
+- Fill out the [Layout Brief Template](guides/layout-brief.md) before choosing a pattern stack.
+- Use [Layout Recipes](recipes/index.md) when you need screen-level composition.
+- Use [Layout Pattern Catalog](CATALOG.md) when you already know the spatial problem.
 
 ## Principles
 
