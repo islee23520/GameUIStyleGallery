@@ -23,14 +23,21 @@ Use this pattern when you need to place an overlay region over a parent without 
 ## HTML
 
 ```html
-<section class="imposter" aria-label="Modal placement">
-    <dialog open>Unsaved changes confirmation</dialog>
+<section class="imposter_anchor" aria-label="Draft editor">
+    <p>Draft body text stays in normal document flow.</p>
+    <section class="imposter" aria-label="Modal placement">
+        <dialog open>Unsaved changes confirmation</dialog>
+    </section>
 </section>
 ```
 
 ## CSS
 
 ```css
+.imposter_anchor {
+    position: relative;
+}
+
 .imposter {
     display: grid;
     inset: 0;
@@ -42,11 +49,11 @@ Use this pattern when you need to place an overlay region over a parent without 
 
 ## Core Properties
 
-- `display`, `inset`, `place-items`, `position`, `z-index` define the spatial behavior for this pattern.
+- `position`, `display`, `inset`, `place-items`, `z-index` define the spatial behavior for this pattern.
 
 ## Properties That Break The Layout If Removed
 
-- Removing `display`, `inset`, `place-items`, `position`, `z-index` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+- Removing `position`, `display`, `inset`, `place-items`, `z-index` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
 
 ## Constraints And Change Points
 

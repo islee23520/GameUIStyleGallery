@@ -54,7 +54,7 @@ export const samples = {
 </span>`,
   "frame": `
 <figure class="frame">
-    <img alt="Product walkthrough still">
+    <img alt="Product walkthrough still" class="frame_media">
 </figure>`,
   "cover": `
 <section class="cover" aria-labelledby="cover-title">
@@ -234,8 +234,11 @@ export const samples = {
     <article>Launch review</article>
 </section>`,
   "imposter": `
-<section class="imposter" aria-label="Modal placement">
-    <dialog open>Unsaved changes confirmation</dialog>
+<section class="imposter_anchor" aria-label="Draft editor">
+    <p>Draft body text stays in normal document flow.</p>
+    <section class="imposter" aria-label="Modal placement">
+        <dialog open>Unsaved changes confirmation</dialog>
+    </section>
 </section>`,
   "panel-layout": `
 <section class="panel_layout" aria-label="Console workspace">
@@ -280,7 +283,7 @@ export const patterns = [
   ["content-limiter", "Containment", "Keep prose width readable inside fluid containers.", "inline", "fluid", sources.govukLayout, [[".content_limiter", { "margin-inline": "auto", "max-inline-size": "70ch", "padding-inline": "1rem" }]]],
   ["super-center", "Centering", "Center one region along both axes.", "both", "fluid", sources.webOneLine, [[".super_center", { display: "grid", "min-block-size": "100dvh", "place-items": "center" }]]],
   ["icon-frame", "Media / Fit", "Keep an icon aligned inside a fixed square slot.", "both", "fixed", sources.everyLayout, [[".icon_frame", { "block-size": "2.5rem", display: "grid", "inline-size": "2.5rem", "place-items": "center" }]]],
-  ["frame", "Media / Fit", "Preserve media aspect ratio in a responsive slot.", "both", "fluid", sources.everyLayout, [[".frame", { "aspect-ratio": "16 / 9", display: "grid", "inline-size": "100%", overflow: "clip" }]]],
+  ["frame", "Media / Fit", "Preserve media aspect ratio in a responsive slot.", "both", "fluid", sources.everyLayout, [[".frame", { "aspect-ratio": "16 / 9", display: "grid", "inline-size": "100%", overflow: "clip" }], [".frame_media", { "block-size": "100%", "inline-size": "100%", "min-block-size": "0", "min-inline-size": "0", "object-fit": "cover" }]]],
   ["cover", "Viewport / Shell", "Keep a central region balanced between optional header and footer.", "block", "fluid", sources.everyLayout, [[".cover", { display: "grid", gap: "1rem", "grid-template-rows": "auto 1fr auto", "min-block-size": "100dvh", padding: "1rem" }]]],
   ["sidebar", "Split / Sidebar", "Let a narrow sidebar and wider content wrap when space is tight.", "inline", "wrap", sources.everySidebar, [[".sidebar", { display: "flex", "flex-wrap": "wrap", gap: "1rem" }], [".sidebar_primary", { "flex-basis": "0", "flex-grow": "999", "min-inline-size": "16rem" }], [".sidebar_secondary", { "flex-basis": "18rem", "flex-grow": "1" }]]],
   ["switcher", "Split / Sidebar", "Switch equal regions from row to stack without a viewport breakpoint.", "inline", "wrap", sources.everyLayout, [[".switcher", { display: "flex", "flex-wrap": "wrap", gap: "1rem" }], [".switcher_item", { "flex-basis": "calc((40rem - 100%) * 999)", "flex-grow": "1" }]]],
@@ -290,14 +293,14 @@ export const patterns = [
   ["sticky-footer", "Viewport / Shell", "Keep footer at the bottom when content is short.", "block", "fluid", sources.mdnCookbook, [[".sticky_footer", { display: "grid", "grid-template-rows": "auto 1fr auto", "min-block-size": "100dvh" }], [".sticky_footer_main", { "min-block-size": "0" }]]],
   ["sticky-header", "Viewport / Shell", "Keep a header visible above a scrolling content region.", "block", "fluid", sources.mdnPosition, [[".sticky_header", { "inset-block-start": "0", position: "sticky", "z-index": "1" }]]],
   ["scroll-body-shell", "Viewport / Shell", "Keep shell regions fixed while only the body scrolls.", "block", "fluid", sources.mdnOverflow, [[".scroll_body_shell", { display: "grid", "grid-template-rows": "auto minmax(0, 1fr) auto", "max-block-size": "100dvh" }], [".scroll_body_shell_body", { "min-block-size": "0", overflow: "auto" }]], "Pattern owns the named scroll container."],
-  ["fixed-sidenav-shell", "Viewport / Shell", "Keep side navigation stable while main content scrolls.", "both", "fluid", sources.carbonGrid, [[".fixed_sidenav_shell", { display: "grid", "grid-template-columns": "16rem minmax(0, 1fr)", "max-block-size": "100dvh" }], [".fixed_sidenav_shell_list", { "min-block-size": "0" }], [".fixed_sidenav_shell_main", { overflow: "auto" }]], "Pattern owns the named scroll container."],
+  ["fixed-sidenav-shell", "Viewport / Shell", "Keep side navigation stable while main content scrolls.", "both", "fluid", sources.carbonGrid, [[".fixed_sidenav_shell", { display: "grid", "grid-template-columns": "16rem minmax(0, 1fr)", "grid-template-rows": "minmax(0, 1fr)", "max-block-size": "100dvh" }], [".fixed_sidenav_shell_list", { "min-block-size": "0" }], [".fixed_sidenav_shell_main", { "min-block-size": "0", overflow: "auto" }]], "Pattern owns the named scroll container."],
   ["sticky-aside", "Split / Sidebar", "Keep related aside content visible during long reads.", "block", "fluid", sources.mdnPosition, [[".sticky_aside", { "align-items": "start", display: "grid", gap: "1rem", "grid-template-columns": "minmax(0, 1fr) 16rem" }], [".sticky_aside_main", { "min-inline-size": "0" }], [".sticky_aside_side", { "inset-block-start": "1rem", position: "sticky" }]]],
   ["ram-grid", "Grid / Repetition", "Repeat items into as many useful columns as space allows.", "both", "fluid", sources.webOneLine, [[".ram_grid", { display: "grid", gap: "1rem", "grid-template-columns": "repeat(auto-fit, minmax(min(16rem, 100%), 1fr))" }]]],
   ["card-grid", "Grid / Repetition", "Align repeating cards in rows and columns.", "both", "fluid", sources.mdnCookbook, [[".card_grid", { display: "grid", gap: "1rem", "grid-template-columns": "repeat(auto-fit, minmax(min(18rem, 100%), 1fr))" }]]],
   ["twelve-span-grid", "Grid / Repetition", "Provide a twelve-column placement scaffold.", "both", "fluid", sources.webOneLine, [[".twelve_span_grid", { display: "grid", gap: "1rem", "grid-template-columns": "repeat(12, minmax(0, 1fr))" }], [".twelve_span_grid_item", { "grid-column": "span 4" }]]],
   ["page-grid", "Grid / Repetition", "Align page content to margins, gutters, and a central track.", "inline", "fluid", sources.carbonGrid, [[".page_grid", { display: "grid", gap: "1rem", "grid-template-columns": "minmax(1rem, 1fr) minmax(0, 72rem) minmax(1rem, 1fr)" }], [".page_grid_content", { "grid-column": "2" }]]],
   ["grid-wrapper", "Grid / Repetition", "Center grid tracks while allowing full-width breakout tracks.", "inline", "fluid", sources.mdnCookbook, [[".grid_wrapper", { display: "grid", "grid-template-columns": "1fr minmax(0, 64rem) 1fr" }], [".grid_wrapper_main", { "grid-column": "2" }]]],
-  ["columns", "Grid / Repetition", "Flow long content into balanced text columns.", "inline", "fluid", sources.mdnCookbook, [[".columns", { "column-gap": "2rem", "column-width": "18rem", columns: "18rem" }]]],
+  ["columns", "Grid / Repetition", "Flow long content into balanced text columns.", "inline", "fluid", sources.mdnCookbook, [[".columns", { "column-gap": "2rem", columns: "18rem" }]]],
   ["deconstructed-pancake", "In-line grouping", "Let equal cards stretch in a row and stack naturally when narrow.", "inline", "wrap", sources.webOneLine, [[".deconstructed_pancake", { display: "flex", "flex-wrap": "wrap", gap: "1rem" }], [".deconstructed_pancake_item", { flex: "1 1 16rem" }]]],
   ["line-up", "Stacking", "Keep card footer actions aligned at the bottom.", "block", "fluid", sources.webOneLine, [[".line_up", { display: "flex", "flex-direction": "column", gap: "1rem" }], [".line_up_body", { "min-block-size": "0" }], [".line_up_footer", { "margin-block-start": "auto" }]]],
   ["clamped-card", "Containment", "Constrain a card to a readable fluid width.", "inline", "fluid", sources.webOneLine, [[".clamped_card", { "inline-size": "clamp(16rem, 50vw, 28rem)", "margin-inline": "auto" }]]],
@@ -311,8 +314,8 @@ export const patterns = [
   ["badge-list", "In-line grouping", "Align item labels with trailing counts.", "inline", "fluid", sources.mdnCookbook, [[".badge_list", { display: "grid", gap: "0.5rem" }], [".badge_list_item", { "align-items": "center", display: "flex", gap: "0.75rem", "justify-content": "space-between" }]]],
   ["step-nav", "Stacking", "Present sequential steps with consistent vertical rhythm.", "block", "fluid", sources.govukLayout, [[".step_nav", { display: "grid", gap: "0.75rem", "margin-block": "1rem" }]]],
   ["tab-strip", "In-line grouping", "Keep peer tabs in one stable row that can wrap.", "inline", "wrap", sources.govukLayout, [[".tab_strip", { display: "flex", "flex-wrap": "wrap", gap: "0.75rem" }]]],
-  ["reel", "In-line grouping", "Let a row scroll horizontally instead of wrapping.", "inline", "scroll", sources.everyLayout, [[".reel", { display: "grid", "grid-auto-columns": "minmax(14rem, 35%)", "grid-auto-flow": "column", gap: "1rem", "overflow-x": "auto" }]], "Pattern owns the named scroll container."],
-  ["imposter", "Overlay / Exception", "Place an overlay region over a parent without changing document order.", "both", "fixed", sources.everyLayout, [[".imposter", { display: "grid", inset: "0", "place-items": "center", position: "absolute", "z-index": "1" }]]],
+  ["reel", "In-line grouping", "Let a row scroll horizontally instead of wrapping.", "inline", "scroll", sources.everyLayout, [[".reel", { display: "grid", gap: "1rem", "grid-auto-columns": "minmax(14rem, 35%)", "grid-auto-flow": "column", "overflow-x": "auto" }]], "Pattern owns the named scroll container."],
+  ["imposter", "Overlay / Exception", "Place an overlay region over a parent without changing document order.", "both", "fixed", sources.everyLayout, [[".imposter_anchor", { position: "relative" }], [".imposter", { display: "grid", inset: "0", "place-items": "center", position: "absolute", "z-index": "1" }]]],
   ["panel-layout", "Viewport / Shell", "Create predictable main and utility panels.", "inline", "reflow", sources.carbonGrid, [[".panel_layout", { display: "grid", gap: "1rem", "grid-template-columns": "repeat(auto-fit, minmax(min(22rem, 100%), 1fr))" }], [".panel_layout_main", { "min-inline-size": "0" }], [".panel_layout_side", { "min-inline-size": "0" }]]],
   ["overlay-stack", "Overlay / Exception", "Stack several regions into the same grid cell.", "both", "fluid", sources.webOneLine, [[".overlay_stack", { display: "grid" }], [".overlay_stack_item", { "grid-area": "1 / 1" }]]],
   ["wrap-row", "In-line grouping", "Wrap controls into rows with stable gaps.", "inline", "wrap", sources.mdnCookbook, [[".wrap_row", { "align-items": "center", display: "flex", "flex-wrap": "wrap", gap: "0.75rem" }]]],

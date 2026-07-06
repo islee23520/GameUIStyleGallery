@@ -24,7 +24,7 @@ Use this pattern when you need to preserve media aspect ratio in a responsive sl
 
 ```html
 <figure class="frame">
-    <img alt="Product walkthrough still">
+    <img alt="Product walkthrough still" class="frame_media">
 </figure>
 ```
 
@@ -37,15 +37,23 @@ Use this pattern when you need to preserve media aspect ratio in a responsive sl
     inline-size: 100%;
     overflow: clip;
 }
+
+.frame_media {
+    block-size: 100%;
+    inline-size: 100%;
+    min-block-size: 0;
+    min-inline-size: 0;
+    object-fit: cover;
+}
 ```
 
 ## Core Properties
 
-- `aspect-ratio`, `display`, `inline-size`, `overflow` define the spatial behavior for this pattern.
+- `aspect-ratio`, `display`, `inline-size`, `overflow`, `block-size`, `min-block-size`, `min-inline-size`, `object-fit` define the spatial behavior for this pattern.
 
 ## Properties That Break The Layout If Removed
 
-- Removing `aspect-ratio`, `display`, `inline-size`, `overflow` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
+- Removing `aspect-ratio`, `display`, `inline-size`, `overflow`, `block-size`, `min-block-size`, `min-inline-size`, `object-fit` changes the pattern from its documented layout responsibility back toward ordinary flow or an unsafe fixed arrangement.
 
 ## Constraints And Change Points
 
