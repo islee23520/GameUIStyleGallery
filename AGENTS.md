@@ -21,6 +21,15 @@ This repository is `layout-gallery`: a gallery of minimal, portable CSS layout p
 - Make scroll responsibility obvious in both class names and CSS.
 - Keep decorative styling out of reusable pattern CSS.
 
+## Pattern Boundary Gate
+
+Before adding a new pattern or changing reusable pattern CSS, check [Layout Decision Tree](guides/decision-tree.md) and [Layout Brief Template](guides/layout-brief.md).
+
+- Decide whether the work is a new pattern, a recipe composition, or product styling outside this repository.
+- Name the layout owner, scroll owner, core layout declarations, excluded demo/product styling, and likely breaking content case.
+- For scroll or responsive changes, include the failure case the pattern prevents, such as a missing shrink constraint or a viewport breakpoint used for component-local behavior.
+- Add a new pattern only when existing patterns or recipes do not already cover the spatial responsibility.
+
 ## CSS Authoring
 
 - Use layout properties only unless a non-layout property is required to explain layout behavior.

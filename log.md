@@ -1,5 +1,13 @@
 # layout-gallery Log
 
+## 2026-07-09
+
+- Added short pattern-boundary examples to the existing planning guides.
+- Added pattern-boundary fields to the layout brief template.
+- Added a pre-pattern decision gate to the decision tree.
+- Linked the agent instructions to the pattern-boundary decision flow.
+- Added short bad/good CSS examples for scroll ownership, styling boundaries, and container-local responsiveness.
+
 ## 2026-07-04
 
 - Fixed fixed-sidenav-shell scroll activation by constraining grid-template-rows with minmax(0, 1fr) and min-block-size on panes.
