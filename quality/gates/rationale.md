@@ -24,6 +24,7 @@ Record:
 
 Useful rationale evidence includes:
 
+- structured claim records;
 - local repository constraints;
 - cited design-rationale, HCI, accessibility, or tooling sources;
 - rendered evidence;
@@ -43,3 +44,10 @@ Block a rationale when:
 ## Boundary
 
 Rationale does not need to be long. It needs to make the claim, warrant, evidence, and limitation inspectable.
+
+When a rationale contains a high-impact design claim, route it through the [structured quality claim template](../claims.md#claim-record-template) or link to an existing claim record.
+
+## IA Navigation
+
+Parent: [Gate Contracts](index.md).
+Next: [Evidence References](../evidence/index.md) when a gate needs admissible support.

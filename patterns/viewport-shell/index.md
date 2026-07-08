@@ -1,5 +1,7 @@
 # Viewport / Shell
 
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
+
 - [cover](cover.md) - Keep a central region balanced between optional header and footer.
 - [holy-grail](holy-grail.md) - Place header, footer, sidebars, and main content in a resilient shell.
 - [sticky-footer](sticky-footer.md) - Keep footer at the bottom when content is short.

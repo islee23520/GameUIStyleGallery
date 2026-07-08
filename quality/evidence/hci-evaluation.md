@@ -29,3 +29,8 @@ HCI evidence helps separate task success, perceived usability, aesthetics, and c
 - aesthetic quality from a single expert opinion;
 - task success without a task scenario;
 - user perception without user or validated-instrument evidence.
+
+## IA Navigation
+
+Parent: [Evidence References](index.md).
+Next: [Quality Gates](../index.md) to decide whether the evidence supports a claim.

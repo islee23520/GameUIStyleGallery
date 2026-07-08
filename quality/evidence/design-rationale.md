@@ -27,3 +27,8 @@ Design rationale records why a quality claim is admissible.
 - the selected option is empirically best;
 - a user-facing outcome without user or task evidence;
 - accessibility, usability, or visual quality by itself.
+
+## IA Navigation
+
+Parent: [Evidence References](index.md).
+Next: [Quality Gates](../index.md) to decide whether the evidence supports a claim.

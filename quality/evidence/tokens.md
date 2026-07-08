@@ -26,3 +26,8 @@ Tokens are contract surfaces for reusable design decisions.
 ## Boundary
 
 Use tokens for shared design intent. Keep browser and layout mechanics such as `auto`, percentages, intrinsic sizing, and container-query units in CSS when they are layout behavior rather than design intent.
+
+## IA Navigation
+
+Parent: [Evidence References](index.md).
+Next: [Quality Gates](../index.md) to decide whether the evidence supports a claim.

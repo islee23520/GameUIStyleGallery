@@ -33,3 +33,8 @@ Reject source use when:
 - a public design system is treated as permission to imitate a brand;
 - a tool doc is used to prove accessibility or usability outcomes;
 - a source is cited without a claim, warrant, or boundary.
+
+## IA Navigation
+
+Parent: [Evidence References](index.md).
+Next: [Quality Gates](../index.md) to decide whether the evidence supports a claim.

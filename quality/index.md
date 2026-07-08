@@ -7,8 +7,13 @@ This layer does not make the repository a visual design system. Pattern files st
 ## Concepts
 
 - [Quality principles](principles.md) - Principles shared by the quality gate layer.
+- [Controlled vocabulary](../guides/vocabulary.md) - Canonical terms for claims, gates, warrants, boundaries, evidence families, harmony, and debt.
+- [Structured quality claims](claims.md) - Claim-record template, high-impact scope, and low-risk prose boundary.
 - [Gate index](gates/index.md) - Gate contracts for layout, design claims, visual evidence, accessibility evidence, and rationale.
 - [Evidence index](evidence/index.md) - Reference sources and evidence boundaries for design-side claims.
+- [Claim records](claim-records/index.md) - Filled examples for high-impact claims.
+- [Accessibility evidence register](evidence/accessibility.md) - Classification for accessibility claims: automated, manual, user, or debt.
+- [Executable evidence coverage](evidence/executable-evidence.md) - Validator, fixture, CI, rendered-evidence, and review boundaries.
 
 ## Admission Model
 
@@ -19,3 +24,22 @@ principle -> claim -> context -> warrant -> evidence family -> verification prot
 ```
 
 Evidence is not the gate. Evidence supports a claim only when the principle, gate, warrant, and boundary are explicit.
+
+High-impact claims use the [claim record template](claims.md#claim-record-template). Low-risk prose can stay as prose when it does not approve, block, redirect, or hand off implementation work.
+
+## Tree-Test Findability QA
+
+Findability QA checks whether a reader can choose the correct route for a task without already knowing the repository structure.
+
+Use this script for lightweight tree tests:
+
+| Scenario | Start | Expected primary route | PASS condition |
+| --- | --- | --- | --- |
+| Build a homepage from raw content. | [README](../README.md) | [Webpage Generation Workflow](../guides/webpage-generation-workflow.md) | The reader chooses the workflow before a recipe or catalog entry. |
+| Choose a layout for a screen with unknown constraints. | [README](../README.md) | [Layout Planning Guide](../GUIDE.md) | The reader starts with planning instead of a primitive. |
+| Find a primitive for a known spatial problem. | [README](../README.md) | [Layout Pattern Catalog](../CATALOG.md) | The reader reaches the generated catalog. |
+| Browse all spatial families. | [OKF index](../index.md) | [Pattern Categories](../patterns/index.md) | The reader reaches category-level browsing. |
+| Verify whether a claim has enough evidence. | [README](../README.md) | [Quality Gates](index.md) | The reader reaches gates before evidence references. |
+| Inspect validator coverage. | [Quality Gates](index.md) | [Executable Evidence Coverage](evidence/executable-evidence.md) | The reader can name what each validator proves and cannot prove. |
+
+Record `PASS` only when the expected primary route is the first route selected. A link resolving successfully is not enough; the selected route must match the task intent.

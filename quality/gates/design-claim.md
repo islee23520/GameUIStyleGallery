@@ -26,11 +26,14 @@ Decision:
 
 ## Evidence Families
 
-- `mechanical`: file shape, headings, frontmatter, source lineage, token structure.
-- `rendered`: screenshots, visual diffs, state captures, viewport captures.
-- `accessibility`: WCAG/ACT checks, keyboard checks, contrast checks, assistive-technology/manual review.
-- `interpretive`: heuristic evaluation, cognitive walkthrough, persona or task review.
-- `empirical`: user testing, validated visual-aesthetics instruments, participant evidence.
+Use the normalized [evidence family glossary](../evidence/families.md):
+
+- `validator`: file shape, headings, frontmatter, source lineage, token structure, fixture output, and CI checks.
+- `screenshot`: screenshots, visual diffs, state captures, viewport captures, and rendered DOM artifacts.
+- `accessibility`: WCAG/ACT checks, keyboard checks, contrast checks, assistive-technology/manual review, and cognitive accessibility review.
+- `user`: heuristic evaluation, cognitive walkthrough, persona or task review, user testing, validated visual-aesthetics instruments, and participant evidence.
+- `source`: academic, standards, official tooling, methodology, vendor, practice, and public design-system references inside a stated boundary.
+- `rationale`: Toulmin/ADR-style records, options considered, criteria, counterclaims, limitations, debt, owner, and review trigger.
 
 ## Blocking Conditions
 
@@ -46,3 +49,8 @@ Block a design claim when:
 ## Boundary
 
 This gate admits claims. It does not prescribe a product brand, palette, illustration style, typeface, animation system, or component library.
+
+## IA Navigation
+
+Parent: [Gate Contracts](index.md).
+Next: [Evidence References](../evidence/index.md) when a gate needs admissible support.

@@ -24,6 +24,7 @@ Use this gate when a claim depends on rendered output, visual state, hierarchy, 
 
 - Screenshot diffs show rendered change, not usability.
 - A stable visual diff does not prove accessibility.
+- Generated images, GPT Image references, and screenshots are not accessibility proof.
 - A visual QA pass does not prove brand fit or aesthetic quality.
 - Visual review must cite the principle, task, state, or brief it evaluates.
 
@@ -39,3 +40,8 @@ Block a rendered-evidence claim when:
 ## Boundary
 
 Visual QA creates evidence. The design claim gate decides whether that evidence supports the claim.
+
+## IA Navigation
+
+Parent: [Gate Contracts](index.md).
+Next: [Evidence References](../evidence/index.md) when a gate needs admissible support.

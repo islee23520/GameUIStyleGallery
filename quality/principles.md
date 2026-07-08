@@ -51,3 +51,8 @@ These principles govern the `quality/` layer. They sit beside the layout pattern
 - `visual QA limits`: rendered evidence supports review but does not decide design quality alone.
 - `screenshot diff limits`: screenshot diffs show rendered change, not usability.
 - `automated accessibility scan limits`: automated scans assist evaluation, not determine accessibility.
+
+## IA Navigation
+
+Parent: [Quality Gates](index.md).
+Next: [Gate Contracts](gates/index.md) for claim-specific pass and block conditions.

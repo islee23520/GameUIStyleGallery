@@ -45,3 +45,8 @@ Block a layout claim when:
 ## Boundary
 
 Visual polish is not a layout pass/fail condition. If a concern is about color, typography voice, surface treatment, motion, or brand fit, route it to the design claim gate.
+
+## IA Navigation
+
+Parent: [Gate Contracts](index.md).
+Next: [Evidence References](../evidence/index.md) when a gate needs admissible support.

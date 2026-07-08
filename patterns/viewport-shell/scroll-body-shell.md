@@ -12,7 +12,11 @@ responsiveness: fluid
 constraints: Uses only local class hooks and explicit layout constraints.
 scroll_ownership: Pattern owns the named scroll container.
 source_lineage: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/overflow
+lifecycle: generated
+generated_from: scripts/generate-patterns.mjs, scripts/pattern-data.mjs
 ---
+
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
 
 # scroll-body-shell
 
@@ -64,7 +68,11 @@ Pattern owns the named scroll container.
 
 ## Accessibility And Source Order Notes
 
-Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.
+- Semantic role expectation: Preserve the HTML sample's landmark, list, navigation, form, figure, or article roles; layout classes must not replace semantic elements.
+- DOM order expectation: Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.
+- Focus risk: Any interactive descendants follow DOM order; do not use this pattern to create a visual order that keyboard focus cannot follow.
+- Scroll expectation: Pattern owns the named scroll container.
+- Cognitive risk: Medium: scroll ownership can hide context, controls, or return points if it is not named in the consuming layout.
 
 ## Browser And Fallback Notes
 
@@ -78,3 +86,8 @@ Use `scroll_body_shell` as the stable pattern root and compose additional layout
 
 - Do not add color, border, shadow, typography, or animation rules to reusable pattern CSS.
 - Do not use this pattern to repair unclear HTML structure; make the DOM roles legible first.
+
+## IA Navigation
+
+Parent: [Viewport / Shell patterns](index.md) in [Pattern Categories](../index.md).
+Next: [Layout Recipes](../../recipes/index.md) for screen-level composition, or return to the [Layout Pattern Catalog](../../CATALOG.md) when choosing another primitive.

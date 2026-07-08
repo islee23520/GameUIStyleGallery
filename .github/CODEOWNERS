@@ -1,0 +1,25 @@
+# Review ownership proposal. Replace @changeroa with verified teams when the repository has them.
+
+* @changeroa
+
+/GOVERNANCE.md @changeroa
+/README.md @changeroa
+/index.md @changeroa
+/AGENTS.md @changeroa
+
+/GUIDE.md @changeroa
+/guides/ @changeroa
+/recipes/ @changeroa
+
+/quality/ @changeroa
+
+/scripts/pattern-data.mjs @changeroa
+/scripts/generate-patterns.mjs @changeroa
+/patterns/ @changeroa
+/CATALOG.md @changeroa
+
+/.github/workflows/validate.yml @changeroa
+/.github/ @changeroa
+/scripts/ @changeroa
+/scripts/validate-*.mjs @changeroa
+/scripts/test-validate-*.mjs @changeroa

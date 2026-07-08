@@ -34,3 +34,8 @@ Visual QA evidence helps inspect rendered output.
 ## Required Phrase
 
 Screenshot diffs show rendered change, not usability.
+
+## IA Navigation
+
+Parent: [Evidence References](index.md).
+Next: [Quality Gates](../index.md) to decide whether the evidence supports a claim.
