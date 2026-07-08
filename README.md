@@ -17,6 +17,7 @@ Each pattern documents one primary spatial problem and the smallest robust HTML/
 - Fill out the [Layout Brief Template](guides/layout-brief.md) before choosing a pattern stack.
 - Use [Layout Recipes](recipes/index.md) when you need screen-level composition.
 - Use [Layout Pattern Catalog](CATALOG.md) when you already know the spatial problem.
+- Use [Quality Gates](quality/index.md) when a claim needs principle-backed evidence, visual QA boundaries, accessibility precedence, or design rationale.
 
 ## Principles
 

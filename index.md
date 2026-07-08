@@ -16,4 +16,5 @@ okf_version: "0.1"
 - [Agent instructions](AGENTS.md) - Rules coding agents must follow when editing this layout pattern library.
 - [Layout pattern catalog](CATALOG.md) - Generated index of layout-gallery patterns.
 - [Pattern categories](patterns/index.md) - Category index for generated layout patterns.
+- [Quality gates](quality/index.md) - Principle-backed gates for admissible layout and design evidence claims.
 - [Update log](log.md) - Bundle update history.
