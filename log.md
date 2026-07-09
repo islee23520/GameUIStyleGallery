@@ -1,5 +1,13 @@
 # layout-gallery Log
 
+## 2026-07-09
+
+- Added short pattern-boundary examples to the existing planning guides.
+- Added pattern-boundary fields to the layout brief template.
+- Added a pre-pattern decision gate to the decision tree.
+- Linked the agent instructions to the pattern-boundary decision flow.
+- Added short bad/good CSS examples for scroll ownership, styling boundaries, and container-local responsiveness.
+
 ## 2026-07-08
 
 - Added a webpage generation workflow for content-to-layout matching, harmony evaluation, GPT Image references, and implementation handoff.

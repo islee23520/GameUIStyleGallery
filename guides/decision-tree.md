@@ -8,6 +8,65 @@ description: Question-driven route from screen constraints to layout-gallery pat
 
 Use this when the pattern name is not obvious yet.
 
+## Before Adding A Pattern
+
+Add a new pattern only when the spatial responsibility is not already covered by an existing pattern or recipe.
+
+- If the problem is composition, update or add a recipe.
+- If the problem is visual treatment, keep it outside reusable pattern CSS.
+- If the problem is repeated layout failure, document the smallest reusable pattern that prevents it.
+- If scroll, sizing, or wrapping ownership is unclear, clarify ownership before writing CSS.
+
+Examples:
+
+- Settings page with side navigation, readable form width, and action rows: recipe composition, not one large pattern.
+- Premium card treatment with shadows, color accents, and larger headings: product styling, not reusable pattern CSS.
+- Repeated action row that wraps badly across screens: candidate pattern if the wrapping responsibility is not covered by `cluster` or `wrap-row`.
+
+Code-level distinction:
+
+```html
+<div class="action_row">
+    <button type="button">Save changes</button>
+    <button type="button">Preview</button>
+    <button type="button">Discard draft</button>
+</div>
+```
+
+```css
+.action_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--action-gap);
+}
+```
+
+This can be a reusable layout pattern only if the wrapping responsibility is not already covered by an existing pattern. Button colors, borders, shadows, and typography belong to the consuming product or demo layer.
+
+Viewport versus container-local example:
+
+```css
+/* Avoid for component-local layout: the parent container may be narrower than the viewport. */
+@media (min-width: 48rem) {
+    .action_row {
+        flex-wrap: nowrap;
+    }
+}
+```
+
+```css
+/* Prefer when the component should respond to its own available space. */
+.action_region {
+    container-type: inline-size;
+}
+
+@container (min-width: 32rem) {
+    .action_row {
+        flex-wrap: nowrap;
+    }
+}
+```
+
 ## Start With Scope
 
 ### Is the layout controlled by the viewport?
