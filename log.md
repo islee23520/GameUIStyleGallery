@@ -8,6 +8,13 @@
 - Linked the agent instructions to the pattern-boundary decision flow.
 - Added short bad/good CSS examples for scroll ownership, styling boundaries, and container-local responsiveness.
 
+## 2026-07-08
+
+- Added a webpage generation workflow for content-to-layout matching, harmony evaluation, GPT Image references, and implementation handoff.
+- Added a homepage recipe for content-led webpage composition.
+- Added a harmony evaluation quality gate.
+- Added validation coverage for the webpage generation workflow.
+
 ## 2026-07-04
 
 - Fixed fixed-sidenav-shell scroll activation by constraining grid-template-rows with minmax(0, 1fr) and min-block-size on panes.

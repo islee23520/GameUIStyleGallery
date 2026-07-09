@@ -6,6 +6,7 @@ import { patterns, samples } from "./pattern-data.mjs";
 
 const root = process.cwd();
 const patternsDir = path.join(root, "patterns");
+const generatedWarning = "<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->";
 
 function rule(selector, declarations) {
   const body = Object.entries(declarations)
@@ -39,6 +40,16 @@ function inlineCodeList(values) {
   return values.map((value) => `\`${value}\``).join(", ");
 }
 
+function cognitiveRisk(pattern) {
+  if (pattern.scrollOwnership && !pattern.scrollOwnership.startsWith("No internal")) {
+    return "Medium: scroll ownership can hide context, controls, or return points if it is not named in the consuming layout.";
+  }
+  if (pattern.responsiveness === "reflow") {
+    return "Medium: reflow can change spatial adjacency, so labels, controls, and related content must remain adjacent in DOM order.";
+  }
+  return "Low: the pattern should preserve ordinary reading flow when semantic order is already correct.";
+}
+
 function contractSections(pattern, rootClass) {
   const properties = declarationNames(pattern);
   const core = inlineCodeList(properties);
@@ -62,7 +73,11 @@ function contractSections(pattern, rootClass) {
     "",
     "## Accessibility And Source Order Notes",
     "",
-    "Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.",
+    "- Semantic role expectation: Preserve the HTML sample's landmark, list, navigation, form, figure, or article roles; layout classes must not replace semantic elements.",
+    "- DOM order expectation: Keep semantic elements, DOM order, reading order, and focus order independent from the visual placement created by the layout classes.",
+    "- Focus risk: Any interactive descendants follow DOM order; do not use this pattern to create a visual order that keyboard focus cannot follow.",
+    `- Scroll expectation: ${pattern.scrollOwnership ?? "No internal scroll container."}`,
+    `- Cognitive risk: ${cognitiveRisk(pattern)}`,
     "",
     "## Browser And Fallback Notes",
     "",
@@ -76,6 +91,11 @@ function contractSections(pattern, rootClass) {
     "",
     "- Do not add color, border, shadow, typography, or animation rules to reusable pattern CSS.",
     "- Do not use this pattern to repair unclear HTML structure; make the DOM roles legible first.",
+    "",
+    "## IA Navigation",
+    "",
+    `Parent: [${pattern.category} patterns](index.md) in [Pattern Categories](../index.md).`,
+    "Next: [Layout Recipes](../../recipes/index.md) for screen-level composition, or return to the [Layout Pattern Catalog](../../CATALOG.md) when choosing another primitive.",
     "",
   ];
 }
@@ -99,7 +119,11 @@ function render(raw) {
     "constraints: Uses only local class hooks and explicit layout constraints.",
     `scroll_ownership: ${pattern.scrollOwnership ?? "No internal scroll container."}`,
     `source_lineage: ${pattern.source}`,
+    "lifecycle: generated",
+    "generated_from: scripts/generate-patterns.mjs, scripts/pattern-data.mjs",
     "---",
+    "",
+    generatedWarning,
     "",
     `# ${pattern.slug}`,
     "",
@@ -139,6 +163,8 @@ for (const category of [...new Set(patterns.map(([, category]) => category))]) {
     [
       `# ${category}`,
       "",
+      generatedWarning,
+      "",
       ...categoryPatterns.map(([slug, , problem]) => `- [${slug}](${slug}.md) - ${problem}`),
       "",
     ].join("\n"),
@@ -149,6 +175,8 @@ fs.writeFileSync(
   path.join(patternsDir, "index.md"),
   [
     "# Pattern Categories",
+    "",
+    generatedWarning,
     "",
     ...[...new Set(patterns.map(([, category]) => category))]
       .map((category) => `- [${category}](${slugDir(category)}/index.md)`),
@@ -166,6 +194,10 @@ fs.writeFileSync(
     "---",
     "",
     "# Layout Pattern Catalog",
+    "",
+    "Primary role: pattern lookup.",
+    "",
+    generatedWarning,
     "",
     "Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`.",
     "",

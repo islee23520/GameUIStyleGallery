@@ -8,15 +8,60 @@ description: Principles and authoring policy for the layout pattern library.
 
 `layout-gallery` is a gallery of minimal, portable CSS layout patterns.
 
+Primary role: repository guide.
+
 Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. The gallery is not a visual design system: reusable pattern CSS should stabilize structure, flow, sizing, alignment, spacing, scrolling, ratio, and containment while leaving brand, typography, color, shadow, animation, and decoration outside the core pattern.
+
+## Repository Entry Roles
+
+Use each root hub for one primary job.
+
+| Entry | Primary role | Use when |
+| --- | --- | --- |
+| [README](README.md) | Repository guide | You need the library purpose, policies, and task routes. |
+| [OKF index](index.md) | OKF bundle map | You need a compact knowledge-bundle table of contents. |
+| [Layout Planning Guide](GUIDE.md) | Planning workflow | You need to classify a screen before choosing patterns. |
+| [Layout Pattern Catalog](CATALOG.md) | Pattern lookup | You already know the spatial problem or pattern name. |
+| [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | Governance reference | You need the source of truth, lifecycle, generated-file, ownership, or stale-audit rule. |
+
+## Task Routes
+
+Each common task has one primary route. Use secondary links only after the primary route answers the first decision.
+
+| Task | Primary route | Why |
+| --- | --- | --- |
+| `turn raw content into a homepage or ordinary webpage` | [Webpage Generation Workflow](guides/webpage-generation-workflow.md) | It starts with use case, content-to-layout fit, harmony, and handoff. |
+| `plan a screen before the layout problem is obvious` | [Layout Planning Guide](GUIDE.md) | It sequences task, content, scroll, recipe, and verification choices. |
+| `choose a pattern when the name is unknown` | [Decision Tree](guides/decision-tree.md) | It routes from constraints to pattern categories. |
+| `fill in requirements before selecting a pattern stack` | [Layout Brief Template](guides/layout-brief.md) | It captures content, constraints, and verification inputs. |
+| `stabilize repository terminology` | [Controlled vocabulary](guides/vocabulary.md) | It defines canonical terms, aliases, deprecated terms, and scannability rules. |
+| `compose a full screen from primitives` | [Layout Recipes](recipes/index.md) | Recipes map screen models to pattern stacks. |
+| `inspect which primitives a recipe depends on` | [Primitive To Recipe Matrix](recipes/primitive-to-recipe-matrix.md) | It names essential, helper, and substitutable slots. |
+| `look up a known layout primitive` | [Layout Pattern Catalog](CATALOG.md) | It is the generated pattern lookup surface. |
+| `browse pattern categories` | [Pattern Categories](patterns/index.md) | It groups generated patterns by spatial family. |
+| `check whether a layout or design claim is admissible` | [Quality Gates](quality/index.md) | It routes claims to gates and evidence boundaries. |
+| `prove repository checks and evidence coverage` | [Executable Evidence Coverage](quality/evidence/executable-evidence.md) | It maps validators, fixtures, CI commands, and their boundaries. |
+| `change generated patterns, catalog, or governance policy` | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | It identifies source files, generated artifacts, validators, lifecycle state, and review ownership. |
+| `run findability QA` | [Tree-Test Findability QA](quality/index.md#tree-test-findability-qa) | It tests whether task routes are discoverable, not just linked. |
+
+## Link Policy
+
+- Navigation links move a reader to the next decision point in the repository. Root hubs, indexes, parent links, and next-step links are navigation links.
+- Citation links identify source lineage or evidence boundaries. They support a claim but should not be the only way to continue a task.
+- Dependency links identify generated, validation, or composition relationships. They explain what must stay in sync, such as `scripts/pattern-data.mjs`, generated pattern files, catalog entries, and validator fixtures.
 
 ## How To Use This Repository
 
 - Start with [Layout Planning Guide](GUIDE.md) when you are designing a screen before a layout problem is obvious.
+- Use the [Webpage Generation Workflow](guides/webpage-generation-workflow.md) when raw content needs to become a homepage or ordinary webpage before a layout recipe is obvious.
+- Use the [Documentation Mode Taxonomy](guides/documentation-mode-taxonomy.md) when adding or reviewing docs so each page has a clear primary reading mode.
+- Use the [Controlled vocabulary](guides/vocabulary.md) when a term affects routing, metadata, search, claim records, workflow handoff, or review decisions.
 - Use the [Decision Tree](guides/decision-tree.md) when you do not know the pattern name yet.
 - Fill out the [Layout Brief Template](guides/layout-brief.md) before choosing a pattern stack.
 - Use [Layout Recipes](recipes/index.md) when you need screen-level composition.
 - Use [Layout Pattern Catalog](CATALOG.md) when you already know the spatial problem.
+- Use [Quality Gates](quality/index.md) when a claim needs principle-backed evidence, visual QA boundaries, accessibility precedence, or design rationale.
+- Use [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) before changing generated artifacts, validators, lifecycle state, or ownership policy.
 
 ## Principles
 

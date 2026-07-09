@@ -1,5 +1,7 @@
 # Grid / Repetition
 
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
+
 - [ram-grid](ram-grid.md) - Repeat items into as many useful columns as space allows.
 - [card-grid](card-grid.md) - Align repeating cards in rows and columns.
 - [twelve-span-grid](twelve-span-grid.md) - Provide a twelve-column placement scaffold.
