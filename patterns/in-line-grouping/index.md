@@ -1,5 +1,7 @@
 # In-line grouping
 
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
+
 - [cluster](cluster.md) - Keep related items together while allowing wrapping.
 - [split-nav](split-nav.md) - Separate primary and secondary nav actions in one row.
 - [deconstructed-pancake](deconstructed-pancake.md) - Let equal cards stretch in a row and stack naturally when narrow.

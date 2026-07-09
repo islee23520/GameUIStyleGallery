@@ -1,5 +1,7 @@
 # Split / Sidebar
 
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
+
 - [sidebar](sidebar.md) - Let a narrow sidebar and wider content wrap when space is tight.
 - [switcher](switcher.md) - Switch equal regions from row to stack without a viewport breakpoint.
 - [media-object](media-object.md) - Align media and descriptive content as a stable pair.

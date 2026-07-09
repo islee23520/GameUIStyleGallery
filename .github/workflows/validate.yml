@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Validate layout-gallery contracts
@@ -29,6 +32,12 @@ jobs:
           node -c scripts/test-validate-patterns.mjs
           node -c scripts/validate-links.mjs
           node -c scripts/validate-catalog.mjs
+          node -c scripts/validate-ia.mjs
+          node -c scripts/test-validate-ia.mjs
+          node -c scripts/validate-vocabulary.mjs
+          node -c scripts/test-validate-vocabulary.mjs
+          node -c scripts/validate-governance.mjs
+          node -c scripts/test-validate-governance.mjs
           git diff --check
 
       - name: Generated artifacts are current
@@ -48,8 +57,26 @@ jobs:
       - name: Markdown link check
         run: node scripts/validate-links.mjs --json
 
+      - name: Information architecture check
+        run: |
+          node scripts/validate-ia.mjs --json
+          node scripts/test-validate-ia.mjs --json
+
+      - name: Vocabulary and scannability check
+        run: |
+          node scripts/validate-vocabulary.mjs --json
+          node scripts/test-validate-vocabulary.mjs --json
+
+      - name: Governance lifecycle check
+        run: |
+          node scripts/validate-governance.mjs --json
+          node scripts/test-validate-governance.mjs --json
+
       - name: Pattern count and category coverage
         run: node scripts/validate-catalog.mjs --json
 
       - name: Adversarial validator fixtures
-        run: node scripts/test-validate-patterns.mjs --json
+        run: |
+          node scripts/test-validate-patterns.mjs --json
+          node scripts/test-validate-vocabulary.mjs --json
+          node scripts/test-validate-governance.mjs --json

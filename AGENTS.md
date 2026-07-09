@@ -8,6 +8,8 @@ description: Rules coding agents must follow when editing this layout pattern li
 
 This repository is `layout-gallery`: a gallery of minimal, portable CSS layout patterns.
 
+Before editing generated artifacts, validators, lifecycle state, or ownership policy, read [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md).
+
 ## Core Rules
 
 - Treat this repository as a layout pattern library, not a visual design system.

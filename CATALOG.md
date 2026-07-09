@@ -6,6 +6,10 @@ description: Generated index of layout-gallery patterns.
 
 # Layout Pattern Catalog
 
+Primary role: pattern lookup.
+
+<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->
+
 Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`.
 
 ## Planning Layer
