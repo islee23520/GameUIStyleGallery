@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { stripFencedCodeBlocks } from "./markdown-structure.mjs";
 
 const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
@@ -14,6 +15,13 @@ const rootRoles = [
   ["GUIDE.md", "Primary role: planning workflow"],
   ["CATALOG.md", "Primary role: pattern lookup"],
 ];
+const domainRoutes = [
+  ["Layout", "layout/index.md"],
+  ["Motion", "motion/index.md"],
+  ["Design Engineering", "design-engineering/index.md"],
+  ["Platform Guides", "platform-guides/index.md"],
+];
+const leafDirectories = ["patterns", "recipes", "quality", "motion", "design-engineering", "platform-guides"];
 
 function read(relative) {
   const target = path.join(root, relative);
@@ -22,10 +30,6 @@ function read(relative) {
     return "";
   }
   return fs.readFileSync(target, "utf8");
-}
-
-function stripFencedCodeBlocks(content) {
-  return content.replace(/```[\s\S]*?```/g, "");
 }
 
 function walk(dir) {
@@ -40,7 +44,7 @@ function walk(dir) {
 }
 
 function requireIncludes(relative, text) {
-  if (!read(relative).includes(text)) failures.push(`${relative}: missing ${text}`);
+  if (!stripFencedCodeBlocks(read(relative)).includes(text)) failures.push(`${relative}: missing ${text}`);
 }
 
 function requireRootRoles() {
@@ -57,14 +61,20 @@ function requireRootRoles() {
 }
 
 function requireTaskRoutes() {
-  const content = read("README.md");
+  const content = stripFencedCodeBlocks(read("README.md"));
   const section = content.split("## Task Routes")[1]?.split("\n## ")[0] ?? "";
   const routeRows = section.split("\n").filter((line) => /^\| `[^`]+` \| \[[^\]]+\]\([^)]+\) \|/.test(line));
   if (routeRows.length < 10) failures.push(`README.md: expected at least 10 task route rows, found ${routeRows.length}`);
 }
 
+function requireDomainRoutes() {
+  for (const relative of ["README.md", "index.md"]) {
+    for (const [label, target] of domainRoutes) requireIncludes(relative, `[${label}](${target})`);
+  }
+}
+
 function requireLeafNavigation() {
-  for (const file of ["patterns", "recipes", "quality"].flatMap(walk)) {
+  for (const file of leafDirectories.flatMap(walk)) {
     const content = stripFencedCodeBlocks(read(file));
     if (!/^Parent: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${file}: missing Parent navigation link`);
     if (!/^Next: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${file}: missing Next navigation link`);
@@ -73,10 +83,11 @@ function requireLeafNavigation() {
 
 requireRootRoles();
 requireTaskRoutes();
+requireDomainRoutes();
 requireLeafNavigation();
 
 const result = {
-  checkedLeafFiles: ["patterns", "recipes", "quality"].flatMap(walk).length,
+  checkedLeafFiles: leafDirectories.flatMap(walk).length,
   failures,
   ok: failures.length === 0,
 };

@@ -1,4 +1,10 @@
-# layout-gallery Log
+# StyleGallery Log
+
+## 2026-07-11
+
+- Expanded the repository into a governed StyleGallery umbrella while preserving the existing Layout paths.
+- Added Motion, Design Engineering, and Platform Guides as explicit experimental domains.
+- Added immutable provenance, scope boundaries, domain ownership, and validator coverage for adapted external guidance.
 
 ## 2026-07-09
 

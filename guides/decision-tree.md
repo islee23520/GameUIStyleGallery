@@ -1,7 +1,7 @@
 ---
 type: Planning Guide
 title: Layout Decision Tree
-description: Question-driven route from screen constraints to layout-gallery patterns and recipes.
+description: Question-driven route from screen constraints to StyleGallery Layout patterns and recipes.
 ---
 
 # Layout Decision Tree

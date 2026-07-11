@@ -15,6 +15,7 @@ Sources are admissible only inside a claim boundary.
 - Official tool docs can support operational procedures.
 - Vendor or practice docs can support implementation examples, not prove human design quality.
 - Public design-system docs can support vocabulary and comparison, not brand imitation or affiliation.
+- Practitioner skill repositories can suggest terminology, procedures, and review questions; they cannot establish normative local policy without independent evidence and governance adoption.
 
 ## Required Source Boundary
 
@@ -33,6 +34,8 @@ Reject source use when:
 - a public design system is treated as permission to imitate a brand;
 - a tool doc is used to prove accessibility or usability outcomes;
 - a source is cited without a claim, warrant, or boundary.
+- mutable branch names or abbreviated revisions are used as the only provenance for adapted external guidance;
+- third-party or platform-derived expression is assumed to be covered by a practitioner's repository license.
 
 ## IA Navigation
 

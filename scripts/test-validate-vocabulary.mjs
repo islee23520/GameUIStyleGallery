@@ -13,6 +13,10 @@ const glossary = [
   "",
   "## Canonical Terms",
   "",
+  "- Canonical: `domain`",
+  "  - Concept: top-level knowledge ownership",
+  "- Canonical: `category`",
+  "  - Concept: domain-local browse placement",
   "- Canonical: `pattern`",
   "  - Concept: reusable spatial primitive",
   "- Canonical: `recipe`",
@@ -61,6 +65,20 @@ const files = {
 };
 
 const cases = [
+  {
+    name: "missing_domain_term",
+    mutate: {
+      "guides/vocabulary.md": glossary.replace("- Canonical: `domain`\n  - Concept: top-level knowledge ownership\n", ""),
+    },
+    expect: "guides/vocabulary.md: missing canonical term domain",
+  },
+  {
+    name: "missing_category_term",
+    mutate: {
+      "guides/vocabulary.md": glossary.replace("- Canonical: `category`\n  - Concept: domain-local browse placement\n", ""),
+    },
+    expect: "guides/vocabulary.md: missing canonical term category",
+  },
   {
     name: "missing_required_term",
     mutate: {

@@ -1,7 +1,7 @@
 ---
 type: Planning Guide
 title: Controlled Vocabulary
-description: Canonical terminology, aliases, deprecated terms, and scannability rules for layout-gallery.
+description: Canonical terminology, aliases, deprecated terms, and scannability rules for StyleGallery.
 ---
 
 # Controlled Vocabulary
@@ -12,6 +12,14 @@ Primary role: vocabulary and scannability contract.
 
 ## Canonical Terms
 
+- Canonical: `domain`
+  - Concept: top-level knowledge ownership
+  - Definition: A governed StyleGallery decision surface with a named scope, exclusions, lifecycle, source-of-truth, validator, and review owner.
+  - Use for: Layout, Motion, Design Engineering, Platform Guides, root routing, and `domain` frontmatter on governed leaves.
+- Canonical: `category`
+  - Concept: domain-local browse placement
+  - Definition: A canonical grouping inside one domain; it cannot change the owning domain or its evidence boundary.
+  - Use for: Layout pattern families and future domain-local indexes after a governed need is established.
 - Canonical: `pattern`
   - Concept: reusable spatial primitive
   - Definition: A minimal HTML/CSS layout contract that solves one primary spatial problem.
@@ -55,6 +63,10 @@ Primary role: vocabulary and scannability contract.
 
 ## Aliases
 
+- Alias: `area` -> `domain`
+  - Use only in reader-facing explanation; policy and metadata use `domain`.
+- Alias: `section` -> `category`
+  - Use only for document structure or explanatory prose, not canonical placement metadata.
 - Alias: `primitive` -> `pattern`
   - Use `primitive` only when contrasting individual patterns with recipes.
 - Alias: `layout primitive` -> `pattern`
@@ -76,6 +88,8 @@ Primary role: vocabulary and scannability contract.
   - Reason: Proof overstates what screenshots, tests, generated images, or sources can establish unless the gate names the boundary.
 - Deprecated: `style guide` -> `controlled vocabulary`
   - Reason: The vocabulary stabilizes decision language; it does not define brand voice.
+- Deprecated: `library` -> `domain`
+  - Reason: Library does not name ownership, exclusions, lifecycle, or review responsibility.
 
 ## Local-Only Terms
 

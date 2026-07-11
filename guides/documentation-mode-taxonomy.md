@@ -1,7 +1,7 @@
 ---
 type: Documentation Guide
 title: Documentation Mode Taxonomy
-description: Primary documentation modes, hybrid decisions, and task routing for layout-gallery.
+description: Primary documentation modes, hybrid decisions, and task routing for StyleGallery.
 ---
 
 # Documentation Mode Taxonomy
@@ -27,11 +27,18 @@ Do not use `mixed` as a mode. If a page has more than one reading posture, keep 
 | `README.md` | Explanation | How-to | Start here for repository purpose and top-level route selection. |
 | `GUIDE.md` | How-to | Explanation | Start here before the layout problem is obvious. |
 | `CATALOG.md` | Reference | None | Use when the pattern name or spatial problem is already known. |
-| `DESIGN.md` | Explanation | Reference | Use for design-side scope and boundaries. |
+| `DOMAINS.md` | Reference | Policy/procedure | Use for top-level domain scope, membership, lifecycle, ownership, and provenance. |
 | `GOVERNANCE.md` | Reference | Policy/procedure | Look up source-of-truth, lifecycle, generated artifact, and review-owner rules. |
 | `AGENTS.md` | Policy/procedure | Reference | Use when editing the repository as an agent. |
 | `index.md` | Reference | None | OKF bundle index and link map. |
 | `log.md` | Reference | None | Chronological update record. |
+| `layout/index.md` | Reference | How-to | Enter the existing Layout planning, pattern, recipe, and quality routes without moving them. |
+| `motion/index.md` | Reference | Explanation | Enter Motion terminology, review, and practice references. |
+| `motion/*.md` | Reference or How-to | Explanation | Apply experimental motion terminology and review guidance inside its evidence boundary. |
+| `design-engineering/index.md` | Reference | Explanation | Enter Design Engineering product-level decision guidance. |
+| `design-engineering/*.md` | Explanation | How-to | Apply experimental practitioner methods without treating taste as proof. |
+| `platform-guides/index.md` | Reference | Explanation | Enter bounded comparative platform references. |
+| `platform-guides/*.md` | Explanation | Reference | Compare a named platform with explicit source, version, adaptation, and evidence limits. |
 | `guides/decision-tree.md` | How-to | Reference | Route from constraints to pattern families and recipes. |
 | `guides/layout-brief.md` | How-to | Reference | Fill before selecting a pattern stack. |
 | `guides/vocabulary.md` | Reference | Policy/procedure | Look up canonical terms, aliases, deprecated terms, and scannability rules. |
@@ -89,7 +96,7 @@ The wildcard rows are intentional. Generated pattern pages share one stable refe
 | --- | --- | --- |
 | `README.md` | Keep and label | The page primarily explains repository purpose, but it must also route readers to the correct next document. |
 | `GUIDE.md` | Keep and label | The page is a how-to entry point, but it needs explanation to separate before-problem and after-problem use. |
-| `DESIGN.md` | Keep and label | The page explains design-side boundaries while keeping reusable reference limits visible. |
+| `DOMAINS.md` | Keep and label | The manifest is a domain reference whose scope, lifecycle, and provenance rules also govern edits. |
 | `GOVERNANCE.md` | Keep and label | The page is a governance reference whose rules also operate as edit procedure. |
 | `AGENTS.md` | Keep as policy/procedure | The page governs agent edits and doubles as a reference for recurring repository rules. |
 | `guides/decision-tree.md` | Keep and label | The page is navigational how-to; reference links are necessary outputs, not a competing mode. |
@@ -112,7 +119,11 @@ The wildcard rows are intentional. Generated pattern pages share one stable refe
 
 | User task | Read first | Then read |
 | --- | --- | --- |
-| Understand what the repository is for. | `README.md` | `GUIDE.md` |
+| Understand what the repository is for. | `README.md` | `DOMAINS.md` |
+| Choose the owning StyleGallery domain. | `DOMAINS.md` | The selected domain `index.md` |
+| Name or review product motion. | `motion/index.md` | The matching Motion reference or workflow |
+| Review a product-level craft decision. | `design-engineering/index.md` | `design-engineering/interface-craft.md`, then the relevant quality gate |
+| Compare an Apple interaction convention. | `platform-guides/index.md` | `platform-guides/apple-interaction.md` and current official sources |
 | Choose a layout when the pattern name is unknown. | `GUIDE.md` | `guides/decision-tree.md` |
 | Turn raw content into a homepage or webpage. | `guides/webpage-generation-workflow.md` | `recipes/homepage.md`, `quality/gates/harmony-evaluation.md` |
 | Look up a known layout primitive. | `CATALOG.md` | The relevant `patterns/*/*.md` page |

@@ -1,16 +1,27 @@
 ---
 type: Repository Guide
-title: layout-gallery
-description: Principles and authoring policy for the layout pattern library.
+title: StyleGallery
+description: Governed gallery of portable interface knowledge organized by domain.
 ---
 
-# layout-gallery
+# StyleGallery
 
-`layout-gallery` is a gallery of minimal, portable CSS layout patterns.
+StyleGallery is a governed gallery of portable interface knowledge. It separates reusable spatial patterns, product-layer motion guidance, design-engineering practice, and platform-specific references into explicit domains with different evidence and ownership boundaries.
 
 Primary role: repository guide.
 
-Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. The gallery is not a visual design system: reusable pattern CSS should stabilize structure, flow, sizing, alignment, spacing, scrolling, ratio, and containment while leaving brand, typography, color, shadow, animation, and decoration outside the core pattern.
+The existing Layout corpus remains a gallery of minimal, portable CSS layout patterns at its current paths. Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. Motion, visual treatment, and platform guidance do not expand reusable Layout pattern CSS; they live in their own domains and carry explicit evidence boundaries.
+
+## Domains
+
+| Domain | Owns | Does not own |
+| --- | --- | --- |
+| [Layout](layout/index.md) | Semantic spatial structure, flow, sizing, alignment, containment, scrolling, and composition. | Brand, typography, color, shadow, animation, and product decoration. |
+| [Motion](motion/index.md) | Motion terminology, review procedure, and evidence-bounded practice guidance. | Universal timing/easing rules or permission to add motion to reusable Layout CSS. |
+| [Design Engineering](design-engineering/index.md) | Product-layer craft decisions and verification questions. | A second universal principle set or taste as evidence. |
+| [Platform Guides](platform-guides/index.md) | Bounded comparison with named platform conventions. | Affiliation, imitation, or authority over web and accessibility contracts. |
+
+The canonical domain manifest and provenance policy are in [StyleGallery Domains](DOMAINS.md).
 
 ## Repository Entry Roles
 
@@ -23,6 +34,11 @@ Use each root hub for one primary job.
 | [Layout Planning Guide](GUIDE.md) | Planning workflow | You need to classify a screen before choosing patterns. |
 | [Layout Pattern Catalog](CATALOG.md) | Pattern lookup | You already know the spatial problem or pattern name. |
 | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | Governance reference | You need the source of truth, lifecycle, generated-file, ownership, or stale-audit rule. |
+| [StyleGallery Domains](DOMAINS.md) | Domain manifest | You need domain ownership, scope, lifecycle, page membership, or provenance. |
+| [Layout](layout/index.md) | Layout domain hub | You need reusable spatial patterns, recipes, or planning routes. |
+| [Motion](motion/index.md) | Motion domain hub | You need motion terminology, review procedure, or practice evidence. |
+| [Design Engineering](design-engineering/index.md) | Design Engineering domain hub | You need product-level interface-craft decision guidance. |
+| [Platform Guides](platform-guides/index.md) | Platform Guides domain hub | You need a bounded platform comparison. |
 
 ## Task Routes
 
@@ -30,6 +46,11 @@ Each common task has one primary route. Use secondary links only after the prima
 
 | Task | Primary route | Why |
 | --- | --- | --- |
+| `choose a StyleGallery domain` | [StyleGallery Domains](DOMAINS.md) | It separates domain ownership before a reader applies domain-local guidance. |
+| `browse reusable spatial guidance` | [Layout](layout/index.md) | It preserves the existing pattern, recipe, and planning routes. |
+| `name or review interface motion` | [Motion](motion/index.md) | It routes to bounded terminology and review guidance. |
+| `review product-level interface craft` | [Design Engineering](design-engineering/index.md) | It separates practitioner heuristics from shared quality gates. |
+| `compare a named platform convention` | [Platform Guides](platform-guides/index.md) | It requires platform and evidence boundaries before adaptation. |
 | `turn raw content into a homepage or ordinary webpage` | [Webpage Generation Workflow](guides/webpage-generation-workflow.md) | It starts with use case, content-to-layout fit, harmony, and handoff. |
 | `plan a screen before the layout problem is obvious` | [Layout Planning Guide](GUIDE.md) | It sequences task, content, scroll, recipe, and verification choices. |
 | `choose a pattern when the name is unknown` | [Decision Tree](guides/decision-tree.md) | It routes from constraints to pattern categories. |
@@ -52,6 +73,8 @@ Each common task has one primary route. Use secondary links only after the prima
 
 ## How To Use This Repository
 
+- Start with [StyleGallery Domains](DOMAINS.md) when the owning domain is not already clear.
+- Use [Layout](layout/index.md), [Motion](motion/index.md), [Design Engineering](design-engineering/index.md), or [Platform Guides](platform-guides/index.md) as the domain-local entry point.
 - Start with [Layout Planning Guide](GUIDE.md) when you are designing a screen before a layout problem is obvious.
 - Use the [Webpage Generation Workflow](guides/webpage-generation-workflow.md) when raw content needs to become a homepage or ordinary webpage before a layout recipe is obvious.
 - Use the [Documentation Mode Taxonomy](guides/documentation-mode-taxonomy.md) when adding or reviewing docs so each page has a clear primary reading mode.
@@ -63,7 +86,7 @@ Each common task has one primary route. Use secondary links only after the prima
 - Use [Quality Gates](quality/index.md) when a claim needs principle-backed evidence, visual QA boundaries, accessibility precedence, or design rationale.
 - Use [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) before changing generated artifacts, validators, lifecycle state, or ownership policy.
 
-## Principles
+## Layout Domain Principles
 
 1. Layout problems only
    - Patterns exist to solve spatial problems, not to define a visual brand.

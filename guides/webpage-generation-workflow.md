@@ -10,7 +10,7 @@ Use this workflow when the request is broad: "make a webpage," "make a homepage,
 
 The workflow keeps two responsibilities separate:
 
-- `layout-gallery` chooses semantic structure, spatial model, constraints, pattern stack, scroll ownership, and verification.
+- The StyleGallery Layout domain chooses semantic structure, spatial model, constraints, pattern stack, scroll ownership, and verification.
 - The consuming product owns brand, typography, color, images, shadows, motion, generated visuals, and final styling.
 
 ## Use Cases

@@ -10,6 +10,8 @@ const failures = [];
 
 const glossaryFile = "guides/vocabulary.md";
 const requiredTerms = [
+  "domain",
+  "category",
   "pattern",
   "recipe",
   "gate",

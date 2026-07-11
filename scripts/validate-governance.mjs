@@ -13,6 +13,11 @@ const requiredCodeowners = [
   "/README.md @changeroa",
   "/index.md @changeroa",
   "/AGENTS.md @changeroa",
+  "/DOMAINS.md @changeroa",
+  "/layout/ @changeroa",
+  "/motion/ @changeroa",
+  "/design-engineering/ @changeroa",
+  "/platform-guides/ @changeroa",
   "/GUIDE.md @changeroa",
   "/guides/ @changeroa",
   "/recipes/ @changeroa",
@@ -62,6 +67,11 @@ function requireGovernanceMatrix() {
     "Planning guides",
     "Layout recipes",
     "Quality gates and evidence",
+    "Domain manifest and scope decision",
+    "Layout domain hub",
+    "Motion domain guidance",
+    "Design Engineering domain guidance",
+    "Platform Guides domain guidance",
     "Pattern data and examples",
     "Pattern generator",
     "Validation scripts",
@@ -101,6 +111,12 @@ function requireCiwiring() {
   requireIncludes(".github/workflows/validate.yml", "node -c scripts/test-validate-governance.mjs");
   requireIncludes(".github/workflows/validate.yml", "node scripts/validate-governance.mjs --json");
   requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-governance.mjs --json");
+  requireIncludes(".github/workflows/validate.yml", "node -c scripts/validate-domains.mjs");
+  requireIncludes(".github/workflows/validate.yml", "node -c scripts/test-validate-domains.mjs");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/validate-domains.mjs --json");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-domains.mjs");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/validate-webpage-workflow.mjs --json");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-webpage-workflow.mjs --json");
   requireIncludes(".github/workflows/validate.yml", "permissions:");
   requireIncludes(".github/workflows/validate.yml", "contents: read");
 }
@@ -109,11 +125,15 @@ function requireRootLinks() {
   requireIncludes("README.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
   requireIncludes("index.md", "[Governance, lifecycle, and docs-as-code](GOVERNANCE.md)");
   requireIncludes("AGENTS.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
+  requireIncludes("README.md", "(DOMAINS.md)");
+  requireIncludes("index.md", "(DOMAINS.md)");
+  requireIncludes("AGENTS.md", "(DOMAINS.md)");
 }
 
 function requireEvidenceMap() {
   requireIncludes("quality/evidence/executable-evidence.md", "generated warnings, generated metadata, root links");
   requireIncludes("quality/evidence/executable-evidence.md", "Missing governance file, generated warning, generated metadata, CODEOWNERS coverage, or stale policy fixtures must fail.");
+  requireIncludes("quality/evidence/executable-evidence.md", "Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail.");
 }
 
 requireGovernanceMatrix();

@@ -1,7 +1,7 @@
 ---
 type: Quality Guide
 title: Quality Principles
-description: Shared principles for the layout-gallery quality gate layer.
+description: Shared principles for the StyleGallery quality gate layer.
 ---
 
 # Quality Principles

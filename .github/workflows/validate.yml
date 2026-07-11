@@ -1,4 +1,4 @@
-name: Validate Layout Gallery
+name: Validate StyleGallery
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate layout-gallery contracts
+    name: Validate StyleGallery contracts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,6 +38,10 @@ jobs:
           node -c scripts/test-validate-vocabulary.mjs
           node -c scripts/validate-governance.mjs
           node -c scripts/test-validate-governance.mjs
+          node -c scripts/validate-domains.mjs
+          node -c scripts/test-validate-domains.mjs
+          node -c scripts/validate-webpage-workflow.mjs
+          node -c scripts/test-validate-webpage-workflow.mjs
           git diff --check
 
       - name: Generated artifacts are current
@@ -52,7 +56,7 @@ jobs:
 
       - name: Pattern contract validation
         run: |
-          node scripts/validate-patterns.mjs --min-count 30 --json
+          node scripts/validate-patterns.mjs --min-count 46 --json
 
       - name: Markdown link check
         run: node scripts/validate-links.mjs --json
@@ -71,6 +75,16 @@ jobs:
         run: |
           node scripts/validate-governance.mjs --json
           node scripts/test-validate-governance.mjs --json
+
+      - name: Domain topology and provenance check
+        run: |
+          node scripts/validate-domains.mjs --json
+          node scripts/test-validate-domains.mjs
+
+      - name: Webpage workflow check
+        run: |
+          node scripts/validate-webpage-workflow.mjs --json
+          node scripts/test-validate-webpage-workflow.mjs --json
 
       - name: Pattern count and category coverage
         run: node scripts/validate-catalog.mjs --json

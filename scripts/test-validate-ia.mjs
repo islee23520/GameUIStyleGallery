@@ -19,6 +19,10 @@ const baseFiles = {
     "| Entry | Primary role |",
     "| --- | --- |",
     "| [README](README.md) | Repository guide |",
+    "| [Layout](layout/index.md) | Layout domain |",
+    "| [Motion](motion/index.md) | Motion domain |",
+    "| [Design Engineering](design-engineering/index.md) | Design Engineering domain |",
+    "| [Platform Guides](platform-guides/index.md) | Platform Guides domain |",
     "",
     "## Task Routes",
     "",
@@ -42,7 +46,17 @@ const baseFiles = {
     "- Dependency links identify generated, validation, or composition relationships.",
     "",
   ].join("\n"),
-  "index.md": "# Bundle\n\nPrimary role: OKF bundle map.\n",
+  "index.md": [
+    "# Bundle",
+    "",
+    "Primary role: OKF bundle map.",
+    "",
+    "- [Layout](layout/index.md)",
+    "- [Motion](motion/index.md)",
+    "- [Design Engineering](design-engineering/index.md)",
+    "- [Platform Guides](platform-guides/index.md)",
+    "",
+  ].join("\n"),
   "GUIDE.md": "# Guide\n\nPrimary role: planning workflow.\n",
   "CATALOG.md": "# Catalog\n\nPrimary role: pattern lookup.\n",
   "patterns/index.md": "# Patterns\n",
@@ -54,6 +68,13 @@ const baseFiles = {
   "quality/gates/index.md": "# Gates\n",
   "quality/gates/layout.md": leaf("Layout", "index.md", "../evidence/index.md"),
   "quality/evidence/index.md": "# Evidence\n",
+  "layout/index.md": "# Layout\n\n- [Catalog](../CATALOG.md)\n",
+  "motion/index.md": "# Motion\n\n- [Review](review.md)\n",
+  "motion/review.md": leaf("Motion review", "index.md", "../design-engineering/index.md"),
+  "design-engineering/index.md": "# Design Engineering\n\n- [Craft](craft.md)\n",
+  "design-engineering/craft.md": leaf("Craft", "index.md", "../platform-guides/index.md"),
+  "platform-guides/index.md": "# Platform Guides\n\n- [Apple](apple.md)\n",
+  "platform-guides/apple.md": leaf("Apple", "index.md", "../layout/index.md"),
 };
 
 const cases = [
@@ -84,6 +105,41 @@ const cases = [
       "README.md": baseFiles["README.md"].replace(/\n## Link Policy\n[\s\S]*$/, "\n"),
     },
     expect: "README.md: missing ## Link Policy",
+  },
+  {
+    name: "missing_motion_readme_route",
+    mutate: {
+      "README.md": baseFiles["README.md"].replace("| [Motion](motion/index.md) | Motion domain |\n", ""),
+    },
+    expect: "README.md: missing [Motion](motion/index.md)",
+  },
+  {
+    name: "motion_readme_route_only_in_fence",
+    mutate: {
+      "README.md": baseFiles["README.md"].replace("| [Motion](motion/index.md) | Motion domain |\n", "```md\n[Motion](motion/index.md)\n```\n"),
+    },
+    expect: "README.md: missing [Motion](motion/index.md)",
+  },
+  {
+    name: "missing_design_engineering_index_route",
+    mutate: {
+      "index.md": baseFiles["index.md"].replace("- [Design Engineering](design-engineering/index.md)\n", ""),
+    },
+    expect: "index.md: missing [Design Engineering](design-engineering/index.md)",
+  },
+  {
+    name: "missing_domain_leaf_parent",
+    mutate: {
+      "motion/review.md": "# Motion review\n\nNext: [Next](../design-engineering/index.md)\n",
+    },
+    expect: "motion/review.md: missing Parent navigation link",
+  },
+  {
+    name: "missing_domain_leaf_next",
+    mutate: {
+      "motion/review.md": "# Motion review\n\nParent: [Motion](index.md)\n",
+    },
+    expect: "motion/review.md: missing Next navigation link",
   },
   {
     name: "success_path",

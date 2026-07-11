@@ -1,7 +1,7 @@
 ---
 type: Planning Guide
 title: Layout Planning Guide
-description: Pre-design entry point for choosing and composing layout-gallery patterns.
+description: Pre-design entry point for choosing and composing StyleGallery Layout patterns.
 ---
 
 # Layout Planning Guide
@@ -10,7 +10,7 @@ Primary role: planning workflow.
 
 Use this guide before a layout problem appears. It helps you classify a screen, name its spatial responsibilities, and choose a small stack of layout patterns before writing application CSS.
 
-`layout-gallery` has two modes:
+The StyleGallery Layout domain has two modes:
 
 - **After a problem appears:** find a named pattern in `CATALOG.md` and port its HTML/CSS contract.
 - **Before a problem appears:** start with the screen type, answer the layout brief, then compose patterns from `recipes/`.

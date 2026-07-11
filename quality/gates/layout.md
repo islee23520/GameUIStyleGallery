@@ -1,7 +1,7 @@
 ---
 type: Quality Gate
 title: Layout Gate
-description: Mechanical quality gate for layout-gallery spatial pattern claims.
+description: Mechanical quality gate for StyleGallery Layout spatial pattern claims.
 ---
 
 # Layout Gate

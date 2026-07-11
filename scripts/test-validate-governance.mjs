@@ -10,9 +10,10 @@ const validator = path.join(root, "scripts", "validate-governance.mjs");
 const generatedWarning = "<!-- Generated from `scripts/generate-patterns.mjs` and `scripts/pattern-data.mjs`. Do not hand-edit generated catalog or pattern docs; edit the source files and regenerate. -->";
 
 const files = {
-  "AGENTS.md": "# Agent Instructions\n\nSee [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md).\n",
-  "README.md": "# layout-gallery\n\n- [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)\n",
-  "index.md": "# layout-gallery\n\n- [Governance, lifecycle, and docs-as-code](GOVERNANCE.md)\n",
+  "AGENTS.md": "# Agent Instructions\n\nSee [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) and [StyleGallery Domains](DOMAINS.md).\n",
+  "README.md": "# StyleGallery\n\n- [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)\n- [StyleGallery Domains](DOMAINS.md)\n",
+  "index.md": "# StyleGallery\n\n- [Governance, lifecycle, and docs-as-code](GOVERNANCE.md)\n- [StyleGallery Domains](DOMAINS.md)\n",
+  "DOMAINS.md": "# StyleGallery Domains\n",
   "CATALOG.md": `# Layout Pattern Catalog\n\n${generatedWarning}\n`,
   "patterns/index.md": `# Pattern Categories\n\n${generatedWarning}\n`,
   "patterns/stacking/index.md": `# Stacking\n\n${generatedWarning}\n`,
@@ -30,6 +31,7 @@ const files = {
   "quality/evidence/executable-evidence.md": [
     "| Claim | Validator or test | CI command | Positive evidence | Negative evidence | Evidence boundary |",
     "| Governance, lifecycle, generated-file, ownership, and stale-content policy remain discoverable and CI-enforced. | `scripts/validate-governance.mjs` and `scripts/test-validate-governance.mjs` | `node scripts/validate-governance.mjs --json`; `node scripts/test-validate-governance.mjs --json` | `GOVERNANCE.md`, `.github/CODEOWNERS`, generated warnings, generated metadata, root links, lifecycle states, stale-audit decision, and CI wiring are present. | Missing governance file, generated warning, generated metadata, CODEOWNERS coverage, or stale policy fixtures must fail. | Proves governance policy is present and linked, not that CODEOWNERS users have verified repository write access. |",
+    "| Domain topology, metadata, provenance, scope boundaries, and root routes remain enforced. | `scripts/validate-domains.mjs` and `scripts/test-validate-domains.mjs` | `node scripts/validate-domains.mjs --json`; `node scripts/test-validate-domains.mjs` | Four governed domains and their declared leaves are reachable and attributed. | Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail. | A full SHA proves content identity syntax, not publisher authenticity or local quality. |",
     "",
   ].join("\n"),
   ".github/CODEOWNERS": [
@@ -38,10 +40,15 @@ const files = {
     "/README.md @changeroa",
     "/index.md @changeroa",
     "/AGENTS.md @changeroa",
+    "/DOMAINS.md @changeroa",
     "/GUIDE.md @changeroa",
     "/guides/ @changeroa",
     "/recipes/ @changeroa",
     "/quality/ @changeroa",
+    "/layout/ @changeroa",
+    "/motion/ @changeroa",
+    "/design-engineering/ @changeroa",
+    "/platform-guides/ @changeroa",
     "/scripts/pattern-data.mjs @changeroa",
     "/scripts/generate-patterns.mjs @changeroa",
     "/patterns/ @changeroa",
@@ -58,6 +65,12 @@ const files = {
     "node -c scripts/test-validate-governance.mjs",
     "node scripts/validate-governance.mjs --json",
     "node scripts/test-validate-governance.mjs --json",
+    "node -c scripts/validate-domains.mjs",
+    "node -c scripts/test-validate-domains.mjs",
+    "node scripts/validate-domains.mjs --json",
+    "node scripts/test-validate-domains.mjs",
+    "node scripts/validate-webpage-workflow.mjs --json",
+    "node scripts/test-validate-webpage-workflow.mjs --json",
     "permissions:",
     "contents: read",
     "",
@@ -72,6 +85,11 @@ const files = {
     "| Planning guides | `GUIDE.md`, `guides/*.md` | Manual | None | `scripts/validate-okf.mjs` | Planning-doc owner |",
     "| Layout recipes | `recipes/*.md` | Manual | None | `scripts/validate-okf.mjs` | Recipe owner |",
     "| Quality gates and evidence | `quality/**/*.md` | Manual | None | `scripts/validate-okf.mjs` | Quality owner |",
+    "| Domain manifest and scope decision | `DOMAINS.md`, `quality/claim-records/stylegallery-multidomain-scope.md` | Manual | None | `stable` | Domain membership, repository-scope, or provenance-policy changes. | `scripts/validate-domains.mjs`, `scripts/validate-governance.mjs` | Repository governance owner |",
+    "| Layout domain hub | `layout/index.md` | Manual | None | `stable` | Layout route or ownership changes. | `scripts/validate-domains.mjs`, `scripts/validate-ia.mjs` | Pattern-data owner |",
+    "| Motion domain guidance | `motion/*.md` | Manual | None | `experimental` | Upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Motion domain owner |",
+    "| Design Engineering domain guidance | `design-engineering/*.md` | Manual | None | `experimental` | Upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Design Engineering domain owner |",
+    "| Platform Guides domain guidance | `platform-guides/*.md` | Manual | None | `experimental` | Platform version, upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Platform Guides domain owner |",
     "| Pattern data and examples | `scripts/pattern-data.mjs` | Manual data source | `patterns/**/*.md` | `generated` output from `stable` source | Source-lineage URL changes, generated drift, category changes, or pattern count changes. | `scripts/validate-patterns.mjs`, `scripts/validate-catalog.mjs`, `scripts/validate-governance.mjs` | Pattern-data owner |",
     "| Pattern generator | `scripts/generate-patterns.mjs` | Manual code source | `patterns/**/*.md` | `stable` generator, `generated` output | Generated structure changes, generated-warning changes, or generated metadata changes. | `node -c scripts/generate-patterns.mjs` | Pattern-data owner |",
     "| Validation scripts | `scripts/validate-*.mjs`, `scripts/test-validate-*.mjs` | Manual code source | CI validation output | `node -c` | Validation owner |",
@@ -170,6 +188,34 @@ const cases = [
       "GOVERNANCE.md": files["GOVERNANCE.md"].replace("Decision: no scheduled stale-content workflow yet.", "Decision: pending."),
     },
     expect: "GOVERNANCE.md: missing Decision: no scheduled stale-content workflow yet.",
+  },
+  {
+    name: "missing_motion_codeowner",
+    mutate: {
+      ".github/CODEOWNERS": files[".github/CODEOWNERS"].replace("/motion/ @changeroa\n", ""),
+    },
+    expect: ".github/CODEOWNERS: missing /motion/ @changeroa",
+  },
+  {
+    name: "missing_domain_family",
+    mutate: {
+      "GOVERNANCE.md": files["GOVERNANCE.md"].replace("| Motion domain guidance |", "| Motion reference notes |"),
+    },
+    expect: "GOVERNANCE.md: missing Motion domain guidance",
+  },
+  {
+    name: "missing_domain_ci_wiring",
+    mutate: {
+      ".github/workflows/validate.yml": files[".github/workflows/validate.yml"].replace("node scripts/validate-domains.mjs --json\n", ""),
+    },
+    expect: ".github/workflows/validate.yml: missing node scripts/validate-domains.mjs --json",
+  },
+  {
+    name: "missing_domain_evidence_coverage",
+    mutate: {
+      "quality/evidence/executable-evidence.md": files["quality/evidence/executable-evidence.md"].replace("Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail.", "Domain fixtures must fail."),
+    },
+    expect: "quality/evidence/executable-evidence.md: missing Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail.",
   },
   {
     name: "success_path",
