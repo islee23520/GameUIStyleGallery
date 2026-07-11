@@ -1,8 +1,8 @@
 # Quality Gates
 
-`quality/` records the principle-backed gates used to decide whether layout and design claims are admissible in `layout-gallery`.
+`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, and Platform Guides claims are admissible.
 
-This layer does not make the repository a visual design system. Pattern files still own spatial structure only. Quality gates explain how claims are framed, what evidence can support them, and when review or debt is required.
+This shared layer does not make the repository a visual design system. Layout pattern files still own spatial structure only; domain guidance cannot bypass these gates. Quality gates explain how claims are framed, what evidence can support them, and when review or debt is required.
 
 ## Concepts
 
@@ -41,5 +41,8 @@ Use this script for lightweight tree tests:
 | Browse all spatial families. | [OKF index](../index.md) | [Pattern Categories](../patterns/index.md) | The reader reaches category-level browsing. |
 | Verify whether a claim has enough evidence. | [README](../README.md) | [Quality Gates](index.md) | The reader reaches gates before evidence references. |
 | Inspect validator coverage. | [Quality Gates](index.md) | [Executable Evidence Coverage](evidence/executable-evidence.md) | The reader can name what each validator proves and cannot prove. |
+| Name an observed motion effect. | [README](../README.md) | [Motion Vocabulary](../motion/vocabulary.md) | The first selected route is Motion and the term reference is reached within two hops. |
+| Review product-level interface craft. | [README](../README.md) | [Interface Craft Decisions](../design-engineering/interface-craft.md) | The first selected route is Design Engineering and shared quality gates remain visible. |
+| Compare an Apple interaction convention. | [README](../README.md) | [Apple Interaction](../platform-guides/apple-interaction.md) | The first selected route is Platform Guides and source/version limits are reached within two hops. |
 
 Record `PASS` only when the expected primary route is the first route selected. A link resolving successfully is not enough; the selected route must match the task intent.

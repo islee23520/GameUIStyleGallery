@@ -2,25 +2,30 @@
 okf_version: "0.1"
 ---
 
-# layout-gallery
+# StyleGallery
 
-`layout-gallery` is an OKF-style knowledge bundle of minimal, portable CSS layout patterns.
+StyleGallery is an OKF-style knowledge bundle organized into governed interface-knowledge domains. Existing Layout paths remain canonical while Motion, Design Engineering, and Platform Guides own separate product and reference boundaries.
 
 Primary role: OKF bundle map.
 
 ## Concepts
 
-- [Repository principles](README.md) - Principles and authoring policy for the layout pattern library.
-- [Layout planning guide](GUIDE.md) - Pre-design entry point for choosing and composing layout-gallery patterns.
+- [StyleGallery domain manifest](DOMAINS.md) - Domain ownership, scope, lifecycle, page membership, and provenance policy.
+- [Layout](layout/index.md) - Existing spatial patterns, recipes, planning guides, and layout quality routes.
+- [Motion](motion/index.md) - Motion terminology, review workflow, and evidence-bounded practice reference.
+- [Design Engineering](design-engineering/index.md) - Product-layer interface-craft decisions and verification questions.
+- [Platform Guides](platform-guides/index.md) - Bounded comparative references for named platforms.
+- [Repository guide](README.md) - StyleGallery domain routes, shared policy, and Layout authoring principles.
+- [Layout planning guide](GUIDE.md) - Pre-design entry point for choosing and composing StyleGallery Layout patterns.
 - [Webpage generation workflow](guides/webpage-generation-workflow.md) - Intake-to-implementation workflow for homepage and webpage creation.
 - [Documentation mode taxonomy](guides/documentation-mode-taxonomy.md) - Primary documentation modes, hybrid decisions, and task routing.
 - [Controlled vocabulary](guides/vocabulary.md) - Canonical terminology, aliases, deprecated terms, and scannability rules.
-- [Decision tree](guides/decision-tree.md) - Question-driven route from screen constraints to layout-gallery patterns and recipes.
+- [Decision tree](guides/decision-tree.md) - Question-driven route from screen constraints to StyleGallery Layout patterns and recipes.
 - [Layout brief](guides/layout-brief.md) - Questions to answer before selecting a layout pattern stack.
 - [Layout recipes](recipes/index.md) - Screen-level compositions built from reusable patterns.
-- [Agent instructions](AGENTS.md) - Rules coding agents must follow when editing this layout pattern library.
+- [Agent instructions](AGENTS.md) - Shared domain-classification rules plus domain-specific editing constraints for StyleGallery.
 - [Governance, lifecycle, and docs-as-code](GOVERNANCE.md) - Source-of-truth, generated artifact, lifecycle, ownership, and stale-content policy.
-- [Layout pattern catalog](CATALOG.md) - Generated index of layout-gallery patterns.
+- [Layout pattern catalog](CATALOG.md) - Generated index of Layout-domain patterns.
 - [Pattern categories](patterns/index.md) - Category index for generated layout patterns.
 - [Quality gates](quality/index.md) - Principle-backed gates for admissible layout and design evidence claims.
 - [Update log](log.md) - Bundle update history.

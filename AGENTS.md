@@ -1,18 +1,22 @@
 ---
 type: Agent Instructions
-title: layout-gallery agent instructions
-description: Rules coding agents must follow when editing this layout pattern library.
+title: StyleGallery agent instructions
+description: Rules coding agents must follow when editing this governed multi-domain gallery.
 ---
 
 # Agent Instructions
 
-This repository is `layout-gallery`: a gallery of minimal, portable CSS layout patterns.
+This repository is StyleGallery: a governed gallery with Layout, Motion, Design Engineering, and Platform Guides domains. Read [StyleGallery Domains](DOMAINS.md) before adding a domain, changing a domain boundary, or adapting an external source.
 
 Before editing generated artifacts, validators, lifecycle state, or ownership policy, read [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md).
 
 ## Core Rules
 
-- Treat this repository as a layout pattern library, not a visual design system.
+- Classify every change by domain before editing.
+- Keep domain-local guidance inside its owning path and preserve shared evidence boundaries.
+- Do not use one domain to bypass another domain's constraints.
+- Treat `patterns/**`, `recipes/**`, `GUIDE.md`, and `CATALOG.md` as the Layout corpus at their existing paths.
+- Treat the Layout domain as a layout pattern library, not a visual design system.
 - Start with semantic HTML before adding layout classes.
 - Keep DOM order, reading order, and focus order logical.
 - Keep each pattern focused on one primary spatial problem.
@@ -22,6 +26,8 @@ Before editing generated artifacts, validators, lifecycle state, or ownership po
 - Make constraints explicit: widths, heights, gaps, breakpoints, scroll containers, and fixed or sticky anchors should be easy to find.
 - Make scroll responsibility obvious in both class names and CSS.
 - Keep decorative styling out of reusable pattern CSS.
+
+The remaining pattern, CSS, naming, token, checklist, and verification rules apply to the Layout domain. Motion, Design Engineering, and Platform Guides documents may discuss product-layer behavior, but they do not authorize decorative or motion properties in reusable Layout pattern CSS.
 
 ## Pattern Boundary Gate
 

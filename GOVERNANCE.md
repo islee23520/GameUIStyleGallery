@@ -1,7 +1,7 @@
 ---
 type: Governance Reference
 title: Governance, Lifecycle, And Docs-As-Code
-description: Source-of-truth, generated artifact, lifecycle, ownership, and stale-content policy for layout-gallery.
+description: Source-of-truth, generated artifact, domain, lifecycle, ownership, and stale-content policy for StyleGallery.
 ---
 
 # Governance, Lifecycle, And Docs-As-Code
@@ -20,6 +20,11 @@ Use this file before editing repository documentation. It names which file is au
 | Planning guides | `GUIDE.md`, `guides/*.md` | Manual | None | `stable` | Workflow changes, route changes, source-lineage changes, or broken guide links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Planning-doc owner |
 | Layout recipes | `recipes/*.md` | Manual | None | `stable` | Pattern-stack changes, route changes, or broken recipe links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Recipe owner |
 | Quality gates and evidence | `quality/**/*.md` | Manual | None | `stable` | Claim-boundary changes, evidence-family changes, or broken quality links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Quality owner |
+| Domain manifest and scope decision | `DOMAINS.md`, `quality/claim-records/stylegallery-multidomain-scope.md` | Manual | None | `stable` | Domain membership, repository-scope, or provenance-policy changes. | `scripts/validate-domains.mjs`, `scripts/validate-governance.mjs` | Repository governance owner |
+| Layout domain hub | `layout/index.md` | Manual | None | `stable` | Layout route or ownership changes. | `scripts/validate-domains.mjs`, `scripts/validate-ia.mjs` | Pattern-data owner |
+| Motion domain guidance | `motion/*.md` | Manual | None | `experimental` | Upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Motion domain owner |
+| Design Engineering domain guidance | `design-engineering/*.md` | Manual | None | `experimental` | Upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Design Engineering domain owner |
+| Platform Guides domain guidance | `platform-guides/*.md` | Manual | None | `experimental` | Platform version, upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Platform Guides domain owner |
 | Pattern data and examples | `scripts/pattern-data.mjs` | Manual data source | `patterns/**/*.md`, `patterns/**/index.md`, `patterns/index.md`, `CATALOG.md` | `generated` output from `stable` source | Source-lineage URL changes, generated drift, category changes, or pattern count changes. | `scripts/validate-patterns.mjs`, `scripts/validate-catalog.mjs`, `scripts/validate-governance.mjs` | Pattern-data owner |
 | Pattern generator | `scripts/generate-patterns.mjs` | Manual code source | `patterns/**/*.md`, `patterns/**/index.md`, `patterns/index.md`, `CATALOG.md` | `stable` generator, `generated` output | Generated structure changes, generated-warning changes, or generated metadata changes. | `node -c scripts/generate-patterns.mjs`, generated drift check, `scripts/validate-governance.mjs` | Pattern-data owner |
 | Validation scripts | `scripts/validate-*.mjs`, `scripts/test-validate-*.mjs` | Manual code source | CI validation output | `stable` | Validator scope changes, fixture changes, or CI parity changes. | `node -c`, matching fixture tests, `.github/workflows/validate.yml` | Validation owner |
@@ -57,6 +62,7 @@ Use these states in reviews and governance notes. Do not invent new lifecycle la
 Default lifecycle:
 
 - Root docs, guides, recipes, quality docs, validators, and CI are `stable` unless a page explicitly says otherwise.
+- `DOMAINS.md`, the scope decision, and `layout/index.md` are `stable`; externally inspired domain leaves under `motion/`, `design-engineering/`, and `platform-guides/` begin `experimental`.
 - Generated pattern docs, generated pattern indexes, and `CATALOG.md` are `generated`.
 - Draft research artifacts under `.omo/` are `draft` or `experimental` and are not contributor-facing source of truth.
 
@@ -70,6 +76,10 @@ The CODEOWNERS file is a review proposal for high-impact areas. It should stay c
 | `scripts/pattern-data.mjs`, `scripts/generate-patterns.mjs`, `patterns/**`, `CATALOG.md` | Pattern-data owner | Generated drift, source lineage, pattern contract, generated warning coverage. |
 | `guides/**`, `GUIDE.md`, `recipes/**` | Planning-doc owner | Planning flow, task routes, recipe composition boundaries. |
 | `quality/**` | Quality owner | Claim boundaries, executable evidence, review gates. |
+| `DOMAINS.md`, `layout/**` | Repository governance owner with Pattern-data owner | Domain routing and preservation of the stable Layout path contract. |
+| `motion/**` | Motion domain owner | Motion terminology, review procedure, practice classification, and evidence boundaries. |
+| `design-engineering/**` | Design Engineering domain owner | Separation of product heuristics from shared quality gates. |
+| `platform-guides/**` | Platform Guides domain owner | Platform/source/version limits, comparison boundaries, and stale review. |
 | `scripts/validate-*.mjs`, `scripts/test-validate-*.mjs`, `.github/workflows/validate.yml` | Validation owner | Validator scope, negative fixtures, CI parity. |
 
 ## Staleness Control
@@ -81,6 +91,7 @@ Reason: the current repository is small, CI already checks local links and gener
 Audit trigger:
 
 - Run `node scripts/validate-links.mjs --json` and `node scripts/validate-governance.mjs --json` when external source lineage, generated policy, root navigation, or validation ownership changes.
+- Run `node scripts/validate-domains.mjs --json` and `node scripts/test-validate-domains.mjs` when domain membership, scope boundaries, source paths, source revisions, platform context, or promotion state changes.
 - Reconsider a scheduled stale audit when source-lineage URLs exceed 50 entries, when an external-link failure escapes a pull request, or when ownership changes away from a single maintainer.
 
 ## Required Verification
@@ -91,6 +102,8 @@ For governance changes, run:
 node scripts/validate-governance.mjs --json
 node scripts/test-validate-governance.mjs --json
 node scripts/validate-links.mjs --json
+node scripts/validate-domains.mjs --json
+node scripts/test-validate-domains.mjs
 ```
 
 For generated pattern or catalog changes, also run:
@@ -98,6 +111,6 @@ For generated pattern or catalog changes, also run:
 ```sh
 node scripts/generate-patterns.mjs
 git diff --exit-code -- CATALOG.md patterns
-node scripts/validate-patterns.mjs --min-count 30 --json
+node scripts/validate-patterns.mjs --min-count 46 --json
 node scripts/validate-catalog.mjs --json
 ```
