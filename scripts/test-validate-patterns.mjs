@@ -59,8 +59,8 @@ const cases = [
   {
     name: "missing_accessibility_risk_details",
     file: "patterns/stacking/bad.md",
-    content: legacyPattern("bad", "Stacking", ".bad {\n    display: grid;\n}"),
-    expect: "missing accessibility risk detail",
+    content: pattern("bad", "Stacking", ".bad {\n    display: grid;\n}").replace("- DOM order expectation: Keep semantic order.\n", ""),
+    expectWarning: "missing recommended accessibility detail DOM order expectation:",
   },
   {
     name: "contract_sections_inside_code_block",
@@ -133,13 +133,15 @@ function runCase(testCase) {
   });
   fs.rmSync(dir, { force: true, recursive: true });
   const output = JSON.parse(result.stdout);
-  const passed = testCase.expect
-    ? !output.ok && output.failures.some((failure) => failure.includes(testCase.expect))
-    : output.ok && (!testCase.useDefaultMinCount || output.minCount === 1);
+  const passed = testCase.expectWarning
+    ? output.ok && output.warnings?.some((warning) => warning.includes(testCase.expectWarning))
+    : testCase.expect
+      ? !output.ok && output.failures.some((failure) => failure.includes(testCase.expect))
+      : output.ok && (!testCase.useDefaultMinCount || output.minCount === 1);
   return {
     name: testCase.name,
     ok: passed,
-    expected: testCase.expect ?? "ok:true",
+    expected: testCase.expectWarning ?? testCase.expect ?? "ok:true",
     actual: output,
   };
 }
