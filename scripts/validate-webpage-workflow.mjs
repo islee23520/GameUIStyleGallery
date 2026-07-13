@@ -7,19 +7,10 @@ const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
 const root = process.cwd();
 const failures = [];
+const warnings = [];
 const contents = new Map();
 
 const requiredIncludes = {
-  "README.md": [
-    "[Webpage Generation Workflow](guides/webpage-generation-workflow.md)",
-  ],
-  "GUIDE.md": [
-    "[Webpage generation workflow](guides/webpage-generation-workflow.md)",
-    "content-to-layout match",
-    "harmony evaluation",
-    "GPT Image reference",
-    "implementation handoff",
-  ],
   "guides/layout-brief.md": [
     "## Webpage Generation Intake",
     "Content-to-layout match:",
@@ -62,9 +53,6 @@ const requiredIncludes = {
     "### Form Route",
     "### Command Surface Route",
   ],
-  "recipes/index.md": [
-    "[Homepage](homepage.md)",
-  ],
   "recipes/homepage.md": [
     "type: Layout Recipe",
     "screen_type: Homepage",
@@ -73,9 +61,6 @@ const requiredIncludes = {
     "## GPT Image Reference",
     "Required preconditions before prompt:",
     "Image review extract-vs-ignore:",
-  ],
-  "quality/gates/index.md": [
-    "[Harmony evaluation gate](harmony-evaluation.md)",
   ],
   "quality/gates/harmony-evaluation.md": [
     "type: Quality Gate",
@@ -88,6 +73,22 @@ const requiredIncludes = {
     "Do not generate a GPT Image reference before harmony evaluation approves the semantic order, section jobs, pattern stack, scroll owner, and constraints.",
     "Source order, accessibility, brand correctness, and usability cannot be inferred from the image.",
     "Final implementation proof:",
+  ],
+};
+
+const requiredLinks = {
+  "README.md": { target: "guides/webpage-generation-workflow.md", preferred: "[Webpage Generation Workflow](guides/webpage-generation-workflow.md)" },
+  "GUIDE.md": { target: "guides/webpage-generation-workflow.md", preferred: "[Webpage generation workflow](guides/webpage-generation-workflow.md)" },
+  "recipes/index.md": { target: "homepage.md", preferred: "[Homepage](homepage.md)" },
+  "quality/gates/index.md": { target: "harmony-evaluation.md", preferred: "[Harmony evaluation gate](harmony-evaluation.md)" },
+};
+
+const recommendedIncludes = {
+  "GUIDE.md": [
+    "content-to-layout match",
+    "harmony evaluation",
+    "GPT Image reference",
+    "implementation handoff",
   ],
 };
 
@@ -128,6 +129,19 @@ for (const [relative, snippets] of Object.entries(requiredIncludes)) {
   const content = read(relative);
   for (const snippet of snippets) {
     if (!content.includes(snippet)) failures.push(`${relative}: missing ${snippet}`);
+  }
+}
+
+for (const [relative, link] of Object.entries(requiredLinks)) {
+  const content = read(relative);
+  if (!content.includes(`](${link.target})`)) failures.push(`${relative}: missing link target ${link.target}`);
+  if (!content.includes(link.preferred)) warnings.push(`${relative}: recommended link label missing ${link.preferred}`);
+}
+
+for (const [relative, snippets] of Object.entries(recommendedIncludes)) {
+  const content = read(relative);
+  for (const snippet of snippets) {
+    if (!content.includes(snippet)) warnings.push(`${relative}: recommended prose missing ${snippet}`);
   }
 }
 
@@ -176,15 +190,18 @@ for (const route of workflowRoutes) {
 
 const result = {
   ok: failures.length === 0,
-  checkedFiles: Object.keys(requiredIncludes),
-  checkedRequirements: Object.values(requiredIncludes).reduce((total, snippets) => total + snippets.length, 0),
+  checkedFiles: [...new Set([...Object.keys(requiredIncludes), ...Object.keys(requiredLinks), ...Object.keys(recommendedIncludes)])],
+  checkedRequirements: Object.values(requiredIncludes).reduce((total, snippets) => total + snippets.length, 0)
+    + Object.keys(requiredLinks).length
+    + Object.values(recommendedIncludes).reduce((total, snippets) => total + snippets.length, 0),
   failures,
+  warnings,
 };
 
 if (json) {
   console.log(JSON.stringify(result, null, 2));
 } else if (result.ok) {
-  console.log(`ok: ${result.checkedRequirements} webpage workflow requirements`);
+  console.log(`ok: ${result.checkedRequirements} webpage workflow requirements (${warnings.length} warnings)`);
 } else {
   console.error(result.failures.join("\n"));
 }

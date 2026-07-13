@@ -174,6 +174,13 @@ const cases = [
     expect: "guides/layout-brief.md: missing ## Rejected Alternatives",
   },
   {
+    name: "paraphrased_navigation_label",
+    mutate: {
+      "README.md": files["README.md"].replace("[Webpage Generation Workflow]", "[Webpage planning workflow]"),
+    },
+    expectWarning: "README.md: recommended link label missing [Webpage Generation Workflow](guides/webpage-generation-workflow.md)",
+  },
+  {
     name: "success_path",
     expect: null,
   },
@@ -200,11 +207,15 @@ function runCase(testCase) {
   });
   fs.rmSync(dir, { force: true, recursive: true });
   const output = JSON.parse(result.stdout);
-  const passed = testCase.expect ? !output.ok && output.failures.includes(testCase.expect) : output.ok;
+  const passed = testCase.expectWarning
+    ? output.ok && output.warnings?.includes(testCase.expectWarning)
+    : testCase.expect
+      ? !output.ok && output.failures.includes(testCase.expect)
+      : output.ok;
   return {
     name: testCase.name,
     ok: passed,
-    expected: testCase.expect ?? "ok:true",
+    expected: testCase.expectWarning ?? testCase.expect ?? "ok:true",
     actual: output,
   };
 }

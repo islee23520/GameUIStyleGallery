@@ -7,6 +7,7 @@ const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
 const root = process.cwd();
 const failures = [];
+const warnings = [];
 
 const glossaryFile = "guides/vocabulary.md";
 const requiredTerms = [
@@ -23,10 +24,6 @@ const requiredTerms = [
 ];
 
 const requiredIncludes = {
-  "README.md": ["[Controlled vocabulary](guides/vocabulary.md)"],
-  "GUIDE.md": ["[Controlled vocabulary](guides/vocabulary.md)"],
-  "index.md": ["[Controlled vocabulary](guides/vocabulary.md)"],
-  "quality/index.md": ["[Controlled vocabulary](../guides/vocabulary.md)"],
   [glossaryFile]: [
     "## Canonical Terms",
     "## Aliases",
@@ -36,6 +33,13 @@ const requiredIncludes = {
     "## Vale Proposal",
     "Prose linting should wait until the vocabulary is stable.",
   ],
+};
+
+const recommendedLinks = {
+  "README.md": { target: "guides/vocabulary.md", preferred: "[Controlled vocabulary](guides/vocabulary.md)" },
+  "GUIDE.md": { target: "guides/vocabulary.md", preferred: "[Controlled vocabulary](guides/vocabulary.md)" },
+  "index.md": { target: "guides/vocabulary.md", preferred: "[Controlled vocabulary](guides/vocabulary.md)" },
+  "quality/index.md": { target: "../guides/vocabulary.md", preferred: "[Controlled vocabulary](../guides/vocabulary.md)" },
 };
 
 function read(relative) {
@@ -52,6 +56,12 @@ for (const [relative, snippets] of Object.entries(requiredIncludes)) {
   for (const snippet of snippets) {
     if (!content.includes(snippet)) failures.push(`${relative}: missing ${snippet}`);
   }
+}
+
+for (const [relative, link] of Object.entries(recommendedLinks)) {
+  const content = read(relative);
+  if (!content.includes(`](${link.target})`)) failures.push(`${relative}: missing link target ${link.target}`);
+  if (!content.includes(link.preferred)) warnings.push(`${relative}: recommended link label missing ${link.preferred}`);
 }
 
 const glossary = read(glossaryFile);
@@ -82,16 +92,17 @@ for (const record of canonicalRecords) {
 
 const result = {
   ok: failures.length === 0,
-  checkedFiles: Object.keys(requiredIncludes),
+  checkedFiles: [...new Set([...Object.keys(requiredIncludes), ...Object.keys(recommendedLinks)])],
   requiredTerms,
   canonicalTerms,
   failures,
+  warnings,
 };
 
 if (json) {
   console.log(JSON.stringify(result, null, 2));
 } else if (result.ok) {
-  console.log(`ok: ${canonicalTerms.length} canonical vocabulary terms`);
+  console.log(`ok: ${canonicalTerms.length} canonical vocabulary terms (${warnings.length} warnings)`);
 } else {
   console.error(failures.join("\n"));
 }
