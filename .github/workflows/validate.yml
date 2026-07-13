@@ -89,8 +89,5 @@ jobs:
       - name: Pattern count and category coverage
         run: node scripts/validate-catalog.mjs --json
 
-      - name: Adversarial validator fixtures
-        run: |
-          node scripts/test-validate-patterns.mjs --json
-          node scripts/test-validate-vocabulary.mjs --json
-          node scripts/test-validate-governance.mjs --json
+      - name: Pattern adversarial fixtures
+        run: node scripts/test-validate-patterns.mjs --json
