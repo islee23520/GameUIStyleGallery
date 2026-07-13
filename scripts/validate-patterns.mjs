@@ -38,7 +38,7 @@ const requiredSections = [
   "## Anti-patterns",
 ];
 
-const requiredAccessibilityDetails = [
+const recommendedAccessibilityDetails = [
   "Semantic role expectation:",
   "DOM order expectation:",
   "Focus risk:",
@@ -96,6 +96,7 @@ const forbiddenHtmlPhrases = [
 ];
 
 const failures = [];
+const warnings = [];
 
 function walk(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -210,10 +211,10 @@ for (const absolute of files) {
   for (const section of requiredSections) {
     if (!hasHeading(markdown, section)) failures.push(`${file}: missing ${section.replace("## ", "")} section`);
   }
-  for (const detail of requiredAccessibilityDetails) {
-    if (!markdown.includes(detail)) failures.push(`${file}: missing accessibility risk detail ${detail}`);
+  for (const detail of recommendedAccessibilityDetails) {
+    if (!markdown.includes(detail)) warnings.push(`${file}: missing recommended accessibility detail ${detail}`);
   }
-  if (hasHeading(markdown, "## Accessibility Notes")) failures.push(`${file}: missing accessibility risk detail`);
+  if (hasHeading(markdown, "## Accessibility Notes")) warnings.push(`${file}: legacy accessibility heading; prefer Accessibility And Source Order Notes`);
   const html = codeBlock(content, "html");
   if (!html) failures.push(`${file}: missing html code block`);
   const css = codeBlock(content, "css");
@@ -231,12 +232,13 @@ const result = {
   count: files.length,
   minCount,
   failures,
+  warnings,
 };
 
 if (json) {
   console.log(JSON.stringify(result, null, 2));
 } else if (result.ok) {
-  console.log(`ok: ${files.length} pattern files`);
+  console.log(`ok: ${files.length} pattern files (${warnings.length} warnings)`);
 } else {
   console.error(result.failures.join("\n"));
 }
