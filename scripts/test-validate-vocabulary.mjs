@@ -104,6 +104,13 @@ const cases = [
     expect: "guides/vocabulary.md: missing Prose linting should wait until the vocabulary is stable.",
   },
   {
+    name: "paraphrased_navigation_label",
+    mutate: {
+      "README.md": files["README.md"].replace("[Controlled vocabulary]", "[Vocabulary guide]"),
+    },
+    expectWarning: "README.md: recommended link label missing [Controlled vocabulary](guides/vocabulary.md)",
+  },
+  {
     name: "success_path",
     expect: null,
   },
@@ -128,11 +135,15 @@ function runCase(testCase) {
   });
   fs.rmSync(dir, { force: true, recursive: true });
   const output = JSON.parse(result.stdout);
-  const passed = testCase.expect ? !output.ok && output.failures.includes(testCase.expect) : output.ok;
+  const passed = testCase.expectWarning
+    ? output.ok && output.warnings?.includes(testCase.expectWarning)
+    : testCase.expect
+      ? !output.ok && output.failures.includes(testCase.expect)
+      : output.ok;
   return {
     name: testCase.name,
     ok: passed,
-    expected: testCase.expect ?? "ok:true",
+    expected: testCase.expectWarning ?? testCase.expect ?? "ok:true",
     actual: output,
   };
 }
