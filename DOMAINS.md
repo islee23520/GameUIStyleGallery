@@ -28,6 +28,10 @@ This manifest is the source of truth for top-level StyleGallery domains. A domai
 | Design Engineering | `design-engineering/index.md` | `design-engineering/interface-craft.md` |
 | Platform Guides | `platform-guides/index.md` | `platform-guides/apple-interaction.md` |
 
+## Shared Non-Domain Infrastructure
+
+[Consumer Reference](consumer-reference/index.md) is shared schema, provenance, routing, and evidence infrastructure. It is not a fifth domain, owns no profile implementation or visual values, and cannot add a row to the four-domain contract. Consumer or profile records may depend on Layout; Layout and its generated corpus cannot import those records.
+
 ## External Adaptation Contract
 
 All five new domain leaves are independent method rewrites inspired by [emilkowalski/skills](https://github.com/emilkowalski/skills) at snapshot `220e8607c90b17337d210125777b7b695f26c221`.
@@ -42,6 +46,8 @@ All five new domain leaves are independent method rewrites inspired by [emilkowa
 ## Promotion And Staleness
 
 External adaptations begin `experimental`. Promotion to `stable` requires a demonstrated reader or review task, evidence that the document improves that task, a named review owner, and no unresolved provenance or platform-version debt. Remove or revise a page when its source revision changes materially, a platform claim becomes stale, a local quality gate contradicts it, or a reader test shows the route is misleading.
+
+Consumer-reference maturity is governed independently from artifact mode. Stable records cannot have ended support, and related repository fixtures are not independent adoption evidence.
 
 ## IA Navigation
 

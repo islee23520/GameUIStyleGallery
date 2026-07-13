@@ -1,0 +1,21 @@
+{
+  "artifact_mode": "schema_only",
+  "fixture_independence": "related",
+  "handoff": {
+    "reason": "This deprecated fixture has no active consumer reference handoff.",
+    "status": "not_applicable"
+  },
+  "id": "valid-deprecated",
+  "maturity": "deprecated",
+  "owner": {
+    "enforcement": "placeholder",
+    "name": "Repository governance owner"
+  },
+  "removal_trigger": "Remove after every validator consumer uses the replacement fixture.",
+  "replacement": "consumer-reference/fixtures/valid-experimental.json",
+  "review_independence": "single_account",
+  "schema_version": "1.0",
+  "support": {
+    "status": "ended"
+  }
+}

@@ -4,6 +4,8 @@
 
 This shared layer does not make the repository a visual design system. Layout pattern files still own spatial structure only; domain guidance cannot bypass these gates. Quality gates explain how claims are framed, what evidence can support them, and when review or debt is required.
 
+The [Consumer Reference Receiver Contract](../consumer-reference/contract.md) is adjacent shared infrastructure: it routes an optional consumer-owned record without turning Quality or Layout into owners of profile values.
+
 ## Concepts
 
 - [Quality principles](principles.md) - Principles shared by the quality gate layer.
@@ -44,5 +46,6 @@ Use this script for lightweight tree tests:
 | Name an observed motion effect. | [README](../README.md) | [Motion Vocabulary](../motion/vocabulary.md) | The first selected route is Motion and the term reference is reached within two hops. |
 | Review product-level interface craft. | [README](../README.md) | [Interface Craft Decisions](../design-engineering/interface-craft.md) | The first selected route is Design Engineering and shared quality gates remain visible. |
 | Compare an Apple interaction convention. | [README](../README.md) | [Apple Interaction](../platform-guides/apple-interaction.md) | The first selected route is Platform Guides and source/version limits are reached within two hops. |
+| Declare whether a consumer reference applies. | [README](../README.md) | [Consumer Reference](../consumer-reference/index.md) | The handoff reaches the shared contract without classifying it as a fifth domain. |
 
 Record `PASS` only when the expected primary route is the first route selected. A link resolving successfully is not enough; the selected route must match the task intent.

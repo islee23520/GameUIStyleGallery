@@ -42,6 +42,8 @@ jobs:
           node -c scripts/test-validate-domains.mjs
           node -c scripts/validate-webpage-workflow.mjs
           node -c scripts/test-validate-webpage-workflow.mjs
+          node -c scripts/validate-consumer-reference.mjs
+          node -c scripts/test-validate-consumer-reference.mjs
           git diff --check
 
       - name: Generated artifacts are current
@@ -80,6 +82,11 @@ jobs:
         run: |
           node scripts/validate-domains.mjs --json
           node scripts/test-validate-domains.mjs
+
+      - name: Consumer reference receiver contract
+        run: |
+          node scripts/validate-consumer-reference.mjs --json
+          node scripts/test-validate-consumer-reference.mjs --json
 
       - name: Webpage workflow check
         run: |

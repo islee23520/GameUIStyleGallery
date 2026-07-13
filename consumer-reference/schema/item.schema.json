@@ -1,0 +1,96 @@
+{
+  "$id": "https://stylegallery.example/consumer-reference/schema/item.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "maturity": { "const": "stable" },
+          "support": {
+            "properties": { "status": { "const": "ended" } },
+            "required": ["status"]
+          }
+        },
+        "required": ["maturity", "support"]
+      },
+      "then": false
+    },
+    {
+      "if": {
+        "properties": { "maturity": { "const": "deprecated" } },
+        "required": ["maturity"]
+      },
+      "then": { "required": ["removal_trigger", "replacement"] }
+    }
+  ],
+  "properties": {
+    "artifact_mode": {
+      "enum": ["consumer_local", "external_consumer", "governed_local", "schema_only"]
+    },
+    "fixture_independence": { "const": "related" },
+    "handoff": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "record": {
+              "pattern": "^(?!/)(?!.*//)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\\\?#]+\\.json$",
+              "type": "string"
+            },
+            "status": { "const": "declared" }
+          },
+          "required": ["record", "status"],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "minLength": 10,
+              "pattern": "^\\S+(?:\\s+\\S+){2,}\\s*[.!?]$",
+              "type": "string"
+            },
+            "status": { "const": "not_applicable" }
+          },
+          "required": ["reason", "status"],
+          "type": "object"
+        }
+      ]
+    },
+    "id": { "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "type": "string" },
+    "maturity": { "enum": ["deprecated", "experimental", "stable"] },
+    "owner": {
+      "additionalProperties": false,
+      "properties": {
+        "enforcement": { "const": "placeholder" },
+        "name": { "minLength": 1, "type": "string" }
+      },
+      "required": ["enforcement", "name"],
+      "type": "object"
+    },
+    "removal_trigger": { "minLength": 1, "type": "string" },
+    "replacement": { "minLength": 1, "type": "string" },
+    "review_independence": { "const": "single_account" },
+    "schema_version": { "const": "1.0" },
+    "support": {
+      "additionalProperties": false,
+      "properties": { "status": { "enum": ["active", "ended"] } },
+      "required": ["status"],
+      "type": "object"
+    }
+  },
+  "required": [
+    "artifact_mode",
+    "fixture_independence",
+    "handoff",
+    "id",
+    "maturity",
+    "owner",
+    "review_independence",
+    "schema_version",
+    "support"
+  ],
+  "title": "Consumer reference item",
+  "type": "object"
+}

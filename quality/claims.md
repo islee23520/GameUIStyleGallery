@@ -58,6 +58,8 @@ Warrant:
 Evidence family:
 Verification protocol:
 Implementation handoff:
+Consumer reference: not_applicable
+Consumer reference reason: This blank claim template declares no consumer-specific reference record.
 Boundary or limitation:
 Debt or escalation:
 Decision:

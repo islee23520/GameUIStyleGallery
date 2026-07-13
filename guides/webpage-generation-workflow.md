@@ -169,11 +169,15 @@ Harmony evaluation:
 GPT Image reference:
 Image observations to implement:
 Image observations to ignore:
+Consumer reference: not_applicable
+Consumer reference reason: This generic workflow declares no consumer-specific reference record.
 Accessibility checks:
 Viewport/content stress checks:
 Implementation debt:
 Final implementation proof:
 Accepted debt:
 ```
+
+Every handoff keeps the consumer-reference field. Replace the default `not_applicable` pair only when the consuming repository has one canonical record; then use `Consumer reference: declared` and a normalized repository-relative `.json` path under that repository root. See the [Consumer Reference Receiver Contract](../consumer-reference/contract.md).
 
 The implementer builds from semantic HTML and layout patterns first, then applies product-level visual styling from the image reference outside reusable pattern CSS. The final page must still pass layout stress checks, accessibility evidence, and any visual-evidence protocol declared by the consuming product.
