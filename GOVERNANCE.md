@@ -2,6 +2,7 @@
 type: Governance Reference
 title: Governance, Lifecycle, And Docs-As-Code
 description: Source-of-truth, generated artifact, domain, lifecycle, ownership, and stale-content policy for StyleGallery.
+scheduled_stale_audit: deferred
 ---
 
 # Governance, Lifecycle, And Docs-As-Code

@@ -7,6 +7,7 @@ const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
 const root = process.cwd();
 const failures = [];
+const warnings = [];
 const requiredCodeowners = [
   "* @changeroa",
   "/GOVERNANCE.md @changeroa",
@@ -44,6 +45,10 @@ function read(relative) {
 
 function requireIncludes(relative, text) {
   if (!read(relative).includes(text)) failures.push(`${relative}: missing ${text}`);
+}
+
+function recommendIncludes(relative, text, label = `recommended wording missing ${text}`) {
+  if (!read(relative).includes(text)) warnings.push(`${relative}: ${label}`);
 }
 
 function requirePattern(relative, pattern, label) {
@@ -101,7 +106,8 @@ function requireOwnership() {
 }
 
 function requireStalenessDecision() {
-  requireIncludes("GOVERNANCE.md", "Decision: no scheduled stale-content workflow yet.");
+  requireIncludes("GOVERNANCE.md", "scheduled_stale_audit: deferred");
+  recommendIncludes("GOVERNANCE.md", "Decision: no scheduled stale-content workflow yet.");
   requireIncludes("GOVERNANCE.md", "Audit trigger:");
   requireIncludes("GOVERNANCE.md", "node scripts/validate-links.mjs --json");
 }
@@ -122,16 +128,21 @@ function requireCiwiring() {
 }
 
 function requireRootLinks() {
-  requireIncludes("README.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
-  requireIncludes("index.md", "[Governance, lifecycle, and docs-as-code](GOVERNANCE.md)");
-  requireIncludes("AGENTS.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
+  for (const relative of ["README.md", "index.md", "AGENTS.md"]) {
+    requirePattern(relative, /\[[^\]]+\]\(GOVERNANCE\.md\)/, "link target GOVERNANCE.md");
+  }
+  recommendIncludes("README.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)", "recommended link label missing [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
+  recommendIncludes("index.md", "[Governance, lifecycle, and docs-as-code](GOVERNANCE.md)", "recommended link label missing [Governance, lifecycle, and docs-as-code](GOVERNANCE.md)");
+  recommendIncludes("AGENTS.md", "[Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)", "recommended link label missing [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)");
   requireIncludes("README.md", "(DOMAINS.md)");
   requireIncludes("index.md", "(DOMAINS.md)");
   requireIncludes("AGENTS.md", "(DOMAINS.md)");
 }
 
 function requireEvidenceMap() {
-  requireIncludes("quality/evidence/executable-evidence.md", "generated warnings, generated metadata, root links");
+  requireIncludes("quality/evidence/executable-evidence.md", "scripts/validate-governance.mjs");
+  requireIncludes("quality/evidence/executable-evidence.md", "scripts/test-validate-governance.mjs");
+  recommendIncludes("quality/evidence/executable-evidence.md", "generated warnings, generated metadata, root link targets");
   requireIncludes("quality/evidence/executable-evidence.md", "Missing governance file, generated warning, generated metadata, CODEOWNERS coverage, or stale policy fixtures must fail.");
   requireIncludes("quality/evidence/executable-evidence.md", "Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail.");
 }
@@ -152,12 +163,13 @@ requireGeneratedPatternMetadata("patterns/stacking/stack.md");
 const result = {
   failures,
   ok: failures.length === 0,
+  warnings,
 };
 
 if (json) {
   console.log(JSON.stringify(result, null, 2));
 } else if (result.ok) {
-  console.log("ok: governance policy");
+  console.log(`ok: governance policy (${warnings.length} warnings)`);
 } else {
   console.error(result.failures.join("\n"));
 }

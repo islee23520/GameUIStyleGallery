@@ -76,6 +76,10 @@ const files = {
     "",
   ].join("\n"),
   "GOVERNANCE.md": [
+    "---",
+    "scheduled_stale_audit: deferred",
+    "---",
+    "",
     "# Governance, Lifecycle, And Docs-As-Code",
     "",
     "| Doc family | Source of truth | Generator | Generated artifacts | Lifecycle state | Stale trigger | Validator | Review owner |",
@@ -185,9 +189,26 @@ const cases = [
   {
     name: "missing_stale_policy",
     mutate: {
-      "GOVERNANCE.md": files["GOVERNANCE.md"].replace("Decision: no scheduled stale-content workflow yet.", "Decision: pending."),
+      "GOVERNANCE.md": files["GOVERNANCE.md"].replace("scheduled_stale_audit: deferred\n", ""),
     },
-    expect: "GOVERNANCE.md: missing Decision: no scheduled stale-content workflow yet.",
+    expect: "GOVERNANCE.md: missing scheduled_stale_audit: deferred",
+  },
+  {
+    name: "paraphrased_stale_policy",
+    mutate: {
+      "GOVERNANCE.md": files["GOVERNANCE.md"].replace(
+        "Decision: no scheduled stale-content workflow yet.",
+        "Decision: a scheduled stale-content workflow is not needed yet.",
+      ),
+    },
+    expectWarning: "GOVERNANCE.md: recommended wording missing Decision: no scheduled stale-content workflow yet.",
+  },
+  {
+    name: "paraphrased_governance_link_label",
+    mutate: {
+      "README.md": files["README.md"].replace("[Governance, Lifecycle, And Docs-As-Code]", "[Governance reference]"),
+    },
+    expectWarning: "README.md: recommended link label missing [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md)",
   },
   {
     name: "missing_motion_codeowner",
@@ -244,10 +265,14 @@ function runCase(testCase) {
   });
   fs.rmSync(dir, { force: true, recursive: true });
   const output = JSON.parse(result.stdout);
-  const passed = testCase.expect ? !output.ok && output.failures.includes(testCase.expect) : output.ok;
+  const passed = testCase.expectWarning
+    ? output.ok && output.warnings?.includes(testCase.expectWarning)
+    : testCase.expect
+      ? !output.ok && output.failures.includes(testCase.expect)
+      : output.ok;
   return {
     actual: output,
-    expected: testCase.expect ?? "ok:true",
+    expected: testCase.expectWarning ?? testCase.expect ?? "ok:true",
     name: testCase.name,
     ok: passed,
   };
