@@ -21,6 +21,8 @@ Overall harmony:
 Claim record route:
 GPT Image reference:
 Implementation handoff:
+Consumer reference: not_applicable
+Consumer reference reason: This blank harmony-gate template declares no consumer-specific reference record.
 Rejected alternatives:
 Final implementation proof:
 Evidence family:

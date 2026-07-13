@@ -111,6 +111,10 @@ const baseFiles = {
     "",
     `Source snapshot \`${revision}\`.`,
     "",
+    "## Shared Non-Domain Infrastructure",
+    "",
+    "[Consumer Reference](consumer-reference/index.md) is shared infrastructure and not a fifth domain.",
+    "",
   ].join("\n"),
   "layout/index.md": indexPage("Layout", [["Catalog", "../CATALOG.md"]]),
   "motion/index.md": indexPage("Motion", [["Motion Vocabulary", "vocabulary.md"], ["Motion Review Workflow", "review-workflow.md"], ["Motion Practice Reference", "practice-reference.md"]]),
@@ -128,6 +132,7 @@ const baseFiles = {
 const cases = [
   { name: "empty_manifest", mutate: ["DOMAINS.md", baseFiles["DOMAINS.md"], "# Empty manifest\n"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_extra_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Other | [Other](other/index.md) | `experimental` |"], expect: "DOMAINS.md: missing canonical domain contract" },
+  { name: "consumer_reference_fifth_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Consumer Reference | [Consumer Reference](consumer-reference/index.md) | `stable` |"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_extra_leaf", mutate: ["DOMAINS.md", "`motion/vocabulary.md`,", "`motion/vocabulary.md`, `motion/ghost.md`,"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_wrong_lifecycle", mutate: ["DOMAINS.md", "| Motion | [Motion](motion/index.md) | `experimental` |", "| Motion | [Motion](motion/index.md) | `stable` |"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "missing_domain_index", omit: ["design-engineering/index.md"], expect: "design-engineering/index.md: missing file" },

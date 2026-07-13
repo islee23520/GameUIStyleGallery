@@ -19,6 +19,7 @@ const requiredCodeowners = [
   "/motion/ @changeroa",
   "/design-engineering/ @changeroa",
   "/platform-guides/ @changeroa",
+  "/consumer-reference/ @changeroa",
   "/GUIDE.md @changeroa",
   "/guides/ @changeroa",
   "/recipes/ @changeroa",
@@ -72,6 +73,7 @@ function requireGovernanceMatrix() {
     "Planning guides",
     "Layout recipes",
     "Quality gates and evidence",
+    "Consumer reference contract",
     "Domain manifest and scope decision",
     "Layout domain hub",
     "Motion domain guidance",
@@ -123,6 +125,10 @@ function requireCiwiring() {
   requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-domains.mjs");
   requireIncludes(".github/workflows/validate.yml", "node scripts/validate-webpage-workflow.mjs --json");
   requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-webpage-workflow.mjs --json");
+  requireIncludes(".github/workflows/validate.yml", "node -c scripts/validate-consumer-reference.mjs");
+  requireIncludes(".github/workflows/validate.yml", "node -c scripts/test-validate-consumer-reference.mjs");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/validate-consumer-reference.mjs --json");
+  requireIncludes(".github/workflows/validate.yml", "node scripts/test-validate-consumer-reference.mjs --json");
   requireIncludes(".github/workflows/validate.yml", "permissions:");
   requireIncludes(".github/workflows/validate.yml", "contents: read");
 }
@@ -145,6 +151,10 @@ function requireEvidenceMap() {
   recommendIncludes("quality/evidence/executable-evidence.md", "generated warnings, generated metadata, root link targets");
   requireIncludes("quality/evidence/executable-evidence.md", "Missing governance file, generated warning, generated metadata, CODEOWNERS coverage, or stale policy fixtures must fail.");
   requireIncludes("quality/evidence/executable-evidence.md", "Domain metadata, immutable provenance, scope boundaries, and root-route fixtures must fail.");
+  requireIncludes("quality/evidence/executable-evidence.md", "Consumer-reference handoffs, schema/runtime parity");
+  requireIncludes("quality/evidence/executable-evidence.md", "repository handoff omissions must fail");
+  requireIncludes("GOVERNANCE.md", "owner.enforcement: \"placeholder\"");
+  requireIncludes("GOVERNANCE.md", "review_independence: \"single_account\"");
 }
 
 requireGovernanceMatrix();

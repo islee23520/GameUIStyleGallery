@@ -21,6 +21,7 @@ Use this file before editing repository documentation. It names which file is au
 | Planning guides | `GUIDE.md`, `guides/*.md` | Manual | None | `stable` | Workflow changes, route changes, source-lineage changes, or broken guide links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Planning-doc owner |
 | Layout recipes | `recipes/*.md` | Manual | None | `stable` | Pattern-stack changes, route changes, or broken recipe links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Recipe owner |
 | Quality gates and evidence | `quality/**/*.md` | Manual | None | `stable` | Claim-boundary changes, evidence-family changes, or broken quality links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Quality owner |
+| Consumer reference contract | `consumer-reference/contract.md`, `consumer-reference/schema/*.json` | Manual | None | `stable` contract with related fixtures | Handoff shape, path boundary, lifecycle, ownership, or dependency-direction changes. | `scripts/validate-consumer-reference.mjs`, `scripts/test-validate-consumer-reference.mjs` | Repository governance owner with Validation owner |
 | Domain manifest and scope decision | `DOMAINS.md`, `quality/claim-records/stylegallery-multidomain-scope.md` | Manual | None | `stable` | Domain membership, repository-scope, or provenance-policy changes. | `scripts/validate-domains.mjs`, `scripts/validate-governance.mjs` | Repository governance owner |
 | Layout domain hub | `layout/index.md` | Manual | None | `stable` | Layout route or ownership changes. | `scripts/validate-domains.mjs`, `scripts/validate-ia.mjs` | Pattern-data owner |
 | Motion domain guidance | `motion/*.md` | Manual | None | `experimental` | Upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Motion domain owner |
@@ -71,12 +72,15 @@ Default lifecycle:
 
 The CODEOWNERS file is a review proposal for high-impact areas. It should stay conservative until repository maintainers replace `@changeroa` with a verified team.
 
+Consumer-reference ownership records the current truth as `owner.enforcement: "placeholder"` and `review_independence: "single_account"`. Multiple logical review roles assigned to this account do not create independent review.
+
 | Area | Review owner | Review focus |
 | --- | --- | --- |
 | `GOVERNANCE.md`, `README.md`, `index.md`, `AGENTS.md` | Repository governance owner | Source-of-truth routing, lifecycle, stale-content policy, contributor path. |
 | `scripts/pattern-data.mjs`, `scripts/generate-patterns.mjs`, `patterns/**`, `CATALOG.md` | Pattern-data owner | Generated drift, source lineage, pattern contract, generated warning coverage. |
 | `guides/**`, `GUIDE.md`, `recipes/**` | Planning-doc owner | Planning flow, task routes, recipe composition boundaries. |
 | `quality/**` | Quality owner | Claim boundaries, executable evidence, review gates. |
+| `consumer-reference/**` | Repository governance owner with Validation owner | Required handoff, repository-local record safety, lifecycle separation, ownership truth, and reverse-dependency guard. |
 | `DOMAINS.md`, `layout/**` | Repository governance owner with Pattern-data owner | Domain routing and preservation of the stable Layout path contract. |
 | `motion/**` | Motion domain owner | Motion terminology, review procedure, practice classification, and evidence boundaries. |
 | `design-engineering/**` | Design Engineering domain owner | Separation of product heuristics from shared quality gates. |
@@ -105,6 +109,8 @@ node scripts/test-validate-governance.mjs --json
 node scripts/validate-links.mjs --json
 node scripts/validate-domains.mjs --json
 node scripts/test-validate-domains.mjs
+node scripts/validate-consumer-reference.mjs --json
+node scripts/test-validate-consumer-reference.mjs --json
 ```
 
 For generated pattern or catalog changes, also run:

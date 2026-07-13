@@ -23,6 +23,7 @@ const baseFiles = {
     "| [Motion](motion/index.md) | Motion domain |",
     "| [Design Engineering](design-engineering/index.md) | Design Engineering domain |",
     "| [Platform Guides](platform-guides/index.md) | Platform Guides domain |",
+    "| [Consumer Reference](consumer-reference/index.md) | Shared infrastructure contract |",
     "",
     "## Task Routes",
     "",
@@ -55,6 +56,7 @@ const baseFiles = {
     "- [Motion](motion/index.md)",
     "- [Design Engineering](design-engineering/index.md)",
     "- [Platform Guides](platform-guides/index.md)",
+    "- [Consumer reference](consumer-reference/index.md)",
     "",
   ].join("\n"),
   "GUIDE.md": "# Guide\n\nPrimary role: planning workflow.\n",
@@ -75,6 +77,8 @@ const baseFiles = {
   "design-engineering/craft.md": leaf("Craft", "index.md", "../platform-guides/index.md"),
   "platform-guides/index.md": "# Platform Guides\n\n- [Apple](apple.md)\n",
   "platform-guides/apple.md": leaf("Apple", "index.md", "../layout/index.md"),
+  "consumer-reference/index.md": "# Consumer Reference\n\n- [Contract](contract.md)\n",
+  "consumer-reference/contract.md": leaf("Consumer Reference Contract", "index.md", "../quality/index.md"),
 };
 
 const cases = [
@@ -126,6 +130,13 @@ const cases = [
       "index.md": baseFiles["index.md"].replace("- [Design Engineering](design-engineering/index.md)\n", ""),
     },
     expect: "index.md: missing [Design Engineering](design-engineering/index.md)",
+  },
+  {
+    name: "missing_consumer_reference_route",
+    mutate: {
+      "index.md": baseFiles["index.md"].replace("- [Consumer reference](consumer-reference/index.md)\n", ""),
+    },
+    expect: "index.md: missing [Consumer reference](consumer-reference/index.md)",
   },
   {
     name: "missing_domain_leaf_parent",

@@ -91,7 +91,13 @@ function checkManifest() {
   const pageRows = tableRows(section("## Page Manifest"));
   const expectedLabels = new Set(domains.map((domain) => domain.label));
   const exactLabels = (rows) => rows.length === domains.length && new Set(rows.map((row) => row[0])).size === domains.length && rows.every((row) => expectedLabels.has(row[0]));
-  let valid = Boolean(content) && exactLabels(domainRows) && exactLabels(pageRows) && content.includes(`snapshot \`${revision}\``);
+  let valid = Boolean(content)
+    && exactLabels(domainRows)
+    && exactLabels(pageRows)
+    && content.includes(`snapshot \`${revision}\``)
+    && content.includes("## Shared Non-Domain Infrastructure")
+    && content.includes("[Consumer Reference](consumer-reference/index.md)")
+    && content.includes("not a fifth domain");
 
   for (const domain of domains) {
     const domainRow = domainRows.find((row) => row[0] === domain.label);

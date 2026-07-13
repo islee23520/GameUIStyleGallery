@@ -15,6 +15,9 @@ Before editing generated artifacts, validators, lifecycle state, or ownership po
 - Classify every change by domain before editing.
 - Keep domain-local guidance inside its owning path and preserve shared evidence boundaries.
 - Do not use one domain to bypass another domain's constraints.
+- Treat `consumer-reference/` as shared non-domain schema, provenance, routing, and evidence infrastructure; it owns no profile values, visual defaults, component implementation, or product CSS.
+- Keep dependency direction consumer/profile -> Layout. Do not import consumer-reference records, profile data, tokens, or decorative values into `layout/**`, `patterns/**`, `scripts/pattern-data.mjs`, or `CATALOG.md`.
+- Include the consumer-reference handoff field in implementation handoffs. Use one normalized repository-relative JSON record or `not_applicable` with a sentence reason.
 - Treat `patterns/**`, `recipes/**`, `GUIDE.md`, and `CATALOG.md` as the Layout corpus at their existing paths.
 - Treat the Layout domain as a layout pattern library, not a visual design system.
 - Start with semantic HTML before adding layout classes.

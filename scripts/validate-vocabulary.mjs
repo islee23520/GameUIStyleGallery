@@ -21,6 +21,9 @@ const requiredTerms = [
   "scroll ownership",
   "harmony",
   "debt",
+  "consumer reference",
+  "maturity",
+  "artifact mode",
 ];
 
 const requiredIncludes = {
@@ -32,6 +35,8 @@ const requiredIncludes = {
     "## Scannability Checklist",
     "## Vale Proposal",
     "Prose linting should wait until the vocabulary is stable.",
+    "Local-only: `consumer component`",
+    "In Layout, component implies visual or framework ownership",
   ],
 };
 

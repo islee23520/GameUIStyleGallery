@@ -52,6 +52,18 @@ Primary role: vocabulary and scannability contract.
   - Concept: accepted unresolved risk
   - Definition: A known limitation that is accepted with a boundary, owner, and verification or follow-up path.
   - Use for: Evidence records, implementation handoff, and quality-gate decisions.
+- Canonical: `consumer reference`
+  - Concept: optional consumer record handoff
+  - Definition: A required handoff field that either declares one repository-local JSON record or gives a sentence reason for non-applicability.
+  - Use for: Consumer-owned visual or component guidance without moving values into Layout.
+- Canonical: `maturity`
+  - Concept: consumer reference lifecycle
+  - Definition: The lifecycle state of a consumer reference item: experimental, stable, or deprecated.
+  - Use for: Lifecycle and support decisions; never as a synonym for artifact mode.
+- Canonical: `artifact mode`
+  - Concept: consumer reference storage role
+  - Definition: How a consumer reference artifact is held, independently of its maturity.
+  - Use for: Schema-only, consumer-local, governed-local, or external-consumer records.
 - Canonical: `warrant`
   - Concept: claim reasoning
   - Definition: The reason an evidence family can support a claim in a specific context.
@@ -81,7 +93,7 @@ Primary role: vocabulary and scannability contract.
 ## Deprecated Terms
 
 - Deprecated: `component` -> `pattern`
-  - Reason: Component implies visual or framework ownership; this repository owns layout contracts.
+  - Reason: In Layout, component implies visual or framework ownership; Layout owns spatial pattern contracts.
 - Deprecated: `template` -> `recipe`
   - Reason: Template implies copy-paste completeness; recipes are starting compositions.
 - Deprecated: `proof` -> `evidence`
@@ -102,6 +114,9 @@ Primary role: vocabulary and scannability contract.
 - Local-only: `section job`
   - Meaning: A content block's role in a webpage decision path, such as hook, explain, prove, compare, convert, navigate, or retain.
   - Boundary: Use in webpage generation, not in every pattern file.
+- Local-only: `consumer component`
+  - Meaning: A component owned by an opted-in consuming product or Design Engineering reference.
+  - Boundary: Never use it to rename a Layout pattern or move component authority into shared infrastructure.
 
 ## Scannability Checklist
 
