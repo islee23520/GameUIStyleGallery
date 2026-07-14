@@ -12,7 +12,7 @@ Primary role: repository guide.
 
 The existing Layout corpus remains a gallery of minimal, portable CSS layout patterns at its current paths. Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. Motion, visual treatment, and platform guidance do not expand reusable Layout pattern CSS; they live in their own domains and carry explicit evidence boundaries.
 
-[Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or a fifth domain.
+[Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or a sixth domain.
 
 ## Domains
 

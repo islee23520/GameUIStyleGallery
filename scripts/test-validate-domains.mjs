@@ -13,6 +13,9 @@ const unityCliLoopRepository = "https://github.com/hatayama/unity-cli-loop";
 const unityCliLoopRevision = "61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0";
 const vocabularyDomainList = "Use for: Layout, Motion, Design Engineering, Game UI, Platform Guides, root routing, and `domain` frontmatter on governed leaves.";
 const qualityDomainList = "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, and Platform Guides claims are admissible.";
+const readmeConsumerReferenceBoundary = "without owning profiles, visual values, components, or a sixth domain";
+const qualityConsumerReferenceBoundary = "without classifying it as a sixth domain";
+const executableEvidenceDomainCoverage = "Five governed domains and their declared leaves are reachable and attributed.";
 
 function indexPage(title, links) {
   return [
@@ -86,7 +89,7 @@ function leafPage({ title, domain, sourcePath, parent, next, lifecycle = "experi
 }
 
 const baseFiles = {
-  "README.md": "# StyleGallery\n\n- [Layout](layout/index.md)\n- [Motion](motion/index.md)\n- [Design Engineering](design-engineering/index.md)\n- [Game UI](game-ui/index.md)\n- [Platform Guides](platform-guides/index.md)\n",
+  "README.md": `# StyleGallery\n\nConsumer Reference is shared non-domain infrastructure ${readmeConsumerReferenceBoundary}.\n\n- [Layout](layout/index.md)\n- [Motion](motion/index.md)\n- [Design Engineering](design-engineering/index.md)\n- [Game UI](game-ui/index.md)\n- [Platform Guides](platform-guides/index.md)\n`,
   "index.md": "# StyleGallery\n\n- [Layout](layout/index.md)\n- [Motion](motion/index.md)\n- [Design Engineering](design-engineering/index.md)\n- [Game UI](game-ui/index.md)\n- [Platform Guides](platform-guides/index.md)\n",
   "DOMAINS.md": [
     "# StyleGallery Domains",
@@ -141,14 +144,15 @@ const baseFiles = {
   "platform-guides/apple-interaction.md": leafPage({ title: "Apple Interaction", domain: "platform-guides", sourcePath: "skills/apple-design/SKILL.md", parent: "index.md", next: "../layout/index.md" }),
   "quality/claim-records/stylegallery-multidomain-scope.md": "# Scope Decision\n\nStyleGallery supersedes the layout-only repository identity.\n",
   "guides/vocabulary.md": `# Controlled Vocabulary\n\n- Canonical: \`domain\`\n  - ${vocabularyDomainList}\n`,
-  "quality/index.md": `# Quality Gates\n\n${qualityDomainList}\n`,
+  "quality/index.md": `# Quality Gates\n\n${qualityDomainList}\n\nThe handoff reaches the shared contract ${qualityConsumerReferenceBoundary}.\n`,
+  "quality/evidence/executable-evidence.md": `# Executable Evidence Coverage\n\n${executableEvidenceDomainCoverage}\n`,
   "CATALOG.md": "# Catalog\n",
 };
 
 const cases = [
   { name: "empty_manifest", mutate: ["DOMAINS.md", baseFiles["DOMAINS.md"], "# Empty manifest\n"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_extra_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Other | [Other](other/index.md) | `experimental` |"], expect: "DOMAINS.md: missing canonical domain contract" },
-  { name: "consumer_reference_fifth_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Consumer Reference | [Consumer Reference](consumer-reference/index.md) | `stable` |"], expect: "DOMAINS.md: missing canonical domain contract" },
+  { name: "consumer_reference_sixth_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Consumer Reference | [Consumer Reference](consumer-reference/index.md) | `stable` |"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "consumer_reference_four_domain_contract", mutate: ["DOMAINS.md", "five-domain contract", "four-domain contract"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_extra_leaf", mutate: ["DOMAINS.md", "`motion/vocabulary.md`,", "`motion/vocabulary.md`, `motion/ghost.md`,"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_wrong_lifecycle", mutate: ["DOMAINS.md", "| Motion | [Motion](motion/index.md) | `experimental` |", "| Motion | [Motion](motion/index.md) | `stable` |"], expect: "DOMAINS.md: missing canonical domain contract" },
@@ -192,6 +196,9 @@ const cases = [
   { name: "canonical_while_experimental", mutate: ["motion/vocabulary.md", "Treat practitioner preferences as hypotheses.", "This is canonical universal policy."], expect: "motion/vocabulary.md: experimental document claims canonical authority" },
   { name: "vocabulary_missing_game_ui", mutate: ["guides/vocabulary.md", vocabularyDomainList, vocabularyDomainList.replace("Game UI, ", "")], expect: "guides/vocabulary.md: missing canonical five-domain vocabulary list" },
   { name: "quality_missing_game_ui", mutate: ["quality/index.md", qualityDomainList, qualityDomainList.replace("Game UI, and ", "and ")], expect: "quality/index.md: missing canonical five-domain quality scope" },
+  { name: "readme_stale_consumer_reference_ordinal", mutate: ["README.md", "sixth domain", "fifth domain"], expect: "README.md: missing canonical Consumer Reference boundary" },
+  { name: "quality_stale_consumer_reference_ordinal", mutate: ["quality/index.md", "sixth domain", "fifth domain"], expect: "quality/index.md: missing canonical Consumer Reference boundary" },
+  { name: "executable_evidence_stale_domain_count", mutate: ["quality/evidence/executable-evidence.md", "Five governed domains", "Four governed domains"], expect: "quality/evidence/executable-evidence.md: missing canonical five-domain validator coverage" },
   { name: "success_path", expect: null },
 ];
 

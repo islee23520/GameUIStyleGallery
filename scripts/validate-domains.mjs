@@ -22,6 +22,21 @@ const requiredCrossDomainStrings = [
     required: "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, and Platform Guides claims are admissible.",
     failure: "quality/index.md: missing canonical five-domain quality scope",
   },
+  {
+    relative: "README.md",
+    required: "without owning profiles, visual values, components, or a sixth domain",
+    failure: "README.md: missing canonical Consumer Reference boundary",
+  },
+  {
+    relative: "quality/index.md",
+    required: "without classifying it as a sixth domain",
+    failure: "quality/index.md: missing canonical Consumer Reference boundary",
+  },
+  {
+    relative: "quality/evidence/executable-evidence.md",
+    required: "Five governed domains and their declared leaves are reachable and attributed.",
+    failure: "quality/evidence/executable-evidence.md: missing canonical five-domain validator coverage",
+  },
 ];
 
 const domains = [
