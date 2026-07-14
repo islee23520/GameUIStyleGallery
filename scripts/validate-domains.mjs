@@ -11,6 +11,18 @@ const failures = [];
 const repository = "https://github.com/emilkowalski/skills";
 const revision = "220e8607c90b17337d210125777b7b695f26c221";
 const revisionPattern = /^[0-9a-f]{40}$/;
+const requiredCrossDomainStrings = [
+  {
+    relative: "guides/vocabulary.md",
+    required: "Use for: Layout, Motion, Design Engineering, Game UI, Platform Guides, root routing, and `domain` frontmatter on governed leaves.",
+    failure: "guides/vocabulary.md: missing canonical five-domain vocabulary list",
+  },
+  {
+    relative: "quality/index.md",
+    required: "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, and Platform Guides claims are admissible.",
+    failure: "quality/index.md: missing canonical five-domain quality scope",
+  },
+];
 
 const domains = [
   { slug: "layout", label: "Layout", leaves: [] },
@@ -106,6 +118,13 @@ function requireRootRoutes() {
       const route = `[${domain.label}](${domain.slug}/index.md)`;
       if (!content.includes(route)) failures.push(`${relative}: missing ${route}`);
     }
+  }
+}
+
+function requireCrossDomainConsistency() {
+  for (const check of requiredCrossDomainStrings) {
+    const content = stripFencedCodeBlocks(read(check.relative));
+    if (!content.includes(check.required)) failures.push(check.failure);
   }
 }
 
@@ -240,6 +259,7 @@ function rejectOmoDependencies() {
 checkManifest();
 read("quality/claim-records/stylegallery-multidomain-scope.md");
 requireRootRoutes();
+requireCrossDomainConsistency();
 const titles = new Set();
 let checkedLeaves = 0;
 for (const domain of domains) {

@@ -1,6 +1,6 @@
 # Quality Gates
 
-`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, and Platform Guides claims are admissible.
+`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, and Platform Guides claims are admissible.
 
 This shared layer does not make the repository a visual design system. Layout pattern files still own spatial structure only; domain guidance cannot bypass these gates. Quality gates explain how claims are framed, what evidence can support them, and when review or debt is required.
 
