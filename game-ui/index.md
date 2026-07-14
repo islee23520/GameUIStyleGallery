@@ -1,6 +1,6 @@
 # Game UI
 
-Game UI owns engine-neutral guidance for describing game-interface purpose, presentation, screen hierarchy, and evidence records, plus engine-specific implementation guides in named subdirectories.
+Game UI owns engine-neutral guidance for game-interface purpose, presentation, screen hierarchy, and evidence records, plus named engine implementation guides.
 
 ## Scope Boundary
 
@@ -10,9 +10,9 @@ Out of scope: reusable Layout CSS, universal visual prescriptions, and treating 
 
 ## Evidence And Research Boundary
 
-The player-task classes and classification axes in this domain are a local proposed taxonomy for StyleGallery review work. They are not presented as Interface In Game's universal ontology.
+The player-task classes and classification axes are a local taxonomy proposed for StyleGallery review, not Interface In Game's universal ontology.
 
-Interface In Game was reviewed on 2026-07-14 through its [home page](https://interfaceingame.com/), [games index](https://interfaceingame.com/games/), and representative records for [Team Fortress 2](https://interfaceingame.com/games/team-fortress-2/), [Genshin Impact (Mobile)](https://interfaceingame.com/games/genshin-impact-mobile/), and [Gris](https://interfaceingame.com/games/gris/). In that bounded sample, the site exposed site-local game facets such as Genres, Themes, and Platforms, while individual screenshots used Elements. This representative sampling informs the local separation of player task from other axes; it does not claim archive completeness or establish the site's full information model.
+Interface In Game was reviewed on 2026-07-14 through its [home page](https://interfaceingame.com/), [games index](https://interfaceingame.com/games/), and representative records for [Team Fortress 2](https://interfaceingame.com/games/team-fortress-2/), [Genshin Impact (Mobile)](https://interfaceingame.com/games/genshin-impact-mobile/), and [Gris](https://interfaceingame.com/games/gris/). In this bounded sample, the site exposed site-local facets such as Genres, Themes, and Platforms, while screenshots used Elements. The sample informs the local separation of player task from other axes; it does not cover the archive or establish the site's full information model.
 
 ## Available Guides
 
@@ -20,10 +20,13 @@ Interface In Game was reviewed on 2026-07-14 through its [home page](https://int
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
+- [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.
+- [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.
+- [Unity Repository Map](unity/repository-map.md) maps the public Unity-Technologies repository snapshot by UI relevance, authority, and lifecycle.
 
 ## Domain Contract
 
-Game UI describes what an interface does, how its screen responsibilities compose, and how a named game engine can realize that model. Platform Guides remain bounded comparisons for non-game platform conventions. Layout remains the owner of portable spatial patterns.
+Game UI describes interface purpose, screen composition, and how named engines can realize that model. Platform Guides cover non-game platform conventions; Layout owns portable spatial patterns.
 
 ## IA Navigation
 

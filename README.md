@@ -21,7 +21,7 @@ The existing Layout corpus remains a gallery of minimal, portable CSS layout pat
 | [Layout](layout/index.md) | Semantic spatial structure, flow, sizing, alignment, containment, scrolling, and composition. | Brand, typography, color, shadow, animation, and product decoration. |
 | [Motion](motion/index.md) | Motion terminology, review procedure, and evidence-bounded practice guidance. | Universal timing/easing rules or permission to add motion to reusable Layout CSS. |
 | [Design Engineering](design-engineering/index.md) | Product-layer craft decisions and verification questions. | A second universal principle set or taste as evidence. |
-| [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, evidence records, and named engine implementation guides. | Reusable Layout CSS, universal scene graphs, or visual prescriptions. |
+| [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, reference records, and engine-specific implementation guides. | Reusable Layout CSS or claims that one engine structure is universal. |
 | [Platform Guides](platform-guides/index.md) | Bounded comparison with named platform conventions. | Affiliation, imitation, or authority over web and accessibility contracts. |
 
 The canonical domain manifest and provenance policy are in [StyleGallery Domains](DOMAINS.md).

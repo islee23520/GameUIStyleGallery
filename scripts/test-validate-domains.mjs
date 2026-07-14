@@ -9,6 +9,8 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const validator = path.join(root, "scripts", "validate-domains.mjs");
 const revision = "220e8607c90b17337d210125777b7b695f26c221";
 const repository = "https://github.com/emilkowalski/skills";
+const unityCliLoopRepository = "https://github.com/hatayama/unity-cli-loop";
+const unityCliLoopRevision = "61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0";
 
 function indexPage(title, links) {
   return [
@@ -104,7 +106,7 @@ const baseFiles = {
     "| Layout | `layout/index.md` | Existing Layout corpus. |",
     "| Motion | `motion/index.md` | `motion/vocabulary.md`, `motion/review-workflow.md`, `motion/practice-reference.md` |",
     "| Design Engineering | `design-engineering/index.md` | `design-engineering/interface-craft.md` |",
-    "| Game UI | `game-ui/index.md` | `game-ui/classification.md`, `game-ui/screen-hierarchy.md`, `game-ui/reference-record.md`, `game-ui/unity/architecture.md` |",
+    "| Game UI | `game-ui/index.md` | `game-ui/classification.md`, `game-ui/screen-hierarchy.md`, `game-ui/reference-record.md`, `game-ui/unity/architecture.md`, `game-ui/unity/ui-systems.md`, `game-ui/unity/cli-loop.md`, `game-ui/unity/repository-map.md` |",
     "| Platform Guides | `platform-guides/index.md` | `platform-guides/apple-interaction.md` |",
     "",
     `Source snapshot \`${revision}\`.`,
@@ -121,13 +123,18 @@ const baseFiles = {
   "motion/practice-reference.md": leafPage({ title: "Motion Practice Reference", domain: "motion", sourcePath: "skills/review-animations/STANDARDS.md", parent: "index.md", next: "../design-engineering/index.md" }),
   "design-engineering/index.md": indexPage("Design Engineering", [["Interface Craft", "interface-craft.md"]]),
   "design-engineering/interface-craft.md": leafPage({ title: "Interface Craft", domain: "design-engineering", sourcePath: "skills/emil-design-eng/SKILL.md", parent: "index.md", next: "../platform-guides/index.md" }),
-  "game-ui/index.md": indexPage("Game UI", [["Game UI Classification", "classification.md"], ["Game UI Screen Hierarchy", "screen-hierarchy.md"], ["Game UI Reference Record", "reference-record.md"], ["Unity UI Architecture", "unity/architecture.md"]]),
+  "game-ui/index.md": indexPage("Game UI", [["Game UI Classification", "classification.md"], ["Game UI Screen Hierarchy", "screen-hierarchy.md"], ["Game UI Reference Record", "reference-record.md"], ["Unity UI Architecture", "unity/architecture.md"], ["Unity UI Systems", "unity/ui-systems.md"], ["Unity CLI Loop", "unity/cli-loop.md"], ["Unity Repository Map", "unity/repository-map.md"]]),
   "game-ui/classification.md": leafPage({ title: "Game UI Classification", domain: "game-ui", parent: "index.md", next: "screen-hierarchy.md" }),
   "game-ui/screen-hierarchy.md": leafPage({ title: "Game UI Screen Hierarchy", domain: "game-ui", parent: "index.md", next: "reference-record.md" }),
   "game-ui/reference-record.md": leafPage({ title: "Game UI Reference Record", domain: "game-ui", parent: "index.md", next: "../platform-guides/index.md" }),
-  "game-ui/unity/architecture.md": leafPage({ title: "Unity UI Architecture", domain: "game-ui", sourcePath: "README.md", parent: "../index.md", next: "../../platform-guides/index.md" })
+  "game-ui/unity/architecture.md": leafPage({ title: "Unity UI Architecture", domain: "game-ui", sourcePath: "README.md", parent: "../index.md", next: "ui-systems.md" })
     .replaceAll(repository, "https://github.com/annulusgames/UGUIAnimationSamples")
     .replaceAll(revision, "343c8110e5683be209cc01ccb4cb986175e61643"),
+  "game-ui/unity/ui-systems.md": leafPage({ title: "Unity UI Systems", domain: "game-ui", parent: "../index.md", next: "cli-loop.md" }),
+  "game-ui/unity/cli-loop.md": leafPage({ title: "Unity CLI Loop", domain: "game-ui", sourcePath: "README.md", parent: "../index.md", next: "repository-map.md" })
+    .replaceAll(repository, unityCliLoopRepository)
+    .replaceAll(revision, unityCliLoopRevision),
+  "game-ui/unity/repository-map.md": leafPage({ title: "Unity Repository Map", domain: "game-ui", parent: "../index.md", next: "../../platform-guides/index.md" }),
   "platform-guides/index.md": indexPage("Platform Guides", [["Apple Interaction", "apple-interaction.md"]]),
   "platform-guides/apple-interaction.md": leafPage({ title: "Apple Interaction", domain: "platform-guides", sourcePath: "skills/apple-design/SKILL.md", parent: "index.md", next: "../layout/index.md" }),
   "quality/claim-records/stylegallery-multidomain-scope.md": "# Scope Decision\n\nStyleGallery supersedes the layout-only repository identity.\n",
@@ -143,6 +150,9 @@ const cases = [
   { name: "missing_domain_index", omit: ["design-engineering/index.md"], expect: "design-engineering/index.md: missing file" },
   { name: "missing_domain_leaf", omit: ["motion/vocabulary.md"], expect: "motion/vocabulary.md: missing file" },
   { name: "missing_local_domain_leaf", omit: ["game-ui/classification.md"], expect: "game-ui/classification.md: missing file" },
+  { name: "missing_unity_ui_systems_leaf", omit: ["game-ui/unity/ui-systems.md"], expect: "game-ui/unity/ui-systems.md: missing file" },
+  { name: "missing_unity_cli_loop_leaf", omit: ["game-ui/unity/cli-loop.md"], expect: "game-ui/unity/cli-loop.md: missing file" },
+  { name: "missing_unity_repository_map_leaf", omit: ["game-ui/unity/repository-map.md"], expect: "game-ui/unity/repository-map.md: missing file" },
   { name: "undeclared_domain_leaf", add: ["motion/rogue.md", "# Rogue\n"], expect: "motion/rogue.md: undeclared governed domain document" },
   { name: "undeclared_nested_game_ui_leaf", add: ["game-ui/unity/rogue.md", "# Rogue\n"], expect: "game-ui/unity/rogue.md: undeclared governed domain document" },
   { name: "unknown_domain", mutate: ["motion/vocabulary.md", "domain: motion", "domain: unknown"], expect: "motion/vocabulary.md: unknown domain unknown" },
@@ -154,6 +164,13 @@ const cases = [
   { name: "unity_wrong_domain", mutate: ["game-ui/unity/architecture.md", "domain: game-ui", "domain: platform-guides"], expect: "game-ui/unity/architecture.md: domain platform-guides does not match game-ui" },
   { name: "unity_wrong_repository", mutate: ["game-ui/unity/architecture.md", "https://github.com/annulusgames/UGUIAnimationSamples", repository], expect: `game-ui/unity/architecture.md: unexpected source_repository ${repository}` },
   { name: "unity_wrong_revision", mutate: ["game-ui/unity/architecture.md", "343c8110e5683be209cc01ccb4cb986175e61643", revision], expect: `game-ui/unity/architecture.md: unexpected source_revision ${revision}` },
+  { name: "unity_ui_systems_wrong_domain", mutate: ["game-ui/unity/ui-systems.md", "domain: game-ui", "domain: platform-guides"], expect: "game-ui/unity/ui-systems.md: domain platform-guides does not match game-ui" },
+  { name: "unity_repository_map_wrong_domain", mutate: ["game-ui/unity/repository-map.md", "domain: game-ui", "domain: motion"], expect: "game-ui/unity/repository-map.md: domain motion does not match game-ui" },
+  { name: "unity_ui_systems_unexpected_source", mutate: ["game-ui/unity/ui-systems.md", "lifecycle: experimental", `lifecycle: experimental\nsource_repository: ${repository}`], expect: "game-ui/unity/ui-systems.md: locally authored leaf must omit source_repository" },
+  { name: "unity_repository_map_unexpected_source", mutate: ["game-ui/unity/repository-map.md", "lifecycle: experimental", `lifecycle: experimental\nsource_repository: ${repository}`], expect: "game-ui/unity/repository-map.md: locally authored leaf must omit source_repository" },
+  { name: "unity_cli_loop_wrong_repository", mutate: ["game-ui/unity/cli-loop.md", unityCliLoopRepository, repository], expect: `game-ui/unity/cli-loop.md: unexpected source_repository ${repository}` },
+  { name: "unity_cli_loop_wrong_source_path", mutate: ["game-ui/unity/cli-loop.md", "source_path: README.md", "source_path: package.json"], expect: "game-ui/unity/cli-loop.md: unexpected source_path package.json" },
+  { name: "unity_cli_loop_wrong_revision", mutate: ["game-ui/unity/cli-loop.md", unityCliLoopRevision, revision], expect: `game-ui/unity/cli-loop.md: unexpected source_revision ${revision}` },
   { name: "missing_scope", mutate: ["motion/index.md", "## Scope Boundary", "## Boundary"], expect: "motion/index.md: missing Scope Boundary section" },
   { name: "scope_only_in_fence", mutate: ["motion/index.md", "## Scope Boundary", "## Boundary\n\n```md\n## Scope Boundary\nIn scope: fake\nOut of scope: fake\n```"], expect: "motion/index.md: missing Scope Boundary section" },
   { name: "scope_only_in_tilde_fence", mutate: ["motion/index.md", "## Scope Boundary", "## Boundary\n\n~~~md\n## Scope Boundary\nIn scope: fake\nOut of scope: fake\n~~~"], expect: "motion/index.md: missing Scope Boundary section" },

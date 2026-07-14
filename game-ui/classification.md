@@ -12,7 +12,7 @@ Primary role: game-interface classification guide.
 
 ## Repository Boundary
 
-This guide proposes a local, project-neutral taxonomy for classifying observable game-interface behavior without assuming Unity, Unreal, Godot, a proprietary engine, or a specific art direction. Its player-task classes and classification axes are review tools, not a universal ontology. The guide does not turn a visual genre into a functional category or authorize decorative properties in reusable Layout patterns.
+This guide proposes a local, project-neutral taxonomy for classifying observable game-interface behavior without assuming a specific engine or art direction. Its player-task classes and classification axes are review tools, not a universal ontology. It does not turn a visual genre into a functional category or authorize decorative properties in reusable Layout patterns.
 
 ## Reusable Method
 
@@ -53,9 +53,8 @@ This guide proposes a local, project-neutral taxonomy for classifying observable
 ## Opinionated Guidance
 
 - Organize the gallery first by player task, then filter by presentation and implementation axes.
-- Use two or three strong visual tags instead of a long mood list.
-- Treat popup, HUD, shop, inventory, and tutorial as functional families even when their art direction differs.
-- Split a large screen into reviewable regions when it contains independent player tasks.
+- Use two or three visual tags supported by repeated evidence.
+- Classify independent player-task regions separately when a screen composes them.
 - Do not infer style or behavior from project, prefab, widget, scene, or class names alone.
 
 ## Platform-Specific Guidance
@@ -75,7 +74,7 @@ Verify narrow and wide surfaces, every declared input mode, long localized text,
 
 ## Source, License, And Attribution
 
-This page is a locally authored, project-neutral proposed taxonomy informed by inspected game UI references. It reproduces no game assets, project-specific hierarchy, or upstream implementation samples.
+This page is a locally authored, project-neutral proposed taxonomy. It reproduces no game assets, project-specific hierarchy, or upstream implementation samples.
 
 ## IA Navigation
 

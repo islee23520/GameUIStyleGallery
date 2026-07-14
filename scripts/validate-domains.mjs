@@ -32,6 +32,9 @@ const domains = [
       ["game-ui/screen-hierarchy.md"],
       ["game-ui/reference-record.md"],
       ["game-ui/unity/architecture.md", "README.md"],
+      ["game-ui/unity/ui-systems.md"],
+      ["game-ui/unity/cli-loop.md", "README.md"],
+      ["game-ui/unity/repository-map.md"],
     ],
   },
   {
@@ -47,6 +50,10 @@ const sourceOverrides = {
   "game-ui/unity/architecture.md": {
     repository: "https://github.com/annulusgames/UGUIAnimationSamples",
     revision: "343c8110e5683be209cc01ccb4cb986175e61643",
+  },
+  "game-ui/unity/cli-loop.md": {
+    repository: "https://github.com/hatayama/unity-cli-loop",
+    revision: "61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0",
   },
 };
 
@@ -180,6 +187,10 @@ function checkLeaf(domain, relative, expectedSourcePath, titles) {
       failures.push(`${relative}: source_revision must be a full 40-character lowercase Git SHA`);
     } else if (metadata.source_revision && metadata.source_revision !== expectedSource.revision) {
       failures.push(`${relative}: unexpected source_revision ${metadata.source_revision}`);
+    }
+  } else {
+    for (const field of ["source_repository", "source_path", "source_revision"]) {
+      if (metadata[field]) failures.push(`${relative}: locally authored leaf must omit ${field}`);
     }
   }
   if (metadata.title) {

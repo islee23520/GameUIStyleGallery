@@ -30,7 +30,7 @@ Before editing generated artifacts, validators, lifecycle state, or ownership po
 - Make scroll responsibility obvious in both class names and CSS.
 - Keep decorative styling out of reusable pattern CSS.
 
-The remaining pattern, CSS, naming, token, checklist, and verification rules apply to the Layout domain. Motion, Design Engineering, Game UI, and Platform Guides documents may discuss product-layer behavior, but they do not authorize decorative or motion properties in reusable Layout pattern CSS.
+The remaining pattern, CSS, naming, token, checklist, and verification rules apply to the Layout domain. Non-Layout domain documents may discuss product-layer behavior, but they do not authorize decorative or motion properties in reusable Layout pattern CSS.
 
 ## Pattern Boundary Gate
 
