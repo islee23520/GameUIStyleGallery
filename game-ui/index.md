@@ -8,6 +8,12 @@ In scope: player-task classification, screen and overlay hierarchy, reusable ref
 
 Out of scope: reusable Layout CSS, universal visual prescriptions, and treating one engine's scene graph or API as a cross-engine requirement.
 
+## Evidence And Research Boundary
+
+The player-task classes and classification axes in this domain are a local proposed taxonomy for StyleGallery review work. They are not presented as Interface In Game's universal ontology.
+
+Interface In Game was reviewed on 2026-07-14 through its [home page](https://interfaceingame.com/), [games index](https://interfaceingame.com/games/), and representative records for [Team Fortress 2](https://interfaceingame.com/games/team-fortress-2/), [Genshin Impact (Mobile)](https://interfaceingame.com/games/genshin-impact-mobile/), and [Gris](https://interfaceingame.com/games/gris/). In that bounded sample, the site exposed site-local game facets such as Genres, Themes, and Platforms, while individual screenshots used Elements. This representative sampling informs the local separation of player task from other axes; it does not claim archive completeness or establish the site's full information model.
+
 ## Available Guides
 
 - [Game UI Classification](classification.md) separates player purpose from visual language, input, state, and motion.
