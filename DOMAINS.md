@@ -32,7 +32,7 @@ This manifest is the source of truth for top-level StyleGallery domains. A domai
 
 ## Shared Non-Domain Infrastructure
 
-[Consumer Reference](consumer-reference/index.md) is shared schema, provenance, routing, and evidence infrastructure. It is not a fifth domain, owns no profile implementation or visual values, and cannot add a row to the four-domain contract. Consumer or profile records may depend on Layout; Layout and its generated corpus cannot import those records.
+[Consumer Reference](consumer-reference/index.md) is shared schema, provenance, routing, and evidence infrastructure outside the five-domain contract. It owns no profile implementation or visual values and cannot add a sixth domain row. Consumer or profile records may depend on Layout; Layout and its generated corpus cannot import those records.
 
 ## External Adaptation Contract
 
