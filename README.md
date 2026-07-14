@@ -21,6 +21,7 @@ The existing Layout corpus remains a gallery of minimal, portable CSS layout pat
 | [Layout](layout/index.md) | Semantic spatial structure, flow, sizing, alignment, containment, scrolling, and composition. | Brand, typography, color, shadow, animation, and product decoration. |
 | [Motion](motion/index.md) | Motion terminology, review procedure, and evidence-bounded practice guidance. | Universal timing/easing rules or permission to add motion to reusable Layout CSS. |
 | [Design Engineering](design-engineering/index.md) | Product-layer craft decisions and verification questions. | A second universal principle set or taste as evidence. |
+| [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, evidence records, and named engine implementation guides. | Reusable Layout CSS, universal scene graphs, or visual prescriptions. |
 | [Platform Guides](platform-guides/index.md) | Bounded comparison with named platform conventions. | Affiliation, imitation, or authority over web and accessibility contracts. |
 
 The canonical domain manifest and provenance policy are in [StyleGallery Domains](DOMAINS.md).
@@ -41,6 +42,7 @@ Use each root hub for one primary job.
 | [Layout](layout/index.md) | Layout domain hub | You need reusable spatial patterns, recipes, or planning routes. |
 | [Motion](motion/index.md) | Motion domain hub | You need motion terminology, review procedure, or practice evidence. |
 | [Design Engineering](design-engineering/index.md) | Design Engineering domain hub | You need product-level interface-craft decision guidance. |
+| [Game UI](game-ui/index.md) | Game UI domain hub | You need to classify a game interface or understand its screen hierarchy. |
 | [Platform Guides](platform-guides/index.md) | Platform Guides domain hub | You need a bounded platform comparison. |
 
 ## Task Routes
@@ -53,6 +55,7 @@ Each common task has one primary route. Use secondary links only after the prima
 | `browse reusable spatial guidance` | [Layout](layout/index.md) | It preserves the existing pattern, recipe, and planning routes. |
 | `name or review interface motion` | [Motion](motion/index.md) | It routes to bounded terminology and review guidance. |
 | `review product-level interface craft` | [Design Engineering](design-engineering/index.md) | It separates practitioner heuristics from shared quality gates. |
+| `classify a game interface or map it to an engine` | [Game UI](game-ui/index.md) | It separates engine-neutral roles from implementation-specific guidance. |
 | `compare a named platform convention` | [Platform Guides](platform-guides/index.md) | It requires platform and evidence boundaries before adaptation. |
 | `turn raw content into a homepage or ordinary webpage` | [Webpage Generation Workflow](guides/webpage-generation-workflow.md) | It starts with use case, content-to-layout fit, harmony, and handoff. |
 | `plan a screen before the layout problem is obvious` | [Layout Planning Guide](GUIDE.md) | It sequences task, content, scroll, recipe, and verification choices. |
@@ -78,7 +81,7 @@ Each common task has one primary route. Use secondary links only after the prima
 ## How To Use This Repository
 
 - Start with [StyleGallery Domains](DOMAINS.md) when the owning domain is not already clear.
-- Use [Layout](layout/index.md), [Motion](motion/index.md), [Design Engineering](design-engineering/index.md), or [Platform Guides](platform-guides/index.md) as the domain-local entry point.
+- Use [Layout](layout/index.md), [Motion](motion/index.md), [Design Engineering](design-engineering/index.md), [Game UI](game-ui/index.md), or [Platform Guides](platform-guides/index.md) as the domain-local entry point.
 - Start with [Layout Planning Guide](GUIDE.md) when you are designing a screen before a layout problem is obvious.
 - Use the [Webpage Generation Workflow](guides/webpage-generation-workflow.md) when raw content needs to become a homepage or ordinary webpage before a layout recipe is obvious.
 - Use the [Documentation Mode Taxonomy](guides/documentation-mode-taxonomy.md) when adding or reviewing docs so each page has a clear primary reading mode.

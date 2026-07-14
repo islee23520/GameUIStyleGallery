@@ -24,8 +24,31 @@ const domains = [
     ],
   },
   { slug: "design-engineering", label: "Design Engineering", leaves: [["design-engineering/interface-craft.md", "skills/emil-design-eng/SKILL.md"]] },
-  { slug: "platform-guides", label: "Platform Guides", leaves: [["platform-guides/apple-interaction.md", "skills/apple-design/SKILL.md"]] },
+  {
+    slug: "game-ui",
+    label: "Game UI",
+    leaves: [
+      ["game-ui/classification.md"],
+      ["game-ui/screen-hierarchy.md"],
+      ["game-ui/reference-record.md"],
+      ["game-ui/unity/architecture.md", "README.md"],
+    ],
+  },
+  {
+    slug: "platform-guides",
+    label: "Platform Guides",
+    leaves: [
+      ["platform-guides/apple-interaction.md", "skills/apple-design/SKILL.md"],
+    ],
+  },
 ];
+
+const sourceOverrides = {
+  "game-ui/unity/architecture.md": {
+    repository: "https://github.com/annulusgames/UGUIAnimationSamples",
+    revision: "343c8110e5683be209cc01ccb4cb986175e61643",
+  },
+};
 
 const requiredLeafSections = [
   "Repository Boundary",
@@ -129,7 +152,7 @@ function checkIndex(domain) {
   if (!/^Parent: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Parent navigation link`);
   if (!/^Next: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Next navigation link`);
   for (const [leaf] of domain.leaves) {
-    const target = path.basename(leaf);
+    const target = path.relative(domain.slug, leaf);
     if (!content.match(new RegExp(`\\[[^\\]]+\\]\\(${target.replaceAll(".", "\\.")}\\)`))) {
       failures.push(`${relative}: missing leaf route ${target}`);
     }
@@ -140,19 +163,24 @@ function checkLeaf(domain, relative, expectedSourcePath, titles) {
   const content = read(relative);
   if (!content) return;
   const metadata = parseFrontmatter(relative, content);
-  for (const field of ["type", "title", "description", "domain", "lifecycle", "source_repository", "source_path", "source_revision"]) {
+  const requiredFields = ["type", "title", "description", "domain", "lifecycle"];
+  if (expectedSourcePath) requiredFields.push("source_repository", "source_path", "source_revision");
+  for (const field of requiredFields) {
     if (!metadata[field]) failures.push(`${relative}: missing ${field}`);
   }
   const knownDomain = domains.some((candidate) => candidate.slug === metadata.domain);
   if (metadata.domain && !knownDomain) failures.push(`${relative}: unknown domain ${metadata.domain}`);
   else if (metadata.domain && metadata.domain !== domain.slug) failures.push(`${relative}: domain ${metadata.domain} does not match ${domain.slug}`);
-  if (metadata.lifecycle && metadata.lifecycle !== "experimental") failures.push(`${relative}: external adaptation lifecycle must be experimental`);
-  if (metadata.source_repository && metadata.source_repository !== repository) failures.push(`${relative}: unexpected source_repository ${metadata.source_repository}`);
-  if (metadata.source_path && metadata.source_path !== expectedSourcePath) failures.push(`${relative}: unexpected source_path ${metadata.source_path}`);
-  if (metadata.source_revision && !revisionPattern.test(metadata.source_revision)) {
-    failures.push(`${relative}: source_revision must be a full 40-character lowercase Git SHA`);
-  } else if (metadata.source_revision && metadata.source_revision !== revision) {
-    failures.push(`${relative}: unexpected source_revision ${metadata.source_revision}`);
+  if (metadata.lifecycle && metadata.lifecycle !== "experimental") failures.push(`${relative}: domain leaf lifecycle must be experimental`);
+  if (expectedSourcePath) {
+    const expectedSource = sourceOverrides[relative] ?? { repository, revision };
+    if (metadata.source_repository && metadata.source_repository !== expectedSource.repository) failures.push(`${relative}: unexpected source_repository ${metadata.source_repository}`);
+    if (metadata.source_path && metadata.source_path !== expectedSourcePath) failures.push(`${relative}: unexpected source_path ${metadata.source_path}`);
+    if (metadata.source_revision && !revisionPattern.test(metadata.source_revision)) {
+      failures.push(`${relative}: source_revision must be a full 40-character lowercase Git SHA`);
+    } else if (metadata.source_revision && metadata.source_revision !== expectedSource.revision) {
+      failures.push(`${relative}: unexpected source_revision ${metadata.source_revision}`);
+    }
   }
   if (metadata.title) {
     if (titles.has(metadata.title)) failures.push(`${relative}: duplicate title ${metadata.title}`);
