@@ -25,10 +25,10 @@ This guide adapts the pinned unity-cli-loop command surface into a bounded Game 
 Use the loop in this order and preserve the evidence from each stage.
 
 1. **Launch the matching Editor.** Run the launch workflow from the Unity project so its recorded Editor version is selected. The pinned README exposes `uloop launch`, project-path selection, build-target selection, and restart behavior in its [direct CLI section](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/README.md#direct-cli-usage-advanced).
-2. **Compile and clear the evidence surface.** Clear stale console entries when appropriate, run `compile`, wait for domain reload when the task requires it, then collect logs. Do not proceed to UI interaction while compile errors make the runtime state ambiguous.
-3. **Inspect hierarchy and find objects.** Use the hierarchy and GameObject search workflows to locate Scenes, Transforms, `Canvas`, `EventSystem`, `UIDocument`, `UIRoot`, `UIPanel`, and other serialized components. The hierarchy service traverses GameObjects and Transforms in [`HierarchyService.cs`](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/Packages/src/Editor/Core/CoreTools/HierarchyAnalyzer/HierarchyService.cs#L338-L379). A UI Toolkit VisualElement child is not a Transform child, so finding a `UIDocument` does not enumerate its runtime visual tree.
-4. **Enter Play Mode when runtime evidence is required.** Use the Play Mode control workflow before rendering annotations, pointer simulation, runtime-created hierarchy inspection, or input recording. Capture logs immediately after state changes.
-5. **Capture the correct screenshot.** An Editor-window screenshot can show editor chrome outside Play Mode. Use the Game View rendering capture and its annotations when coordinates or runtime UI evidence are needed. Keep the pre-action image.
+2. **Compile from a clean console.** Clear stale console entries when appropriate, run `compile`, wait for domain reload when the task requires it, then collect logs. Do not proceed to UI interaction while compile errors make the runtime state ambiguous.
+3. **Inspect hierarchy and find objects.** Record the loaded Scene context, then use the hierarchy and GameObject search workflows to locate Transforms, `Canvas`, `EventSystem`, `UIDocument`, `UIRoot`, `UIPanel`, and other serialized components. The hierarchy service traverses GameObjects and Transforms in [`HierarchyService.cs`](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/Packages/src/Editor/Core/CoreTools/HierarchyAnalyzer/HierarchyService.cs#L338-L379). A UI Toolkit VisualElement child is not a Transform child, so finding a `UIDocument` does not enumerate its runtime visual tree.
+4. **Enter Play Mode when runtime evidence is required.** Use the Play Mode control workflow before Game View rendering capture and annotations, pointer simulation, Input System injection, input recording or replay, and inspection of runtime-created objects. Window screenshots may work outside Play Mode, but `CaptureMode: rendering` requires Play Mode at the pinned revision. Capture logs immediately after state changes.
+5. **Capture the correct screenshot.** An Editor-window screenshot can show editor chrome outside Play Mode. In Play Mode, use the Game View rendering capture and its annotations when coordinates or runtime UI evidence are needed. Keep the pre-action image.
 6. **Simulate through the stack-appropriate route.** Use the dedicated uGUI pointer workflow for EventSystem-handled UI. Use Input System mouse or keyboard injection only when the project actually reads that input path. For UI Toolkit or NGUI, combine rendering, component inspection, and narrowly scoped project code while keeping their distinct event routes explicit.
 7. **Use dynamic code for targeted inspection or mutation.** Query project state, inspect `UIDocument.rootVisualElement`, or make bounded editor changes with `execute-dynamic-code`. Treat the result as evidence of the code that ran, not as proof that a player-input path was exercised.
 8. **Capture the result and save intentionally.** Collect the post-action screenshot and logs, compare the expected state, and explicitly save Scene or prefab changes when the task changed serialized content.
@@ -51,25 +51,18 @@ The pinned dynamic-code skill describes a generic Editor execution mechanism and
 
 ## Opinionated Guidance
 
-- Treat compile output, hierarchy output, screenshots, simulated input, and dynamic-code output as separate evidence types.
-- Prefer the stack's real input path for behavior verification; reserve direct callbacks for diagnosis or tightly bounded setup.
-- Keep before/after screenshots and logs beside the exact command parameters, project path, Unity version, Game View size, and Play Mode state.
-- Reinspect the hierarchy after Play Mode begins when runtime-created UI or persistent objects matter.
+- Keep command outputs as separate evidence until the verification contract ties them to one claim.
+- Prefer the stack's input route for behavior verification. Use direct code for inspection or bounded setup, and reinspect after entering Play Mode when runtime-created or persistent objects matter.
 
 ## Platform-Specific Guidance
 
-- For uGUI, find the Canvas, Graphic Raycaster, EventSystem, active input module, target Selectable or handler, and current selected object before simulation.
-- For UI Toolkit, find the UIDocument through the GameObject hierarchy, then inspect the runtime VisualElement tree through project-specific code and record Panel/focus ownership.
-- For NGUI, inspect UIRoot, UIPanel, UICamera, widget colliders or raycast configuration, and the legacy-input delegates actually in use.
-- For mixed projects, state which tool action targets which input and hierarchy system; do not combine outcomes into one unnamed UI route.
+- For uGUI, confirm the Canvas, Graphic Raycaster, EventSystem, active input module, handler, and current selection before simulation.
+- For UI Toolkit, record the runtime Panel and focus owner. For NGUI, record its collider or raycast configuration and legacy-input delegates.
+- In mixed projects, label each action with the input and hierarchy system it targets.
 
 ## Unsupported Absolutes
 
-- A successful screenshot does not prove interaction behavior.
-- A found UIDocument does not prove that its VisualElement descendants were inspected.
-- A direct callback does not prove pointer or keyboard dispatch.
-- A changed component field does not prove that the serialized asset was saved.
-- A tool command name does not prove that a particular project's packages, input configuration, or custom UI bridge satisfy its prerequisites.
+No single command result proves end-to-end interaction: a screenshot does not prove dispatch; finding a component does not enumerate its non-Transform descendants; direct code does not prove the player's input path or that serialized changes were saved. Tool availability also does not prove that a project's packages and configuration meet its prerequisites.
 
 ## Verification Contract
 
