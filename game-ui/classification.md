@@ -12,7 +12,7 @@ Primary role: game-interface classification guide.
 
 ## Repository Boundary
 
-This guide classifies observable game-interface behavior without assuming Unity, Unreal, Godot, a proprietary engine, or a specific art direction. It does not turn a visual genre into a functional category or authorize decorative properties in reusable Layout patterns.
+This guide proposes a local, project-neutral taxonomy for classifying observable game-interface behavior without assuming Unity, Unreal, Godot, a proprietary engine, or a specific art direction. Its player-task classes and classification axes are review tools, not a universal ontology. The guide does not turn a visual genre into a functional category or authorize decorative properties in reusable Layout patterns.
 
 ## Reusable Method
 
@@ -60,7 +60,7 @@ This guide classifies observable game-interface behavior without assuming Unity,
 
 ## Platform-Specific Guidance
 
-Record engine, UI framework, render space, scaling policy, navigation system, text system, and motion system as implementation evidence. Route detailed engine hierarchy and API guidance to the matching Platform Guide.
+Record engine, UI framework, render space, scaling policy, navigation system, text system, and motion system as implementation evidence. Route detailed engine hierarchy and API guidance to the matching engine-specific Game UI guide.
 
 ## Unsupported Absolutes
 
@@ -75,7 +75,7 @@ Verify narrow and wide surfaces, every declared input mode, long localized text,
 
 ## Source, License, And Attribution
 
-This page is a project-neutral synthesis informed by inspected game UI references. It reproduces no game assets, project-specific hierarchy, or upstream implementation samples.
+This page is a locally authored, project-neutral proposed taxonomy informed by inspected game UI references. It reproduces no game assets, project-specific hierarchy, or upstream implementation samples.
 
 ## IA Navigation
 

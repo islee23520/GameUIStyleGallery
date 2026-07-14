@@ -8,8 +8,8 @@ source_repository: https://github.com/annulusgames/UGUIAnimationSamples
 source_path: README.md
 source_revision: 343c8110e5683be209cc01ccb4cb986175e61643
 platform: Unity uGUI and legacy Unity UI stacks
-platform_version: verify-per-entry
-reviewed_on: 2026-07-13
+platform_version: Unity 2022.3.7f1 sample evidence; Unity 6.3 LTS and uGUI 2.0 guidance
+reviewed_on: 2026-07-14
 ---
 
 # Unity UI Architecture
@@ -19,6 +19,15 @@ Primary role: Unity hierarchy and implementation guide.
 ## Repository Boundary
 
 This page maps the engine-neutral [Game UI Screen Hierarchy](../screen-hierarchy.md) to Unity concepts. It does not define game UI classification, require one universal Scene or Canvas structure, or treat a sample repository as a complete production architecture.
+
+## Version Boundary
+
+Two evidence contexts are intentionally separate:
+
+- **Pinned sample evidence:** the UGUI Animation Samples revision `343c8110e5683be209cc01ccb4cb986175e61643` records Unity `2022.3.7f1`, uGUI `1.0.0`, and TextMesh Pro `3.0.7`. Claims about its files apply only to that immutable snapshot.
+- **Current implementation guidance:** Unity Manual `6000.3` (Unity 6.3 LTS) and uGUI package `2.0` documentation were reviewed on 2026-07-14. Use those versioned documents for the concepts linked below, then verify the exact Unity and package versions recorded by each gallery entry.
+
+The pinned project is evidence about a small animation sample, not proof that its serialized hierarchy, packages, or lifecycle choices are appropriate for production or current Unity versions.
 
 ## Reusable Method
 
@@ -79,7 +88,7 @@ Use prefab boundaries for stable ownership and reuse. Do not create a prefab for
 | Transient feedback | Pooled toast, tooltip, reward, or effect host | Sorting, pooling, interruption, time source |
 | World-linked UI | World Space Canvas or camera-projected element | Target loss, occlusion, distance, camera switching |
 
-Nested Canvases can isolate rebuild and sorting behavior, but they also create additional ownership and ordering decisions. Record why a Canvas boundary exists rather than treating each panel as a new Canvas by default.
+Canvas boundaries create ownership, sorting, and configuration decisions. Measure batching and rebuild behavior with the actual content and update pattern, and profile representative target-device workloads before attributing a performance benefit to nested Canvases.
 
 ## Component Hierarchy
 
@@ -103,9 +112,9 @@ Component Prefab Root
 
 ## Motion Ownership
 
-The pinned UGUI Animation Samples snapshot uses Unity `2022.3.7f1`, uGUI `1.0.0`, and TextMesh Pro `3.0.7`. Its four sample Scenes cover hover, button, text, and toggle motion. LitMotion drives the sample motion, while the text example also uses UniTask for button-click subscriptions. Each Scene contains a Screen Space Overlay Canvas, Canvas Scaler, and EventSystem.
+The pinned UGUI Animation Samples files record Unity `2022.3.7f1`, uGUI `1.0.0`, and TextMesh Pro `3.0.7`. Four serialized Scene YAML files and their scripts provide evidence for hover, button, text, and toggle examples. The scripts use LitMotion; `TextAnimation.cs` and the pinned package files contain text evidence of UniTask use for button-click subscriptions. This text inspection does not prove compilation or runtime behavior. The Scene YAML includes serialized Screen Space Overlay Canvas, Canvas Scaler, and EventSystem components, but YAML is not rendered or runtime proof.
 
-Use this snapshot as focused evidence for component interaction motion, not as a scene or prefab architecture template. It does not establish keyboard or gamepad coverage, responsive behavior, multi-Scene lifetime, or production teardown policy. Most hover and button scripts cancel motion handles during `OnDestroy`; the two toggle scripts do not, so the snapshot does not support a universal cancellation claim.
+Use this snapshot as focused serialized evidence for component interaction motion, not as a Scene, prefab, or production architecture template. It does not establish keyboard or gamepad coverage, responsive behavior, multi-Scene lifetime, successful runtime execution, or production teardown policy. The inspected hover and button scripts contain `OnDestroy` cancellation paths; the two toggle scripts do not contain `OnDestroy`, but that absence alone is not proof of a leak or other runtime defect.
 
 Record whether motion is owned by Animator, a tween library, Timeline, a custom update loop, or a mixed system. For every transition, identify the trigger, animated properties, time source, cancellation behavior, disabled-object behavior, completion callback, and final state. A parent screen transition must not leave child controls focused, interactive, or visually stale.
 
@@ -123,7 +132,7 @@ Record whether motion is owned by Animator, a tween library, Timeline, a custom 
 - For uGUI, capture Canvas render mode, Canvas Scaler settings, sorting configuration, Graphic Raycaster, EventSystem, and relevant input module.
 - For UI Toolkit, capture Panel Settings, UIDocument ownership, visual tree source, style-sheet sources, focus behavior, and runtime document lifecycle.
 - For legacy or mixed stacks, name the bridge points, camera and sorting relationships, input ownership, and migration limits.
-- Recheck behavior against the current Unity Manual and package documentation for the recorded version.
+- Recheck behavior against versioned Unity Manual and package documentation that matches the entry's recorded version.
 
 ## Unsupported Absolutes
 
@@ -142,13 +151,15 @@ Repository YAML and metadata can establish hierarchy leads, but rendered appeara
 
 ## Source, License, And Attribution
 
-- Public sample reference: [annulusgames/UGUIAnimationSamples](https://github.com/annulusgames/UGUIAnimationSamples/tree/343c8110e5683be209cc01ccb4cb986175e61643)
-- Snapshot: `343c8110e5683be209cc01ccb4cb986175e61643`
+- Public sample snapshot: [annulusgames/UGUIAnimationSamples at `343c8110e5683be209cc01ccb4cb986175e61643`](https://github.com/annulusgames/UGUIAnimationSamples/tree/343c8110e5683be209cc01ccb4cb986175e61643) and its pinned [README.md](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/README.md)
+- Pinned version and dependency evidence: [ProjectVersion.txt](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/ProjectSettings/ProjectVersion.txt), [manifest.json](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Packages/manifest.json), and [packages-lock.json](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Packages/packages-lock.json)
+- Pinned serialized Scene evidence: [1_Hover.unity](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/1_Hover.unity), [2_Button.unity](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/2_Button/2_Button.unity), [3_Text.unity](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/3_Text/3_Text.unity), and [4_Toggle.unity](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/4_Toggle/4_Toggle.unity)
+- Pinned hover script evidence: [Hover1.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover1.cs), [Hover2.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover2.cs), [Hover3.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover3.cs), [Hover4.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover4.cs), [Hover5.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover5.cs), and [Hover6.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/1_Hover/Scripts/Hover6.cs)
+- Pinned button, text, and toggle script evidence: [Button1.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/2_Button/Scripts/Button1.cs), [Button2.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/2_Button/Scripts/Button2.cs), [TextAnimation.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/3_Text/Scripts/TextAnimation.cs), [Toggle1.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/4_Toggle/Scripts/Toggle1.cs), and [Toggle2.cs](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/Assets/Samples/4_Toggle/Scripts/Toggle2.cs)
 - Snapshot license: [The Unlicense](https://github.com/annulusgames/UGUIAnimationSamples/blob/343c8110e5683be209cc01ccb4cb986175e61643/LICENSE)
-- Unity Manual: [Manage GameObjects in the Hierarchy window](https://docs.unity3d.com/Manual/Hierarchy.html)
-- Unity Manual: [Prefabs](https://docs.unity3d.com/Manual/Prefabs.html)
-- Unity Manual: [Create prefabs](https://docs.unity3d.com/Manual/CreatingPrefabs.html)
-- Unity UI package manual: [Canvas](https://docs.unity3d.com/Packages/com.unity.ugui@latest/index.html?subfolder=/manual/UICanvas.html)
+- Unity 6.3 LTS Manual: [UI system comparison](https://docs.unity3d.com/6000.3/Documentation/Manual/UI-system-compare.html), [Hierarchy window](https://docs.unity3d.com/6000.3/Documentation/Manual/Hierarchy.html), [Prefabs](https://docs.unity3d.com/6000.3/Documentation/Manual/Prefabs.html), [creating Prefabs](https://docs.unity3d.com/6000.3/Documentation/Manual/CreatingPrefabs.html), [nested Prefabs](https://docs.unity3d.com/6000.3/Documentation/Manual/NestedPrefabs.html), [Prefab variants](https://docs.unity3d.com/6000.3/Documentation/Manual/PrefabVariants.html), [unpacking Prefab instances](https://docs.unity3d.com/6000.3/Documentation/Manual/UnpackingPrefabInstances.html), [`Object.Instantiate`](https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Object.Instantiate.html), and [`Object.DontDestroyOnLoad`](https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Object.DontDestroyOnLoad.html)
+- uGUI 2.0 Manual: [Canvas](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/UICanvas.html), [Rect Transform](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/class-RectTransform.html), [Canvas Group](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/class-CanvasGroup.html), [Canvas Scaler](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-CanvasScaler.html), [navigation options](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-SelectableNavigation.html), [Event System](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/EventSystem.html), [Graphic Raycaster](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-GraphicRaycaster.html), and [Scroll Rect](https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-ScrollRect.html)
+- Unity 6.3 LTS UI Toolkit Manual: [create a UI Document component](https://docs.unity3d.com/6000.3/Documentation/Manual/UIE-create-ui-document-component.html) and [focus order](https://docs.unity3d.com/6000.3/Documentation/Manual/UIE-focus-order.html)
 - Reuse form: independent, project-neutral architecture and review method; no game assets or upstream implementation samples are reproduced.
 
 ## IA Navigation
