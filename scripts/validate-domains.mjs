@@ -2,7 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { isOmoDependency, markdownLinkDestinations, stripFencedCodeBlocks } from "./markdown-structure.mjs";
+import { isOmoDependency, markdownLinkDestinations, structuralMarkdown } from "./markdown-structure.mjs";
 
 const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
@@ -104,6 +104,10 @@ function read(relative) {
   return fs.readFileSync(target, "utf8");
 }
 
+function toRepositoryPath(value) {
+  return value.split(path.sep).join("/");
+}
+
 function parseFrontmatter(relative, content) {
   const match = content.match(/^---\n([\s\S]*?)\n---\n/);
   if (!match) {
@@ -128,7 +132,7 @@ function parseFrontmatter(relative, content) {
 
 function requireRootRoutes() {
   for (const relative of ["README.md", "index.md"]) {
-    const content = stripFencedCodeBlocks(read(relative));
+    const content = structuralMarkdown(read(relative));
     for (const domain of domains) {
       const route = `[${domain.label}](${domain.slug}/index.md)`;
       if (!content.includes(route)) failures.push(`${relative}: missing ${route}`);
@@ -138,14 +142,14 @@ function requireRootRoutes() {
 
 function requireCrossDomainConsistency() {
   for (const check of requiredCrossDomainStrings) {
-    const content = stripFencedCodeBlocks(read(check.relative));
+    const content = structuralMarkdown(read(check.relative));
     if (!content.includes(check.required)) failures.push(check.failure);
   }
 }
 
 function checkManifest() {
   const relative = "DOMAINS.md";
-  const content = stripFencedCodeBlocks(read(relative));
+  const content = structuralMarkdown(read(relative));
   const section = (heading) => content.split(`${heading}\n`)[1]?.split("\n## ")[0] ?? "";
   const tableRows = (body) => {
     const rows = body.split("\n").filter((line) => /^\s*\|.*\|\s*$/.test(line)).map((line) => line.trim().slice(1, -1).split("|").map((cell) => cell.trim()));
@@ -185,7 +189,7 @@ function checkManifest() {
 
 function checkIndex(domain) {
   const relative = `${domain.slug}/index.md`;
-  const content = stripFencedCodeBlocks(read(relative));
+  const content = structuralMarkdown(read(relative));
   if (!content) return;
   if (!content.includes("## Scope Boundary")) failures.push(`${relative}: missing Scope Boundary section`);
   if (!/^In scope:\s*\S/m.test(content)) failures.push(`${relative}: missing In scope declaration`);
@@ -193,7 +197,7 @@ function checkIndex(domain) {
   if (!/^Parent: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Parent navigation link`);
   if (!/^Next: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Next navigation link`);
   for (const [leaf] of domain.leaves) {
-    const target = path.relative(domain.slug, leaf);
+    const target = path.posix.relative(domain.slug, leaf);
     if (!content.match(new RegExp(`\\[[^\\]]+\\]\\(${target.replaceAll(".", "\\.")}\\)`))) {
       failures.push(`${relative}: missing leaf route ${target}`);
     }
@@ -224,14 +228,14 @@ function checkLeaf(domain, relative, expectedSourcePath, titles) {
     }
   } else {
     for (const field of ["source_repository", "source_path", "source_revision"]) {
-      if (metadata[field]) failures.push(`${relative}: locally authored leaf must omit ${field}`);
+      if (Object.hasOwn(metadata, field)) failures.push(`${relative}: locally authored leaf must omit ${field}`);
     }
   }
   if (metadata.title) {
     if (titles.has(metadata.title)) failures.push(`${relative}: duplicate title ${metadata.title}`);
     titles.add(metadata.title);
   }
-  const body = stripFencedCodeBlocks(content);
+  const body = structuralMarkdown(content);
   for (const section of requiredLeafSections) {
     if (!body.includes(`## ${section}`)) failures.push(`${relative}: missing ${section} section`);
   }
@@ -247,7 +251,7 @@ function rejectUndeclaredDomainDocuments() {
   for (const domain of domains) {
     const declared = new Set([`${domain.slug}/index.md`, ...domain.leaves.map(([leaf]) => leaf)]);
     for (const absolute of walkMarkdown(path.join(root, domain.slug))) {
-      const relative = path.relative(root, absolute);
+      const relative = toRepositoryPath(path.relative(root, absolute));
       if (!declared.has(relative)) failures.push(`${relative}: undeclared governed domain document`);
     }
   }
@@ -265,7 +269,7 @@ function walkMarkdown(dir) {
 
 function rejectOmoDependencies() {
   for (const absolute of walkMarkdown(root)) {
-    const relative = path.relative(root, absolute);
+    const relative = toRepositoryPath(path.relative(root, absolute));
     const content = fs.readFileSync(absolute, "utf8");
     if (markdownLinkDestinations(content).some(isOmoDependency)) failures.push(`${relative}: tracked document must not depend on .omo`);
   }
