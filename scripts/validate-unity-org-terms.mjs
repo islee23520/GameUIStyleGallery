@@ -116,9 +116,16 @@ function validateLexicon(lexicon, index) {
   for (const section of requiredLexiconSections) {
     requireCondition(lexicon.includes(`## ${section}`), `missing section: ${section}`);
   }
+  const headings = [...lexicon.matchAll(/^### (.+)$/gm)].map((match) => match[1]);
   for (const term of index.terms) {
     const escapedTerm = term.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const entry = lexicon.match(new RegExp(`### ${escapedTerm}\\n([\\s\\S]*?)(?=\\n### |\\n## |$)`));
+    const termParts = term.term.split(" / ");
+    const hasGroupedEntry = headings.some((heading) => {
+      const headingParts = heading.split(" / ");
+      return termParts.some((part) => headingParts.includes(part));
+    });
+    requireCondition(entry || hasGroupedEntry, `lexicon entry missing: ${term.term}`);
     if (!entry) continue;
     const visibleCount = entry[1].match(/- \*\*Matches:\*\*\s*(\d+)/);
     requireCondition(visibleCount, `lexicon match count missing: ${term.term}`);

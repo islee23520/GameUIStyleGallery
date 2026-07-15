@@ -141,7 +141,19 @@ try {
     requireFail(run(paths.inventoryPath, paths.indexPath, paths.lexiconPath), "lexicon match count drift");
   }
 
-  console.log("Unity org term validator fixtures passed: 7 negative, 1 positive.");
+  // Missing human-readable term entry
+  {
+    const dir = path.join(temp, "lexicon-missing-entry");
+    await mkdir(dir, { recursive: true });
+    const paths = await writeFixture(dir, {
+      inventory: trackedInventory,
+      index: trackedIndex,
+      lexicon: trackedLexicon.replace(/### uGUI\n[\s\S]*?(?=\n### )/, ""),
+    });
+    requireFail(run(paths.inventoryPath, paths.indexPath, paths.lexiconPath), "lexicon entry missing: uGUI");
+  }
+
+  console.log("Unity org term validator fixtures passed: 8 negative, 1 positive.");
 } finally {
   await rm(temp, { recursive: true, force: true });
 }
