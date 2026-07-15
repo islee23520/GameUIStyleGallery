@@ -72,15 +72,15 @@ Application UI Root
 ## Composition Rules
 
 - Keep persistent services independent from replaceable screen content.
-- Give modal blocking and modal content one explicit owner.
-- Treat popup stacks, notifications, tooltips, and reward effects as different transient responsibilities.
-- Keep world-linked UI separate from screen-space HUD even when they share visual tokens.
-- Repeated list cells, slots, tabs, meters, and buttons should expose data and state inputs rather than reach into global state implicitly.
+- Assign explicit ownership for modal blocking and modal content.
+- Separate popup stacks, notifications, tooltips, and reward effects when their lifetime, input, sorting, or interruption responsibilities differ.
+- Distinguish world-linked UI from screen-space HUD by camera, target, and lifetime ownership, not shared visual tokens.
+- Prefer explicit data and state inputs for repeated list cells, slots, tabs, meters, and buttons over implicit global-state access.
 - Preserve logical navigation order when visual sorting or animation changes.
 
 ## Opinionated Guidance
 
-A shallow tree is not automatically better than a deep tree. Prefer boundaries that make lifetime, input, sorting, and reuse obvious. A hierarchy becomes fragile when nodes exist only to compensate for animation, scaling, or masking side effects that are not documented.
+A shallow tree is not automatically better than a deep tree. Prefer boundaries that make lifetime, input, sorting, and reuse obvious. Undocumented nodes used only to offset animation, scaling, or masking side effects are a fragility signal.
 
 ## Platform-Specific Guidance
 
@@ -95,7 +95,7 @@ Map these roles to the target engine without copying the hierarchy literally. Se
 
 ## Verification Contract
 
-Trace one screen from creation to teardown. Verify which owner creates it, which layer sorts it, which object blocks input, where focus begins and returns, what survives a screen change, and what happens when a modal or transition is interrupted.
+Trace one screen from creation through teardown. Record its creator, sorting layer, input blocker, focus entry and return, what survives screen changes, and modal or transition interruption behavior.
 
 ## Source, License, And Attribution
 

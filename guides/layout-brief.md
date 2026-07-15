@@ -83,6 +83,8 @@ Implementation handoff:
 - Which semantic HTML skeleton, layout patterns, constraints, and scroll owners are approved?
 - Which image-reference observations become product-level visual styling outside the pattern library?
 - Which viewport, content-stress, accessibility, and visual-evidence checks must pass before shipping?
+- Consumer reference: `not_applicable`.
+- Consumer reference reason: This blank planning template declares no consumer-specific reference record.
 
 ## Minimum Required Fields By Use Case
 
@@ -144,6 +146,8 @@ Section jobs:
 Harmony notes:
 GPT Image reference prompt:
 Implementation handoff:
+Consumer reference: not_applicable
+Consumer reference reason: This blank layout brief declares no consumer-specific reference record.
 ```
 
 Short examples:

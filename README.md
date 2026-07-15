@@ -12,6 +12,8 @@ Primary role: repository guide.
 
 The existing Layout corpus remains a gallery of minimal, portable CSS layout patterns at its current paths. Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. Motion, visual treatment, and platform guidance do not expand reusable Layout pattern CSS; they live in their own domains and carry explicit evidence boundaries.
 
+[Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or a sixth domain.
+
 ## Domains
 
 | Domain | Owns | Does not own |
@@ -19,7 +21,7 @@ The existing Layout corpus remains a gallery of minimal, portable CSS layout pat
 | [Layout](layout/index.md) | Semantic spatial structure, flow, sizing, alignment, containment, scrolling, and composition. | Brand, typography, color, shadow, animation, and product decoration. |
 | [Motion](motion/index.md) | Motion terminology, review procedure, and evidence-bounded practice guidance. | Universal timing/easing rules or permission to add motion to reusable Layout CSS. |
 | [Design Engineering](design-engineering/index.md) | Product-layer craft decisions and verification questions. | A second universal principle set or taste as evidence. |
-| [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, evidence records, and named engine implementation guides. | Reusable Layout CSS, universal scene graphs, or visual prescriptions. |
+| [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, reference records, and engine-specific implementation guides. | Reusable Layout CSS or claims that one engine structure is universal. |
 | [Platform Guides](platform-guides/index.md) | Bounded comparison with named platform conventions. | Affiliation, imitation, or authority over web and accessibility contracts. |
 
 The canonical domain manifest and provenance policy are in [StyleGallery Domains](DOMAINS.md).
@@ -36,6 +38,7 @@ Use each root hub for one primary job.
 | [Layout Pattern Catalog](CATALOG.md) | Pattern lookup | You already know the spatial problem or pattern name. |
 | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | Governance reference | You need the source of truth, lifecycle, generated-file, ownership, or stale-audit rule. |
 | [StyleGallery Domains](DOMAINS.md) | Domain manifest | You need domain ownership, scope, lifecycle, page membership, or provenance. |
+| [Consumer Reference](consumer-reference/index.md) | Shared infrastructure contract | You need to declare a consumer-owned record or explain why one is not applicable. |
 | [Layout](layout/index.md) | Layout domain hub | You need reusable spatial patterns, recipes, or planning routes. |
 | [Motion](motion/index.md) | Motion domain hub | You need motion terminology, review procedure, or practice evidence. |
 | [Design Engineering](design-engineering/index.md) | Design Engineering domain hub | You need product-level interface-craft decision guidance. |
@@ -65,6 +68,7 @@ Each common task has one primary route. Use secondary links only after the prima
 | `browse pattern categories` | [Pattern Categories](patterns/index.md) | It groups generated patterns by spatial family. |
 | `check whether a layout or design claim is admissible` | [Quality Gates](quality/index.md) | It routes claims to gates and evidence boundaries. |
 | `prove repository checks and evidence coverage` | [Executable Evidence Coverage](quality/evidence/executable-evidence.md) | It maps validators, fixtures, CI commands, and their boundaries. |
+| `declare consumer reference applicability` | [Consumer Reference](consumer-reference/index.md) | It provides the required handoff field without moving consumer values into Layout. |
 | `change generated patterns, catalog, or governance policy` | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | It identifies source files, generated artifacts, validators, lifecycle state, and review ownership. |
 | `run findability QA` | [Tree-Test Findability QA](quality/index.md#tree-test-findability-qa) | It tests whether task routes are discoverable, not just linked. |
 
@@ -87,6 +91,7 @@ Each common task has one primary route. Use secondary links only after the prima
 - Use [Layout Recipes](recipes/index.md) when you need screen-level composition.
 - Use [Layout Pattern Catalog](CATALOG.md) when you already know the spatial problem.
 - Use [Quality Gates](quality/index.md) when a claim needs principle-backed evidence, visual QA boundaries, accessibility precedence, or design rationale.
+- Use [Consumer Reference](consumer-reference/index.md) when an implementation handoff must declare one repository-local JSON reference or a sentence explaining non-applicability.
 - Use [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) before changing generated artifacts, validators, lifecycle state, or ownership policy.
 
 ## Layout Domain Principles

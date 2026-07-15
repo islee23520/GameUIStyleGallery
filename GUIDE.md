@@ -28,6 +28,8 @@ The StyleGallery Layout domain has two modes:
 8. Run a harmony evaluation against the chosen use case, content hierarchy, pattern stack, and accessibility constraints.
 9. If visual direction is needed, create a GPT Image reference from the approved layout brief and keep the image outside reusable pattern CSS.
 10. Record an implementation handoff: pattern stack, semantic order, constraints, image-reference observations, accepted debt, and verification plan.
+    - Consumer reference: `not_applicable`.
+    - Consumer reference reason: This generic planning workflow declares no consumer-specific reference record.
 11. Verify the result against long, empty, narrow, and wide content.
 
 ## Entry Points

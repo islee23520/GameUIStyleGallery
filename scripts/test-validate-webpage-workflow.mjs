@@ -31,6 +31,8 @@ const files = {
     "Required preconditions before prompt:",
     "Image review extract-vs-ignore:",
     "Implementation handoff:",
+    "Consumer reference: not_applicable",
+    "Consumer reference reason: This blank planning template has no consumer record.",
     "Accepted image debt:",
     "",
     "## Minimum Required Fields By Use Case",
@@ -70,6 +72,9 @@ const files = {
     "## Implementation Handoff",
     "Implementation debt:",
     "Final implementation proof:",
+    "Consumer reference: not_applicable",
+    "Consumer reference reason: This generic workflow has no consumer record.",
+    "[Consumer Reference Receiver Contract](../consumer-reference/contract.md)",
     "## Workflow Route Examples",
     "",
     "### Homepage Route",
@@ -172,6 +177,13 @@ const cases = [
       "guides/layout-brief.md": files["guides/layout-brief.md"].replace("## Rejected Alternatives", "## Alternatives"),
     },
     expect: "guides/layout-brief.md: missing ## Rejected Alternatives",
+  },
+  {
+    name: "missing_consumer_reference_reason",
+    mutate: {
+      "guides/webpage-generation-workflow.md": files["guides/webpage-generation-workflow.md"].replace("Consumer reference reason: This generic workflow has no consumer record.", ""),
+    },
+    expect: "guides/webpage-generation-workflow.md: missing Consumer reference reason:",
   },
   {
     name: "paraphrased_navigation_label",

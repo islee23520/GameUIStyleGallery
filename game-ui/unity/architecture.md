@@ -112,9 +112,9 @@ Component Prefab Root
 
 ## Motion Ownership
 
-The pinned UGUI Animation Samples files record Unity `2022.3.7f1`, uGUI `1.0.0`, and TextMesh Pro `3.0.7`. Four serialized Scene YAML files and their scripts provide evidence for hover, button, text, and toggle examples. The scripts use LitMotion; `TextAnimation.cs` and the pinned package files contain text evidence of UniTask use for button-click subscriptions. This text inspection does not prove compilation or runtime behavior. The Scene YAML includes serialized Screen Space Overlay Canvas, Canvas Scaler, and EventSystem components, but YAML is not rendered or runtime proof.
+The pinned snapshot contains four serialized Scene YAML files and scripts for hover, button, text, and toggle examples. The scripts use LitMotion; `TextAnimation.cs` and the pinned package files contain text evidence of UniTask use for button-click subscriptions. Text and YAML inspection does not prove compilation, rendering, or runtime behavior, although the YAML records Screen Space Overlay Canvas, Canvas Scaler, and EventSystem components.
 
-Use this snapshot as focused serialized evidence for component interaction motion, not as a Scene, prefab, or production architecture template. It does not establish keyboard or gamepad coverage, responsive behavior, multi-Scene lifetime, successful runtime execution, or production teardown policy. The inspected hover and button scripts contain `OnDestroy` cancellation paths; the two toggle scripts do not contain `OnDestroy`, but that absence alone is not proof of a leak or other runtime defect.
+Use the snapshot only as serialized evidence for component interaction motion. It does not establish a production Scene or prefab architecture, keyboard or gamepad coverage, responsive behavior, multi-Scene lifetime, successful runtime execution, or teardown policy. The inspected hover and button scripts contain `OnDestroy` cancellation paths; the two toggle scripts do not contain `OnDestroy`, but that absence alone is not proof of a leak or other runtime defect.
 
 Record whether motion is owned by Animator, a tween library, Timeline, a custom update loop, or a mixed system. For every transition, identify the trigger, animated properties, time source, cancellation behavior, disabled-object behavior, completion callback, and final state. A parent screen transition must not leave child controls focused, interactive, or visually stale.
 
@@ -124,7 +124,6 @@ Record whether motion is owned by Animator, a tween library, Timeline, a custom 
 - Prefer a small number of named layer hosts over ad hoc sorting overrides across unrelated prefabs.
 - Keep screen prefabs focused on one primary player task; route global blockers and notifications through explicit hosts.
 - Use nested prefabs and variants when inheritance is intentional and reviewable, not merely to reduce duplication at any cost.
-- Capture both Prefab Mode and runtime Hierarchy evidence because either view alone is incomplete.
 
 ## Platform-Specific Guidance
 
@@ -132,7 +131,6 @@ Record whether motion is owned by Animator, a tween library, Timeline, a custom 
 - For uGUI, capture Canvas render mode, Canvas Scaler settings, sorting configuration, Graphic Raycaster, EventSystem, and relevant input module.
 - For UI Toolkit, capture Panel Settings, UIDocument ownership, visual tree source, style-sheet sources, focus behavior, and runtime document lifecycle.
 - For legacy or mixed stacks, name the bridge points, camera and sorting relationships, input ownership, and migration limits.
-- Recheck behavior against versioned Unity Manual and package documentation that matches the entry's recorded version.
 
 ## Unsupported Absolutes
 
@@ -165,4 +163,4 @@ Repository YAML and metadata can establish hierarchy leads, but rendered appeara
 ## IA Navigation
 
 Parent: [Game UI](../index.md).
-Next: [Platform Guides](../../platform-guides/index.md).
+Next: [Unity UI Systems](ui-systems.md).

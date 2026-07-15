@@ -21,7 +21,7 @@ const domainRoutes = [
   ["Design Engineering", "design-engineering/index.md"],
   ["Platform Guides", "platform-guides/index.md"],
 ];
-const leafDirectories = ["patterns", "recipes", "quality", "motion", "design-engineering", "platform-guides"];
+const leafDirectories = ["patterns", "recipes", "quality", "motion", "design-engineering", "platform-guides", "consumer-reference"];
 
 function read(relative) {
   const target = path.join(root, relative);
@@ -58,6 +58,8 @@ function requireRootRoles() {
   requireIncludes("README.md", "Citation links");
   requireIncludes("README.md", "Dependency links");
   requireIncludes("quality/index.md", "## Tree-Test Findability QA");
+  requireIncludes("README.md", "[Consumer Reference](consumer-reference/index.md)");
+  requireIncludes("index.md", "[Consumer reference](consumer-reference/index.md)");
 }
 
 function requireTaskRoutes() {

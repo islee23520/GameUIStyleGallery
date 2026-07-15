@@ -25,6 +25,8 @@ Evidence family: `rationale`, `source`, `screenshot`.
 Verification protocol: Check that the layout brief names use case, section jobs, pattern stack, rejected alternatives, harmony notes, GPT Image reference prompt, and implementation handoff before image generation.
 
 Implementation handoff: Build semantic HTML and layout patterns first; copy only hierarchy, rhythm, media treatment, and CTA priority into product-level styling after the gate passes.
+Consumer reference: not_applicable
+Consumer reference reason: This sample contains no consumer-specific reference record.
 
 Boundary or limitation: The image cannot prove usability, accessibility, brand fit, or final implementation quality.
 
@@ -49,6 +51,8 @@ Evidence family: `screenshot`, `accessibility`, `user`.
 Verification protocol: Pair screenshots with the visual-evidence gate and route accessibility or usability claims to their dedicated evidence families.
 
 Implementation handoff: not applicable.
+Consumer reference: not_applicable
+Consumer reference reason: This screenshot-limits sample contains no consumer-specific reference record.
 
 Boundary or limitation: A screenshot can hide focus order, screen-reader output, dynamic states, and untested content stress.
 
@@ -73,6 +77,8 @@ Evidence family: `validator`, `accessibility`, `user`.
 Verification protocol: Record the scan tool, ruleset, viewport or state, manual keyboard checks, and any required screen-reader, accessibility-tree, or cognitive review.
 
 Implementation handoff: not applicable.
+Consumer reference: not_applicable
+Consumer reference reason: This accessibility-limits sample contains no consumer-specific reference record.
 
 Boundary or limitation: The scan cannot prove accessibility for every user, device, browser, or assistive-technology pairing.
 

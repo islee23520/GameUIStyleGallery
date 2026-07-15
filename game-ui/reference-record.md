@@ -36,7 +36,7 @@ Complete the record from rendered evidence first, then add hierarchy and impleme
 
 ## Opinionated Guidance
 
-Prefer a smaller complete record over a large screenshot collection with missing state, hierarchy, or input evidence. A reference becomes useful when another reader can understand why it was classified and what remains unproven.
+Prefer a complete record to a large screenshot collection missing state, hierarchy, or input evidence. It must explain the classification and what remains unproven.
 
 ## Platform-Specific Guidance
 
@@ -47,11 +47,10 @@ Use the matching engine-specific Game UI guide to fill implementation fields. En
 - A source path is not rendered evidence.
 - A polished capture is not proof of edge-state behavior.
 - A single aspect ratio or input mode is not broad platform coverage.
-- Missing information must not be silently converted into a claim.
 
 ## Verification Contract
 
-Reject an entry when its primary player task, rendered state, source identity, or evidence boundary cannot be determined. Flag incomplete entries as draft rather than filling gaps by inference.
+Reject an entry if its primary player task, rendered state, source identity, or evidence boundary is unknown. Keep incomplete entries in draft; do not infer missing facts.
 
 ## Source, License, And Attribution
 

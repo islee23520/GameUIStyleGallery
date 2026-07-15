@@ -1,0 +1,19 @@
+{
+  "artifact_mode": "schema_only",
+  "fixture_independence": "related",
+  "handoff": {
+    "record": "consumer-reference/fixtures/valid-experimental.json",
+    "status": "declared"
+  },
+  "id": "valid-experimental",
+  "maturity": "experimental",
+  "owner": {
+    "enforcement": "placeholder",
+    "name": "Repository governance owner"
+  },
+  "review_independence": "single_account",
+  "schema_version": "1.0",
+  "support": {
+    "status": "active"
+  }
+}

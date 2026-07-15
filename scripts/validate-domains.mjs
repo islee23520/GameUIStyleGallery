@@ -11,6 +11,33 @@ const failures = [];
 const repository = "https://github.com/emilkowalski/skills";
 const revision = "220e8607c90b17337d210125777b7b695f26c221";
 const revisionPattern = /^[0-9a-f]{40}$/;
+const requiredCrossDomainStrings = [
+  {
+    relative: "guides/vocabulary.md",
+    required: "Use for: Layout, Motion, Design Engineering, Game UI, Platform Guides, root routing, and `domain` frontmatter on governed leaves.",
+    failure: "guides/vocabulary.md: missing canonical five-domain vocabulary list",
+  },
+  {
+    relative: "quality/index.md",
+    required: "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, and Platform Guides claims are admissible.",
+    failure: "quality/index.md: missing canonical five-domain quality scope",
+  },
+  {
+    relative: "README.md",
+    required: "without owning profiles, visual values, components, or a sixth domain",
+    failure: "README.md: missing canonical Consumer Reference boundary",
+  },
+  {
+    relative: "quality/index.md",
+    required: "without classifying it as a sixth domain",
+    failure: "quality/index.md: missing canonical Consumer Reference boundary",
+  },
+  {
+    relative: "quality/evidence/executable-evidence.md",
+    required: "Five governed domains and their declared leaves are reachable and attributed.",
+    failure: "quality/evidence/executable-evidence.md: missing canonical five-domain validator coverage",
+  },
+];
 
 const domains = [
   { slug: "layout", label: "Layout", leaves: [] },
@@ -32,6 +59,9 @@ const domains = [
       ["game-ui/screen-hierarchy.md"],
       ["game-ui/reference-record.md"],
       ["game-ui/unity/architecture.md", "README.md"],
+      ["game-ui/unity/ui-systems.md"],
+      ["game-ui/unity/cli-loop.md", "README.md"],
+      ["game-ui/unity/repository-map.md"],
     ],
   },
   {
@@ -47,6 +77,10 @@ const sourceOverrides = {
   "game-ui/unity/architecture.md": {
     repository: "https://github.com/annulusgames/UGUIAnimationSamples",
     revision: "343c8110e5683be209cc01ccb4cb986175e61643",
+  },
+  "game-ui/unity/cli-loop.md": {
+    repository: "https://github.com/hatayama/unity-cli-loop",
+    revision: "61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0",
   },
 };
 
@@ -102,6 +136,13 @@ function requireRootRoutes() {
   }
 }
 
+function requireCrossDomainConsistency() {
+  for (const check of requiredCrossDomainStrings) {
+    const content = stripFencedCodeBlocks(read(check.relative));
+    if (!content.includes(check.required)) failures.push(check.failure);
+  }
+}
+
 function checkManifest() {
   const relative = "DOMAINS.md";
   const content = stripFencedCodeBlocks(read(relative));
@@ -114,7 +155,13 @@ function checkManifest() {
   const pageRows = tableRows(section("## Page Manifest"));
   const expectedLabels = new Set(domains.map((domain) => domain.label));
   const exactLabels = (rows) => rows.length === domains.length && new Set(rows.map((row) => row[0])).size === domains.length && rows.every((row) => expectedLabels.has(row[0]));
-  let valid = Boolean(content) && exactLabels(domainRows) && exactLabels(pageRows) && content.includes(`snapshot \`${revision}\``);
+  let valid = exactLabels(domainRows)
+    && exactLabels(pageRows)
+    && content.includes(`snapshot \`${revision}\``)
+    && content.includes("## Shared Non-Domain Infrastructure")
+    && content.includes("[Consumer Reference](consumer-reference/index.md)")
+    && content.includes("infrastructure outside the five-domain contract")
+    && content.includes("cannot add a sixth domain row");
 
   for (const domain of domains) {
     const domainRow = domainRows.find((row) => row[0] === domain.label);
@@ -175,6 +222,10 @@ function checkLeaf(domain, relative, expectedSourcePath, titles) {
     } else if (metadata.source_revision && metadata.source_revision !== expectedSource.revision) {
       failures.push(`${relative}: unexpected source_revision ${metadata.source_revision}`);
     }
+  } else {
+    for (const field of ["source_repository", "source_path", "source_revision"]) {
+      if (metadata[field]) failures.push(`${relative}: locally authored leaf must omit ${field}`);
+    }
   }
   if (metadata.title) {
     if (titles.has(metadata.title)) failures.push(`${relative}: duplicate title ${metadata.title}`);
@@ -223,6 +274,7 @@ function rejectOmoDependencies() {
 checkManifest();
 read("quality/claim-records/stylegallery-multidomain-scope.md");
 requireRootRoutes();
+requireCrossDomainConsistency();
 const titles = new Set();
 let checkedLeaves = 0;
 for (const domain of domains) {

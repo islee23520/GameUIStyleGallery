@@ -1,0 +1,235 @@
+#!/usr/bin/env node
+
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
+import { validateItemSchema } from "./consumer-reference-schema.mjs";
+
+const repositoryRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const validator = path.join(repositoryRoot, "scripts", "validate-consumer-reference.mjs");
+const itemPath = "consumer-reference/fixtures/item.json";
+const schema = JSON.parse(fs.readFileSync(path.join(repositoryRoot, "consumer-reference", "schema", "item.schema.json"), "utf8"));
+
+const baseItem = {
+  artifact_mode: "schema_only",
+  fixture_independence: "related",
+  handoff: {
+    record: itemPath,
+    status: "declared",
+  },
+  id: "receiver-contract-fixture",
+  maturity: "experimental",
+  owner: {
+    enforcement: "placeholder",
+    name: "Repository governance owner",
+  },
+  review_independence: "single_account",
+  schema_version: "1.0",
+  support: {
+    status: "active",
+  },
+};
+
+const behaviorCases = [
+  { expect: null, name: "valid_declared_handoff" },
+  { expect: null, mutate: (item) => { item.handoff = { reason: "This fixture has no consumer-specific reference requirement.", status: "not_applicable" }; }, name: "valid_not_applicable_handoff" },
+  { expect: "handoff_required", mutate: (item) => { delete item.handoff; }, name: "missing_handoff" },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: "none", status: "not_applicable" }; }, name: "missing_not_applicable_reason" },
+  { expect: "stable_support_ended", mutate: (item) => { item.maturity = "stable"; item.support.status = "ended"; }, name: "stable_with_ended_support" },
+  { expect: "review_independence_boolean", mutate: (item) => { item.review_independence = false; }, name: "boolean_review_independence" },
+  { expect: "record_unresolved", mutate: (item) => { item.handoff.record = "consumer-reference/fixtures/missing.json"; }, name: "unresolved_record" },
+  { expect: "record_parent_segment", mutate: (item) => { item.handoff.record = "../outside.json"; }, name: "escaping_record" },
+  { expect: "record_absolute", mutate: (item) => { item.handoff.record = "/tmp/consumer-reference.json"; }, name: "absolute_record" },
+  { expect: "record_uri_scheme", mutate: (item) => { item.handoff.record = "https://example.com/consumer-reference.json"; }, name: "scheme_record" },
+  { expect: "record_network_path", mutate: (item) => { item.handoff.record = "//server/share/consumer-reference.json"; }, name: "network_record" },
+  { expect: "record_not_normalized", mutate: (item) => { item.handoff.record = "./consumer-reference/fixtures/item.json"; }, name: "non_normalized_record" },
+  { expect: "record_not_json", mutate: (item) => { item.handoff.record = "consumer-reference/fixtures/item.txt"; }, name: "non_json_record" },
+  { expect: "record_invalid_json", extraFiles: { "consumer-reference/fixtures/malformed.json": "{not json}\n" }, mutate: (item) => { item.handoff.record = "consumer-reference/fixtures/malformed.json"; }, name: "malformed_json_record" },
+  { expect: "record_redirect", link: "inside", mutate: (item) => { item.handoff.record = "consumer-reference/fixtures/redirect.json"; }, name: "filesystem_redirect" },
+  { expect: "record_symlink_escape", link: "outside", mutate: (item) => { item.handoff.record = "consumer-reference/fixtures/redirect.json"; }, name: "symlink_escape" },
+  { expect: "reverse_import", layout: "Import consumer-reference/fixtures/item.json from this Layout page.\n", name: "reverse_profile_import" },
+  { expect: "item_property_unknown", mutate: (item) => { item.unknown = true; }, name: "schema_unknown_item_property" },
+  { expect: "item_id_invalid", mutate: (item) => { item.id = "Invalid ID"; }, name: "schema_invalid_id" },
+  { expect: "schema_version_invalid", mutate: (item) => { item.schema_version = "2.0"; }, name: "schema_wrong_version" },
+  { expect: "owner_name_required", mutate: (item) => { delete item.owner.name; }, name: "schema_missing_owner_name" },
+  { expect: "handoff_property_unknown", mutate: (item) => { item.handoff.extra = true; }, name: "schema_unknown_handoff_property" },
+  { expect: "support_property_unknown", mutate: (item) => { item.support.extra = true; }, name: "schema_unknown_support_property" },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: "A b c.", status: "not_applicable" }; }, name: "schema_short_reason" },
+  { expect: "item_symlink_escape", itemLink: "outside", mutate: (item) => { item.handoff = { reason: "This linked item has no applicable consumer reference.", status: "not_applicable" }; }, name: "item_symlink_escape" },
+  { expect: "item_redirect", itemLink: "inside", mutate: (item) => { item.handoff = { reason: "This linked item has no applicable consumer reference.", status: "not_applicable" }; }, name: "item_filesystem_redirect" },
+  { expect: "reverse_import", name: "reverse_import_concatenation", patternData: "import(\"../consumer-\" + \"reference/fixtures/item.json\");\n" },
+  { expect: "reverse_import", name: "reverse_import_template", patternData: "import(`../${\"consumer\"}-${\"reference\"}/fixtures/item.json`);\n" },
+  { expect: "reverse_import", name: "reverse_import_path_join", patternData: "import(path.join(\"..\", \"consumer-\", \"reference\", \"fixtures\", \"item.json\"));\n" },
+  { expect: "handoff_consumer_reference_required", extraFiles: { "quality/claim.md": "Implementation handoff:\nBoundary: none.\n" }, name: "repository_handoff_omission" },
+];
+
+const requiredParityCases = schema.required.map((field) => ({
+  expect: field === "handoff" ? "handoff_required" : "item_field_required",
+  mutate: (item) => { delete item[field]; },
+  name: `schema_required_${field}`,
+  rules: [`item.required.${field}`],
+  schemaValid: false,
+}));
+const validArtifactCases = schema.properties.artifact_mode.enum.map((mode) => ({
+  expect: null,
+  mutate: (item) => { item.artifact_mode = mode; },
+  name: `schema_valid_artifact_mode_${mode}`,
+  rules: ["artifact_mode.enum"],
+  schemaValid: true,
+}));
+const parityCases = [
+  { expect: "item_object_required", name: "schema_item_type", rules: ["item.type"], schemaValid: false, value: [] },
+  { expect: "item_property_unknown", mutate: (item) => { item.extra = true; }, name: "schema_item_additional_properties", rules: ["item.additionalProperties"], schemaValid: false },
+  { expect: "artifact_mode_invalid", mutate: (item) => { item.artifact_mode = "experimental"; }, name: "schema_artifact_mode_enum", rules: ["artifact_mode.enum"], schemaValid: false },
+  { expect: "fixture_independence_related", mutate: (item) => { item.fixture_independence = "independent"; }, name: "schema_fixture_independence_const", rules: ["fixture_independence.const"], schemaValid: false },
+  { expect: "handoff_object_required", mutate: (item) => { item.handoff = []; }, name: "schema_handoff_type", rules: ["handoff.oneOf", "handoff.type"], schemaValid: false },
+  { expect: "handoff_status_invalid", mutate: (item) => { item.handoff.status = "unknown"; }, name: "schema_handoff_status_const", rules: ["handoff.status.const"], schemaValid: false },
+  { expect: "handoff_property_unknown", mutate: (item) => { item.handoff.extra = true; }, name: "schema_declared_additional_properties", rules: ["handoff.declared.additionalProperties"], schemaValid: false },
+  { expect: "record_required", mutate: (item) => { delete item.handoff.record; }, name: "schema_declared_required_record", rules: ["handoff.declared.required"], schemaValid: false },
+  { expect: "record_schema_invalid", mutate: (item) => { item.handoff.record = 3; }, name: "schema_record_type", rules: ["handoff.record.type"], schemaValid: false },
+  { expect: "record_schema_invalid", mutate: (item) => { item.handoff.record = "./consumer-reference//item.json"; }, name: "schema_record_pattern", rules: ["handoff.record.pattern"], schemaValid: false },
+  { expect: "handoff_property_unknown", mutate: (item) => { item.handoff = { extra: true, reason: "This reason satisfies the schema sentence rule.", status: "not_applicable" }; }, name: "schema_not_applicable_additional_properties", rules: ["handoff.not_applicable.additionalProperties"], schemaValid: false },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { status: "not_applicable" }; }, name: "schema_not_applicable_required_reason", rules: ["handoff.not_applicable.required"], schemaValid: false },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: 3, status: "not_applicable" }; }, name: "schema_reason_type", rules: ["handoff.reason.type"], schemaValid: false },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: "A b c.", status: "not_applicable" }; }, name: "schema_reason_min_length", rules: ["handoff.reason.minLength"], schemaValid: false },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: "😀 😀 😀 😀.", status: "not_applicable" }; }, name: "schema_reason_min_length_unicode_code_points_below_boundary", rules: ["handoff.reason.minLength"], schemaValid: false },
+  { expect: null, mutate: (item) => { item.handoff = { reason: "😀 😀 😀 😀😀😀.", status: "not_applicable" }; }, name: "schema_reason_min_length_unicode_code_points_exact_boundary", rules: ["handoff.reason.minLength", "handoff.reason.pattern"], schemaValid: true },
+  { expect: "not_applicable_reason_sentence", mutate: (item) => { item.handoff = { reason: "This reason lacks punctuation", status: "not_applicable" }; }, name: "schema_reason_pattern", rules: ["handoff.reason.pattern"], schemaValid: false },
+  { expect: "item_id_invalid", mutate: (item) => { item.id = "Invalid ID"; }, name: "schema_id_pattern", rules: ["id.type", "id.pattern"], schemaValid: false },
+  { expect: "maturity_invalid", mutate: (item) => { item.maturity = "generated"; }, name: "schema_maturity_enum", rules: ["maturity.enum"], schemaValid: false },
+  { expect: "owner_object_required", mutate: (item) => { item.owner = []; }, name: "schema_owner_type", rules: ["owner.type"], schemaValid: false },
+  { expect: "owner_property_unknown", mutate: (item) => { item.owner.extra = true; }, name: "schema_owner_additional_properties", rules: ["owner.additionalProperties"], schemaValid: false },
+  { expect: "owner_enforcement_placeholder", mutate: (item) => { delete item.owner.enforcement; }, name: "schema_owner_required_enforcement", rules: ["owner.required.enforcement"], schemaValid: false },
+  { expect: "owner_name_required", mutate: (item) => { delete item.owner.name; }, name: "schema_owner_required_name", rules: ["owner.required.name"], schemaValid: false },
+  { expect: "owner_enforcement_placeholder", mutate: (item) => { item.owner.enforcement = "verified"; }, name: "schema_owner_enforcement_const", rules: ["owner.enforcement.const"], schemaValid: false },
+  { expect: "owner_name_invalid", mutate: (item) => { item.owner.name = ""; }, name: "schema_owner_name_min_length", rules: ["owner.name.type", "owner.name.minLength"], schemaValid: false },
+  { expect: "removal_trigger_invalid", mutate: (item) => { item.removal_trigger = ""; }, name: "schema_removal_trigger", rules: ["removal_trigger.type", "removal_trigger.minLength"], schemaValid: false },
+  { expect: "replacement_invalid", mutate: (item) => { item.replacement = ""; }, name: "schema_replacement", rules: ["replacement.type", "replacement.minLength"], schemaValid: false },
+  { expect: "review_independence_single_account", mutate: (item) => { item.review_independence = "independent"; }, name: "schema_review_independence_const", rules: ["review_independence.const"], schemaValid: false },
+  { expect: "schema_version_invalid", mutate: (item) => { item.schema_version = "2.0"; }, name: "schema_version_const", rules: ["schema_version.const"], schemaValid: false },
+  { expect: "support_object_required", mutate: (item) => { item.support = []; }, name: "schema_support_type", rules: ["support.type"], schemaValid: false },
+  { expect: "support_property_unknown", mutate: (item) => { item.support.extra = true; }, name: "schema_support_additional_properties", rules: ["support.additionalProperties"], schemaValid: false },
+  { expect: "support_status_required", mutate: (item) => { delete item.support.status; }, name: "schema_support_required_status", rules: ["support.required.status"], schemaValid: false },
+  { expect: "support_status_invalid", mutate: (item) => { item.support.status = "paused"; }, name: "schema_support_status_enum", rules: ["support.status.enum"], schemaValid: false },
+  { expect: "stable_support_ended", mutate: (item) => { item.maturity = "stable"; item.support.status = "ended"; }, name: "schema_stable_support_all_of", rules: ["allOf.stable_ended"], schemaValid: false },
+  { expect: "deprecated_migration_required", mutate: (item) => { item.maturity = "deprecated"; }, name: "schema_deprecated_all_of", rules: ["allOf.deprecated_required"], schemaValid: false },
+  { expect: null, mutate: (item) => { item.maturity = "stable"; }, name: "schema_valid_stable_active", rules: ["maturity.enum", "allOf.stable_ended"], schemaValid: true },
+  { expect: null, mutate: (item) => { item.handoff = { reason: "This reference is intentionally not applicable.", status: "not_applicable" }; item.maturity = "deprecated"; item.removal_trigger = "Remove after migration completes."; item.replacement = "replacement-item"; item.support.status = "ended"; }, name: "schema_valid_deprecated", rules: ["handoff.not_applicable.required", "handoff.reason.type", "handoff.reason.minLength", "handoff.reason.pattern", "allOf.deprecated_required", "support.status.enum"], schemaValid: true },
+  ...validArtifactCases,
+  ...requiredParityCases,
+];
+const cases = [...behaviorCases, ...parityCases];
+const expectedSchemaRuleNames = [
+  "item.type", "item.additionalProperties", ...schema.required.map((field) => `item.required.${field}`),
+  "artifact_mode.enum", "fixture_independence.const", "handoff.oneOf", "handoff.type", "handoff.status.const",
+  "handoff.declared.additionalProperties", "handoff.declared.required", "handoff.record.type", "handoff.record.pattern",
+  "handoff.not_applicable.additionalProperties", "handoff.not_applicable.required", "handoff.reason.type", "handoff.reason.minLength", "handoff.reason.pattern",
+  "id.type", "id.pattern", "maturity.enum", "owner.type", "owner.additionalProperties", "owner.required.enforcement", "owner.required.name",
+  "owner.enforcement.const", "owner.name.type", "owner.name.minLength", "removal_trigger.type", "removal_trigger.minLength",
+  "replacement.type", "replacement.minLength", "review_independence.const", "schema_version.const", "support.type",
+  "support.additionalProperties", "support.required.status", "support.status.enum", "allOf.stable_ended", "allOf.deprecated_required",
+];
+
+function cloneItem() {
+  return JSON.parse(JSON.stringify(baseItem));
+}
+
+function findingCodes(output) {
+  if (!Array.isArray(output.failures)) return [];
+  return output.failures.flatMap((failure) => {
+    if (typeof failure === "string") return [failure];
+    return typeof failure?.code === "string" ? [failure.code] : [];
+  });
+}
+
+function writeFixture(testCase) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), `stylegallery-consumer-reference-${testCase.name}-`));
+  let externalRoot;
+  const item = Object.hasOwn(testCase, "value") ? structuredClone(testCase.value) : cloneItem();
+  testCase.mutate?.(item);
+  const files = {
+    "CATALOG.md": "# Catalog\n",
+    [itemPath]: `${JSON.stringify(item, null, 2)}\n`,
+    "layout/index.md": testCase.layout ?? "# Layout\n",
+    "patterns/index.md": "# Patterns\n",
+    "quality/handoff.md": "Implementation handoff:\nConsumer reference: not_applicable\nConsumer reference reason: This fixture has no consumer-specific reference record.\n",
+    "scripts/pattern-data.mjs": testCase.patternData ?? "export const patterns = [];\n",
+    ...(testCase.extraFiles ?? {}),
+  };
+  for (const [relative, content] of Object.entries(files)) {
+    const target = path.join(root, relative);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, content);
+  }
+  if (testCase.link) {
+    const link = path.join(root, "consumer-reference", "fixtures", "redirect.json");
+    if (testCase.link === "inside") {
+      fs.symlinkSync(path.join(root, itemPath), link);
+    } else {
+      externalRoot = fs.mkdtempSync(path.join(os.tmpdir(), "stylegallery-consumer-reference-outside-"));
+      const external = path.join(externalRoot, "record.json");
+      fs.writeFileSync(external, "{}\n");
+      fs.symlinkSync(external, link);
+    }
+  }
+  if (testCase.itemLink) {
+    const itemTarget = path.join(root, itemPath);
+    fs.rmSync(itemTarget);
+    if (testCase.itemLink === "inside") {
+      const actual = path.join(root, "consumer-reference", "fixtures", "actual-item.json");
+      fs.writeFileSync(actual, `${JSON.stringify(item, null, 2)}\n`);
+      fs.symlinkSync(actual, itemTarget);
+    } else {
+      externalRoot = fs.mkdtempSync(path.join(os.tmpdir(), "stylegallery-consumer-reference-item-outside-"));
+      const external = path.join(externalRoot, "item.json");
+      fs.writeFileSync(external, `${JSON.stringify(item, null, 2)}\n`);
+      fs.symlinkSync(external, itemTarget);
+    }
+  }
+  return { externalRoot, item, root };
+}
+
+function runCase(testCase) {
+  const fixture = writeFixture(testCase);
+  try {
+    const child = spawnSync(process.execPath, [validator, "--item", itemPath, "--json"], {
+      cwd: fixture.root,
+      encoding: "utf8",
+    });
+    const output = JSON.parse(child.stdout);
+    const codes = findingCodes(output);
+    const accepted = child.status === 0 && output.ok && output.scaffold !== true;
+    const rejected = child.status !== 0 && !output.ok && codes.includes(testCase.expect);
+    const schemaCodes = validateItemSchema(fixture.item, schema).map((finding) => finding.code);
+    const schemaParity = testCase.schemaValid === undefined || (schemaCodes.length === 0) === testCase.schemaValid;
+    return {
+      actual: { codes, ok: output.ok, scaffold: output.scaffold === true, schemaCodes, status: child.status },
+      expected: testCase.expect ?? "ok:true and exit:0",
+      name: testCase.name,
+      ok: (testCase.expect === null ? accepted : rejected) && schemaParity,
+      rules: testCase.rules ?? [],
+    };
+  } finally {
+    fs.rmSync(fixture.root, { force: true, recursive: true });
+    if (fixture.externalRoot) fs.rmSync(fixture.externalRoot, { force: true, recursive: true });
+  }
+}
+
+const results = cases.map(runCase);
+const failures = results
+  .filter((result) => !result.ok)
+  .map((result) => `missing_semantic:${result.name}:${result.expected}`);
+const coveredSchemaRules = new Set(results.flatMap((result) => result.rules));
+const expectedSchemaRules = new Set(expectedSchemaRuleNames);
+const missingSchemaRules = [...expectedSchemaRules].filter((rule) => !coveredSchemaRules.has(rule));
+failures.push(...missingSchemaRules.map((rule) => `missing_schema_rule:${rule}`));
+const report = {
+  failures,
+  ok: failures.length === 0,
+  results,
+  schemaParity: { coveredRules: [...coveredSchemaRules].sort(), missingRules: missingSchemaRules },
+};
+
+console.log(JSON.stringify(report, null, 2));
+process.exit(report.ok ? 0 : 1);
