@@ -1,5 +1,16 @@
 # StyleGallery Log
 
+## 2026-07-15
+
+- Added experimental Unity scene and prefab system guides covering additive bootstrap and persistent lifetime, plus asset-to-instance, variant, nesting, unpacking, pooling, and teardown decisions.
+- Replaced the Unity hub's planned scene/prefab placeholders with real Band 2b routes and validator-enforced nested-hub navigation.
+- Added an experimental Unity engine-animation pack with separate 3D character/humanoid and 2D sprite/skeletal routes, plus explicit UI-motion handoffs.
+- Expanded the Unity hub beyond UI-only implementation with a first engine-systems band and planned scene, prefab, and content pack hooks.
+- Reinforced Game UI as three navigable bands: engine-neutral guidance, Unity implementation, and bounded Unity organization discovery.
+- Added a Unity sub-hub with implementation and discovery reading orders, and routed all Unity leaves through it.
+- Deepened Unity stack selection, ownership mapping, CLI evidence limits, and discovery-not-authority boundaries without refreshing the tracked 804-repository snapshot.
+- Completed an Aside Browser membership re-check of all 804 Unity-Technologies public repositories; membership and fork/archive states were unchanged, so the tracked inventory was not rewritten.
+
 ## 2026-07-13
 
 - Added Game UI as an experimental domain for engine-neutral classification and hierarchy plus named engine implementation subtrees.

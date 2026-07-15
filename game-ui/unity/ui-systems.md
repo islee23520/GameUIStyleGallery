@@ -32,6 +32,30 @@ This locally authored comparison helps a Game UI reviewer identify which hierarc
 5. Record serialized assets, runtime-created state, and editor-only tooling.
 6. Label every example as current system source, current example, adjacent observation, or historical material.
 
+## Decision Gate
+
+Choose a stack only after answering these questions. A mixed result is a reason to name bridge ownership, not to force one system across every surface.
+
+| Gate | uGUI is a strong candidate when | UI Toolkit is a strong candidate when | NGUI or another legacy stack remains relevant when |
+| --- | --- | --- | --- |
+| Existing ownership | Production screens already depend on Canvas, GameObject components, prefabs, and EventSystem navigation. | Production screens already depend on UIDocument, Panel Settings, UXML/USS, and VisualElement focus or binding. | Shipped content, tools, or migration scope already depend on the legacy tree and replacing it is not justified. |
+| Interaction shape | World-space UI, camera-linked Canvas behavior, or mature GameObject interaction is central. | Document-style trees, retained-mode styling, binding, or shared runtime/editor UI is central. | Required behavior is proven in the existing stack and bridge costs are explicitly owned. |
+| Team evidence | The team can profile Canvas rebuilds, navigation, prefab lifetime, and render ordering on target devices. | The team can inspect panels, focus, event propagation, document lifetime, and target-version runtime limitations. | The team can maintain the pinned version, source access, input bridge, and migration boundary. |
+| Stop condition | Do not choose it only because it is familiar or because a sample uses it. | Do not choose it only because UXML/USS resembles web technology. | Do not retain it only because replacement feels risky; record measured migration and support constraints. |
+
+For a new surface, record the player task, render space, supported input modes, accessibility target, localization pressure, animation needs, target devices, tooling needs, and coexistence constraints. Then select the smallest stack boundary that owns those requirements.
+
+## Failure Modes
+
+| Failure mode | What goes wrong | Required evidence |
+| --- | --- | --- |
+| Stack by fashion | A project chooses the newest or most familiar system without matching the surface. | Decision-gate answers tied to the actual player task and target version. |
+| Mixed stack without a bridge owner | Sorting, input, focus, scaling, or teardown crosses systems implicitly. | Named bridge owner, direction of control, and failure behavior. |
+| Sample architecture promoted to policy | A demo hierarchy or package choice becomes a production default. | Separate sample facts from project requirements and runtime measurements. |
+| Version collapse | Current manuals, package source, old examples, and legacy repositories are treated as one API surface. | Exact editor, package, repository SHA, and source path for every claim. |
+| Hierarchy equivalence | Transform children, VisualElements, and NGUI widgets are assumed to share ownership semantics. | Stack-local tree owner plus mapping back to engine-neutral hierarchy roles. |
+| Input inferred from pointer success | Clicks work, but keyboard, gamepad, cancellation, focus return, or modality fails. | Interaction evidence for every supported input mode and modal transition. |
+
 ## System Comparison
 
 | Axis | uGUI at the pinned Unity 6000.3 source | UI Toolkit at the pinned Unity 6000.3 reference source | NGUI at the pinned repository snapshot |
@@ -81,5 +105,5 @@ Record exact revisions, open the relevant Scene or document, and capture the ser
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).
-Next: [Unity CLI Loop](cli-loop.md).
+Parent: [Unity Game UI](index.md).
+Next: [Unity Game UI](index.md).
