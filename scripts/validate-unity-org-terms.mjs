@@ -58,6 +58,7 @@ function validateIndex(index, inventory) {
   requireCondition(Array.isArray(inventory) && inventory.length === 804, "inventory must contain 804 rows");
 
   const terms = new Set();
+  const inventoryByName = new Map(inventory.map((repository) => [repository.full_name, repository]));
   let exampleCount = 0;
   for (const term of index.terms) {
     requireCondition(term && typeof term === "object", "term entry must be an object");
@@ -69,6 +70,10 @@ function validateIndex(index, inventory) {
     terms.add(term.term);
     requireCondition(Array.isArray(term.aliases), `aliases must be an array: ${term.term}`);
     requireCondition(Number.isInteger(term.match_count) && term.match_count >= 0, `match_count invalid: ${term.term}`);
+    const clusterTotal = Object.values(term.primary_cluster_histogram).reduce((sum, count) => sum + count, 0);
+    const relevanceTotal = Object.values(term.ui_relevance_histogram).reduce((sum, count) => sum + count, 0);
+    requireCondition(clusterTotal === term.match_count, `primary cluster histogram count drift: ${term.term}`);
+    requireCondition(relevanceTotal === term.match_count, `UI relevance histogram count drift: ${term.term}`);
     requireCondition(Array.isArray(term.examples), `examples must be an array: ${term.term}`);
     requireCondition(term.examples.length <= 12, `examples exceed 12: ${term.term}`);
     requireCondition(term.examples.length <= term.match_count, `examples longer than match_count: ${term.term}`);
@@ -83,6 +88,10 @@ function validateIndex(index, inventory) {
         example.html_url === `https://github.com/${example.full_name}`,
         `example URL mismatch: ${example.full_name}`,
       );
+      const repository = inventoryByName.get(example.full_name);
+      requireCondition(repository, `example missing from inventory: ${example.full_name}`);
+      requireCondition(example.primary_cluster === repository.primary_cluster, `example cluster drift: ${example.full_name}`);
+      requireCondition(example.ui_relevance === repository.ui_relevance, `example UI relevance drift: ${example.full_name}`);
       exampleCount += 1;
     }
   }
@@ -95,7 +104,7 @@ function validateIndex(index, inventory) {
   return { termCount: terms.size, exampleCount };
 }
 
-function validateLexicon(lexicon) {
+function validateLexicon(lexicon, index) {
   requireCondition(typeof lexicon === "string" && lexicon.includes("---"), "lexicon frontmatter missing");
   requireCondition(lexicon.includes("domain: game-ui"), "lexicon domain must be game-ui");
   requireCondition(lexicon.includes("lifecycle: experimental"), "lexicon lifecycle must be experimental");
@@ -107,6 +116,14 @@ function validateLexicon(lexicon) {
   for (const section of requiredLexiconSections) {
     requireCondition(lexicon.includes(`## ${section}`), `missing section: ${section}`);
   }
+  for (const term of index.terms) {
+    const escapedTerm = term.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const entry = lexicon.match(new RegExp(`### ${escapedTerm}\\n([\\s\\S]*?)(?=\\n### |\\n## |$)`));
+    if (!entry) continue;
+    const visibleCount = entry[1].match(/- \*\*Matches:\*\*\s*(\d+)/);
+    requireCondition(visibleCount, `lexicon match count missing: ${term.term}`);
+    requireCondition(Number(visibleCount[1]) === term.match_count, `lexicon match count drift: ${term.term}`);
+  }
 }
 
 async function main() {
@@ -115,7 +132,7 @@ async function main() {
   const inventory = JSON.parse(await readFile(options.inventory, "utf8"));
   const lexicon = await readFile(options.lexicon, "utf8");
   const stats = validateIndex(index, inventory);
-  validateLexicon(lexicon);
+  validateLexicon(lexicon, index);
   const result = { ok: true, ...stats, repositoryCount: 804 };
   if (process.argv.includes("--json")) {
     console.log(JSON.stringify(result, null, 2));

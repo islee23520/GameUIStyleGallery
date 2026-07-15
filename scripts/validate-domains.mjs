@@ -54,16 +54,28 @@ const domains = [
   {
     slug: "game-ui",
     label: "Game UI",
+    indexRoutes: [
+      "game-ui/classification.md",
+      "game-ui/screen-hierarchy.md",
+      "game-ui/reference-record.md",
+      "game-ui/unity/index.md",
+    ],
     leaves: [
       ["game-ui/classification.md"],
       ["game-ui/screen-hierarchy.md"],
       ["game-ui/reference-record.md"],
+      ["game-ui/unity/index.md"],
       ["game-ui/unity/architecture.md", "README.md"],
       ["game-ui/unity/ui-systems.md"],
       ["game-ui/unity/cli-loop.md", "README.md"],
       ["game-ui/unity/repository-map.md"],
       ["game-ui/unity/org-wiki.md"],
       ["game-ui/unity/org-term-lexicon.md"],
+      ["game-ui/unity/animation/index.md"],
+      ["game-ui/unity/animation/animation-3d.md"],
+      ["game-ui/unity/animation/animation-2d.md"],
+      ["game-ui/unity/scene/index.md"],
+      ["game-ui/unity/prefab/index.md"],
     ],
   },
   {
@@ -194,7 +206,8 @@ function checkIndex(domain) {
   if (!/^Out of scope:\s*\S/m.test(content)) failures.push(`${relative}: missing Out of scope declaration`);
   if (!/^Parent: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Parent navigation link`);
   if (!/^Next: \[[^\]]+\]\([^)]+\)/m.test(content)) failures.push(`${relative}: missing Next navigation link`);
-  for (const [leaf] of domain.leaves) {
+  const indexRoutes = domain.indexRoutes ?? domain.leaves.map(([leaf]) => leaf);
+  for (const leaf of indexRoutes) {
     const target = path.relative(domain.slug, leaf);
     if (!content.match(new RegExp(`\\[[^\\]]+\\]\\(${target.replaceAll(".", "\\.")}\\)`))) {
       failures.push(`${relative}: missing leaf route ${target}`);
@@ -239,6 +252,23 @@ function checkLeaf(domain, relative, expectedSourcePath, titles) {
   }
   if (!/^Parent: \[[^\]]+\]\([^)]+\)/m.test(body)) failures.push(`${relative}: missing Parent navigation link`);
   if (!/^Next: \[[^\]]+\]\([^)]+\)/m.test(body)) failures.push(`${relative}: missing Next navigation link`);
+  if (["game-ui/unity/scene/index.md", "game-ui/unity/prefab/index.md"].includes(relative)) {
+    if (!/^Parent: \[[^\]]+\]\(\.\.\/index\.md\)/m.test(body)) failures.push(`${relative}: Parent must route through Unity hub`);
+    if (!/^Next: \[[^\]]+\]\(\.\.\/index\.md\)/m.test(body)) failures.push(`${relative}: Next must return to Unity hub`);
+  } else if (relative === "game-ui/unity/animation/index.md") {
+    if (!/^Parent: \[[^\]]+\]\(\.\.\/index\.md\)/m.test(body)) failures.push(`${relative}: Parent must route through Unity hub`);
+    if (!/^Next: \[[^\]]+\]\(animation-(?:3d|2d)\.md\)/m.test(body)) failures.push(`${relative}: Next must enter an animation path`);
+  } else if (relative.startsWith("game-ui/unity/animation/")) {
+    if (!/^Parent: \[[^\]]+\]\(index\.md\)/m.test(body)) failures.push(`${relative}: Parent must route through Animation hub`);
+    if (!/^Next: \[[^\]]+\]\(index\.md\)/m.test(body)) failures.push(`${relative}: Next must return to Animation hub`);
+  } else if (relative.startsWith("game-ui/unity/") && relative !== "game-ui/unity/index.md") {
+    if (!/^Parent: \[[^\]]+\]\(index\.md\)/m.test(body)) failures.push(`${relative}: Parent must route through Unity hub`);
+    if (!/^Next: \[[^\]]+\]\(index\.md\)/m.test(body)) failures.push(`${relative}: Next must return to Unity hub`);
+  }
+  if (["game-ui/screen-hierarchy.md", "game-ui/reference-record.md"].includes(relative)
+    && !/^Next: \[[^\]]+\]\(unity\/index\.md\)/m.test(body)) {
+    failures.push(`${relative}: Next must enter Unity hub`);
+  }
   if (markdownLinkDestinations(content).some(isOmoDependency)) failures.push(`${relative}: tracked document must not depend on .omo`);
   if (metadata.lifecycle === "experimental" && /canonical universal policy/i.test(body)) {
     failures.push(`${relative}: experimental document claims canonical authority`);

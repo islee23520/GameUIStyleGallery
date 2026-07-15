@@ -15,6 +15,8 @@ Primary role: bounded organization-wide source discovery for Unity Game UI resea
 
 > **Independent research — not affiliated with or endorsed by Unity Technologies. Snapshot evidence, not a support-status catalog.**
 
+> **Discovery is not authority.** A cluster or repository row is a route to inspect, not implementation guidance. Pin the relevant SHA and version, then return through [Unity UI Systems](ui-systems.md) and [Unity UI Architecture](architecture.md).
+
 This locally authored index compresses **804** public repositories into one tracked data inventory and 20 exclusive primary clusters. It is not produced, sponsored, endorsed, or maintained by Unity Technologies. Organization placement does not establish authorship of forked, mirrored, vendored, or third-party content. Each repository retains its own license and terms.
 
 The machine-readable source is [`data/unity-technologies-public-repositories.json`](data/unity-technologies-public-repositories.json). It records one row per captured public repository, including stable identity, repository URL, raw fork/archive/template state, default branch and observed HEAD when resolved, snapshot time, license metadata, UI relevance, and one exclusive `primary_cluster`.
@@ -65,6 +67,86 @@ First match wins. Fork and archive gates precede subjects; UI authority precedes
 
 `localization-text` remains a reserved search facet with zero primary rows in this snapshot. A zero primary count does not prove absence; use UI relevance and repository-specific inspection.
 
+## Bounded Cluster Deep Dives
+
+Each route below exposes three to seven leads from its inventory cluster. The list is intentionally selective: it teaches how to enter the cluster, not how to reproduce all 804 rows in prose.
+
+### game-ui-primary
+
+**Game UI use boundary:** Start here for explicit UI system source, UI/input integration, or clearly scoped UI examples. Refine every lead through the repository-map disposition because this cluster mixes current sources, current samples, and historical demos.
+
+| Lead repository | Bounded use |
+| --- | --- |
+| [uGUI](https://github.com/Unity-Technologies/uGUI) | Match the package revision before tracing Canvas, Graphic, EventSystem, controls, scrolling, or TMP. |
+| [InputSystem](https://github.com/Unity-Technologies/InputSystem) | Inspect UI input-module and action-map integration; it does not own rendering or layout. |
+| [BagelGame](https://github.com/Unity-Technologies/BagelGame) | Observe a Unity 6.3 UI Toolkit game sample without turning sample structure into authority. |
+| [ui-toolkit-manual-code-examples](https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples) | Find narrow documentation examples for UXML, USS, binding, and custom controls. |
+| [a11y-public-sample](https://github.com/Unity-Technologies/a11y-public-sample) | Inspect a version-bounded uGUI accessibility sample, then test on live assistive technology. |
+| [UIElementsExamples](https://github.com/Unity-Technologies/UIElementsExamples) | Use only for historical editor/UIElements technique lineage. |
+| [UIToolkitUnityRoyaleRuntimeDemo](https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo) | Use only as a dated runtime UI Toolkit observation. |
+
+Return to [Unity UI Systems](ui-systems.md) to classify the stack, then [Unity UI Architecture](architecture.md) to assign ownership.
+
+### platform-mobile
+
+**Game UI use boundary:** Use this cluster for native packaging, notifications, platform services, device logging, and mobile performance constraints that can change UI states or verification. It does not contain the tracked NotchSafeAreaSample, which is routed separately by UI relevance.
+
+| Lead repository | Bounded use |
+| --- | --- |
+| [com.unity.mobile.notifications](https://github.com/Unity-Technologies/com.unity.mobile.notifications) | Trace notification-driven state entry and platform permission dependencies. |
+| [com.unity.mobile.logcat](https://github.com/Unity-Technologies/com.unity.mobile.logcat) | Gather Android device logs for UI/input failures; editor tooling is not runtime UI. |
+| [BackgroundDownload](https://github.com/Unity-Technologies/BackgroundDownload) | Inspect mobile background-transfer constraints that may drive progress/error UI. |
+| [GooglePlayLicenseVerification](https://github.com/Unity-Technologies/GooglePlayLicenseVerification) | Treat license results as an external state dependency, not a screen design. |
+| [jpt-mobile-perf-runner](https://github.com/Unity-Technologies/jpt-mobile-perf-runner) | Use for device performance-test context, not UI architecture. |
+
+For safe-area discovery, open [NotchSafeAreaSample in the concentrated adjacent table](repository-map.md#ui-adjacent-references) and verify it on current target devices. Return to [Unity UI Architecture](architecture.md) for ownership and device-state handling.
+
+### editor-tooling
+
+**Game UI use boundary:** Use this cluster to understand authoring, profiling, build, audit, and capture workflows. An editor window, inspector, or UI Toolkit editor surface is not evidence for runtime product UI.
+
+| Lead repository | Bounded use |
+| --- | --- |
+| [ProjectAuditor](https://github.com/Unity-Technologies/ProjectAuditor) | Find project-analysis workflows that may expose UI asset or performance debt. |
+| [MemorySnapshotDataTools](https://github.com/Unity-Technologies/MemorySnapshotDataTools) | Investigate memory evidence behind interface regressions without borrowing its editor UI. |
+| [BuildReportInspector](https://github.com/Unity-Technologies/BuildReportInspector) | Inspect build-report authoring surfaces and packaging evidence. |
+| [AssetBundles-Browser](https://github.com/Unity-Technologies/AssetBundles-Browser) | Study asset-bundle authoring workflow only; do not infer runtime screen ownership. |
+| [GenericFrameRecorder](https://github.com/Unity-Technologies/GenericFrameRecorder) | Use capture tooling as evidence support, not as product UI guidance. |
+
+Return to [Unity UI Architecture](architecture.md); runtime owners must be demonstrated in the player build, not inferred from editor tooling.
+
+### graphics-rendering
+
+**Game UI use boundary:** Use this cluster only for display, render-pipeline, shader, vector, pixel-density, and composition constraints that affect interface output. It does not choose a UI stack or visual style.
+
+| Lead repository | Bounded use |
+| --- | --- |
+| [Graphics](https://github.com/Unity-Technologies/Graphics) | Match the render-pipeline/version line before tracing display or composition constraints. |
+| [vector-graphics-samples](https://github.com/Unity-Technologies/vector-graphics-samples) | Inspect vector asset/rendering behavior that can constrain UI assets. |
+| [2d-pixel-perfect](https://github.com/Unity-Technologies/2d-pixel-perfect) | Evaluate pixel-density and camera constraints for pixel-oriented interfaces. |
+| [2d-renderer-samples](https://github.com/Unity-Technologies/2d-renderer-samples) | Observe 2D renderer behavior without treating samples as UI authority. |
+| [Industry-Product-Configurator](https://github.com/Unity-Technologies/Industry-Product-Configurator) | Use only as a product/rendering observation in its own template context. |
+
+Return to [Unity UI Systems](ui-systems.md) for stack responsibilities and [Unity UI Architecture](architecture.md) for display/sorting ownership.
+
+### xr-ar
+
+**Game UI use boundary:** Use this cluster for world-space presentation, spatial interaction, device input, ray interaction, locomotion, and headset constraints. XR samples do not establish a universal screen hierarchy or comfort result.
+
+| Lead repository | Bounded use |
+| --- | --- |
+| [XR-Interaction-Toolkit-Examples](https://github.com/Unity-Technologies/XR-Interaction-Toolkit-Examples) | Inspect version-bounded spatial interaction and world-space UI observations. |
+| [arfoundation-samples](https://github.com/Unity-Technologies/arfoundation-samples) | Trace AR session/device constraints that can drive overlay states. |
+| [VR-Spectator-Sample](https://github.com/Unity-Technologies/VR-Spectator-Sample) | Study spectator/display composition in its sample context. |
+| [EditorXR](https://github.com/Unity-Technologies/EditorXR) | Historical/editor spatial interaction research; not runtime product UI authority. |
+| [XRLineRenderer](https://github.com/Unity-Technologies/XRLineRenderer) | Inspect a narrow spatial pointer/line rendering dependency. |
+
+Return to [Unity UI Architecture](architecture.md) to record world-space root, input owner, focus/selection transfer, camera, sorting, and teardown.
+
+### Residual, Fork, And Archive Noise
+
+Do not browse the 175-row residual, 356 forks, or 32 archive-gated rows as default guidance. Open a named row only when a concrete question or term points to it, preserve raw fork/archive provenance, assign a repository-map disposition, pin the relevant source, and return to the architecture/system route. No per-repository prose pages are generated from these groups.
+
 ## UI Authority Route
 
 The current source triangle is deliberately split:
@@ -104,6 +186,7 @@ Raw `fork`, `archived`, and `is_template` values remain in the inventory. GitHub
 ## Completeness And Refresh Limits
 
 - The snapshot excludes private, deleted, transferred, and non-default-branch-only material.
+- An Aside Browser membership re-check at `2026-07-15T07:58:42Z` completed all 9 populated pages and confirmed `public_repos=804`, with page 10 empty: 0 repositories added, 0 removed, 0 fork-state flips, and 0 archive-state flips. It observed 15 star-count drifts and 10 `pushed_at` drifts, so the tracked inventory was not rewritten because membership was unchanged.
 - Five stored tree scans were truncated and two zero-size repositories returned tree-fetch errors; absence claims do not rely on those trees.
 - Some repository HEADs, versions, licenses, lifecycle statements, and replacement paths remain unresolved.
 - X/Twitter evidence was unavailable during the research session. No post, handle, date, URL, or quotation is inferred from that absence.
@@ -126,6 +209,7 @@ Run `node scripts/validate-unity-org-wiki.mjs --json` and `node scripts/test-val
 ## Source, License, And Attribution
 
 - Inventory basis: public GitHub repository metadata and captured default-branch inspection at `2026-07-14T12:59:16Z`.
+- Membership re-check: Aside Browser membership re-check completed at `2026-07-15T07:58:42Z`; membership and fork/archive states were stable against the tracked inventory.
 - Inventory identity before tracked projection: SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`.
 - Repository licenses and reuse terms differ. Follow each repository's recorded and current license before copying code or assets.
 - Reuse form: locally authored taxonomy, discovery index, and metadata projection; no Unity logos, trade dress, or first-person organizational voice.
@@ -142,5 +226,5 @@ Consumer reference reason: This implementation adds repository provenance and di
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).
-Next: [Unity Organization Term Lexicon](org-term-lexicon.md).
+Parent: [Unity Game UI](index.md).
+Next: [Unity Game UI](index.md).

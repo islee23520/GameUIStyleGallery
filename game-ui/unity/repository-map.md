@@ -13,9 +13,13 @@ reviewed_on: 2026-07-14
 
 Primary role: Unity public-source discovery and authority map.
 
+> **Discovery is not authority.** This independent snapshot is not affiliated with or endorsed by Unity Technologies. Use it to find a lead, pin the relevant SHA and version, then return through [Unity UI Systems](ui-systems.md) and [Unity UI Architecture](architecture.md) before making an implementation claim.
+
 ## Repository Boundary
 
 This locally authored map classifies the Unity-Technologies public organization snapshot captured at `2026-07-14T12:59:16Z`. GitHub organization metadata and fully paginated public-repository enumeration both returned 804 repositories. The stored classified JSON inventory had SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657` and recorded 59 archived repositories, 356 forks, and 4 templates.
+
+An Aside Browser membership re-check at `2026-07-15T07:58:42Z` again found 804 public repositories, with 0 additions, removals, fork-state flips, or archive-state flips, so the tracked inventory was not rewritten.
 
 The map is a discovery index. A repository's presence, name, archive flag, or push date does not make it a current UI-system source.
 
@@ -44,6 +48,48 @@ The map is a discovery index. A repository's presence, name, archive flag, or pu
 | `no-ui-signal` | 490 | No UI signal was located in metadata, topics, default-branch path scan, or counter-search. |
 
 Total: 804 repositories.
+
+## Concentrated UI Signals
+
+These two tables are the human-readable projection of every tracked `primary-ui-source` row (8) and every `ui-adjacent-reference` row (5). They are discovery dispositions, not support claims. Forked or archived repositories would not appear as default guidance; none of these 13 tracked rows is forked or archived in this snapshot.
+
+### Primary UI Sources
+
+| Repository | Purpose | Open when | Do not open when | Return path |
+| --- | --- | --- | --- | --- |
+| [uGUI](https://github.com/Unity-Technologies/uGUI) | GameObject/Canvas UI and TextMesh Pro package source. | Tracing Canvas, Graphic, Selectable, EventSystem, ScrollRect, or TMP ownership. | Choosing UI Toolkit behavior or copying mutable `main` as a version contract. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [BagelGame](https://github.com/Unity-Technologies/BagelGame) | Unity 6.3 full-game UI Toolkit sample. | Studying a version-bounded runtime screen flow, tests, input actions, or UI assets. | Treating stars, sample choices, or one game's structure as general authority. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [ui-toolkit-manual-code-examples](https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples) | Small UI Toolkit manual code examples. | Locating a narrow UXML, USS, binding, or custom-control documentation example. | Looking for whole-game runtime architecture or product visual defaults. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [a11y-public-sample](https://github.com/Unity-Technologies/a11y-public-sample) | Unity 2023.3 uGUI accessibility sample. | Inspecting a bounded screen-reader or accessible-control example. | Claiming accessibility outcomes without target-platform assistive-technology tests. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [UIElementsExamples](https://github.com/Unity-Technologies/UIElementsExamples) | Early UIElements editor examples. | Researching historical editor bindings, inspectors, or reusable UXML lineage. | Establishing a current runtime UI Toolkit contract. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [UIElementsUniteCPH2019RuntimeDemo](https://github.com/Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo) | Unite Copenhagen 2019 runtime UIElements demo. | Studying dated runtime UXML/USS technique lineage. | Treating an unarchived historical demo as current guidance. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [UIElementsUniteLATurretDemo](https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo) | IMGUI and UIElements editor/runtime comparison demo. | Comparing historical immediate- and retained-mode implementations. | Selecting a modern production stack or lifecycle policy. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [UIToolkitUnityRoyaleRuntimeDemo](https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo) | Historical Unity Royale runtime UI Toolkit demo. | Inspecting dated screen operators, UI management, or runtime element composition. | Assuming its dependencies or architecture match a current Unity release. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+
+### UI-Adjacent References
+
+| Repository | Purpose | Open when | Do not open when | Return path |
+| --- | --- | --- | --- | --- |
+| [UnityCsReference](https://github.com/Unity-Technologies/UnityCsReference) | Managed engine/editor reference source containing UIElements modules. | Tracing version-matched Panel, VisualElement, focus, binding, or collection internals. | Treating `master` as a release pin, a package mirror, or the complete engine. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [InputSystem](https://github.com/Unity-Technologies/InputSystem) | Input package source and UI input integration. | Tracing action maps, player input, pointer navigation, or `InputSystemUIInputModule`. | Looking for rendering, layout, visual styling, or screen ownership authority. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [NotchSafeAreaSample](https://github.com/Unity-Technologies/NotchSafeAreaSample) | Safe-area handling sample for notched mobile displays. | Finding a device-bound safe-area implementation lead. | Treating an old sample as proof across current devices, orientations, or platform versions. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [HDR-Calibration-Sample](https://github.com/Unity-Technologies/HDR-Calibration-Sample) | HDR display calibration and UI observation sample. | Studying display-state, brightness, calibration, or HDR UI constraints. | Using calibration UI as a general screen architecture or visual-design authority. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+| [vector-graphics-samples](https://github.com/Unity-Technologies/vector-graphics-samples) | Vector Graphics package sample set. | Investigating vector asset/rendering constraints that affect interface assets. | Assuming the repository owns the UI system, input, focus, or navigation contract. | [UI Systems](ui-systems.md) → [Architecture](architecture.md) |
+
+## Selective Evidence Pins
+
+The paths below are a deliberately small, 1–3 path projection for each primary UI source. The SHA is the captured default-branch HEAD used to make the path locatable, not a promise that the mutable default branch matches a target Unity release. At use time, verify the repository lifecycle statement, select the release/package/Unity-version revision that matches the project, confirm the path still carries the claimed responsibility, then return to [Unity UI Systems](ui-systems.md) and [Unity UI Architecture](architecture.md).
+
+| Primary source | Captured HEAD pin | Representative UI paths at that pin | Verification note |
+| --- | --- | --- | --- |
+| uGUI | [`580db5f7ef8e865dbea04382f232305b22e29197`](https://github.com/Unity-Technologies/uGUI/tree/580db5f7ef8e865dbea04382f232305b22e29197) | [`Graphic.cs`](https://github.com/Unity-Technologies/uGUI/blob/580db5f7ef8e865dbea04382f232305b22e29197/com.unity.ugui/Runtime/UGUI/UI/Core/Graphic.cs); [`ScrollRect.cs`](https://github.com/Unity-Technologies/uGUI/blob/580db5f7ef8e865dbea04382f232305b22e29197/com.unity.ugui/Runtime/UGUI/UI/Core/ScrollRect.cs) | Technical guidance on this corpus uses the Unity 6000.3 pin `9edb4420267b6652090ece4c28c38bd98746a68e`; match the installed package. |
+| BagelGame | [`5d0348bfa013f3c76299dd582c90a7549f66abce`](https://github.com/Unity-Technologies/BagelGame/tree/5d0348bfa013f3c76299dd582c90a7549f66abce) | [`Assets/UI`](https://github.com/Unity-Technologies/BagelGame/tree/5d0348bfa013f3c76299dd582c90a7549f66abce/Assets/UI); [`UIInputActions.inputactions`](https://github.com/Unity-Technologies/BagelGame/blob/5d0348bfa013f3c76299dd582c90a7549f66abce/Assets/Game/Core/UIInputActions.inputactions); [`MainMenuScreenTests.cs`](https://github.com/Unity-Technologies/BagelGame/blob/5d0348bfa013f3c76299dd582c90a7549f66abce/Assets/Tests/Runtime/B03_MainMenu/MainMenuScreenTests.cs) | Preserve its Unity 6.3 sample boundary. |
+| ui-toolkit-manual-code-examples | [`7ed6e7af9fc8a8f83facea818f47928d2e03a30f`](https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples/tree/7ed6e7af9fc8a8f83facea818f47928d2e03a30f) | [`game_switch.uxml`](https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples/blob/7ed6e7af9fc8a8f83facea818f47928d2e03a30f/bind-to-list/game_switch.uxml); [`game_switch_list_editor.uxml`](https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples/blob/7ed6e7af9fc8a8f83facea818f47928d2e03a30f/bind-to-list/game_switch_list_editor.uxml) | Use only for the matching manual example and Unity version. |
+| a11y-public-sample | [`ec14cfcb8c10bafab83ea02cd17759d77b225fae`](https://github.com/Unity-Technologies/a11y-public-sample/tree/ec14cfcb8c10bafab83ea02cd17759d77b225fae) | [`AccessibilityManager.cs`](https://github.com/Unity-Technologies/a11y-public-sample/blob/ec14cfcb8c10bafab83ea02cd17759d77b225fae/Assets/Scripts/Screen%20Reader/AccessibilityManager.cs); [`AccessibleButton.cs`](https://github.com/Unity-Technologies/a11y-public-sample/blob/ec14cfcb8c10bafab83ea02cd17759d77b225fae/Assets/Scripts/Screen%20Reader/AccessibleButton.cs) | Re-test with live target-platform assistive technology. |
+| UIElementsExamples | [`e940d1c9dddfe99fd500c9f34f4801856ad37f18`](https://github.com/Unity-Technologies/UIElementsExamples/tree/e940d1c9dddfe99fd500c9f34f4801856ad37f18) | [`ListViewBinding.uxml`](https://github.com/Unity-Technologies/UIElementsExamples/blob/e940d1c9dddfe99fd500c9f34f4801856ad37f18/Assets/Examples/Editor/Bindings/ListViewBinding.uxml); [`custom-inspector.uxml`](https://github.com/Unity-Technologies/UIElementsExamples/blob/e940d1c9dddfe99fd500c9f34f4801856ad37f18/Assets/Examples/Editor/Bindings/custom-inspector.uxml) | Historical editor UIElements evidence only. |
+| UIElementsUniteCPH2019RuntimeDemo | [`fa4f2c70cf2d6127ab624cc11a2742260ca6ff20`](https://github.com/Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo/tree/fa4f2c70cf2d6127ab624cc11a2742260ca6ff20) | [`1_MainMenuScreen.uxml`](https://github.com/Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo/blob/fa4f2c70cf2d6127ab624cc11a2742260ca6ff20/Assets/DemoUI/1_MainMenuScreen.uxml); [`2_FinalGameUI.uss`](https://github.com/Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo/blob/fa4f2c70cf2d6127ab624cc11a2742260ca6ff20/Assets/DemoUI/2_FinalGameUI.uss) | Historical 2019 runtime technique evidence only. |
+| UIElementsUniteLATurretDemo | [`1fce133fe3a3473d418066d8005c64340e9985d5`](https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo/tree/1fce133fe3a3473d418066d8005c64340e9985d5) | [`TurretEditor_UIElements.cs`](https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo/blob/1fce133fe3a3473d418066d8005c64340e9985d5/Assets/Demo/Editor/TurretEditor_UIElements.cs); [`Turret_UIElements.cs`](https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo/blob/1fce133fe3a3473d418066d8005c64340e9985d5/Assets/Demo/Runtime/Turret_UIElements.cs); [`TurretEditorTemplate.uxml`](https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo/blob/1fce133fe3a3473d418066d8005c64340e9985d5/Assets/Demo/UI/TurretEditorTemplate.uxml) | Historical IMGUI/UIElements comparison only. |
+| UIToolkitUnityRoyaleRuntimeDemo | [`9b5006d2580101b4d08d59d03d7dadc697d75311`](https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo/tree/9b5006d2580101b4d08d59d03d7dadc697d75311) | [`UIManager.cs`](https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo/blob/9b5006d2580101b4d08d59d03d7dadc697d75311/Assets/Scripts/UI/UIManager.cs); [`GameScreen.cs`](https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo/blob/9b5006d2580101b4d08d59d03d7dadc697d75311/Assets/Scripts/UI/GameScreen.cs) | Historical runtime sample; verify dependencies and Unity baseline before reuse. |
 
 ## Authority And Lifecycle Disposition
 
@@ -98,5 +144,5 @@ Before citing a repository, resolve the exact default-branch or release SHA, rea
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).
-Next: [Unity Organization Compressed Wiki](org-wiki.md).
+Parent: [Unity Game UI](index.md).
+Next: [Unity Game UI](index.md).

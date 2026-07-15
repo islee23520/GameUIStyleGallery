@@ -15,12 +15,16 @@ Primary role: decompose Unity organization repository insights into individual t
 
 > **Independent research — not affiliated with or endorsed by Unity Technologies. Snapshot evidence, not a support-status catalog.**
 
+> **Discovery is not authority.** Use a term to find a lead, verify it in the [Repository Map](repository-map.md), pin the relevant SHA and version, then return through [Unity UI Systems](ui-systems.md) and [Unity UI Architecture](architecture.md) before making an implementation claim.
+
 This page is a **term index**, not a second encyclopedia and not 804 repository pages. Each entry defines one word or short phrase, states when a Game UI engineer should open related repositories, states what the word must not be stretched into, and points at inventory matches from the tracked snapshot.
 
 Machine companion: [`data/unity-org-term-index.json`](data/unity-org-term-index.json).  
 Repository inventory: [`data/unity-technologies-public-repositories.json`](data/unity-technologies-public-repositories.json).  
 Cluster route: [Unity Organization Compressed Wiki](org-wiki.md).  
 UI authority route: [Unity Repository Map](repository-map.md) and [Unity UI Systems](ui-systems.md).
+
+For UI-shaped terms, start with the concentrated 13-row projection in the [Repository Map](repository-map.md#concentrated-ui-signals). The examples below may narrow that set, but they do not add repositories or alter machine-counted matches.
 
 ## Repository Boundary
 
@@ -402,6 +406,6 @@ Consumer reference reason: This page indexes repository vocabulary and discovery
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).  
+Parent: [Unity Game UI](index.md).
 Previous: [Unity Organization Compressed Wiki](org-wiki.md).  
-Next: [Platform Guides](../../platform-guides/index.md).
+Next: [Unity Game UI](index.md).

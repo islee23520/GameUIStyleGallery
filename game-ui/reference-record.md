@@ -59,4 +59,4 @@ Record source licensing and reuse restrictions per entry. Do not copy protected 
 ## IA Navigation
 
 Parent: [Game UI](index.md).
-Next: [Unity UI Architecture](unity/architecture.md).
+Next: [Unity Game UI](unity/index.md).

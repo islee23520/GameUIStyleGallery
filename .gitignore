@@ -1,0 +1,7 @@
+# local agent / research (never commit)
+.omo/
+.openchrome/
+.pytest_cache/
+.DS_Store
+# do not park research dumps at repo root
+/artifacts/

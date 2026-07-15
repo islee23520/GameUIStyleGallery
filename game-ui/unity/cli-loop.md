@@ -36,6 +36,20 @@ Use the loop in this order and preserve the evidence from each stage.
    > **Dynamic-code security boundary:** Use the lowest sufficient security level and keep **Restricted** unless the task specifically requires an operation it blocks. Restricted is not a Unity-only sandbox: the pinned source says Unity APIs, .NET standard libraries, and user-defined assemblies are generally available, while selected file-writing or deletion, network, process, dynamic-loading, thread, and registry operations are blocked and the compiled assembly is validated before and after load. **FullAccess makes all APIs available without those Restricted-mode checks; use it only for reviewed, trusted code.** Before either mode, review the submitted code and the target Unity project, including project assemblies it can call. Turn off `execute-dynamic-code` in the tool settings when it is unnecessary. The security level is persisted in `.uloop/settings.permissions.json`; although the upstream README permits optional team sharing, keep permission and related local configuration out of commits or published artifacts when it would reveal the project's security policy. See the pinned [security policy](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/SECURITY.md#security-best-practices-for-users), [README security levels](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/README.md#10-execute-dynamic-code---dynamic-c-code-execution), and [settings file guidance](https://github.com/hatayama/unity-cli-loop/blob/61a0fe6d7da0aa9d0bcbc6d95944dd069c483ff0/README.md#unity-cli-loop-files).
 8. **Capture the result and save intentionally.** Collect the post-action screenshot and logs, compare the expected state, and explicitly save Scene or prefab changes when the task changed serialized content.
 
+## Evidence Recipes
+
+| Goal | Stack route | CLI or repository evidence | What the evidence cannot prove |
+| --- | --- | --- | --- |
+| Identify the UI stack | Search manifests, package locks, asmdefs, namespaces, Scenes, prefabs, UXML, and NGUI components. | Package versions, source paths, serialized component names, repository SHA. | Which stack owns a rendered screen at runtime when multiple systems coexist. |
+| Find screen lifetime | uGUI/NGUI: creators, prefabs, Scenes, pooling, destroy paths. UI Toolkit: UIDocument creation, Panel attachment, controller disposal. | Creation call sites, asset references, enable/disable/destroy or detach paths. | Actual creation order, duplicate roots, scene-transition behavior, or leaks. |
+| Trace sorting | uGUI: Canvas and camera fields. UI Toolkit: Panel Settings and document order. NGUI: panel/widget depth and camera. | Serialized settings and code assignments. | Final composited order under runtime overrides, multiple cameras, or dynamic roots. |
+| Trace input and focus | EventSystem/input module; Panel events/focus; UICamera/project bridge. | Configured modules, action maps, callbacks, navigation fields. | Device behavior, focus entry/return, modal blocking, cancellation, or accessibility outcome. |
+| Check scale and safe area | Canvas Scaler/anchors; Panel Settings/layout; UIRoot/anchors plus project adapters. | Serialized scale modes, reference resolutions, safe-area code paths. | Correct rendering across target aspect ratios, cutouts, localization, or device DPI. |
+| Inspect motion and teardown | Animator/tween/USS/scheduler owners plus cancellation and cleanup paths. | Referenced clips, transition declarations, subscriptions, destroy/dispose code. | Timing feel, interruption correctness, final rendered state, or disabled-object behavior. |
+| Populate a reference record | Combine pinned source findings with engine-neutral fields. | Reproducible paths, versions, SHAs, and observed configuration. | Rendered truth, performance, complete state coverage, or experience quality. |
+
+Treat every row as a lead-to-runtime sequence: collect source evidence, state the uncertainty, then close it in the Unity Editor or a target build.
+
 ## Stack-Specific Interaction Boundary
 
 | Stack | What the pinned workflow exposes | Required caution |
@@ -80,5 +94,5 @@ For a complete UI loop, retain launch/version evidence, clean compile output, re
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).
-Next: [Unity Repository Map](repository-map.md).
+Parent: [Unity Game UI](index.md).
+Next: [Unity Game UI](index.md).
