@@ -62,6 +62,7 @@ const domains = [
       ["game-ui/unity/ui-systems.md"],
       ["game-ui/unity/cli-loop.md", "README.md"],
       ["game-ui/unity/repository-map.md"],
+      ["game-ui/unity/org-wiki.md"],
     ],
   },
   {
