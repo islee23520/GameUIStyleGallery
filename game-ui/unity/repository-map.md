@@ -15,7 +15,7 @@ Primary role: Unity public-source discovery and authority map.
 
 ## Repository Boundary
 
-This locally authored map classifies the Unity-Technologies public organization snapshot captured at `2026-07-14T12:59:16Z`. GitHub organization metadata and fully paginated public-repository enumeration both returned 804 repositories. The stored classified JSON inventory had SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657` and recorded 59 archived repositories, 356 forks, and 4 templates.
+This locally authored map classifies the Unity-Technologies public organization snapshot captured at `2026-07-14T12:59:16Z`. GitHub organization metadata and fully paginated public-repository enumeration both returned 804 repositories. The pre-projection capture had SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`; the tracked classified [`data/unity-technologies-public-repositories.json`](data/unity-technologies-public-repositories.json) has SHA-256 `b1438e6e8d438bab3eff2ff02f5a10e9374fdfb89b0581ffb936a42920fa2e05` and records 59 archived repositories, 356 forks, and 4 templates.
 
 The map is a discovery index. A repository's presence, name, archive flag, or push date does not make it a current UI-system source.
 
@@ -92,7 +92,7 @@ Before citing a repository, resolve the exact default-branch or release SHA, rea
 ## Source, License, And Attribution
 
 - Inventory basis: public GitHub organization metadata, fully paginated public repository metadata, default-branch tree scans, and targeted counter-search captured on `2026-07-14T12:59:16Z`.
-- Inventory identity: 804 classified rows; SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`.
+- Inventory identity: 804 classified rows; pre-projection SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`; tracked JSON SHA-256 `b1438e6e8d438bab3eff2ff02f5a10e9374fdfb89b0581ffb936a42920fa2e05`; 59 archived repositories, 356 forks, and 4 templates.
 - Repository licenses and reuse terms differ. Follow the pinned repository's own license before copying code or assets.
 - Reuse form: locally authored discovery and authority map; repository metadata and links are evidence references, not imported implementation guidance.
 

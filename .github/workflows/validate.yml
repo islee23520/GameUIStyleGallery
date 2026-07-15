@@ -42,6 +42,8 @@ jobs:
           node -c scripts/test-validate-domains.mjs
           node -c scripts/validate-unity-org-wiki.mjs
           node -c scripts/test-validate-unity-org-wiki.mjs
+          node -c scripts/validate-unity-source-contracts.mjs
+          node -c scripts/test-validate-unity-source-contracts.mjs
           node -c scripts/validate-webpage-workflow.mjs
           node -c scripts/test-validate-webpage-workflow.mjs
           node -c scripts/validate-consumer-reference.mjs
@@ -89,6 +91,11 @@ jobs:
         run: |
           node scripts/validate-unity-org-wiki.mjs --json
           node scripts/test-validate-unity-org-wiki.mjs
+
+      - name: Unity source citation contract
+        run: |
+          node scripts/validate-unity-source-contracts.mjs --json
+          node scripts/test-validate-unity-source-contracts.mjs
 
       - name: Consumer reference receiver contract
         run: |

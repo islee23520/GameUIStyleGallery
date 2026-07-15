@@ -19,7 +19,7 @@ This locally authored index compresses **804** public repositories into one trac
 
 The machine-readable source is [`data/unity-technologies-public-repositories.json`](data/unity-technologies-public-repositories.json). It records one row per captured public repository, including stable identity, repository URL, raw fork/archive/template state, default branch and observed HEAD when resolved, snapshot time, license metadata, UI relevance, and one exclusive `primary_cluster`.
 
-The source snapshot was captured at `2026-07-14T12:59:16Z`. The pre-projection inventory SHA-256 was `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`.
+The source snapshot was captured at `2026-07-14T12:59:16Z`. The pre-projection inventory SHA-256 was `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`; the tracked JSON SHA-256 is `b1438e6e8d438bab3eff2ff02f5a10e9374fdfb89b0581ffb936a42920fa2e05`. It records 59 archived repositories, 356 forks, and 4 templates.
 
 ## Repository Boundary
 
@@ -126,7 +126,7 @@ Run `node scripts/validate-unity-org-wiki.mjs --json` and `node scripts/test-val
 ## Source, License, And Attribution
 
 - Inventory basis: public GitHub repository metadata and captured default-branch inspection at `2026-07-14T12:59:16Z`.
-- Inventory identity before tracked projection: SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`.
+- Inventory identity before tracked projection: SHA-256 `8291b471251053a8921651eb7c791d13a4794984b73670a51cdb1116deb49657`; tracked JSON SHA-256 `b1438e6e8d438bab3eff2ff02f5a10e9374fdfb89b0581ffb936a42920fa2e05`; 59 archived repositories, 356 forks, and 4 templates.
 - Repository licenses and reuse terms differ. Follow each repository's recorded and current license before copying code or assets.
 - Reuse form: locally authored taxonomy, discovery index, and metadata projection; no Unity logos, trade dress, or first-person organizational voice.
 
