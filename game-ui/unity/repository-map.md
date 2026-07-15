@@ -99,4 +99,4 @@ Before citing a repository, resolve the exact default-branch or release SHA, rea
 ## IA Navigation
 
 Parent: [Game UI](../index.md).
-Next: [Platform Guides](../../platform-guides/index.md).
+Next: [Unity Organization Compressed Wiki](org-wiki.md).
