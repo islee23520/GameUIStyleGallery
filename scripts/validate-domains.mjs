@@ -37,6 +37,11 @@ const requiredCrossDomainStrings = [
     required: "Five governed domains and their declared leaves are reachable and attributed.",
     failure: "quality/evidence/executable-evidence.md: missing canonical five-domain validator coverage",
   },
+  {
+    relative: "quality/index.md",
+    required: "| Find the authority route for uGUI, UI Toolkit, or NGUI. | [README](../README.md) | [Unity UI Systems](../game-ui/unity/ui-systems.md) | The first selected route is Game UI, and the system-specific source and version boundary is reached within three hops. |",
+    failure: "quality/index.md: missing Game UI findability QA scenario",
+  },
 ];
 
 const domains = [

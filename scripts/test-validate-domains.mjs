@@ -16,6 +16,7 @@ const qualityDomainList = "`quality/` is shared StyleGallery infrastructure for 
 const readmeConsumerReferenceBoundary = "without owning profiles, visual values, components, or a sixth domain";
 const qualityConsumerReferenceBoundary = "without classifying it as a sixth domain";
 const executableEvidenceDomainCoverage = "Five governed domains and their declared leaves are reachable and attributed.";
+const gameUiFindabilityScenario = "| Find the authority route for uGUI, UI Toolkit, or NGUI. | [README](../README.md) | [Unity UI Systems](../game-ui/unity/ui-systems.md) | The first selected route is Game UI, and the system-specific source and version boundary is reached within three hops. |";
 
 function indexPage(title, links) {
   return [
@@ -145,7 +146,7 @@ const baseFiles = {
   "platform-guides/apple-interaction.md": leafPage({ title: "Apple Interaction", domain: "platform-guides", sourcePath: "skills/apple-design/SKILL.md", parent: "index.md", next: "../layout/index.md" }),
   "quality/claim-records/stylegallery-multidomain-scope.md": "# Scope Decision\n\nStyleGallery supersedes the layout-only repository identity.\n",
   "guides/vocabulary.md": `# Controlled Vocabulary\n\n- Canonical: \`domain\`\n  - ${vocabularyDomainList}\n`,
-  "quality/index.md": `# Quality Gates\n\n${qualityDomainList}\n\nThe handoff reaches the shared contract ${qualityConsumerReferenceBoundary}.\n`,
+  "quality/index.md": `# Quality Gates\n\n${qualityDomainList}\n\nThe handoff reaches the shared contract ${qualityConsumerReferenceBoundary}.\n\n${gameUiFindabilityScenario}\n`,
   "quality/evidence/executable-evidence.md": `# Executable Evidence Coverage\n\n${executableEvidenceDomainCoverage}\n`,
   "CATALOG.md": "# Catalog\n",
 };
@@ -203,6 +204,7 @@ const cases = [
   { name: "canonical_while_experimental", mutate: ["motion/vocabulary.md", "Treat practitioner preferences as hypotheses.", "This is canonical universal policy."], expect: "motion/vocabulary.md: experimental document claims canonical authority" },
   { name: "vocabulary_missing_game_ui", mutate: ["guides/vocabulary.md", vocabularyDomainList, vocabularyDomainList.replace("Game UI, ", "")], expect: "guides/vocabulary.md: missing canonical five-domain vocabulary list" },
   { name: "quality_missing_game_ui", mutate: ["quality/index.md", qualityDomainList, qualityDomainList.replace("Game UI, and ", "and ")], expect: "quality/index.md: missing canonical five-domain quality scope" },
+  { name: "quality_missing_game_ui_findability_scenario", mutate: ["quality/index.md", `${gameUiFindabilityScenario}\n`, ""], expect: "quality/index.md: missing Game UI findability QA scenario" },
   { name: "readme_stale_consumer_reference_ordinal", mutate: ["README.md", "sixth domain", "fifth domain"], expect: "README.md: missing canonical Consumer Reference boundary" },
   { name: "quality_stale_consumer_reference_ordinal", mutate: ["quality/index.md", "sixth domain", "fifth domain"], expect: "quality/index.md: missing canonical Consumer Reference boundary" },
   { name: "executable_evidence_stale_domain_count", mutate: ["quality/evidence/executable-evidence.md", "Five governed domains", "Four governed domains"], expect: "quality/evidence/executable-evidence.md: missing canonical five-domain validator coverage" },
