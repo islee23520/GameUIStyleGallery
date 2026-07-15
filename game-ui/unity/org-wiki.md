@@ -143,4 +143,4 @@ Consumer reference reason: This implementation adds repository provenance and di
 ## IA Navigation
 
 Parent: [Game UI](../index.md).
-Next: [Platform Guides](../../platform-guides/index.md).
+Next: [Unity Organization Term Lexicon](org-term-lexicon.md).

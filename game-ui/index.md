@@ -24,6 +24,7 @@ Interface In Game was reviewed on 2026-07-14 through its [home page](https://int
 - [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.
 - [Unity Repository Map](unity/repository-map.md) maps the public Unity-Technologies repository snapshot by UI relevance, authority, and lifecycle.
 - [Unity Organization Compressed Wiki](unity/org-wiki.md) routes all 804 captured public repositories through a tracked inventory and bounded exclusive clusters.
+- [Unity Organization Term Lexicon](unity/org-term-lexicon.md) decomposes organization insights into word-level terms with match counts and discovery boundaries.
 
 ## Domain Contract
 
