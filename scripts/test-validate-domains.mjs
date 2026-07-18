@@ -111,7 +111,7 @@ const baseFiles = {
     "| Layout | `layout/index.md` | Existing Layout corpus. |",
     "| Motion | `motion/index.md` | `motion/vocabulary.md`, `motion/review-workflow.md`, `motion/practice-reference.md` |",
     "| Design Engineering | `design-engineering/index.md` | `design-engineering/interface-craft.md` |",
-    "| Game UI | `game-ui/index.md` | `game-ui/classification.md`, `game-ui/screen-hierarchy.md`, `game-ui/reference-record.md`, `game-ui/unity/architecture.md`, `game-ui/unity/ui-systems.md`, `game-ui/unity/cli-loop.md`, `game-ui/unity/repository-map.md` |",
+    "| Game UI | `game-ui/index.md` | `game-ui/classification.md`, `game-ui/screen-hierarchy.md`, `game-ui/reference-record.md`, `game-ui/game-definitions.md`, `game-ui/unity/architecture.md`, `game-ui/unity/ui-systems.md`, `game-ui/unity/cli-loop.md`, `game-ui/unity/repository-map.md` |",
     "| Platform Guides | `platform-guides/index.md` | `platform-guides/apple-interaction.md` |",
     "",
     `Source snapshot \`${revision}\`.`,
@@ -128,10 +128,11 @@ const baseFiles = {
   "motion/practice-reference.md": leafPage({ title: "Motion Practice Reference", domain: "motion", sourcePath: "skills/review-animations/STANDARDS.md", parent: "index.md", next: "../design-engineering/index.md" }),
   "design-engineering/index.md": indexPage("Design Engineering", [["Interface Craft", "interface-craft.md"]]),
   "design-engineering/interface-craft.md": leafPage({ title: "Interface Craft", domain: "design-engineering", sourcePath: "skills/emil-design-eng/SKILL.md", parent: "index.md", next: "../platform-guides/index.md" }),
-  "game-ui/index.md": indexPage("Game UI", [["Game UI Classification", "classification.md"], ["Game UI Screen Hierarchy", "screen-hierarchy.md"], ["Game UI Reference Record", "reference-record.md"], ["Unity UI Architecture", "unity/architecture.md"], ["Unity UI Systems", "unity/ui-systems.md"], ["Unity CLI Loop", "unity/cli-loop.md"], ["Unity Repository Map", "unity/repository-map.md"]]),
+  "game-ui/index.md": indexPage("Game UI", [["Game UI Classification", "classification.md"], ["Game UI Screen Hierarchy", "screen-hierarchy.md"], ["Game UI Reference Record", "reference-record.md"], ["Game Definition Gallery", "game-definitions.md"], ["Unity UI Architecture", "unity/architecture.md"], ["Unity UI Systems", "unity/ui-systems.md"], ["Unity CLI Loop", "unity/cli-loop.md"], ["Unity Repository Map", "unity/repository-map.md"]]),
   "game-ui/classification.md": leafPage({ title: "Game UI Classification", domain: "game-ui", parent: "index.md", next: "screen-hierarchy.md" }),
   "game-ui/screen-hierarchy.md": leafPage({ title: "Game UI Screen Hierarchy", domain: "game-ui", parent: "index.md", next: "reference-record.md" }),
-  "game-ui/reference-record.md": leafPage({ title: "Game UI Reference Record", domain: "game-ui", parent: "index.md", next: "../platform-guides/index.md" }),
+  "game-ui/reference-record.md": leafPage({ title: "Game UI Reference Record", domain: "game-ui", parent: "index.md", next: "game-definitions.md" }),
+  "game-ui/game-definitions.md": leafPage({ title: "Game Definition Gallery", domain: "game-ui", parent: "index.md", next: "../platform-guides/index.md" }),
   "game-ui/unity/architecture.md": leafPage({ title: "Unity UI Architecture", domain: "game-ui", sourcePath: "README.md", parent: "../index.md", next: "ui-systems.md" })
     .replaceAll(repository, "https://github.com/annulusgames/UGUIAnimationSamples")
     .replaceAll(revision, "343c8110e5683be209cc01ccb4cb986175e61643"),

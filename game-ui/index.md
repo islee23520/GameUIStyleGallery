@@ -19,6 +19,7 @@ Interface In Game was reviewed on 2026-07-14 through its [home page](https://int
 - [Game UI Classification](classification.md) separates player purpose from visual language, input, state, and motion.
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
+- [Game Definition Gallery](game-definitions.md) is the studio-indexed text-centric reference for what each catalogued game is, covering genre, platform, engine, graphics style, UI elements, scenario lore, and core mechanics.
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.
 - [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.
