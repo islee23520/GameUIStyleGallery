@@ -19,7 +19,10 @@ Interface In Game was reviewed on 2026-07-14 through its [home page](https://int
 - [Game UI Classification](classification.md) separates player purpose from visual language, input, state, and motion.
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
-- [Game Definition Gallery](game-definitions.md) is the studio-indexed text-centric reference for what each catalogued game is, covering genre, platform, engine, graphics style, UI elements, scenario lore, and core mechanics.
+
+## External Codex
+
+The studio-indexed game-definition gallery is maintained in the separate private [`OuroforgeGameCodex`](https://github.com/islee23520/OuroforgeGameCodex) repository (오로포지 게임 도감) and consumed by this gallery as a git submodule at [`../vendor/ouroforge-game-codex/`](../vendor/ouroforge-game-codex/). It defines what each catalogued game IS — genre, platform, engine, graphics style, UI elements, scenario lore, and core mechanics — for titles across Blizzard Entertainment, Origin Systems, NCsoft, Nexon, Gravity Co., Actoz Soft, and Tomis Information & Telecom. The codex is not a governed Game UI domain leaf; it is referenced here as an informational pointer rather than a leaf route.
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.
 - [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.

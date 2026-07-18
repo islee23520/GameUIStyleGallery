@@ -58,7 +58,6 @@ const domains = [
       ["game-ui/classification.md"],
       ["game-ui/screen-hierarchy.md"],
       ["game-ui/reference-record.md"],
-      ["game-ui/game-definitions.md"],
       ["game-ui/unity/architecture.md", "README.md"],
       ["game-ui/unity/ui-systems.md"],
       ["game-ui/unity/cli-loop.md", "README.md"],

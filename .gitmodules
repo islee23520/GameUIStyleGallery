@@ -1,0 +1,3 @@
+[submodule "vendor/ouroforge-game-codex"]
+	path = vendor/ouroforge-game-codex
+	url = https://github.com/islee23520/OuroforgeGameCodex
