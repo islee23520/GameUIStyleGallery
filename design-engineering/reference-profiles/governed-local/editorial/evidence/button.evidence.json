@@ -1,0 +1,391 @@
+{
+  "schema_version": "2.0",
+  "record_kind": "component_evidence",
+  "component_id": "button",
+  "profile_id": "editorial-reference-profile",
+  "claim_boundary": "Scenario artifacts are evidence, not visual regression baselines or accessibility certification.",
+  "capture": {
+    "capture_id": "sha256:e27bbe4fd3a7ae69d1c67ad6be3c5d688a8b87bae9fc62339e3bd89d96e31ee3",
+    "path": "design-engineering/reference-profiles/governed-local/captures/sha256-255c97147ed3d3a3972d4b9d0d8cd8127a264ad52b3cb3a60cbbaef8606308c8.capture.json",
+    "sha256": "sha256:255c97147ed3d3a3972d4b9d0d8cd8127a264ad52b3cb3a60cbbaef8606308c8",
+    "byte_length": 13596
+  },
+  "passes": [
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-disabled-busy.png",
+        "byte_length": 2165,
+        "media_type": "image/png",
+        "sha256": "sha256:24bad38e0be21ce73d9450ce0b47aa156550ec3772e3f7842f00be6f3543f727",
+        "height": 56,
+        "width": 640
+      },
+      "channel": "visual",
+      "id": "action-disabled-busy-visual",
+      "recorded_at": "2026-07-31T07:09:54.179Z",
+      "result": {
+        "observed": "Recorded visual evidence for action-disabled-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-disabled-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-disabled-busy.dom.json",
+        "byte_length": 10801,
+        "media_type": "application/json",
+        "sha256": "sha256:52a523e362896f7c260dd59236361743326b3e68b213904fd11a3f449125018a"
+      },
+      "channel": "dom",
+      "id": "action-disabled-busy-dom",
+      "recorded_at": "2026-07-31T07:09:54.179Z",
+      "result": {
+        "observed": "Recorded dom evidence for action-disabled-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-disabled-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-disabled-busy.ax.json",
+        "byte_length": 10720,
+        "media_type": "application/json",
+        "sha256": "sha256:5cce2d3141602d67d82b135e6338a0985bc9a7b6aa9aed726b5eab8d2bad0c51"
+      },
+      "channel": "ax",
+      "id": "action-disabled-busy-ax",
+      "recorded_at": "2026-07-31T07:09:54.179Z",
+      "result": {
+        "observed": "Recorded ax evidence for action-disabled-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-disabled-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "disabled"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-focused.png",
+        "byte_length": 1290,
+        "media_type": "image/png",
+        "sha256": "sha256:a4a954932d60a1602c2c7f8842e69280c94171abd4103cf66ae48fddc8893c96",
+        "height": 56,
+        "width": 640
+      },
+      "channel": "visual",
+      "id": "action-focused-visual",
+      "recorded_at": "2026-07-31T07:09:56.604Z",
+      "result": {
+        "observed": "Recorded visual evidence for action-focused; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-focused",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "focus"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-focused.dom.json",
+        "byte_length": 10741,
+        "media_type": "application/json",
+        "sha256": "sha256:94b6f5be63665d06750652d10f76f6bea5a1bed23c9b8aef7e7814c5b5b06387"
+      },
+      "channel": "dom",
+      "id": "action-focused-dom",
+      "recorded_at": "2026-07-31T07:09:56.604Z",
+      "result": {
+        "observed": "Recorded dom evidence for action-focused; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-focused",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "focus"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-focused.ax.json",
+        "byte_length": 10661,
+        "media_type": "application/json",
+        "sha256": "sha256:a3fea7cb633bf69a3284e46049529b28d0f8fdff227e5029800c963443678eb2"
+      },
+      "channel": "ax",
+      "id": "action-focused-ax",
+      "recorded_at": "2026-07-31T07:09:56.604Z",
+      "result": {
+        "observed": "Recorded ax evidence for action-focused; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-focused",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "focus"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-loading-busy.png",
+        "byte_length": 2692,
+        "media_type": "image/png",
+        "sha256": "sha256:44e729b3cf5a2673edbb89d73b36ebe752ca0b465002745949964fa6e00f9d25",
+        "height": 56,
+        "width": 640
+      },
+      "channel": "visual",
+      "id": "action-loading-busy-visual",
+      "recorded_at": "2026-07-31T07:09:58.413Z",
+      "result": {
+        "observed": "Recorded visual evidence for action-loading-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-loading-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-loading-busy.dom.json",
+        "byte_length": 10787,
+        "media_type": "application/json",
+        "sha256": "sha256:015bb88676c29ed51283303a65f4654259aba44de92039bba37ddef56b28450f"
+      },
+      "channel": "dom",
+      "id": "action-loading-busy-dom",
+      "recorded_at": "2026-07-31T07:09:58.413Z",
+      "result": {
+        "observed": "Recorded dom evidence for action-loading-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-loading-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-action-loading-busy.ax.json",
+        "byte_length": 10687,
+        "media_type": "application/json",
+        "sha256": "sha256:61497ffe06d6ad0560ec7179f8a3d69ee9388e9c4af5afc2c3377264fbbda4d9"
+      },
+      "channel": "ax",
+      "id": "action-loading-busy-ax",
+      "recorded_at": "2026-07-31T07:09:58.413Z",
+      "result": {
+        "observed": "Recorded ax evidence for action-loading-busy; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "action-loading-busy",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "action",
+        "state_set": [
+          "busy",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-disclosure-expanded-loading.png",
+        "byte_length": 5910,
+        "media_type": "image/png",
+        "sha256": "sha256:a8e581adf5de79ab6436c8f9deb46d8a9165698b6bfb4e9ae37928fddf681ee6",
+        "height": 88,
+        "width": 640
+      },
+      "channel": "visual",
+      "id": "disclosure-expanded-loading-visual",
+      "recorded_at": "2026-07-31T07:10:00.982Z",
+      "result": {
+        "observed": "Recorded visual evidence for disclosure-expanded-loading; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "disclosure-expanded-loading",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "disclosure",
+        "state_set": [
+          "busy",
+          "expanded",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-disclosure-expanded-loading.dom.json",
+        "byte_length": 10844,
+        "media_type": "application/json",
+        "sha256": "sha256:48b0c3344634a405489d1cdb0fc5b1d76a490ce115a9e6265606639dfdb60512"
+      },
+      "channel": "dom",
+      "id": "disclosure-expanded-loading-dom",
+      "recorded_at": "2026-07-31T07:10:00.982Z",
+      "result": {
+        "observed": "Recorded dom evidence for disclosure-expanded-loading; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "disclosure-expanded-loading",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "disclosure",
+        "state_set": [
+          "busy",
+          "expanded",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-disclosure-expanded-loading.ax.json",
+        "byte_length": 10725,
+        "media_type": "application/json",
+        "sha256": "sha256:0861bbc82606754414b9816613a21c4975b23a110472fce15fe7ac591dc037f5"
+      },
+      "channel": "ax",
+      "id": "disclosure-expanded-loading-ax",
+      "recorded_at": "2026-07-31T07:10:00.982Z",
+      "result": {
+        "observed": "Recorded ax evidence for disclosure-expanded-loading; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "disclosure-expanded-loading",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "disclosure",
+        "state_set": [
+          "busy",
+          "expanded",
+          "focus",
+          "loading"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-toggle-focused-pressed.png",
+        "byte_length": 1741,
+        "media_type": "image/png",
+        "sha256": "sha256:11c6182ae9258f8593aa0a440470b4bc55959e1d723ab2e399bb729b6ed5fdcc",
+        "height": 56,
+        "width": 640
+      },
+      "channel": "visual",
+      "id": "toggle-focused-pressed-visual",
+      "recorded_at": "2026-07-31T07:10:02.885Z",
+      "result": {
+        "observed": "Recorded visual evidence for toggle-focused-pressed; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "toggle-focused-pressed",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "toggle",
+        "state_set": [
+          "focus",
+          "pressed"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-toggle-focused-pressed.dom.json",
+        "byte_length": 10781,
+        "media_type": "application/json",
+        "sha256": "sha256:33466b2f27a4ec1ec7007ca34190c93f23a7d7675edcbe2316d8d00ad0df22e3"
+      },
+      "channel": "dom",
+      "id": "toggle-focused-pressed-dom",
+      "recorded_at": "2026-07-31T07:10:02.885Z",
+      "result": {
+        "observed": "Recorded dom evidence for toggle-focused-pressed; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "toggle-focused-pressed",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "toggle",
+        "state_set": [
+          "focus",
+          "pressed"
+        ]
+      }
+    },
+    {
+      "artifact": {
+        "path": "runtime/editorial-toggle-focused-pressed.ax.json",
+        "byte_length": 10695,
+        "media_type": "application/json",
+        "sha256": "sha256:79f05f409e8cebda75b5c390b8a538cd8005ed5c4732313ef7398bfd531478bc"
+      },
+      "channel": "ax",
+      "id": "toggle-focused-pressed-ax",
+      "recorded_at": "2026-07-31T07:10:02.885Z",
+      "result": {
+        "observed": "Recorded ax evidence for toggle-focused-pressed; this is not certification.",
+        "status": "passed"
+      },
+      "scenario_id": "toggle-focused-pressed",
+      "scope": {
+        "component": "button",
+        "semantic_mode": "toggle",
+        "state_set": [
+          "focus",
+          "pressed"
+        ]
+      }
+    }
+  ]
+}
