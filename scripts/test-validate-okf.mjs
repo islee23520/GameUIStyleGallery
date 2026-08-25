@@ -25,6 +25,25 @@ const cases = [
     expect: "index.md must not contain concept frontmatter",
   },
   {
+    name: "nested_domain_guide_index",
+    files: {
+      "index.md": "# Bundle\n\n* [Guide](nested/index.md) - Guide\n",
+      "log.md": "# Log\n\n## 2026-07-02\n* Init.\n",
+      "nested/index.md": `${concept("Domain Guide", "Nested Guide")}\n[Parent](../index.md)\n`,
+    },
+    expect: null,
+  },
+  {
+    name: "ignored_pytest_cache",
+    files: {
+      "index.md": "# Bundle\n\n* [Good](good.md) - Good\n",
+      "log.md": "# Log\n\n## 2026-07-02\n* Init.\n",
+      "good.md": concept("Concept", "Good"),
+      ".pytest_cache/README.md": "# pytest cache directory\n",
+    },
+    expect: null,
+  },
+  {
     name: "malformed_log_date",
     files: { "index.md": "# Bundle\n\n* [Good](good.md) - Good\n", "log.md": "# Log\n\n## July 2, 2026\n* Init.\n", "good.md": concept("Concept", "Good") },
     expect: "log.md date heading must be YYYY-MM-DD",

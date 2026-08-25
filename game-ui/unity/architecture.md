@@ -41,6 +41,47 @@ Inspect a Unity UI reference in this order:
 6. Record sorting, input routing, focus, scaling, animation, and teardown ownership.
 7. Compare the rendered result with the engine-neutral Game UI record.
 
+## Engine-Neutral To Stack Mapping
+
+| Engine-neutral responsibility | uGUI realization | UI Toolkit realization | NGUI realization | Evidence that closes the mapping |
+| --- | --- | --- | --- | --- |
+| Application UI root | Persistent GameObject/Canvas hosts and services | Persistent UIDocument or Panel-owning service | UIRoot and persistent GameObjects | Creation, duplicate prevention, scene transition, teardown |
+| Layer host | Canvas, sorting group, or named subtree | Panel, UIDocument, or named VisualElement root | UIPanel, depth policy, or named subtree | Render order, blocking, visibility, lifetime |
+| Screen | Screen prefab/runtime instance | VisualTreeAsset-derived document subtree | Screen GameObject/prefab subtree | Navigation entry, focus entry, close, disposal |
+| Region/component/control | RectTransform and MonoBehaviour component boundaries | VisualElement composition and controllers | UIWidget/control components | State inputs, reuse boundary, event ownership |
+| World-linked UI | World Space Canvas or projected screen element | Project-owned world-to-panel projection or hybrid | Camera-linked NGUI objects | Camera, target loss, occlusion, scale, teardown |
+
+The mapping is a review aid, not a tree-conversion recipe. One neutral role can be split across Unity objects, and one Unity object can accidentally combine multiple neutral roles.
+
+## Ownership Matrix
+
+| Responsibility | uGUI owner to inspect | UI Toolkit owner to inspect | NGUI owner to inspect |
+| --- | --- | --- | --- |
+| Lifetime | Scene/bootstrap GameObject, prefab creator, pooling owner | UIDocument creator, Panel attachment, controller/disposal owner | UIRoot/prefab creator, enable/disable and destroy owner |
+| Sort | Canvas render mode, sorting layer/order, hierarchy and camera | Panel Settings sort order, panel/document ordering, project bridge | UIPanel depth, widget depth, camera |
+| Input | EventSystem, active input module, GraphicRaycaster | Panel event system, focus controller, event callbacks | UICamera, colliders/raycasts, project input bridge |
+| Focus | Selected GameObject, Selectable navigation, focus return service | FocusController, focusable elements, navigation policy | Selected object/control state and project navigation owner |
+| Scale and safe area | Canvas Scaler, anchors, safe-area adapter, camera/viewport | Panel Settings scale mode, resolved layout, safe-area integration | UIRoot scaling, anchors/stretch, project safe-area adapter |
+| Motion | Animator, Timeline, tween/script owner, cancellation token | USS transitions, animations, scheduler, controller | UITweener, animation, script owner |
+| Teardown | Destroy/disable path, event unsubscription, pool return | Callback unregistration, binding release, panel/document detachment | Delegate/message cleanup, tween stop, destroy/pool path |
+
+If one cell has multiple owners, record precedence and interruption. If it has no owner, the architecture is incomplete even if the rendered screen appears correct.
+
+## Multi-Root Architecture
+
+Multiple roots are legitimate when they express different render spaces, cameras, rebuild boundaries, lifetimes, input domains, or team ownership. Examples include a persistent screen-space shell, a scene-owned HUD, a modal root above both, and several world-space roots. Name who creates each root, how roots sort, which input router can reach them, where focus crosses roots, how scale and safe area stay consistent, and which roots survive a scene change.
+
+Avoid both unexamined extremes. One universal root can hide unrelated lifetimes and expensive coupling; root-per-widget structures can scatter sorting, focus, and teardown. Choose roots from responsibilities and measured behavior.
+
+## Hierarchy Blind Spots
+
+- The Scene Hierarchy omits prefab asset inheritance, variants, inactive assets, runtime-created objects before Play Mode, and objects in unloaded Scenes.
+- Transform order does not fully establish Canvas sorting, Panel ordering, camera composition, raycast priority, focus order, or NGUI depth.
+- A UIDocument GameObject does not display the full VisualElement tree in the Transform hierarchy.
+- `DontDestroyOnLoad`, additive Scenes, pooling, addressable loading, and duplicate bootstraps can change lifetime outside the inspected screen subtree.
+- Inspector references show serialized edges, not every runtime subscription, service lookup, binding, or dynamically selected owner.
+- A clean hierarchy capture cannot prove safe-area behavior, localization resilience, animation interruption, or teardown.
+
 ## Scene And Runtime Hierarchy
 
 Unity's Hierarchy window shows GameObjects in the loaded Scene, including prefab instances. It does not by itself reveal asset ownership, runtime-created objects, persistent objects from another Scene, or the complete navigation policy.
@@ -162,5 +203,5 @@ Repository YAML and metadata can establish hierarchy leads, but rendered appeara
 
 ## IA Navigation
 
-Parent: [Game UI](../index.md).
-Next: [Unity UI Systems](ui-systems.md).
+Parent: [Unity Game UI](index.md).
+Next: [Unity Game UI](index.md).

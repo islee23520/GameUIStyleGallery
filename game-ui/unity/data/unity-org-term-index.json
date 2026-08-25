@@ -1,0 +1,3607 @@
+{
+  "snapshot": {
+    "capture_timestamp": "2026-07-14T12:59:16Z",
+    "repository_count": 804,
+    "inventory_path": "game-ui/unity/data/unity-technologies-public-repositories.json",
+    "generated_at": "2026-07-15T05:26:12.858677+00:00",
+    "note": "Term matches are metadata/name/description/topic heuristics for discovery. They are not authority or support claims."
+  },
+  "terms": [
+    {
+      "term": "uGUI",
+      "aliases": [
+        "ugui",
+        "com.unity.ugui"
+      ],
+      "definition": "Unity GameObject/Canvas UI package source and runtime system.",
+      "game_ui_use": "Use when inspecting Canvas, Graphic, EventSystem, Selectable, ScrollRect, or TMP-in-uGUI source.",
+      "not_that": "Not UI Toolkit; not NGUI; not a visual style guide.",
+      "match_count": 1,
+      "primary_cluster_histogram": {
+        "game-ui-primary": 1
+      },
+      "ui_relevance_histogram": {
+        "primary-ui-source": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/uGUI",
+          "html_url": "https://github.com/Unity-Technologies/uGUI",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 1564,
+          "archived": false,
+          "fork": false,
+          "description": "Source code for the Unity UI system."
+        }
+      ]
+    },
+    {
+      "term": "UI Toolkit",
+      "aliases": [
+        "uitoolkit",
+        "ui-toolkit",
+        "ui toolkit"
+      ],
+      "definition": "Unity managed UI system using VisualElement trees, UXML, and USS for editor and runtime UI.",
+      "game_ui_use": "Use for Panel/UIDocument/VisualElement architecture and runtime or editor UI Toolkit questions.",
+      "not_that": "Not uGUI Canvas; not archived UIWidgets; not a CSS design system.",
+      "match_count": 24,
+      "primary_cluster_histogram": {
+        "networking": 1,
+        "other-mixed-or-insufficient-metadata": 9,
+        "ml-ai": 2,
+        "game-ui-primary": 3,
+        "samples-templates": 2,
+        "editor-tooling": 4,
+        "meta-archived-historical": 1,
+        "language-runtime": 1,
+        "platform-mobile": 1
+      },
+      "ui_relevance_histogram": {
+        "editor-or-incidental-uitoolkit": 21,
+        "primary-ui-source": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/FPSSample",
+          "html_url": "https://github.com/Unity-Technologies/FPSSample",
+          "primary_cluster": "networking",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 5113,
+          "archived": false,
+          "fork": false,
+          "description": "A first person multiplayer shooter example project in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/UnityRenderStreaming",
+          "html_url": "https://github.com/Unity-Technologies/UnityRenderStreaming",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 1454,
+          "archived": false,
+          "fork": false,
+          "description": "Streaming server for Unity "
+        },
+        {
+          "full_name": "Unity-Technologies/ShaderGraph",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraph",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 1244,
+          "archived": false,
+          "fork": false,
+          "description": "Unity ShaderGraph project"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.perception",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.perception",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 996,
+          "archived": false,
+          "fork": false,
+          "description": "Perception toolkit for sim2real training and validation in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/HLODSystem",
+          "html_url": "https://github.com/Unity-Technologies/HLODSystem",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 986,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/ui-toolkit-manual-code-examples",
+          "html_url": "https://github.com/Unity-Technologies/ui-toolkit-manual-code-examples",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 617,
+          "archived": false,
+          "fork": false,
+          "description": "Unity UI Toolkit documentation code examples"
+        },
+        {
+          "full_name": "Unity-Technologies/EndlessRunnerSampleGame",
+          "html_url": "https://github.com/Unity-Technologies/EndlessRunnerSampleGame",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 483,
+          "archived": false,
+          "fork": false,
+          "description": "Repository for the Endless Runner Game Sample (Trash Dash)"
+        },
+        {
+          "full_name": "Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo",
+          "html_url": "https://github.com/Unity-Technologies/UIToolkitUnityRoyaleRuntimeDemo",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 400,
+          "archived": false,
+          "fork": false,
+          "description": "This is a sample project to introduce the use of UI Toolkit in Runtime"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.probuilder",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.probuilder",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 376,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.selection-groups",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.selection-groups",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 120,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.cv.synthetichumans",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.cv.synthetichumans",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 116,
+          "archived": false,
+          "fork": false,
+          "description": "A package for creating Unity Perception compatible synthetic people."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.performance-tracking",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.performance-tracking",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 92,
+          "archived": false,
+          "fork": false,
+          "description": "A set of tools and utilities to help track Unity Editor performance"
+        }
+      ]
+    },
+    {
+      "term": "UIElements",
+      "aliases": [
+        "uielements"
+      ],
+      "definition": "Historical and namespace lineage name for what is now largely called UI Toolkit in product docs.",
+      "game_ui_use": "Use when reading older demos, Unite samples, or engine module paths still named UIElements.",
+      "not_that": "Not a separate current product stack from UI Toolkit; unarchived demos are not automatically current.",
+      "match_count": 3,
+      "primary_cluster_histogram": {
+        "game-ui-primary": 3
+      },
+      "ui_relevance_histogram": {
+        "primary-ui-source": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/UIElementsExamples",
+          "html_url": "https://github.com/Unity-Technologies/UIElementsExamples",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 441,
+          "archived": false,
+          "fork": false,
+          "description": "Unity project containing examples to use UIElements in the Editor"
+        },
+        {
+          "full_name": "Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo",
+          "html_url": "https://github.com/Unity-Technologies/UIElementsUniteCPH2019RuntimeDemo",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 127,
+          "archived": false,
+          "fork": false,
+          "description": "This is the project used in the Unite Copenhagen 2019 presentation: Building UI for games with the new UI Builder"
+        },
+        {
+          "full_name": "Unity-Technologies/UIElementsUniteLATurretDemo",
+          "html_url": "https://github.com/Unity-Technologies/UIElementsUniteLATurretDemo",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 75,
+          "archived": false,
+          "fork": false,
+          "description": "Demo Used in Unite LA 2018 UIElements talk."
+        }
+      ]
+    },
+    {
+      "term": "UIDocument",
+      "aliases": [
+        "uidocument"
+      ],
+      "definition": "Runtime or editor attachment of a VisualTreeAsset-derived VisualElement tree to Panel Settings.",
+      "game_ui_use": "Open when mapping screen hierarchy to UI Toolkit document ownership.",
+      "not_that": "Not a Canvas; VisualElement children are not Transform children.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "VisualElement",
+      "aliases": [
+        "visualelement"
+      ],
+      "definition": "Node type in the UI Toolkit visual tree; layout, style, and focus operate on this tree.",
+      "game_ui_use": "Use when tracing hierarchy, layout, focus, or binding ownership in UI Toolkit.",
+      "not_that": "Not a GameObject/RectTransform; not NGUI UIWidget.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "UXML",
+      "aliases": [
+        "uxml"
+      ],
+      "definition": "XML-like markup for UI Toolkit visual trees.",
+      "game_ui_use": "Use when locating document structure and control composition examples.",
+      "not_that": "Not uGUI prefab hierarchy; path hits alone do not prove current support.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "USS",
+      "aliases": [
+        "uss"
+      ],
+      "definition": "Style sheet language for UI Toolkit presentation and some transitions.",
+      "game_ui_use": "Use when studying style resolution and visual presentation separation from layout ownership.",
+      "not_that": "Not reusable StyleGallery Layout CSS; not proof of product visual defaults.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Canvas",
+      "aliases": [
+        "canvas"
+      ],
+      "definition": "uGUI rendering and hierarchy host for Graphic components in the Game View.",
+      "game_ui_use": "Use for uGUI screen layering, rebuild, and raycast questions.",
+      "not_that": "Not UI Toolkit Panel; Canvas membership is runtime state.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "EventSystem",
+      "aliases": [
+        "eventsystem"
+      ],
+      "definition": "uGUI input routing host that selects and runs an active BaseInputModule.",
+      "game_ui_use": "Use when verifying click, drag, select, and navigation ownership for Canvas UI.",
+      "not_that": "Not NGUI UICamera; not by itself UI Toolkit Panel focus.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Input System",
+      "aliases": [
+        "inputsystem",
+        "input-system",
+        "input system"
+      ],
+      "definition": "Package for devices, actions, and UI integration modules such as InputSystemUIInputModule.",
+      "game_ui_use": "Use when UI input, gamepad-as-cursor, or action-map integration is the claim.",
+      "not_that": "Not the layout system; not complete UI Toolkit input story by itself.",
+      "match_count": 4,
+      "primary_cluster_histogram": {
+        "game-ui-primary": 2,
+        "other-mixed-or-insufficient-metadata": 2
+      },
+      "ui_relevance_histogram": {
+        "ui-adjacent-reference": 1,
+        "primary-ui-source": 1,
+        "code-only-or-incidental-ui-signal": 1,
+        "no-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/InputSystem",
+          "html_url": "https://github.com/Unity-Technologies/InputSystem",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "ui-adjacent-reference",
+          "stargazers_count": 1518,
+          "archived": false,
+          "fork": false,
+          "description": "An efficient and versatile input system for Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/BagelGame",
+          "html_url": "https://github.com/Unity-Technologies/BagelGame",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 51,
+          "archived": false,
+          "fork": false,
+          "description": "Bagel Game is a full vertical game project that is specifically made to demonstrate how UI Toolkit can be used to create UI for 3D games. It covers World Space UI, Custom Shaders, Filters, Data Bindings, StyleSheets, Themes, Input System Integration, among others - all in a realistic fully functional game project."
+        },
+        {
+          "full_name": "Unity-Technologies/input-prototype",
+          "html_url": "https://github.com/Unity-Technologies/input-prototype",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 28,
+          "archived": false,
+          "fork": false,
+          "description": "Input prototype revealed here: https://blogs.unity3d.com/2016/04/12/developing-the-new-input-system-together-with-you/"
+        },
+        {
+          "full_name": "Unity-Technologies/InputSystemTest",
+          "html_url": "https://github.com/Unity-Technologies/InputSystemTest",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 9,
+          "archived": false,
+          "fork": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "term": "TextMesh Pro",
+      "aliases": [
+        "textmeshpro",
+        "tmp",
+        "textmesh"
+      ],
+      "definition": "Text stack currently sourced under the uGUI package tree rather than a standalone org repo in this snapshot.",
+      "game_ui_use": "Use uGUI TMP paths and package manuals for text claims.",
+      "not_that": "No standalone TextMeshPro org source repo in the 804-row inventory.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Localization",
+      "aliases": [
+        "localization",
+        "i18n",
+        "l10n"
+      ],
+      "definition": "Locale, string table, and language-delivery concerns usually package- and sample-driven.",
+      "game_ui_use": "Treat as cross-cutting evidence; package docs may be docs-only without a dedicated org source mirror.",
+      "not_that": "Zero primary_cluster rows for localization-text in the exclusive taxonomy; absence of cluster rows is not proof of absence.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Accessibility",
+      "aliases": [
+        "accessibility",
+        "a11y"
+      ],
+      "definition": "Assistive technology, screen reader, and focus-order evidence layer.",
+      "game_ui_use": "Use a11y samples and manuals with version pins; do not infer accessibility from UI stack choice alone.",
+      "not_that": "Focus order docs are narrower than verified AT outcomes.",
+      "match_count": 1,
+      "primary_cluster_histogram": {
+        "game-ui-primary": 1
+      },
+      "ui_relevance_histogram": {
+        "primary-ui-source": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/a11y-public-sample",
+          "html_url": "https://github.com/Unity-Technologies/a11y-public-sample",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 24,
+          "archived": false,
+          "fork": false,
+          "description": "Sample project using the Unity Accessibility APIs"
+        }
+      ]
+    },
+    {
+      "term": "UIWidgets",
+      "aliases": [
+        "uiwidgets"
+      ],
+      "definition": "Separate Flutter-derived UI framework historically published under Unity-Technologies and later archived/redirected.",
+      "game_ui_use": "Historical or China-lineage research only.",
+      "not_that": "Not UI Toolkit; not current general Game UI authority.",
+      "match_count": 1,
+      "primary_cluster_histogram": {
+        "meta-archived-historical": 1
+      },
+      "ui_relevance_histogram": {
+        "historical-ui-source": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/com.unity.uiwidgets",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.uiwidgets",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "historical-ui-source",
+          "stargazers_count": 623,
+          "archived": true,
+          "fork": false,
+          "description": "UIWidgets is a Unity Package which helps developers to create, debug and deploy efficient, cross-platform Apps."
+        }
+      ]
+    },
+    {
+      "term": "NGUI",
+      "aliases": [
+        "ngui"
+      ],
+      "definition": "Third-party GameObject UI stack owned outside Unity-Technologies.",
+      "game_ui_use": "Compare input/hierarchy/migration only via separately pinned tasharen/ngui evidence.",
+      "not_that": "Never counted inside the 804 Unity-Technologies inventory.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Panel",
+      "aliases": [
+        "panel"
+      ],
+      "definition": "UI Toolkit host for a VisualElement tree, repaint, focus, and event dispatch.",
+      "game_ui_use": "Use UnityCsReference Modules/UIElements Panel paths for architecture claims.",
+      "not_that": "Not uGUI Canvas; pin Unity version branch.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "IMGUI",
+      "aliases": [
+        "imgui"
+      ],
+      "definition": "Immediate-mode GUI used heavily in editor tooling and legacy runtime OnGUI paths.",
+      "game_ui_use": "Use for editor tool UI and compare-table context only.",
+      "not_that": "Input System is not generally compatible with runtime IMGUI under input-system-only player settings.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "Addressables",
+      "aliases": [
+        "addressables",
+        "addressable"
+      ],
+      "definition": "Content delivery and async asset loading package/samples that often host UI asset lifecycle.",
+      "game_ui_use": "Open when UI load/unload, remote content, or async screen state depends on addressable groups.",
+      "not_that": "Not a UI system; sample HUD is observation only.",
+      "match_count": 3,
+      "primary_cluster_histogram": {
+        "samples-templates": 1,
+        "other-mixed-or-insufficient-metadata": 2
+      },
+      "ui_relevance_histogram": {
+        "legacy-ui-observation": 2,
+        "no-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/Addressables-Sample",
+          "html_url": "https://github.com/Unity-Technologies/Addressables-Sample",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1442,
+          "archived": false,
+          "fork": false,
+          "description": "Demo project using Addressables package"
+        },
+        {
+          "full_name": "Unity-Technologies/AddressableAssetsWebinar",
+          "html_url": "https://github.com/Unity-Technologies/AddressableAssetsWebinar",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 200,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/unite-seoul-2025-addressables",
+          "html_url": "https://github.com/Unity-Technologies/unite-seoul-2025-addressables",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 28,
+          "archived": false,
+          "fork": false,
+          "description": "Unite Seoul 2025 - Addressables: Best Practices"
+        }
+      ]
+    },
+    {
+      "term": "Entities",
+      "aliases": [
+        "entities",
+        "ecs",
+        "dots"
+      ],
+      "definition": "Data-oriented ECS/DOTS runtime and samples, including some UI Toolkit observations.",
+      "game_ui_use": "Use for state ownership and performance context that constrains UI update flow.",
+      "not_that": "DotsUI/samples are observations, not the general UI contract.",
+      "match_count": 24,
+      "primary_cluster_histogram": {
+        "ecs-dots": 22,
+        "meta-archived-historical": 1,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 7,
+        "legacy-ui-observation": 3,
+        "no-ui-signal": 8,
+        "code-only-or-incidental-ui-signal": 5,
+        "excluded-fork-or-vendor-ui": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/EntityComponentSystemSamples",
+          "html_url": "https://github.com/Unity-Technologies/EntityComponentSystemSamples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 8141,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/DOTS-training-samples",
+          "html_url": "https://github.com/Unity-Technologies/DOTS-training-samples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1647,
+          "archived": false,
+          "fork": false,
+          "description": "Samples designed as exercises to be ported from Unity GameObjects/MonoBehaviours to Unity DOTS. "
+        },
+        {
+          "full_name": "Unity-Technologies/megacity-metro",
+          "html_url": "https://github.com/Unity-Technologies/megacity-metro",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1152,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity-Metro: a thrilling shooter game, using Netcode for Entities for a multiplayer experience supporting 128+ players. Latest DOTS packages and Unity Gaming Services elevate the user experience, demonstrating how to craft engaging multiplayer games."
+        },
+        {
+          "full_name": "Unity-Technologies/DOTSSample",
+          "html_url": "https://github.com/Unity-Technologies/DOTSSample",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1017,
+          "archived": true,
+          "fork": false,
+          "description": "A third person, multiplayer sample project. Built with Unity and using the new Data Oriented Tech Stack (DOTS)."
+        },
+        {
+          "full_name": "Unity-Technologies/ECS-Network-Racing-Sample",
+          "html_url": "https://github.com/Unity-Technologies/ECS-Network-Racing-Sample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 761,
+          "archived": false,
+          "fork": false,
+          "description": "ECS multiplayer racing sample to showcase using Unity Entities and netcode with best practices"
+        },
+        {
+          "full_name": "Unity-Technologies/Megacity-2019",
+          "html_url": "https://github.com/Unity-Technologies/Megacity-2019",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 533,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity is a sample showcasing streaming a large scale environment. It also contains an action-packed, multiplayer shooter mode. It leverages the power of Netcode for Entities for an immersive, multiplayer experience that can support 64+ players simultaneously."
+        },
+        {
+          "full_name": "Unity-Technologies/animation-jobs-samples",
+          "html_url": "https://github.com/Unity-Technologies/animation-jobs-samples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 529,
+          "archived": false,
+          "fork": false,
+          "description": "Code samples using the animation C# jobs feature."
+        },
+        {
+          "full_name": "Unity-Technologies/Unity.Animation.Samples",
+          "html_url": "https://github.com/Unity-Technologies/Unity.Animation.Samples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 471,
+          "archived": false,
+          "fork": false,
+          "description": "Repository of projects that showcase the new DOTS animation package (com.unity.animation)."
+        },
+        {
+          "full_name": "Unity-Technologies/CharacterControllerSamples",
+          "html_url": "https://github.com/Unity-Technologies/CharacterControllerSamples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 400,
+          "archived": false,
+          "fork": false,
+          "description": "Sample projects for the Unity.CharacterController package"
+        },
+        {
+          "full_name": "Unity-Technologies/ECSGalaxySample",
+          "html_url": "https://github.com/Unity-Technologies/ECSGalaxySample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 288,
+          "archived": false,
+          "fork": false,
+          "description": "ECS sample demonstrating an automated simulation of teams of spaceships fighting for the control of planets"
+        },
+        {
+          "full_name": "Unity-Technologies/DOTS-Shmup3D-sample",
+          "html_url": "https://github.com/Unity-Technologies/DOTS-Shmup3D-sample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 183,
+          "archived": false,
+          "fork": false,
+          "description": "A demo with Unity DOTS and Unity Physics."
+        },
+        {
+          "full_name": "Unity-Technologies/DOTS-StreamingSamples",
+          "html_url": "https://github.com/Unity-Technologies/DOTS-StreamingSamples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 123,
+          "archived": false,
+          "fork": false,
+          "description": "DOTS - Streaming samples"
+        }
+      ]
+    },
+    {
+      "term": "Burst",
+      "aliases": [
+        "burst"
+      ],
+      "definition": "HPC# compiler/runtime used with Jobs/Entities workloads.",
+      "game_ui_use": "Relevant only as runtime constraint context near ECS UI observations.",
+      "not_that": "Not a UI framework.",
+      "match_count": 4,
+      "primary_cluster_histogram": {
+        "ecs-dots": 3,
+        "graphics-rendering": 1
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 1,
+        "no-ui-signal": 2,
+        "code-only-or-incidental-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/EntityComponentSystemSamples",
+          "html_url": "https://github.com/Unity-Technologies/EntityComponentSystemSamples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 8141,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/brg-shooter",
+          "html_url": "https://github.com/Unity-Technologies/brg-shooter",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 364,
+          "archived": false,
+          "fork": false,
+          "description": "Unity blog-post sample showing BatchRendererGroup and Burst/JobSystem. Focus is high performance even on budget mobile devices. Unity 2022.3.5 or above required"
+        },
+        {
+          "full_name": "Unity-Technologies/GettingStartedWithBurst-Unite2019",
+          "html_url": "https://github.com/Unity-Technologies/GettingStartedWithBurst-Unite2019",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 59,
+          "archived": false,
+          "fork": false,
+          "description": "Companion to the \"Getting Started With Burst\" talk from Unite 2019"
+        },
+        {
+          "full_name": "Unity-Technologies/barracuda-burst-release",
+          "html_url": "https://github.com/Unity-Technologies/barracuda-burst-release",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 3,
+          "archived": false,
+          "fork": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "term": "Netcode",
+      "aliases": [
+        "netcode"
+      ],
+      "definition": "Multiplayer networking packages and samples (GameObjects and Entities variants).",
+      "game_ui_use": "Use for lobby, session, replication, and networked HUD observation.",
+      "not_that": "Not UI layout authority.",
+      "match_count": 9,
+      "primary_cluster_histogram": {
+        "networking": 3,
+        "ecs-dots": 3,
+        "meta-archived-historical": 1,
+        "meta-forks-mirrors": 2
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 5,
+        "no-ui-signal": 1,
+        "code-only-or-incidental-ui-signal": 1,
+        "excluded-fork-or-vendor-ui": 2
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/com.unity.netcode.gameobjects",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.netcode.gameobjects",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 2316,
+          "archived": false,
+          "fork": false,
+          "description": "Netcode for GameObjects is a high-level netcode SDK that provides networking capabilities to GameObject/MonoBehaviour workflows within Unity and sits on top of underlying transport layer."
+        },
+        {
+          "full_name": "Unity-Technologies/megacity-metro",
+          "html_url": "https://github.com/Unity-Technologies/megacity-metro",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1152,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity-Metro: a thrilling shooter game, using Netcode for Entities for a multiplayer experience supporting 128+ players. Latest DOTS packages and Unity Gaming Services elevate the user experience, demonstrating how to craft engaging multiplayer games."
+        },
+        {
+          "full_name": "Unity-Technologies/ECS-Network-Racing-Sample",
+          "html_url": "https://github.com/Unity-Technologies/ECS-Network-Racing-Sample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 761,
+          "archived": false,
+          "fork": false,
+          "description": "ECS multiplayer racing sample to showcase using Unity Entities and netcode with best practices"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.docs",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.docs",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 716,
+          "archived": true,
+          "fork": false,
+          "description": "[ARCHIVED] Open Source documentation for Unity Multiplayer, which includes Netcode for GameObjects, the Unity Transport Package, Multiplayer Tools and Educational references and Sample Games such as Boss Room."
+        },
+        {
+          "full_name": "Unity-Technologies/multiplayer-community-contributions",
+          "html_url": "https://github.com/Unity-Technologies/multiplayer-community-contributions",
+          "primary_cluster": "networking",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 545,
+          "archived": false,
+          "fork": false,
+          "description": "Community contributions to Unity Multiplayer Networking products and services."
+        },
+        {
+          "full_name": "Unity-Technologies/Megacity-2019",
+          "html_url": "https://github.com/Unity-Technologies/Megacity-2019",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 533,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity is a sample showcasing streaming a large scale environment. It also contains an action-packed, multiplayer shooter mode. It leverages the power of Netcode for Entities for an immersive, multiplayer experience that can support 64+ players simultaneously."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.samples.bitesize",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.samples.bitesize",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 445,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of smaller Bitesize samples to educate in isolation features of Netcode for GameObjects and related technologies."
+        },
+        {
+          "full_name": "Unity-Technologies/fluong-com.unity.netcode.gameobjects-test",
+          "html_url": "https://github.com/Unity-Technologies/fluong-com.unity.netcode.gameobjects-test",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 1,
+          "archived": false,
+          "fork": true,
+          "description": "Netcode for GameObjects is a high-level netcode SDK that provides networking capabilities to GameObject/MonoBehaviour workflows within Unity and sits on top of underlying transport layer."
+        },
+        {
+          "full_name": "Unity-Technologies/fluong-com.unity.netcode.gameobjects-test2",
+          "html_url": "https://github.com/Unity-Technologies/fluong-com.unity.netcode.gameobjects-test2",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 1,
+          "archived": false,
+          "fork": true,
+          "description": "Netcode for GameObjects is a high-level netcode SDK that provides networking capabilities to GameObject/MonoBehaviour workflows within Unity and sits on top of underlying transport layer."
+        }
+      ]
+    },
+    {
+      "term": "Multiplayer",
+      "aliases": [
+        "multiplayer"
+      ],
+      "definition": "Broader multiplayer samples, RFCs, and services around sessionized play.",
+      "game_ui_use": "Discovery for session/menu flows; keep product samples as observations.",
+      "not_that": "Org membership is not a design system.",
+      "match_count": 23,
+      "primary_cluster_histogram": {
+        "networking": 16,
+        "ecs-dots": 3,
+        "meta-archived-historical": 3,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "editor-or-incidental-uitoolkit": 1,
+        "runtime-ui-observation": 7,
+        "legacy-ui-observation": 7,
+        "no-ui-signal": 6,
+        "code-only-or-incidental-ui-signal": 1,
+        "excluded-fork-or-vendor-ui": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/FPSSample",
+          "html_url": "https://github.com/Unity-Technologies/FPSSample",
+          "primary_cluster": "networking",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 5113,
+          "archived": false,
+          "fork": false,
+          "description": "A first person multiplayer shooter example project in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.netcode.gameobjects",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.netcode.gameobjects",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 2316,
+          "archived": false,
+          "fork": false,
+          "description": "Netcode for GameObjects is a high-level netcode SDK that provides networking capabilities to GameObject/MonoBehaviour workflows within Unity and sits on top of underlying transport layer."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1947,
+          "archived": false,
+          "fork": false,
+          "description": "A small-scale cooperative game sample built on the new, Unity networking framework to teach developers about creating a similar multiplayer game."
+        },
+        {
+          "full_name": "Unity-Technologies/multiplayer",
+          "html_url": "https://github.com/Unity-Technologies/multiplayer",
+          "primary_cluster": "networking",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1298,
+          "archived": false,
+          "fork": false,
+          "description": "Unity multiplayer packages and samples"
+        },
+        {
+          "full_name": "Unity-Technologies/megacity-metro",
+          "html_url": "https://github.com/Unity-Technologies/megacity-metro",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1152,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity-Metro: a thrilling shooter game, using Netcode for Entities for a multiplayer experience supporting 128+ players. Latest DOTS packages and Unity Gaming Services elevate the user experience, demonstrating how to craft engaging multiplayer games."
+        },
+        {
+          "full_name": "Unity-Technologies/DOTSSample",
+          "html_url": "https://github.com/Unity-Technologies/DOTSSample",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1017,
+          "archived": true,
+          "fork": false,
+          "description": "A third person, multiplayer sample project. Built with Unity and using the new Data Oriented Tech Stack (DOTS)."
+        },
+        {
+          "full_name": "Unity-Technologies/ECS-Network-Racing-Sample",
+          "html_url": "https://github.com/Unity-Technologies/ECS-Network-Racing-Sample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 761,
+          "archived": false,
+          "fork": false,
+          "description": "ECS multiplayer racing sample to showcase using Unity Entities and netcode with best practices"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.docs",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.docs",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 716,
+          "archived": true,
+          "fork": false,
+          "description": "[ARCHIVED] Open Source documentation for Unity Multiplayer, which includes Netcode for GameObjects, the Unity Transport Package, Multiplayer Tools and Educational references and Sample Games such as Boss Room."
+        },
+        {
+          "full_name": "Unity-Technologies/multiplayer-community-contributions",
+          "html_url": "https://github.com/Unity-Technologies/multiplayer-community-contributions",
+          "primary_cluster": "networking",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 545,
+          "archived": false,
+          "fork": false,
+          "description": "Community contributions to Unity Multiplayer Networking products and services."
+        },
+        {
+          "full_name": "Unity-Technologies/Megacity-2019",
+          "html_url": "https://github.com/Unity-Technologies/Megacity-2019",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 533,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity is a sample showcasing streaming a large scale environment. It also contains an action-packed, multiplayer shooter mode. It leverages the power of Netcode for Entities for an immersive, multiplayer experience that can support 64+ players simultaneously."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.samples.bitesize",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.samples.bitesize",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 445,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of smaller Bitesize samples to educate in isolation features of Netcode for GameObjects and related technologies."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples.game-lobby",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 236,
+          "archived": false,
+          "fork": false,
+          "description": "A sample showcasing a minimal implementation of a lobby experience using the Lobby and Relay packages."
+        }
+      ]
+    },
+    {
+      "term": "XR",
+      "aliases": [
+        "xr",
+        "openxr"
+      ],
+      "definition": "Cross-reality interaction, devices, and samples including world-space UI observations.",
+      "game_ui_use": "Use for spatial UI, ray/direct interaction, and device constraints.",
+      "not_that": "XRI demo prefabs are not flat-menu style authority.",
+      "match_count": 27,
+      "primary_cluster_histogram": {
+        "xr-ar": 25,
+        "game-ui-primary": 1,
+        "graphics-rendering": 1
+      },
+      "ui_relevance_histogram": {
+        "legacy-ui-observation": 10,
+        "ui-adjacent-reference": 1,
+        "code-only-or-incidental-ui-signal": 6,
+        "no-ui-signal": 10
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/arfoundation-samples",
+          "html_url": "https://github.com/Unity-Technologies/arfoundation-samples",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 3420,
+          "archived": false,
+          "fork": false,
+          "description": "Example content for Unity projects based on AR Foundation"
+        },
+        {
+          "full_name": "Unity-Technologies/InputSystem",
+          "html_url": "https://github.com/Unity-Technologies/InputSystem",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "ui-adjacent-reference",
+          "stargazers_count": 1518,
+          "archived": false,
+          "fork": false,
+          "description": "An efficient and versatile input system for Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/XR-Interaction-Toolkit-Examples",
+          "html_url": "https://github.com/Unity-Technologies/XR-Interaction-Toolkit-Examples",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1299,
+          "archived": false,
+          "fork": false,
+          "description": "This repository contains various examples to use with the XR Interaction Toolkit"
+        },
+        {
+          "full_name": "Unity-Technologies/EditorXR",
+          "html_url": "https://github.com/Unity-Technologies/EditorXR",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 938,
+          "archived": false,
+          "fork": false,
+          "description": "Author XR in XR"
+        },
+        {
+          "full_name": "Unity-Technologies/XRLineRenderer",
+          "html_url": "https://github.com/Unity-Technologies/XRLineRenderer",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 311,
+          "archived": false,
+          "fork": false,
+          "description": "An XR-Focused line renderer that mimics rendering with 3d capsules while only using two quads worth of geometry."
+        },
+        {
+          "full_name": "Unity-Technologies/mr-example-meta-openxr",
+          "html_url": "https://github.com/Unity-Technologies/mr-example-meta-openxr",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 142,
+          "archived": false,
+          "fork": false,
+          "description": "Mixed Reality example project featuring integration of OpenXR, XR Interaction Toolkit, XR Hands, AR Foundation and the Meta-OpenXR package. This project will allow creators to quickly get up and running with their own mixed reality games and apps using the Meta Quest 2, Quest Pro and Quest 3 devices."
+        },
+        {
+          "full_name": "Unity-Technologies/Onslaught",
+          "html_url": "https://github.com/Unity-Technologies/Onslaught",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 114,
+          "archived": false,
+          "fork": false,
+          "description": "A multiplatform XR sample game with no third-party packages."
+        },
+        {
+          "full_name": "Unity-Technologies/XRAutomatedTests",
+          "html_url": "https://github.com/Unity-Technologies/XRAutomatedTests",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 102,
+          "archived": false,
+          "fork": false,
+          "description": "XRAutomatedTests is where you can find functional, graphics, performance, and other types of automated tests for your XR Unity development. "
+        },
+        {
+          "full_name": "Unity-Technologies/probuilder-vr",
+          "html_url": "https://github.com/Unity-Technologies/probuilder-vr",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 86,
+          "archived": false,
+          "fork": false,
+          "description": "Kinda like ProBuilder, but in virtual reality."
+        },
+        {
+          "full_name": "Unity-Technologies/360-Video-Heatmaps",
+          "html_url": "https://github.com/Unity-Technologies/360-Video-Heatmaps",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 53,
+          "archived": false,
+          "fork": false,
+          "description": "Heatmaps for 360 Video"
+        },
+        {
+          "full_name": "Unity-Technologies/VR-Spectator-Sample",
+          "html_url": "https://github.com/Unity-Technologies/VR-Spectator-Sample",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 49,
+          "archived": false,
+          "fork": false,
+          "description": "Sample project for understanding how to VR Spectate in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/XRAcceptanceTests",
+          "html_url": "https://github.com/Unity-Technologies/XRAcceptanceTests",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 36,
+          "archived": false,
+          "fork": false,
+          "description": "This project is used to verify behavior of Unity configurations, compare features between Unity releases, and test for changes in performance."
+        }
+      ]
+    },
+    {
+      "term": "AR Foundation",
+      "aliases": [
+        "arfoundation",
+        "ar-foundation"
+      ],
+      "definition": "AR package samples and device integration surfaces.",
+      "game_ui_use": "Use for mobile/spatial presentation constraints that affect HUD safe areas and world UI.",
+      "not_that": "Not a general UI toolkit replacement.",
+      "match_count": 5,
+      "primary_cluster_histogram": {
+        "xr-ar": 4,
+        "meta-archived-historical": 1
+      },
+      "ui_relevance_histogram": {
+        "legacy-ui-observation": 4,
+        "no-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/arfoundation-samples",
+          "html_url": "https://github.com/Unity-Technologies/arfoundation-samples",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 3420,
+          "archived": false,
+          "fork": false,
+          "description": "Example content for Unity projects based on AR Foundation"
+        },
+        {
+          "full_name": "Unity-Technologies/arfoundation-demos",
+          "html_url": "https://github.com/Unity-Technologies/arfoundation-demos",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 527,
+          "archived": true,
+          "fork": false,
+          "description": "AR Foundation demo projects"
+        },
+        {
+          "full_name": "Unity-Technologies/mr-example-meta-openxr",
+          "html_url": "https://github.com/Unity-Technologies/mr-example-meta-openxr",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 142,
+          "archived": false,
+          "fork": false,
+          "description": "Mixed Reality example project featuring integration of OpenXR, XR Interaction Toolkit, XR Hands, AR Foundation and the Meta-OpenXR package. This project will allow creators to quickly get up and running with their own mixed reality games and apps using the Meta Quest 2, Quest Pro and Quest 3 devices."
+        },
+        {
+          "full_name": "Unity-Technologies/ARFoundationGDC2019",
+          "html_url": "https://github.com/Unity-Technologies/ARFoundationGDC2019",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 31,
+          "archived": false,
+          "fork": false,
+          "description": "AR Foundation demo shown on stage at Unity's 2019 GDC Keynote"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.xr-content.xr-sim-environments",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.xr-content.xr-sim-environments",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 23,
+          "archived": false,
+          "fork": false,
+          "description": "Source for XR Simulation Environments content pack used with AR Foundation."
+        }
+      ]
+    },
+    {
+      "term": "HDRP",
+      "aliases": [
+        "hdrp"
+      ],
+      "definition": "High Definition Render Pipeline packages and samples.",
+      "game_ui_use": "Use when UI display, HDR calibration, or camera/stacking constraints matter.",
+      "not_that": "Render pipeline samples are not UI system specs.",
+      "match_count": 4,
+      "primary_cluster_histogram": {
+        "graphics-rendering": 4
+      },
+      "ui_relevance_histogram": {
+        "code-only-or-incidental-ui-signal": 2,
+        "legacy-ui-observation": 1,
+        "no-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/Classic-Sponza",
+          "html_url": "https://github.com/Unity-Technologies/Classic-Sponza",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 365,
+          "archived": false,
+          "fork": false,
+          "description": "Unity remaster of the classic Sponza scene. "
+        },
+        {
+          "full_name": "Unity-Technologies/VRAlchemyLab",
+          "html_url": "https://github.com/Unity-Technologies/VRAlchemyLab",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 312,
+          "archived": false,
+          "fork": false,
+          "description": "VR Demo project using HDRP and unity 2019.3"
+        },
+        {
+          "full_name": "Unity-Technologies/WaterScenes",
+          "html_url": "https://github.com/Unity-Technologies/WaterScenes",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 246,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of scenes showcasing usage of the new HDRP water system"
+        },
+        {
+          "full_name": "Unity-Technologies/SRPBatcherBenchmark",
+          "html_url": "https://github.com/Unity-Technologies/SRPBatcherBenchmark",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 229,
+          "archived": false,
+          "fork": false,
+          "description": "various benchmark scenes for SRP batcher ( both LWRP & HDRP )"
+        }
+      ]
+    },
+    {
+      "term": "URP",
+      "aliases": [
+        "urp"
+      ],
+      "definition": "Universal Render Pipeline packages and samples.",
+      "game_ui_use": "Use for mobile/console rendering constraints affecting UI presentation.",
+      "not_that": "Not Canvas or UI Toolkit ownership.",
+      "match_count": 3,
+      "primary_cluster_histogram": {
+        "graphics-rendering": 3
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 2,
+        "code-only-or-incidental-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/boat-attack-water",
+          "html_url": "https://github.com/Unity-Technologies/boat-attack-water",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 387,
+          "archived": false,
+          "fork": false,
+          "description": "Package repo containing the water system created for the URP Boat Attack demo project."
+        },
+        {
+          "full_name": "Unity-Technologies/Classic-Sponza",
+          "html_url": "https://github.com/Unity-Technologies/Classic-Sponza",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 365,
+          "archived": false,
+          "fork": false,
+          "description": "Unity remaster of the classic Sponza scene. "
+        },
+        {
+          "full_name": "Unity-Technologies/Volume_Lights_System",
+          "html_url": "https://github.com/Unity-Technologies/Volume_Lights_System",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 28,
+          "archived": false,
+          "fork": false,
+          "description": "This project demonstrates how URP's DepthNormals prepass can be used to create mesh-volume-based lights; that is, the illusion of simple lighting rendered on the backfaces of box meshes placed in a scene."
+        }
+      ]
+    },
+    {
+      "term": "Shader Graph",
+      "aliases": [
+        "shadergraph",
+        "shader-graph"
+      ],
+      "definition": "Node-based shader authoring packages and samples.",
+      "game_ui_use": "Use only when custom UI materials/shaders are in scope.",
+      "not_that": "Editor USS/Shader Graph demos are not runtime HUD specs.",
+      "match_count": 5,
+      "primary_cluster_histogram": {
+        "other-mixed-or-insufficient-metadata": 3,
+        "graphics-rendering": 2
+      },
+      "ui_relevance_histogram": {
+        "editor-or-incidental-uitoolkit": 1,
+        "no-ui-signal": 4
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/ShaderGraph",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraph",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 1244,
+          "archived": false,
+          "fork": false,
+          "description": "Unity ShaderGraph project"
+        },
+        {
+          "full_name": "Unity-Technologies/ShaderGraph-Custom-Lighting",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraph-Custom-Lighting",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 318,
+          "archived": false,
+          "fork": false,
+          "description": "A sample project showcasing a simple method to calculate custom lighting inside of Shader Graph for the Lightweight Render Pipeline. Includes a sample toon shaded scene and example assets. Built for Unity 2019.2 ."
+        },
+        {
+          "full_name": "Unity-Technologies/ShaderGraph-MasterStack-Samples",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraph-MasterStack-Samples",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 163,
+          "archived": false,
+          "fork": false,
+          "description": "A sample project using the Universal Render Pipeline that includes examples to demo latest ShaderGraph feature - MasterStack"
+        },
+        {
+          "full_name": "Unity-Technologies/ShaderGraphFeatureDemo_LitMasterNode",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraphFeatureDemo_LitMasterNode",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 73,
+          "archived": false,
+          "fork": false,
+          "description": "Simple HD RP project to showcase new Lit master node."
+        },
+        {
+          "full_name": "Unity-Technologies/TilingRandomization",
+          "html_url": "https://github.com/Unity-Technologies/TilingRandomization",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 64,
+          "archived": false,
+          "fork": false,
+          "description": "Randomized Tiling for Unity ShaderGraph"
+        }
+      ]
+    },
+    {
+      "term": "Cinemachine",
+      "aliases": [
+        "cinemachine"
+      ],
+      "definition": "Camera rig and cinematic control packages/samples.",
+      "game_ui_use": "Use when cinematic menus or camera-owned presentation interact with UI layers.",
+      "not_that": "Not layout ownership.",
+      "match_count": 2,
+      "primary_cluster_histogram": {
+        "animation": 2
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 1,
+        "legacy-ui-observation": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/com.unity.cinemachine",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.cinemachine",
+          "primary_cluster": "animation",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 686,
+          "archived": false,
+          "fork": false,
+          "description": "Smart camera tools for passionate creators"
+        },
+        {
+          "full_name": "Unity-Technologies/Timeline-Cinemachine-Test-Suite",
+          "html_url": "https://github.com/Unity-Technologies/Timeline-Cinemachine-Test-Suite",
+          "primary_cluster": "animation",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 16,
+          "archived": false,
+          "fork": false,
+          "description": "A generic test suite for the main features of Timeline and Cinemachine"
+        }
+      ]
+    },
+    {
+      "term": "Timeline",
+      "aliases": [
+        "timeline"
+      ],
+      "definition": "Sequencing system for cinematic and timed presentation.",
+      "game_ui_use": "Use for timed UI or sequenced screen transitions in samples.",
+      "not_that": "Not a UI control library.",
+      "match_count": 3,
+      "primary_cluster_histogram": {
+        "animation": 3
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 2,
+        "legacy-ui-observation": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/Timeline-MessageMarker",
+          "html_url": "https://github.com/Unity-Technologies/Timeline-MessageMarker",
+          "primary_cluster": "animation",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 61,
+          "archived": false,
+          "fork": false,
+          "description": "Timeline Message markers"
+        },
+        {
+          "full_name": "Unity-Technologies/TimelineSignalsTutorial",
+          "html_url": "https://github.com/Unity-Technologies/TimelineSignalsTutorial",
+          "primary_cluster": "animation",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 47,
+          "archived": false,
+          "fork": false,
+          "description": "Small game demo to showcase Timeline Signals"
+        },
+        {
+          "full_name": "Unity-Technologies/Timeline-Cinemachine-Test-Suite",
+          "html_url": "https://github.com/Unity-Technologies/Timeline-Cinemachine-Test-Suite",
+          "primary_cluster": "animation",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 16,
+          "archived": false,
+          "fork": false,
+          "description": "A generic test suite for the main features of Timeline and Cinemachine"
+        }
+      ]
+    },
+    {
+      "term": "ML-Agents",
+      "aliases": [
+        "ml-agents",
+        "mlagents"
+      ],
+      "definition": "Reinforcement learning toolkit and related repos; highest-star org traffic often lives here.",
+      "game_ui_use": "Debug visualization context only for Game UI.",
+      "not_that": "Not UI architecture authority despite stars.",
+      "match_count": 9,
+      "primary_cluster_histogram": {
+        "ml-ai": 7,
+        "ecs-dots": 1,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "code-only-or-incidental-ui-signal": 3,
+        "no-ui-signal": 4,
+        "legacy-ui-observation": 1,
+        "excluded-fork-or-vendor-ui": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/ml-agents",
+          "html_url": "https://github.com/Unity-Technologies/ml-agents",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 19557,
+          "archived": false,
+          "fork": false,
+          "description": "The Unity Machine Learning Agents Toolkit (ML-Agents) is an open-source project that enables games and simulations to serve as environments for training intelligent agents using deep reinforcement learning and imitation learning."
+        },
+        {
+          "full_name": "Unity-Technologies/obstacle-tower-env",
+          "html_url": "https://github.com/Unity-Technologies/obstacle-tower-env",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 545,
+          "archived": false,
+          "fork": false,
+          "description": "Obstacle Tower Environment"
+        },
+        {
+          "full_name": "Unity-Technologies/marathon-envs",
+          "html_url": "https://github.com/Unity-Technologies/marathon-envs",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 313,
+          "archived": false,
+          "fork": false,
+          "description": "A set of high-dimensional continuous control environments for use with Unity ML-Agents Toolkit."
+        },
+        {
+          "full_name": "Unity-Technologies/ml-agents-dodgeball-env",
+          "html_url": "https://github.com/Unity-Technologies/ml-agents-dodgeball-env",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 77,
+          "archived": false,
+          "fork": false,
+          "description": "Showcase environment for ML-Agents"
+        },
+        {
+          "full_name": "Unity-Technologies/video-recorder",
+          "html_url": "https://github.com/Unity-Technologies/video-recorder",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 40,
+          "archived": false,
+          "fork": false,
+          "description": "Unity ML-Agents Toolkit VideoRecorder Plugin"
+        },
+        {
+          "full_name": "Unity-Technologies/paper-ml-agents",
+          "html_url": "https://github.com/Unity-Technologies/paper-ml-agents",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 23,
+          "archived": false,
+          "fork": false,
+          "description": "A repository to reproduce the experiments of the MA-POCA paper"
+        },
+        {
+          "full_name": "Unity-Technologies/ml-agents-dots",
+          "html_url": "https://github.com/Unity-Technologies/ml-agents-dots",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 19,
+          "archived": false,
+          "fork": false,
+          "description": "DOTS compatible version of ML-Agents"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.ml-agents",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.ml-agents",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 9,
+          "archived": false,
+          "fork": false,
+          "description": "Unity ML-Agents Package"
+        },
+        {
+          "full_name": "Unity-Technologies/ml-agents-grpc",
+          "html_url": "https://github.com/Unity-Technologies/ml-agents-grpc",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 4,
+          "archived": false,
+          "fork": true,
+          "description": "The C based gRPC (C++, Python, Ruby, Objective-C, PHP, C#)"
+        }
+      ]
+    },
+    {
+      "term": "Sentis",
+      "aliases": [
+        "sentis",
+        "barracuda"
+      ],
+      "definition": "Neural inference stacks (Sentis/Barracuda lineage) in org samples/packages.",
+      "game_ui_use": "Ignore for UI system contracts; perception debug only.",
+      "not_that": "Not a UI stack.",
+      "match_count": 5,
+      "primary_cluster_histogram": {
+        "ml-ai": 4,
+        "ecs-dots": 1
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 2,
+        "runtime-ui-observation": 2,
+        "legacy-ui-observation": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/barracuda-release",
+          "html_url": "https://github.com/Unity-Technologies/barracuda-release",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 607,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/sentis-samples",
+          "html_url": "https://github.com/Unity-Technologies/sentis-samples",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 353,
+          "archived": false,
+          "fork": false,
+          "description": "Inference Engine samples internal development repository. Contains example and template projects for Sentis package use."
+        },
+        {
+          "full_name": "Unity-Technologies/barracuda-starter-kit",
+          "html_url": "https://github.com/Unity-Technologies/barracuda-starter-kit",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 73,
+          "archived": false,
+          "fork": false,
+          "description": "Barracuda Starter Kit project. Selected tutorials and documentation for Unity Barracuda project. "
+        },
+        {
+          "full_name": "Unity-Technologies/sentis-edge-detect",
+          "html_url": "https://github.com/Unity-Technologies/sentis-edge-detect",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 13,
+          "archived": false,
+          "fork": false,
+          "description": "Edge detection using Unity's Sentis API"
+        },
+        {
+          "full_name": "Unity-Technologies/barracuda-burst-release",
+          "html_url": "https://github.com/Unity-Technologies/barracuda-burst-release",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 3,
+          "archived": false,
+          "fork": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "term": "Robotics",
+      "aliases": [
+        "robotics",
+        "ros",
+        "urdf"
+      ],
+      "definition": "ROS/robotics simulation hubs and importers.",
+      "game_ui_use": "Operator UI observations only; out of core game HUD authority.",
+      "not_that": "Not Unity Game UI defaults.",
+      "match_count": 8,
+      "primary_cluster_histogram": {
+        "robotics": 6,
+        "networking": 1,
+        "other-mixed-or-insufficient-metadata": 1
+      },
+      "ui_relevance_histogram": {
+        "code-only-or-incidental-ui-signal": 4,
+        "no-ui-signal": 4
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/Unity-Robotics-Hub",
+          "html_url": "https://github.com/Unity-Technologies/Unity-Robotics-Hub",
+          "primary_cluster": "robotics",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 2539,
+          "archived": false,
+          "fork": false,
+          "description": "Central repository for tools, tutorials, resources, and documentation for robotics simulation in Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/Robotics-Nav2-SLAM-Example",
+          "html_url": "https://github.com/Unity-Technologies/Robotics-Nav2-SLAM-Example",
+          "primary_cluster": "robotics",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 433,
+          "archived": false,
+          "fork": false,
+          "description": "An example project which contains the Unity components necessary to complete Navigation2's SLAM tutorial with a Turtlebot3, using a custom Unity environment in place of Gazebo."
+        },
+        {
+          "full_name": "Unity-Technologies/ROS-TCP-Connector",
+          "html_url": "https://github.com/Unity-Technologies/ROS-TCP-Connector",
+          "primary_cluster": "robotics",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 431,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/articulations-robot-demo",
+          "html_url": "https://github.com/Unity-Technologies/articulations-robot-demo",
+          "primary_cluster": "robotics",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 373,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/Robotics-Object-Pose-Estimation",
+          "html_url": "https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation",
+          "primary_cluster": "networking",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 345,
+          "archived": false,
+          "fork": false,
+          "description": "A complete end-to-end demonstration in which we collect training data in Unity and use that data to train a deep neural network to predict the pose of a cube. This model is then deployed in a simulated robotic pick-and-place task."
+        },
+        {
+          "full_name": "Unity-Technologies/URDF-Importer",
+          "html_url": "https://github.com/Unity-Technologies/URDF-Importer",
+          "primary_cluster": "robotics",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 331,
+          "archived": false,
+          "fork": false,
+          "description": "URDF importer"
+        },
+        {
+          "full_name": "Unity-Technologies/ROS-TCP-Endpoint",
+          "html_url": "https://github.com/Unity-Technologies/ROS-TCP-Endpoint",
+          "primary_cluster": "robotics",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 268,
+          "archived": false,
+          "fork": false,
+          "description": "ROS package used to create an endpoint to accept ROS messages sent from a Unity scene using the ROS TCP Connector scripts"
+        },
+        {
+          "full_name": "Unity-Technologies/Robotics-Warehouse",
+          "html_url": "https://github.com/Unity-Technologies/Robotics-Warehouse",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 91,
+          "archived": false,
+          "fork": false,
+          "description": "A warehouse environment for robotics simulation in Unity."
+        }
+      ]
+    },
+    {
+      "term": "Mono",
+      "aliases": [
+        "mono"
+      ],
+      "definition": "Scripting/runtime lineage; often fork/mirror primary in inventory.",
+      "game_ui_use": "Runtime provenance archaeology; never first-party UI authority by org placement alone.",
+      "not_that": "Forked mono UI paths are not HUD specs.",
+      "match_count": 5,
+      "primary_cluster_histogram": {
+        "meta-forks-mirrors": 4,
+        "language-runtime": 1
+      },
+      "ui_relevance_histogram": {
+        "excluded-fork-or-vendor-ui": 2,
+        "no-ui-signal": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/mono",
+          "html_url": "https://github.com/Unity-Technologies/mono",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 1303,
+          "archived": false,
+          "fork": true,
+          "description": "Mono open source ECMA CLI, C# and .NET implementation."
+        },
+        {
+          "full_name": "Unity-Technologies/UnityMixedCallstack",
+          "html_url": "https://github.com/Unity-Technologies/UnityMixedCallstack",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 156,
+          "archived": false,
+          "fork": true,
+          "description": "Visual Studio native debugger extension to help debug native applications using Mono."
+        },
+        {
+          "full_name": "Unity-Technologies/mono-unity",
+          "html_url": "https://github.com/Unity-Technologies/mono-unity",
+          "primary_cluster": "language-runtime",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 12,
+          "archived": false,
+          "fork": false,
+          "description": "Unity extensions for Mono"
+        },
+        {
+          "full_name": "Unity-Technologies/vscode-mono-debug",
+          "html_url": "https://github.com/Unity-Technologies/vscode-mono-debug",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 9,
+          "archived": false,
+          "fork": true,
+          "description": "A simple VS Code debug adapter for mono"
+        },
+        {
+          "full_name": "Unity-Technologies/mono-addins",
+          "html_url": "https://github.com/Unity-Technologies/mono-addins",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 2,
+          "archived": false,
+          "fork": true,
+          "description": "Mono.Addins is a generic framework for creating extensible applications, and for creating add-ins which extend those applications."
+        }
+      ]
+    },
+    {
+      "term": "IL2CPP",
+      "aliases": [
+        "il2cpp"
+      ],
+      "definition": "AOT scripting backend and related runtime material.",
+      "game_ui_use": "Platform packaging constraint context only.",
+      "not_that": "Not UI ownership.",
+      "match_count": 0,
+      "primary_cluster_histogram": {},
+      "ui_relevance_histogram": {},
+      "examples": []
+    },
+    {
+      "term": "UnityCsReference",
+      "aliases": [
+        "unitycsreference",
+        "csreference"
+      ],
+      "definition": "Engine/editor C# reference source dump, including UIElements modules.",
+      "game_ui_use": "Primary Unity-engine C# study surface for module architecture; pin version branch/SHA.",
+      "not_that": "Not a package mirror; not complete engine; not learn-C#-from-zero curriculum.",
+      "match_count": 1,
+      "primary_cluster_histogram": {
+        "language-runtime": 1
+      },
+      "ui_relevance_histogram": {
+        "ui-adjacent-reference": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/UnityCsReference",
+          "html_url": "https://github.com/Unity-Technologies/UnityCsReference",
+          "primary_cluster": "language-runtime",
+          "ui_relevance": "ui-adjacent-reference",
+          "stargazers_count": 12915,
+          "archived": false,
+          "fork": false,
+          "description": "Unity C# reference source code."
+        }
+      ]
+    },
+    {
+      "term": "Package",
+      "aliases": [
+        "package",
+        "com.unity"
+      ],
+      "definition": "Unity package-shaped repositories often named com.unity.*.",
+      "game_ui_use": "Prefer package version + matching source branch for claims.",
+      "not_that": "Package presence is not support status.",
+      "match_count": 102,
+      "primary_cluster_histogram": {
+        "networking": 10,
+        "graphics-rendering": 4,
+        "samples-templates": 5,
+        "ml-ai": 4,
+        "editor-tooling": 8,
+        "other-mixed-or-insufficient-metadata": 29,
+        "meta-archived-historical": 10,
+        "animation": 2,
+        "services-cloud": 2,
+        "ecs-dots": 2,
+        "robotics": 1,
+        "platform-mobile": 3,
+        "xr-ar": 11,
+        "meta-forks-mirrors": 9,
+        "language-runtime": 1,
+        "audio": 1
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 9,
+        "legacy-ui-observation": 12,
+        "editor-or-incidental-uitoolkit": 11,
+        "code-only-or-incidental-ui-signal": 20,
+        "no-ui-signal": 44,
+        "historical-ui-source": 1,
+        "excluded-fork-or-vendor-ui": 5
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/com.unity.netcode.gameobjects",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.netcode.gameobjects",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 2316,
+          "archived": false,
+          "fork": false,
+          "description": "Netcode for GameObjects is a high-level netcode SDK that provides networking capabilities to GameObject/MonoBehaviour workflows within Unity and sits on top of underlying transport layer."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1947,
+          "archived": false,
+          "fork": false,
+          "description": "A small-scale cooperative game sample built on the new, Unity networking framework to teach developers about creating a similar multiplayer game."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.toonshader",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.toonshader",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1528,
+          "archived": false,
+          "fork": false,
+          "description": "Unity Toon Shader"
+        },
+        {
+          "full_name": "Unity-Technologies/Addressables-Sample",
+          "html_url": "https://github.com/Unity-Technologies/Addressables-Sample",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1442,
+          "archived": false,
+          "fork": false,
+          "description": "Demo project using Addressables package"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.perception",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.perception",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 996,
+          "archived": false,
+          "fork": false,
+          "description": "Perception toolkit for sim2real training and validation in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/ProjectAuditor",
+          "html_url": "https://github.com/Unity-Technologies/ProjectAuditor",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 948,
+          "archived": false,
+          "fork": false,
+          "description": "Attention!  This repository is out-of-date and unsupported, please use the built-in package instead!  Project Auditor is a static analysis tool for Unity Projects."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.webrtc",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.webrtc",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 849,
+          "archived": false,
+          "fork": false,
+          "description": "WebRTC package for Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.demoteam.hair",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.demoteam.hair",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 833,
+          "archived": false,
+          "fork": false,
+          "description": "An integrated solution for authoring / importing / simulating / rendering strand-based hair in Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.formats.alembic",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.formats.alembic",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 807,
+          "archived": false,
+          "fork": false,
+          "description": "Alembic importer and exporter plugin for Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.docs",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.docs",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 716,
+          "archived": true,
+          "fork": false,
+          "description": "[ARCHIVED] Open Source documentation for Unity Multiplayer, which includes Netcode for GameObjects, the Unity Transport Package, Multiplayer Tools and Educational references and Sample Games such as Boss Room."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.demoteam.mesh-to-sdf",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.demoteam.mesh-to-sdf",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 710,
+          "archived": false,
+          "fork": false,
+          "description": "A light and fast real-time SDF generator, primarily for animated characters. The dynamic SDF can be used for all sorts of VFX. Also enables hair-to-character collisions in the new hair package."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.cinemachine",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.cinemachine",
+          "primary_cluster": "animation",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 686,
+          "archived": false,
+          "fork": false,
+          "description": "Smart camera tools for passionate creators"
+        }
+      ]
+    },
+    {
+      "term": "Sample",
+      "aliases": [
+        "sample",
+        "samples",
+        "demo",
+        "template",
+        "starter"
+      ],
+      "definition": "Teaching and demonstration repositories.",
+      "game_ui_use": "Observation only unless lifecycle-refined as current explicit example.",
+      "not_that": "Recent push does not modernize baseline Unity version.",
+      "match_count": 99,
+      "primary_cluster_histogram": {
+        "xr-ar": 8,
+        "samples-templates": 30,
+        "networking": 8,
+        "graphics-rendering": 13,
+        "ecs-dots": 13,
+        "meta-archived-historical": 4,
+        "services-cloud": 2,
+        "game-ui-primary": 3,
+        "robotics": 1,
+        "ml-ai": 4,
+        "editor-tooling": 1,
+        "2d": 3,
+        "animation": 2,
+        "meta-forks-mirrors": 7
+      },
+      "ui_relevance_histogram": {
+        "legacy-ui-observation": 31,
+        "no-ui-signal": 39,
+        "runtime-ui-observation": 12,
+        "editor-or-incidental-uitoolkit": 2,
+        "primary-ui-source": 3,
+        "code-only-or-incidental-ui-signal": 9,
+        "ui-adjacent-reference": 2,
+        "excluded-fork-or-vendor-ui": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/arfoundation-samples",
+          "html_url": "https://github.com/Unity-Technologies/arfoundation-samples",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 3420,
+          "archived": false,
+          "fork": false,
+          "description": "Example content for Unity projects based on AR Foundation"
+        },
+        {
+          "full_name": "Unity-Technologies/BoatAttack",
+          "html_url": "https://github.com/Unity-Technologies/BoatAttack",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 2762,
+          "archived": false,
+          "fork": false,
+          "description": "Demo Project using the Universal RP from Unity3D"
+        },
+        {
+          "full_name": "Unity-Technologies/VisualEffectGraph-Samples",
+          "html_url": "https://github.com/Unity-Technologies/VisualEffectGraph-Samples",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 2106,
+          "archived": false,
+          "fork": false,
+          "description": "Visual Effect Graph - Samples Project"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.samples.coop",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1947,
+          "archived": false,
+          "fork": false,
+          "description": "A small-scale cooperative game sample built on the new, Unity networking framework to teach developers about creating a similar multiplayer game."
+        },
+        {
+          "full_name": "Unity-Technologies/VolumetricLighting",
+          "html_url": "https://github.com/Unity-Technologies/VolumetricLighting",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1796,
+          "archived": false,
+          "fork": false,
+          "description": "Lighting effects implemented for the Adam demo: volumetric fog, area lights and tube lights"
+        },
+        {
+          "full_name": "Unity-Technologies/game-programming-patterns-demo",
+          "html_url": "https://github.com/Unity-Technologies/game-programming-patterns-demo",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1725,
+          "archived": false,
+          "fork": false,
+          "description": "A repo of small demos that assemble some of the well-known design patterns in Unity development to support the ebook \"Level up your code with game programming patterns\""
+        },
+        {
+          "full_name": "Unity-Technologies/DOTS-training-samples",
+          "html_url": "https://github.com/Unity-Technologies/DOTS-training-samples",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1647,
+          "archived": false,
+          "fork": false,
+          "description": "Samples designed as exercises to be ported from Unity GameObjects/MonoBehaviours to Unity DOTS. "
+        },
+        {
+          "full_name": "Unity-Technologies/Addressables-Sample",
+          "html_url": "https://github.com/Unity-Technologies/Addressables-Sample",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1442,
+          "archived": false,
+          "fork": false,
+          "description": "Demo project using Addressables package"
+        },
+        {
+          "full_name": "Unity-Technologies/multiplayer",
+          "html_url": "https://github.com/Unity-Technologies/multiplayer",
+          "primary_cluster": "networking",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1298,
+          "archived": false,
+          "fork": false,
+          "description": "Unity multiplayer packages and samples"
+        },
+        {
+          "full_name": "Unity-Technologies/SpaceshipDemo",
+          "html_url": "https://github.com/Unity-Technologies/SpaceshipDemo",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1178,
+          "archived": false,
+          "fork": false,
+          "description": "Spaceship Demo - AAA Playable First person demo showcasing effects made with Visual Effect Graph and rendered with High Definition Render Pipeline"
+        },
+        {
+          "full_name": "Unity-Technologies/FontainebleauDemo",
+          "html_url": "https://github.com/Unity-Technologies/FontainebleauDemo",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1170,
+          "archived": false,
+          "fork": false,
+          "description": "Fontainebleau demo"
+        },
+        {
+          "full_name": "Unity-Technologies/megacity-metro",
+          "html_url": "https://github.com/Unity-Technologies/megacity-metro",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1152,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity-Metro: a thrilling shooter game, using Netcode for Entities for a multiplayer experience supporting 128+ players. Latest DOTS packages and Unity Gaming Services elevate the user experience, demonstrating how to craft engaging multiplayer games."
+        }
+      ]
+    },
+    {
+      "term": "Editor",
+      "aliases": [
+        "editor"
+      ],
+      "definition": "Authoring-time tools, inspectors, and editor UI surfaces.",
+      "game_ui_use": "Separate editor UITK/IMGUI evidence from runtime player UI.",
+      "not_that": "Editor-or-incidental UITK is not player HUD authority.",
+      "match_count": 54,
+      "primary_cluster_histogram": {
+        "networking": 1,
+        "editor-tooling": 29,
+        "graphics-rendering": 1,
+        "other-mixed-or-insufficient-metadata": 9,
+        "ml-ai": 2,
+        "xr-ar": 1,
+        "meta-archived-historical": 4,
+        "samples-templates": 2,
+        "game-ui-primary": 1,
+        "language-runtime": 1,
+        "platform-mobile": 1,
+        "audio": 1,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "editor-or-incidental-uitoolkit": 21,
+        "no-ui-signal": 17,
+        "code-only-or-incidental-ui-signal": 11,
+        "legacy-ui-observation": 3,
+        "historical-ui-source": 1,
+        "primary-ui-source": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/FPSSample",
+          "html_url": "https://github.com/Unity-Technologies/FPSSample",
+          "primary_cluster": "networking",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 5113,
+          "archived": false,
+          "fork": false,
+          "description": "A first person multiplayer shooter example project in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/AssetBundles-Browser",
+          "html_url": "https://github.com/Unity-Technologies/AssetBundles-Browser",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 2398,
+          "archived": false,
+          "fork": false,
+          "description": "Editor tool for viewing and debugging asset bundle contents before and after builds"
+        },
+        {
+          "full_name": "Unity-Technologies/AutoLOD",
+          "html_url": "https://github.com/Unity-Technologies/AutoLOD",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 2055,
+          "archived": false,
+          "fork": false,
+          "description": "Automatic LOD generation + scene optimization"
+        },
+        {
+          "full_name": "Unity-Technologies/UnityRenderStreaming",
+          "html_url": "https://github.com/Unity-Technologies/UnityRenderStreaming",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 1454,
+          "archived": false,
+          "fork": false,
+          "description": "Streaming server for Unity "
+        },
+        {
+          "full_name": "Unity-Technologies/ShaderGraph",
+          "html_url": "https://github.com/Unity-Technologies/ShaderGraph",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 1244,
+          "archived": false,
+          "fork": false,
+          "description": "Unity ShaderGraph project"
+        },
+        {
+          "full_name": "Unity-Technologies/AssetGraph",
+          "html_url": "https://github.com/Unity-Technologies/AssetGraph",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 1160,
+          "archived": false,
+          "fork": false,
+          "description": "Visual Workflow Automation Tool for Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.perception",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.perception",
+          "primary_cluster": "ml-ai",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 996,
+          "archived": false,
+          "fork": false,
+          "description": "Perception toolkit for sim2real training and validation in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/HLODSystem",
+          "html_url": "https://github.com/Unity-Technologies/HLODSystem",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "editor-or-incidental-uitoolkit",
+          "stargazers_count": 986,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/ProjectAuditor",
+          "html_url": "https://github.com/Unity-Technologies/ProjectAuditor",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 948,
+          "archived": false,
+          "fork": false,
+          "description": "Attention!  This repository is out-of-date and unsupported, please use the built-in package instead!  Project Auditor is a static analysis tool for Unity Projects."
+        },
+        {
+          "full_name": "Unity-Technologies/EditorXR",
+          "html_url": "https://github.com/Unity-Technologies/EditorXR",
+          "primary_cluster": "xr-ar",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 938,
+          "archived": false,
+          "fork": false,
+          "description": "Author XR in XR"
+        },
+        {
+          "full_name": "Unity-Technologies/giles",
+          "html_url": "https://github.com/Unity-Technologies/giles",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 792,
+          "archived": false,
+          "fork": false,
+          "description": "GILES: A Runtime Level Editor for Unity3D"
+        },
+        {
+          "full_name": "Unity-Technologies/graph-visualizer",
+          "html_url": "https://github.com/Unity-Technologies/graph-visualizer",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 694,
+          "archived": false,
+          "fork": false,
+          "description": "Visualizer for your Playable graphs"
+        }
+      ]
+    },
+    {
+      "term": "Profiler",
+      "aliases": [
+        "profiler"
+      ],
+      "definition": "Performance measurement tooling.",
+      "game_ui_use": "Use when investigating UI rebuild or CPU costs; not a layout guide.",
+      "not_that": "Tooling is not product visual guidance.",
+      "match_count": 6,
+      "primary_cluster_histogram": {
+        "editor-tooling": 3,
+        "meta-forks-mirrors": 3
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 5,
+        "excluded-fork-or-vendor-ui": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/com.unity.editoriterationprofiler",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.editoriterationprofiler",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 221,
+          "archived": false,
+          "fork": false,
+          "description": "Assists in capturing frames from the Profiler of Domain Reloads in the Unity Editor. Compatible with Unity 2019.3+."
+        },
+        {
+          "full_name": "Unity-Technologies/TraceEventProfiler",
+          "html_url": "https://github.com/Unity-Technologies/TraceEventProfiler",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 22,
+          "archived": false,
+          "fork": false,
+          "description": "Capture Unity profile data to the Trace Event Format using the Unity Profiler Plugin API"
+        },
+        {
+          "full_name": "Unity-Technologies/profiler-snapshot-tool",
+          "html_url": "https://github.com/Unity-Technologies/profiler-snapshot-tool",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 22,
+          "archived": false,
+          "fork": false,
+          "description": "Tool to make it easier to profile the editor without having the profiler window open. To use it: Tests/Profiler/Toggle Snapshot."
+        },
+        {
+          "full_name": "Unity-Technologies/usamply",
+          "html_url": "https://github.com/Unity-Technologies/usamply",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 5,
+          "archived": false,
+          "fork": true,
+          "description": "Command-line sampling profiler for macOS and Linux"
+        },
+        {
+          "full_name": "Unity-Technologies/fx-profiler-frontend",
+          "html_url": "https://github.com/Unity-Technologies/fx-profiler-frontend",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 2,
+          "archived": false,
+          "fork": true,
+          "description": "Firefox Profiler — Web app for Firefox performance analysis"
+        },
+        {
+          "full_name": "Unity-Technologies/fx-profiler-server",
+          "html_url": "https://github.com/Unity-Technologies/fx-profiler-server",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1,
+          "archived": false,
+          "fork": true,
+          "description": "Firefox Profiler server and data storage infrastructure "
+        }
+      ]
+    },
+    {
+      "term": "Asset Bundle",
+      "aliases": [
+        "assetbundle",
+        "assetbundles"
+      ],
+      "definition": "Legacy and tooling surfaces for packaged content delivery.",
+      "game_ui_use": "Content lifecycle observation near UI asset loading.",
+      "not_that": "Not Addressables by default; not UI system.",
+      "match_count": 3,
+      "primary_cluster_histogram": {
+        "editor-tooling": 2,
+        "other-mixed-or-insufficient-metadata": 1
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 1,
+        "code-only-or-incidental-ui-signal": 1,
+        "legacy-ui-observation": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/AssetBundles-Browser",
+          "html_url": "https://github.com/Unity-Technologies/AssetBundles-Browser",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 2398,
+          "archived": false,
+          "fork": false,
+          "description": "Editor tool for viewing and debugging asset bundle contents before and after builds"
+        },
+        {
+          "full_name": "Unity-Technologies/UnityDataTools",
+          "html_url": "https://github.com/Unity-Technologies/UnityDataTools",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 804,
+          "archived": false,
+          "fork": false,
+          "description": "Tools and libraries for reading and analyzing Unity data files."
+        },
+        {
+          "full_name": "Unity-Technologies/hw2017-ab-variants-2",
+          "html_url": "https://github.com/Unity-Technologies/hw2017-ab-variants-2",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 2,
+          "archived": false,
+          "fork": false,
+          "description": "Asset bundle variants 2.0 example project"
+        }
+      ]
+    },
+    {
+      "term": "Safe Area",
+      "aliases": [
+        "safearea",
+        "safe-area",
+        "notch"
+      ],
+      "definition": "Display cutout and safe-area layout samples.",
+      "game_ui_use": "Mobile HUD edge insets and notch handling.",
+      "not_that": "Sample version must be pinned.",
+      "match_count": 2,
+      "primary_cluster_histogram": {
+        "other-mixed-or-insufficient-metadata": 1,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "ui-adjacent-reference": 1,
+        "no-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/NotchSafeAreaSample",
+          "html_url": "https://github.com/Unity-Technologies/NotchSafeAreaSample",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "ui-adjacent-reference",
+          "stargazers_count": 62,
+          "archived": false,
+          "fork": false,
+          "description": "Simple project to test cutouts, safe area APIs with Device Simulator"
+        },
+        {
+          "full_name": "Unity-Technologies/UnityAndroidNotchSupport",
+          "html_url": "https://github.com/Unity-Technologies/UnityAndroidNotchSupport",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 13,
+          "archived": false,
+          "fork": true,
+          "description": "Support for Android Notch (Cutout) in Unity 2017.4 and earlier"
+        }
+      ]
+    },
+    {
+      "term": "World Space",
+      "aliases": [
+        "worldspace",
+        "world-space"
+      ],
+      "definition": "UI presented in 3D world rather than screen overlay.",
+      "game_ui_use": "Critical axis when choosing uGUI vs UI Toolkit for spatial UI.",
+      "not_that": "Claims must be version- and stack-specific.",
+      "match_count": 1,
+      "primary_cluster_histogram": {
+        "game-ui-primary": 1
+      },
+      "ui_relevance_histogram": {
+        "primary-ui-source": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/BagelGame",
+          "html_url": "https://github.com/Unity-Technologies/BagelGame",
+          "primary_cluster": "game-ui-primary",
+          "ui_relevance": "primary-ui-source",
+          "stargazers_count": 51,
+          "archived": false,
+          "fork": false,
+          "description": "Bagel Game is a full vertical game project that is specifically made to demonstrate how UI Toolkit can be used to create UI for 3D games. It covers World Space UI, Custom Shaders, Filters, Data Bindings, StyleSheets, Themes, Input System Integration, among others - all in a realistic fully functional game project."
+        }
+      ]
+    },
+    {
+      "term": "Fork",
+      "aliases": [
+        "fork",
+        "mirror"
+      ],
+      "definition": "GitHub fork or semantic mirror provenance class.",
+      "game_ui_use": "Discovery only; never automatic first-party authority.",
+      "not_that": "fork=false is insufficient to prove Unity authorship.",
+      "match_count": 100,
+      "primary_cluster_histogram": {
+        "meta-forks-mirrors": 93,
+        "other-mixed-or-insufficient-metadata": 4,
+        "networking": 3
+      },
+      "ui_relevance_histogram": {
+        "excluded-fork-or-vendor-ui": 90,
+        "legacy-ui-observation": 2,
+        "no-ui-signal": 6,
+        "code-only-or-incidental-ui-signal": 2
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/mono",
+          "html_url": "https://github.com/Unity-Technologies/mono",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 1303,
+          "archived": false,
+          "fork": true,
+          "description": "Mono open source ECMA CLI, C# and .NET implementation."
+        },
+        {
+          "full_name": "Unity-Technologies/Git-for-Unity",
+          "html_url": "https://github.com/Unity-Technologies/Git-for-Unity",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 163,
+          "archived": false,
+          "fork": false,
+          "description": "Git for Unity, a fork of GitHub for Unity "
+        },
+        {
+          "full_name": "Unity-Technologies/katana",
+          "html_url": "https://github.com/Unity-Technologies/katana",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 138,
+          "archived": true,
+          "fork": true,
+          "description": "Unity's fork of Buildbot, a Python-based continuous integration testing framework!"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.cloud.gltfast",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.cloud.gltfast",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 124,
+          "archived": false,
+          "fork": true,
+          "description": "Efficient glTF 3D import / export library for Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/monodevelop",
+          "html_url": "https://github.com/Unity-Technologies/monodevelop",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 101,
+          "archived": false,
+          "fork": true,
+          "description": "MonoDevelop"
+        },
+        {
+          "full_name": "Unity-Technologies/bdwgc",
+          "html_url": "https://github.com/Unity-Technologies/bdwgc",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 61,
+          "archived": false,
+          "fork": true,
+          "description": "The Boehm-Demers-Weiser conservative C/C++ Garbage Collector (libgc, bdwgc, boehmgc) "
+        },
+        {
+          "full_name": "Unity-Technologies/runtime",
+          "html_url": "https://github.com/Unity-Technologies/runtime",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 51,
+          "archived": false,
+          "fork": true,
+          "description": ".NET is a cross-platform runtime for cloud, mobile, desktop, and IoT apps."
+        },
+        {
+          "full_name": "Unity-Technologies/Zenject",
+          "html_url": "https://github.com/Unity-Technologies/Zenject",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 44,
+          "archived": false,
+          "fork": true,
+          "description": "Dependency Injection Framework for Unity3D "
+        },
+        {
+          "full_name": "Unity-Technologies/unity-relay-mirror-sample",
+          "html_url": "https://github.com/Unity-Technologies/unity-relay-mirror-sample",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 43,
+          "archived": false,
+          "fork": false,
+          "description": "Unity Mirror Sample project! This project demonstrates how to use Unity Transport Package (UTP) and Relay service with the Mirror Networking API."
+        },
+        {
+          "full_name": "Unity-Technologies/roslyn",
+          "html_url": "https://github.com/Unity-Technologies/roslyn",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 36,
+          "archived": false,
+          "fork": true,
+          "description": "The .NET Compiler Platform (\"Roslyn\") provides open-source C# and Visual Basic compilers with rich code analysis APIs."
+        },
+        {
+          "full_name": "Unity-Technologies/protobuf",
+          "html_url": "https://github.com/Unity-Technologies/protobuf",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 32,
+          "archived": false,
+          "fork": true,
+          "description": "Protocol Buffers - Google's data interchange format"
+        },
+        {
+          "full_name": "Unity-Technologies/ILSpy",
+          "html_url": "https://github.com/Unity-Technologies/ILSpy",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 31,
+          "archived": false,
+          "fork": true,
+          "description": ".NET Decompiler"
+        }
+      ]
+    },
+    {
+      "term": "Archive",
+      "aliases": [
+        "archived",
+        "archive"
+      ],
+      "definition": "GitHub archived repository lifecycle flag.",
+      "game_ui_use": "Historical lane; not current LTS guidance by itself.",
+      "not_that": "Unarchived also does not prove current support.",
+      "match_count": 32,
+      "primary_cluster_histogram": {
+        "meta-archived-historical": 32
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 20,
+        "legacy-ui-observation": 4,
+        "historical-ui-source": 1,
+        "code-only-or-incidental-ui-signal": 6,
+        "editor-or-incidental-uitoolkit": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/PostProcessing",
+          "html_url": "https://github.com/Unity-Technologies/PostProcessing",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 3742,
+          "archived": true,
+          "fork": false,
+          "description": "Post Processing Stack"
+        },
+        {
+          "full_name": "Unity-Technologies/DOTSSample",
+          "html_url": "https://github.com/Unity-Technologies/DOTSSample",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1017,
+          "archived": true,
+          "fork": false,
+          "description": "A third person, multiplayer sample project. Built with Unity and using the new Data Oriented Tech Stack (DOTS)."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.multiplayer.docs",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.multiplayer.docs",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 716,
+          "archived": true,
+          "fork": false,
+          "description": "[ARCHIVED] Open Source documentation for Unity Multiplayer, which includes Netcode for GameObjects, the Unity Transport Package, Multiplayer Tools and Educational references and Sample Games such as Boss Room."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.uiwidgets",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.uiwidgets",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "historical-ui-source",
+          "stargazers_count": 623,
+          "archived": true,
+          "fork": false,
+          "description": "UIWidgets is a Unity Package which helps developers to create, debug and deploy efficient, cross-platform Apps."
+        },
+        {
+          "full_name": "Unity-Technologies/SimpleAnimation",
+          "html_url": "https://github.com/Unity-Technologies/SimpleAnimation",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 616,
+          "archived": true,
+          "fork": false,
+          "description": "A simple Animation Component that leverages PlayableGraphs"
+        },
+        {
+          "full_name": "Unity-Technologies/unity-cache-server",
+          "html_url": "https://github.com/Unity-Technologies/unity-cache-server",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 548,
+          "archived": true,
+          "fork": false,
+          "description": "Unity CacheServer optimized for multi-client local networks"
+        },
+        {
+          "full_name": "Unity-Technologies/arfoundation-demos",
+          "html_url": "https://github.com/Unity-Technologies/arfoundation-demos",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 527,
+          "archived": true,
+          "fork": false,
+          "description": "AR Foundation demo projects"
+        },
+        {
+          "full_name": "Unity-Technologies/facial-ar-remote",
+          "html_url": "https://github.com/Unity-Technologies/facial-ar-remote",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 487,
+          "archived": true,
+          "fork": false,
+          "description": "**This project is discontinued** Facial AR Remote is a tool that allows you to capture blendshape animations directly from your iPhone X into Unity 3d by use of an app on your phone."
+        },
+        {
+          "full_name": "Unity-Technologies/vscode-unity-debug",
+          "html_url": "https://github.com/Unity-Technologies/vscode-unity-debug",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 461,
+          "archived": true,
+          "fork": false,
+          "description": "Unity debugging support for VS Code"
+        },
+        {
+          "full_name": "Unity-Technologies/SynthDet",
+          "html_url": "https://github.com/Unity-Technologies/SynthDet",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 400,
+          "archived": true,
+          "fork": false,
+          "description": "SynthDet - An end-to-end object detection pipeline using synthetic data"
+        },
+        {
+          "full_name": "Unity-Technologies/TerrainToolSamples",
+          "html_url": "https://github.com/Unity-Technologies/TerrainToolSamples",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 218,
+          "archived": true,
+          "fork": false,
+          "description": "Unity has archived the TerrainToolSamples repository. For future development, please use the Terrain Tools package."
+        },
+        {
+          "full_name": "Unity-Technologies/ai-planner-samples",
+          "html_url": "https://github.com/Unity-Technologies/ai-planner-samples",
+          "primary_cluster": "meta-archived-historical",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 111,
+          "archived": true,
+          "fork": false,
+          "description": "AI Planner: Samples"
+        }
+      ]
+    },
+    {
+      "term": "Graphics",
+      "aliases": [
+        "graphics"
+      ],
+      "definition": "Render pipeline and graphics package/sample umbrella.",
+      "game_ui_use": "UI shaders, cameras, HDR, and display constraints.",
+      "not_that": "Truncated trees forbid strong absence claims.",
+      "match_count": 43,
+      "primary_cluster_histogram": {
+        "graphics-rendering": 38,
+        "meta-archived-historical": 2,
+        "meta-forks-mirrors": 3
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 3,
+        "no-ui-signal": 19,
+        "code-only-or-incidental-ui-signal": 9,
+        "legacy-ui-observation": 8,
+        "ui-adjacent-reference": 1,
+        "excluded-fork-or-vendor-ui": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/Graphics",
+          "html_url": "https://github.com/Unity-Technologies/Graphics",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 2961,
+          "archived": false,
+          "fork": false,
+          "description": "Unity Graphics - Including Scriptable Render Pipeline"
+        },
+        {
+          "full_name": "Unity-Technologies/AutoLOD",
+          "html_url": "https://github.com/Unity-Technologies/AutoLOD",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 2055,
+          "archived": false,
+          "fork": false,
+          "description": "Automatic LOD generation + scene optimization"
+        },
+        {
+          "full_name": "Unity-Technologies/VolumetricLighting",
+          "html_url": "https://github.com/Unity-Technologies/VolumetricLighting",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1796,
+          "archived": false,
+          "fork": false,
+          "description": "Lighting effects implemented for the Adam demo: volumetric fog, area lights and tube lights"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.toonshader",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.toonshader",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1528,
+          "archived": false,
+          "fork": false,
+          "description": "Unity Toon Shader"
+        },
+        {
+          "full_name": "Unity-Technologies/Unity.Mathematics",
+          "html_url": "https://github.com/Unity-Technologies/Unity.Mathematics",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 1442,
+          "archived": false,
+          "fork": false,
+          "description": "The C# math library used in Unity providing vector types and math functions with a shader like syntax"
+        },
+        {
+          "full_name": "Unity-Technologies/SpaceshipDemo",
+          "html_url": "https://github.com/Unity-Technologies/SpaceshipDemo",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1178,
+          "archived": false,
+          "fork": false,
+          "description": "Spaceship Demo - AAA Playable First person demo showcasing effects made with Visual Effect Graph and rendered with High Definition Render Pipeline"
+        },
+        {
+          "full_name": "Unity-Technologies/FontainebleauDemo",
+          "html_url": "https://github.com/Unity-Technologies/FontainebleauDemo",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 1170,
+          "archived": false,
+          "fork": false,
+          "description": "Fontainebleau demo"
+        },
+        {
+          "full_name": "Unity-Technologies/HLSLcc",
+          "html_url": "https://github.com/Unity-Technologies/HLSLcc",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 916,
+          "archived": false,
+          "fork": false,
+          "description": "DirectX shader bytecode cross compiler"
+        },
+        {
+          "full_name": "Unity-Technologies/MeshApiExamples",
+          "html_url": "https://github.com/Unity-Technologies/MeshApiExamples",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 770,
+          "archived": false,
+          "fork": false,
+          "description": "Example project for Unity 2020.1 Mesh API improvements"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.demoteam.mesh-to-sdf",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.demoteam.mesh-to-sdf",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 710,
+          "archived": false,
+          "fork": false,
+          "description": "A light and fast real-time SDF generator, primarily for animated characters. The dynamic SDF can be used for all sorts of VFX. Also enables hair-to-character collisions in the new hair package."
+        },
+        {
+          "full_name": "Unity-Technologies/DeLightingTool",
+          "html_url": "https://github.com/Unity-Technologies/DeLightingTool",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 540,
+          "archived": false,
+          "fork": false,
+          "description": "De-Lighting tool"
+        },
+        {
+          "full_name": "Unity-Technologies/boat-attack-water",
+          "html_url": "https://github.com/Unity-Technologies/boat-attack-water",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 387,
+          "archived": false,
+          "fork": false,
+          "description": "Package repo containing the water system created for the URP Boat Attack demo project."
+        }
+      ]
+    },
+    {
+      "term": "2D",
+      "aliases": [
+        "2d",
+        "sprite",
+        "tilemap"
+      ],
+      "definition": "2D packages, sprites, tilemaps, pixel-perfect samples.",
+      "game_ui_use": "2D presentation constraints and some runtime UITK observations.",
+      "not_that": "Not general UI system ownership.",
+      "match_count": 11,
+      "primary_cluster_histogram": {
+        "2d": 7,
+        "physics": 1,
+        "graphics-rendering": 2,
+        "ecs-dots": 1
+      },
+      "ui_relevance_histogram": {
+        "code-only-or-incidental-ui-signal": 2,
+        "runtime-ui-observation": 2,
+        "legacy-ui-observation": 3,
+        "no-ui-signal": 4
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/2d-extras",
+          "html_url": "https://github.com/Unity-Technologies/2d-extras",
+          "primary_cluster": "2d",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 1628,
+          "archived": false,
+          "fork": false,
+          "description": "Fun 2D Stuff that we'd like to share!"
+        },
+        {
+          "full_name": "Unity-Technologies/2d-techdemos",
+          "html_url": "https://github.com/Unity-Technologies/2d-techdemos",
+          "primary_cluster": "2d",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1008,
+          "archived": false,
+          "fork": false,
+          "description": "Tech Demos for Unity 2D Features"
+        },
+        {
+          "full_name": "Unity-Technologies/UnityPlayground",
+          "html_url": "https://github.com/Unity-Technologies/UnityPlayground",
+          "primary_cluster": "2d",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 969,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of simple scripts to create 2D physics game, intended for giving workshops to a young audience"
+        },
+        {
+          "full_name": "Unity-Technologies/PhysicsExamples2D",
+          "html_url": "https://github.com/Unity-Technologies/PhysicsExamples2D",
+          "primary_cluster": "physics",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 729,
+          "archived": false,
+          "fork": false,
+          "description": "Examples of various Unity 2D Physics components and features."
+        },
+        {
+          "full_name": "Unity-Technologies/2d-pixel-perfect",
+          "html_url": "https://github.com/Unity-Technologies/2d-pixel-perfect",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 240,
+          "archived": false,
+          "fork": false,
+          "description": "Pixel Perfect Camera"
+        },
+        {
+          "full_name": "Unity-Technologies/2d-gamedemo-robodash",
+          "html_url": "https://github.com/Unity-Technologies/2d-gamedemo-robodash",
+          "primary_cluster": "2d",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 211,
+          "archived": false,
+          "fork": false,
+          "description": "Robodash!"
+        },
+        {
+          "full_name": "Unity-Technologies/2d-spriteshape-samples",
+          "html_url": "https://github.com/Unity-Technologies/2d-spriteshape-samples",
+          "primary_cluster": "2d",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 210,
+          "archived": false,
+          "fork": false,
+          "description": "Samples for the 2D SpriteShape feature."
+        },
+        {
+          "full_name": "Unity-Technologies/2d-animation-samples",
+          "html_url": "https://github.com/Unity-Technologies/2d-animation-samples",
+          "primary_cluster": "2d",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 201,
+          "archived": false,
+          "fork": false,
+          "description": "Samples for 2D Animation features."
+        },
+        {
+          "full_name": "Unity-Technologies/2d-renderer-samples",
+          "html_url": "https://github.com/Unity-Technologies/2d-renderer-samples",
+          "primary_cluster": "graphics-rendering",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 176,
+          "archived": false,
+          "fork": false,
+          "description": "Samples for Unity's 2D Renderer"
+        },
+        {
+          "full_name": "Unity-Technologies/2d-animation-v2-samples",
+          "html_url": "https://github.com/Unity-Technologies/2d-animation-v2-samples",
+          "primary_cluster": "2d",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 55,
+          "archived": false,
+          "fork": false,
+          "description": "Samples for 2D Animation v2."
+        },
+        {
+          "full_name": "Unity-Technologies/2D-Entities-Starter",
+          "html_url": "https://github.com/Unity-Technologies/2D-Entities-Starter",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 28,
+          "archived": false,
+          "fork": false,
+          "description": null
+        }
+      ]
+    },
+    {
+      "term": "Physics",
+      "aliases": [
+        "physics",
+        "navmesh"
+      ],
+      "definition": "Physics and navigation samples.",
+      "game_ui_use": "Rare diegetic or gameplay coupling only.",
+      "not_that": "Not HUD layout authority.",
+      "match_count": 7,
+      "primary_cluster_histogram": {
+        "other-mixed-or-insufficient-metadata": 1,
+        "robotics": 2,
+        "2d": 1,
+        "physics": 1,
+        "networking": 1,
+        "ecs-dots": 1
+      },
+      "ui_relevance_histogram": {
+        "code-only-or-incidental-ui-signal": 3,
+        "runtime-ui-observation": 1,
+        "no-ui-signal": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/NavMeshComponents",
+          "html_url": "https://github.com/Unity-Technologies/NavMeshComponents",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 3087,
+          "archived": false,
+          "fork": false,
+          "description": "High Level API Components for Runtime NavMesh Building"
+        },
+        {
+          "full_name": "Unity-Technologies/Unity-Robotics-Hub",
+          "html_url": "https://github.com/Unity-Technologies/Unity-Robotics-Hub",
+          "primary_cluster": "robotics",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 2539,
+          "archived": false,
+          "fork": false,
+          "description": "Central repository for tools, tutorials, resources, and documentation for robotics simulation in Unity."
+        },
+        {
+          "full_name": "Unity-Technologies/UnityPlayground",
+          "html_url": "https://github.com/Unity-Technologies/UnityPlayground",
+          "primary_cluster": "2d",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 969,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of simple scripts to create 2D physics game, intended for giving workshops to a young audience"
+        },
+        {
+          "full_name": "Unity-Technologies/PhysicsExamples2D",
+          "html_url": "https://github.com/Unity-Technologies/PhysicsExamples2D",
+          "primary_cluster": "physics",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 729,
+          "archived": false,
+          "fork": false,
+          "description": "Examples of various Unity 2D Physics components and features."
+        },
+        {
+          "full_name": "Unity-Technologies/articulations-robot-demo",
+          "html_url": "https://github.com/Unity-Technologies/articulations-robot-demo",
+          "primary_cluster": "robotics",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 373,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/Robotics-Object-Pose-Estimation",
+          "html_url": "https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation",
+          "primary_cluster": "networking",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 345,
+          "archived": false,
+          "fork": false,
+          "description": "A complete end-to-end demonstration in which we collect training data in Unity and use that data to train a deep neural network to predict the pose of a cube. This model is then deployed in a simulated robotic pick-and-place task."
+        },
+        {
+          "full_name": "Unity-Technologies/DOTS-Shmup3D-sample",
+          "html_url": "https://github.com/Unity-Technologies/DOTS-Shmup3D-sample",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 183,
+          "archived": false,
+          "fork": false,
+          "description": "A demo with Unity DOTS and Unity Physics."
+        }
+      ]
+    },
+    {
+      "term": "Audio",
+      "aliases": [
+        "audio"
+      ],
+      "definition": "Audio examples and plugins.",
+      "game_ui_use": "UI SFX/mixer hooks only.",
+      "not_that": "Not visual UI ownership.",
+      "match_count": 5,
+      "primary_cluster_histogram": {
+        "audio": 3,
+        "ecs-dots": 1,
+        "meta-forks-mirrors": 1
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 2,
+        "legacy-ui-observation": 3
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/GenericRecorder-MovieRecorderPlugin",
+          "html_url": "https://github.com/Unity-Technologies/GenericRecorder-MovieRecorderPlugin",
+          "primary_cluster": "audio",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 62,
+          "archived": false,
+          "fork": false,
+          "description": "FrameRecorder recorder plugin to record MP4's with audio using Unity API's only."
+        },
+        {
+          "full_name": "Unity-Technologies/UnityBlackmagicVideo",
+          "html_url": "https://github.com/Unity-Technologies/UnityBlackmagicVideo",
+          "primary_cluster": "audio",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 32,
+          "archived": false,
+          "fork": false,
+          "description": "The Blackmagic Video package helps you leverage video capture cards from Blackmagic Design to input and output pro-grade video and audio in the Unity Editor and runtime builds, unlocking new workflows for users working in film, virtual production, live events, and broadcast."
+        },
+        {
+          "full_name": "Unity-Technologies/Mobile-Audio-Test-Suite",
+          "html_url": "https://github.com/Unity-Technologies/Mobile-Audio-Test-Suite",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 6,
+          "archived": false,
+          "fork": false,
+          "description": "A small project for testing most of the non-DOTS audio system features on mobile. Just Build for mobile and click Begin, suite is semi-automated, just follow instructions on the screen."
+        },
+        {
+          "full_name": "Unity-Technologies/audio-examples",
+          "html_url": "https://github.com/Unity-Technologies/audio-examples",
+          "primary_cluster": "audio",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 5,
+          "archived": false,
+          "fork": false,
+          "description": "Unity audio examples repo."
+        },
+        {
+          "full_name": "Unity-Technologies/resonance-audio",
+          "html_url": "https://github.com/Unity-Technologies/resonance-audio",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 4,
+          "archived": false,
+          "fork": true,
+          "description": "Resonance Audio Source Code"
+        }
+      ]
+    },
+    {
+      "term": "Cloud / UGS",
+      "aliases": [
+        "cloud",
+        "ugs",
+        "services"
+      ],
+      "definition": "Unity Gaming Services and cloud samples.",
+      "game_ui_use": "Login, economy, remote config, and service-driven screen states.",
+      "not_that": "Service sample UI is product observation.",
+      "match_count": 24,
+      "primary_cluster_histogram": {
+        "ecs-dots": 1,
+        "services-cloud": 3,
+        "networking": 7,
+        "meta-forks-mirrors": 8,
+        "samples-templates": 3,
+        "editor-tooling": 1,
+        "other-mixed-or-insufficient-metadata": 1
+      },
+      "ui_relevance_histogram": {
+        "runtime-ui-observation": 6,
+        "legacy-ui-observation": 3,
+        "no-ui-signal": 11,
+        "excluded-fork-or-vendor-ui": 3,
+        "code-only-or-incidental-ui-signal": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/megacity-metro",
+          "html_url": "https://github.com/Unity-Technologies/megacity-metro",
+          "primary_cluster": "ecs-dots",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 1152,
+          "archived": false,
+          "fork": false,
+          "description": "Megacity-Metro: a thrilling shooter game, using Netcode for Entities for a multiplayer experience supporting 128+ players. Latest DOTS packages and Unity Gaming Services elevate the user experience, demonstrating how to craft engaging multiplayer games."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples.use-cases",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples.use-cases",
+          "primary_cluster": "services-cloud",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 540,
+          "archived": false,
+          "fork": false,
+          "description": "The collection of samples in this repo use Unity Gaming Services in a Unity project to demonstrate live gaming operations."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples.game-lobby",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 236,
+          "archived": false,
+          "fork": false,
+          "description": "A sample showcasing a minimal implementation of a lobby experience using the Lobby and Relay packages."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples",
+          "primary_cluster": "services-cloud",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 144,
+          "archived": false,
+          "fork": false,
+          "description": "A collection of working examples of Unity Gaming Services."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.cloud.gltfast",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.cloud.gltfast",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 124,
+          "archived": false,
+          "fork": true,
+          "description": "Efficient glTF 3D import / export library for Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples.matchplay",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples.matchplay",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 109,
+          "archived": false,
+          "fork": false,
+          "description": "A Matchmaking with Multiplay Unity example project. Implements the Unity Matchmaking and Multiplay SDK to create an end to end matchmaking game experience."
+        },
+        {
+          "full_name": "Unity-Technologies/unity-cloud-reference-project",
+          "html_url": "https://github.com/Unity-Technologies/unity-cloud-reference-project",
+          "primary_cluster": "networking",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 68,
+          "archived": false,
+          "fork": false,
+          "description": "A Unity project for building an immersive experience to facilitate interactive real-time 3D design reviews"
+        },
+        {
+          "full_name": "Unity-Technologies/unity-industry-viewer-template",
+          "html_url": "https://github.com/Unity-Technologies/unity-industry-viewer-template",
+          "primary_cluster": "samples-templates",
+          "ui_relevance": "runtime-ui-observation",
+          "stargazers_count": 55,
+          "archived": false,
+          "fork": false,
+          "description": "A preconfigured project template with essential and ready-to-use Unity Cloud features."
+        },
+        {
+          "full_name": "Unity-Technologies/runtime",
+          "html_url": "https://github.com/Unity-Technologies/runtime",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "excluded-fork-or-vendor-ui",
+          "stargazers_count": 51,
+          "archived": false,
+          "fork": true,
+          "description": ".NET is a cross-platform runtime for cloud, mobile, desktop, and IoT apps."
+        },
+        {
+          "full_name": "Unity-Technologies/unity-gaming-services-cli",
+          "html_url": "https://github.com/Unity-Technologies/unity-gaming-services-cli",
+          "primary_cluster": "editor-tooling",
+          "ui_relevance": "code-only-or-incidental-ui-signal",
+          "stargazers_count": 46,
+          "archived": false,
+          "fork": false,
+          "description": "The unity gaming services (UGS) CLI is a unified command line interface tool for gaming services."
+        },
+        {
+          "full_name": "Unity-Technologies/com.unity.services.samples.multiplayer-chess-cloud-code",
+          "html_url": "https://github.com/Unity-Technologies/com.unity.services.samples.multiplayer-chess-cloud-code",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 35,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/unity-cloud-asset-manager-for-blender",
+          "html_url": "https://github.com/Unity-Technologies/unity-cloud-asset-manager-for-blender",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 27,
+          "archived": false,
+          "fork": false,
+          "description": "An example of Unity Cloud Asset Manager integration with Blender, to demonstrate how to use the Unity Cloud Python SDK."
+        }
+      ]
+    },
+    {
+      "term": "CI / Infra",
+      "aliases": [
+        "ci",
+        "docker",
+        "vault",
+        "yamato"
+      ],
+      "definition": "Build farm, containers, and operational repos.",
+      "game_ui_use": "Out of Game UI normative scope.",
+      "not_that": "Never cite as player UI evidence.",
+      "match_count": 11,
+      "primary_cluster_histogram": {
+        "other-mixed-or-insufficient-metadata": 1,
+        "networking": 1,
+        "ci-infra": 2,
+        "meta-forks-mirrors": 7
+      },
+      "ui_relevance_histogram": {
+        "no-ui-signal": 10,
+        "legacy-ui-observation": 1
+      },
+      "examples": [
+        {
+          "full_name": "Unity-Technologies/vault-secret-fetcher",
+          "html_url": "https://github.com/Unity-Technologies/vault-secret-fetcher",
+          "primary_cluster": "other-mixed-or-insufficient-metadata",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 29,
+          "archived": false,
+          "fork": false,
+          "description": null
+        },
+        {
+          "full_name": "Unity-Technologies/hw20-multiplayer-asteroid-soccer-game",
+          "html_url": "https://github.com/Unity-Technologies/hw20-multiplayer-asteroid-soccer-game",
+          "primary_cluster": "networking",
+          "ui_relevance": "legacy-ui-observation",
+          "stargazers_count": 16,
+          "archived": false,
+          "fork": false,
+          "description": "A multiplayer game in Unity"
+        },
+        {
+          "full_name": "Unity-Technologies/vault-developer",
+          "html_url": "https://github.com/Unity-Technologies/vault-developer",
+          "primary_cluster": "ci-infra",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 3,
+          "archived": false,
+          "fork": false,
+          "description": "HashiCorp Vault Docker image for Development purposes"
+        },
+        {
+          "full_name": "Unity-Technologies/kompose",
+          "html_url": "https://github.com/Unity-Technologies/kompose",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1,
+          "archived": false,
+          "fork": true,
+          "description": "Go from Docker Compose to Kubernetes"
+        },
+        {
+          "full_name": "Unity-Technologies/kubernetes-ci-cd",
+          "html_url": "https://github.com/Unity-Technologies/kubernetes-ci-cd",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 1,
+          "archived": false,
+          "fork": true,
+          "description": "https://www.linux.com/blog/learn/chapter/Intro-to-Kubernetes/2017/5/set-cicd-pipeline-kubernetes-part-1-overview"
+        },
+        {
+          "full_name": "Unity-Technologies/docker-insurance",
+          "html_url": "https://github.com/Unity-Technologies/docker-insurance",
+          "primary_cluster": "ci-infra",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": false,
+          "fork": false,
+          "description": "Docker backup solution for Docker data volumes"
+        },
+        {
+          "full_name": "Unity-Technologies/docker-lloyd",
+          "html_url": "https://github.com/Unity-Technologies/docker-lloyd",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": false,
+          "fork": true,
+          "description": "Shipment insurance for docker containers"
+        },
+        {
+          "full_name": "Unity-Technologies/garethr-docker",
+          "html_url": "https://github.com/Unity-Technologies/garethr-docker",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": false,
+          "fork": true,
+          "description": "Puppet module for managing docker"
+        },
+        {
+          "full_name": "Unity-Technologies/influxdata-docker",
+          "html_url": "https://github.com/Unity-Technologies/influxdata-docker",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": true,
+          "fork": true,
+          "description": "Official docker images for the influxdata stack"
+        },
+        {
+          "full_name": "Unity-Technologies/zabbix-community-docker",
+          "html_url": "https://github.com/Unity-Technologies/zabbix-community-docker",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": false,
+          "fork": true,
+          "description": "Dockerfiles for base community Docker Zabbix images"
+        },
+        {
+          "full_name": "Unity-Technologies/zabbix-docker-monitoring",
+          "html_url": "https://github.com/Unity-Technologies/zabbix-docker-monitoring",
+          "primary_cluster": "meta-forks-mirrors",
+          "ui_relevance": "no-ui-signal",
+          "stargazers_count": 0,
+          "archived": false,
+          "fork": true,
+          "description": ":whale: Monitoring of Docker containers - Docker image, template, C module"
+        }
+      ]
+    }
+  ]
+}

@@ -104,4 +104,4 @@ This page synthesizes recurring hierarchy responsibilities observed across game 
 ## IA Navigation
 
 Parent: [Game UI](index.md).
-Next: [Game UI Reference Record](reference-record.md).
+Next: [Unity Game UI](unity/index.md).

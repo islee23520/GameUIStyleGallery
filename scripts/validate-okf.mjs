@@ -6,7 +6,7 @@ import path from "node:path";
 const args = new Set(process.argv.slice(2));
 const json = args.has("--json");
 const root = process.cwd();
-const ignoredDirs = new Set([".git", ".omo", "node_modules"]);
+const ignoredDirs = new Set([".git", ".omo", ".pytest_cache", "node_modules"]);
 const failures = [];
 
 function walk(dir) {
@@ -34,9 +34,13 @@ function hasRootOnlyOkfFrontmatter(file, metadata) {
   return file === "index.md" && metadata && Object.keys(metadata).every((key) => key === "okf_version");
 }
 
+function hasNestedDomainGuideFrontmatter(file, metadata) {
+  return file !== "index.md" && metadata?.type === "Domain Guide";
+}
+
 function checkIndex(file, content) {
   const metadata = frontmatter(content);
-  if (metadata && !hasRootOnlyOkfFrontmatter(file, metadata)) {
+  if (metadata && !hasRootOnlyOkfFrontmatter(file, metadata) && !hasNestedDomainGuideFrontmatter(file, metadata)) {
     failures.push(`${file}: index.md must not contain concept frontmatter`);
   }
   if (!content.match(/^#\s+\S/m)) failures.push(`${file}: index.md must contain at least one heading`);
