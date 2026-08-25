@@ -6,6 +6,10 @@ description: Governed gallery of portable interface knowledge organized by domai
 
 # StyleGallery
 
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/changeroa/StyleGallery@c18bc87/assets/stylegallery-hero-infographic.webp" alt="StyleGallery infographic connecting five governed interface-knowledge domains to shared consumer and agent infrastructure" width="100%">
+</p>
+
 StyleGallery is a governed gallery of portable interface knowledge. It separates reusable spatial patterns, product-layer motion guidance, design-engineering practice, and platform-specific references into explicit domains with different evidence and ownership boundaries.
 
 Primary role: repository guide.
@@ -13,6 +17,94 @@ Primary role: repository guide.
 The existing Layout corpus remains a gallery of minimal, portable CSS layout patterns at its current paths. Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. Motion, visual treatment, and platform guidance do not expand reusable Layout pattern CSS; they live in their own domains and carry explicit evidence boundaries.
 
 [Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or a sixth domain.
+
+[Agent-Native StyleGallery](consumer-reference/agent-native/README.md) is the machine-facing entry point over that governed knowledge. Frozen v1 provides claim/evidence/governance records through `sg` and its MCP; isolated material v2 indexes admitted Markdown and exposes `sg-material` plus a separate read-only MCP. Lifecycle records own extension and archive dispositions. These material, trust/conformance, transport, and extension planes do not create a sixth domain, replace the Markdown corpus, permit mutation, or feed visual defaults back into Layout.
+
+## Quick Start
+
+StyleGallery requires Node.js 22 or newer. Run a command without installing anything globally:
+
+```sh
+npx stylegallery discover --format json
+```
+
+Or install the CLI globally:
+
+```sh
+npm install --global stylegallery
+sg discover --format json
+```
+
+The npm package includes the pinned `@chenglou/pretext@0.0.8` browser text-layout engine. StyleGallery uses it as a measurement and verification dependency for text-fit QA; the Node CLI and MCP servers do not execute browser Canvas APIs.
+
+Common read-only commands:
+
+```sh
+sg resolve sg:profile/editorial-reference-profile --format json
+sg claims sg:profile/editorial-reference-profile --format json
+sg context sg:profile/editorial-reference-profile --format json
+sg ops --format json
+```
+
+Every command writes deterministic JSON to stdout. Invalid input returns an error object and a nonzero exit status. See [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) for the command contract, StableRef and VersionID model, MCP resources, and trust boundaries.
+
+Material v2 searches the admitted Markdown corpus and returns JSON without an additional format flag:
+
+```sh
+sg-material discover
+sg-material search --query "sticky layout" --paths-only --limit 5
+sg-material context --query "responsive sidebar" --budget-tokens 4096
+```
+
+For a coding agent with repository filesystem access, local guided traversal is the default: read `AGENTS.md` and this README, follow the narrowest relevant task route or domain index, and inspect the selected Markdown files directly. Use `search --paths-only` only when the path is unclear; it returns a deterministic `paths` array of repository-relative candidates without full result metadata. Reserve `context` for environments that cannot read repository files or for transferring a bounded, provenance-linked package.
+
+### Worked homepage example
+
+The [StyleGallery homepage example](examples/stylegallery-homepage/README.md) was planned from a clean install of the published npm package. It demonstrates the Homepage recipe, selected layout patterns, agent-native CLI access, responsive behavior, and Chrome CDP verification in a standalone product-layer implementation.
+
+### Read-only MCP server
+
+Launch the packaged stdio server with:
+
+```sh
+npx --package stylegallery stylegallery-mcp
+```
+
+Example MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "stylegallery": {
+      "command": "npx",
+      "args": ["--yes", "--package", "stylegallery", "stylegallery-mcp"]
+    }
+  }
+}
+```
+
+The MCP surface exposes governed read operations only. It cannot modify repository knowledge.
+
+The separate Material v2 MCP server is available as `stylegallery-material-mcp`.
+
+## 한국어 빠른 시작
+
+StyleGallery는 Node.js 22 이상에서 실행됩니다. 전역 설치 없이 바로 사용하려면 다음 명령을 실행하세요.
+
+```sh
+npx stylegallery discover --format json
+```
+
+자주 사용한다면 전역으로 설치할 수 있습니다.
+
+```sh
+npm install --global stylegallery
+sg discover --format json
+```
+
+`discover`는 사용 가능한 인터페이스를 보여주고, `resolve`는 하나의 레코드를 조회하며, `claims`는 관련 주장과 근거를 분리해서 보여줍니다. `context`는 에이전트에 전달할 수 있는 제한된 컨텍스트 패키지를 만들고, `ops`는 지원하는 작업 목록을 반환합니다. 저장소를 직접 읽을 수 있는 에이전트는 `AGENTS.md`와 이 README의 작업 경로에서 시작해 로컬 Markdown을 따라가는 방식이 기본입니다. 경로가 불명확할 때만 `sg-material search --query "검색어" --paths-only --limit 5`로 후보 경로를 좁히고, `context`는 파일에 직접 접근할 수 없거나 제한된 패키지를 전달해야 할 때 사용합니다. 모든 결과는 자동화에 바로 사용할 수 있는 JSON입니다.
+
+CLI와 MCP의 상세 사용법은 [Agent-Native StyleGallery 가이드](consumer-reference/agent-native/README.md)를 참고하세요. 사람이 문서를 탐색하려면 아래의 도메인 표에서 목적에 맞는 진입점을 선택하면 됩니다.
 
 ## Domains
 
@@ -39,6 +131,7 @@ Use each root hub for one primary job.
 | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | Governance reference | You need the source of truth, lifecycle, generated-file, ownership, or stale-audit rule. |
 | [StyleGallery Domains](DOMAINS.md) | Domain manifest | You need domain ownership, scope, lifecycle, page membership, or provenance. |
 | [Consumer Reference](consumer-reference/index.md) | Shared infrastructure contract | You need to declare a consumer-owned record or explain why one is not applicable. |
+| [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) | Machine interface guide | A person or agent needs to discover, resolve, retrieve, or inspect governed StyleGallery knowledge through CLI or MCP. |
 | [Layout](layout/index.md) | Layout domain hub | You need reusable spatial patterns, recipes, or planning routes. |
 | [Motion](motion/index.md) | Motion domain hub | You need motion terminology, review procedure, or practice evidence. |
 | [Design Engineering](design-engineering/index.md) | Design Engineering domain hub | You need product-level interface-craft decision guidance. |
@@ -55,6 +148,7 @@ Each common task has one primary route. Use secondary links only after the prima
 | `browse reusable spatial guidance` | [Layout](layout/index.md) | It preserves the existing pattern, recipe, and planning routes. |
 | `name or review interface motion` | [Motion](motion/index.md) | It routes to bounded terminology and review guidance. |
 | `review product-level interface craft` | [Design Engineering](design-engineering/index.md) | It separates practitioner heuristics from shared quality gates. |
+| `compare adversarial consumer identities` | [Reference Profiles](design-engineering/reference-profiles/index.md) | It keeps non-default product values in related Design Engineering examples over one pinned Layout source. |
 | `classify a game interface or map it to an engine` | [Game UI](game-ui/index.md) | It separates engine-neutral roles from implementation-specific guidance. |
 | `compare a named platform convention` | [Platform Guides](platform-guides/index.md) | It requires platform and evidence boundaries before adaptation. |
 | `turn raw content into a homepage or ordinary webpage` | [Webpage Generation Workflow](guides/webpage-generation-workflow.md) | It starts with use case, content-to-layout fit, harmony, and handoff. |
@@ -69,6 +163,8 @@ Each common task has one primary route. Use secondary links only after the prima
 | `check whether a layout or design claim is admissible` | [Quality Gates](quality/index.md) | It routes claims to gates and evidence boundaries. |
 | `prove repository checks and evidence coverage` | [Executable Evidence Coverage](quality/evidence/executable-evidence.md) | It maps validators, fixtures, CI commands, and their boundaries. |
 | `declare consumer reference applicability` | [Consumer Reference](consumer-reference/index.md) | It provides the required handoff field without moving consumer values into Layout. |
+| `use StyleGallery from an agent or automation` | [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) | It routes frozen v1 trust queries, material v2 discovery/search/get/context, both read-only MCPs, extensions, lifecycle dispositions, and archive boundaries. |
+| `prove an existing consumer migration` | [Consumer Migration Readiness](design-engineering/consumer-migration-readiness.md) | It requires thirteen explicit behavior classifications, runtime proof, adoption mappings, and source-bound page evidence when applicable. |
 | `change generated patterns, catalog, or governance policy` | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | It identifies source files, generated artifacts, validators, lifecycle state, and review ownership. |
 | `run findability QA` | [Tree-Test Findability QA](quality/index.md#tree-test-findability-qa) | It tests whether task routes are discoverable, not just linked. |
 
@@ -92,146 +188,30 @@ Each common task has one primary route. Use secondary links only after the prima
 - Use [Layout Pattern Catalog](CATALOG.md) when you already know the spatial problem.
 - Use [Quality Gates](quality/index.md) when a claim needs principle-backed evidence, visual QA boundaries, accessibility precedence, or design rationale.
 - Use [Consumer Reference](consumer-reference/index.md) when an implementation handoff must declare one repository-local JSON reference or a sentence explaining non-applicability.
+- Use [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) when a person, script, or agent needs deterministic JSON discovery, StableRef/VersionID resolution, bounded context, operation metadata, or read-only MCP access.
+- Use [Consumer Migration Readiness](design-engineering/consumer-migration-readiness.md) only for a migration that declares a consumer-local conformance record; ordinary handoffs keep the existing `not_applicable` path.
 - Use [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) before changing generated artifacts, validators, lifecycle state, or ownership policy.
 
 ## Layout Domain Principles
 
-1. Layout problems only
-   - Patterns exist to solve spatial problems, not to define a visual brand.
-   - Core CSS should stay focused on layout responsibilities.
-
-2. Semantic structure first
-   - Start with meaningful HTML before adding layout classes.
-   - Class names explain layout responsibility, but they do not replace landmarks, headings, lists, buttons, links, or form controls.
-   - DOM order, reading order, and focus order should remain logical.
-
-3. One primary spatial problem
-   - Each pattern should optimize one primary spatial problem.
-   - Secondary behavior is allowed when it is incidental or required for composition.
-   - If a pattern has multiple primary problems, split it into smaller primitives or mark it as a shell/composite.
-
-4. Minimum robust CSS
-   - Use the smallest set of declarations that keeps the pattern stable under real content and container constraints.
-   - Minimal does not mean fragile; constraints, overflow rules, intrinsic sizing, and fallbacks are valid when they carry declared responsibility.
-
-5. Portable plain HTML/CSS
-   - Plain HTML and CSS are the source of truth.
-   - Framework-specific versions are optional derivatives, not canonical patterns.
-
-6. Explicit constraints and change points
-   - Widths, heights, gaps, breakpoints, scroll containers, fixed/sticky anchors, and other constraints should be easy to find.
-   - Values users are expected to tune should be surfaced clearly.
-
-7. Named scroll ownership
-   - If a pattern scrolls, the scrolling element must be obvious.
-   - The pattern should make clear what scrolls, what stays fixed, and where height is determined.
-
-8. No decorative debt
-   - Decorative styling does not belong in reusable pattern CSS unless it is required to explain layout behavior.
-   - Demo-only visual aids should be separate from the reusable pattern.
+Layout patterns solve one primary spatial problem with semantic structure, robust plain HTML/CSS, explicit constraints, named scroll ownership, and no decorative debt. The detailed principles live in the [Layout domain contract](layout/index.md#layout-domain-principles).
 
 ## CSS Authoring Policy
 
-- Prefer low-specificity, single-class selectors.
-- Avoid ID selectors for styling or layout naming.
-- Avoid deep combinators, selector chaining, and nesting unless the pattern is specifically demonstrating that tradeoff.
-- Use cascade layers when the CSS surface grows beyond isolated snippets.
-- Keep CSS declarations in alphabetical order inside each rule.
-- Prefer intrinsic sizing and content/container-driven adaptation.
-- Use viewport breakpoints only when the spatial problem is viewport-level.
-- Prefer container queries for component-local responsiveness.
-- Prefer logical properties for spacing and sizing unless physical direction is required.
-- Treat exceptions as explicit and local; use state hooks or `data-*` attributes for variants instead of escalating selector specificity.
+Reusable Layout CSS favors low specificity, intrinsic sizing, logical properties, and responsiveness at the correct container or viewport boundary. See the [detailed CSS authoring policy](layout/index.md#css-authoring-policy).
 
 ## Class Naming Policy
 
-Class names should read like a map of the layout structure.
-
-- Name layout responsibility, not appearance.
-- Make root-child, parent-child, area-element, and fixed-scroll relationships obvious.
-- Prefer pattern-scoped names for related nodes.
-- Avoid vague names like `container`, `wrapper`, `box`, `top`, `content`, and `bottom` unless the surrounding pattern name makes their responsibility unambiguous.
-- Avoid DOM-depth names such as `card_header_title_icon`; describe stable roles instead.
-- Do not use IDs for layout naming. IDs are reserved for JavaScript hooks or document-level targets when needed.
-
-Prefer:
-
-```html
-<div class="app_shell">
-    <header class="app_shell_header"></header>
-    <main class="app_shell_scroll_area"></main>
-    <footer class="app_shell_footer"></footer>
-</div>
-```
-
-Avoid:
-
-```html
-<div class="container">
-    <div class="top"></div>
-    <div class="content"></div>
-    <div class="bottom"></div>
-</div>
-```
+Layout class names describe stable spatial responsibilities and relationships rather than appearance or DOM depth. See the [detailed class naming policy](layout/index.md#class-naming-policy).
 
 ## Value And Token Policy
 
-- Tokenize reusable design intent, not every layout number.
-- Use tokens for stable, shared values such as `content-width`, `gutter`, `stack-gap`, `section-gap`, or density steps.
-- Keep browser/context mechanics in raw CSS: `auto`, percentages, `min-content`, `max-content`, `fit-content`, `clamp()`, viewport units, container-query units, and intrinsic sizing.
-- Put tokens behind logical CSS, for example `padding-block: var(--space-4)`.
-- Use breakpoint names for layout states, not device names.
+Tokens represent stable shared design intent; browser and context mechanics remain explicit CSS values. See the [detailed value and token policy](layout/index.md#value-and-token-policy).
 
 ## Pattern Contract
 
-Use this shape when adding a new pattern:
-
-```txt
-Pattern name
-Category
-Primary spatial problem
-Secondary spatial problems
-When to use
-HTML structure
-CSS
-Core properties
-Properties that break the layout if removed
-Constraints and change points
-Scroll ownership
-Accessibility and source-order notes
-Browser/fallback notes
-Composition notes
-Anti-patterns
-```
-
-Suggested categories:
-
-- Containment
-- Centering
-- Stacking
-- In-line grouping
-- Split / Sidebar
-- Grid / Repetition
-- Viewport / Shell
-- Overlay / Exception
-- Media / Fit
-- Reveal / Density control
+Every pattern documents its primary problem, structure, constraints, scroll ownership, accessibility, fallbacks, composition, and failure boundaries. See the [detailed pattern contract](layout/index.md#pattern-contract), and use the generated [Pattern Categories](patterns/index.md) as the category inventory.
 
 ## Verification Matrix
 
-Before accepting a pattern, verify the smallest relevant matrix:
-
-- Viewports: `320px`, `375px`, `768px`, `1024px`, `1440px`
-- Containers: tight, medium, roomy, and `100%` parent
-- Content: empty, short, long label, long paragraph, unbroken string
-- Direction: `ltr` and `rtl`
-- Writing mode: default, plus vertical writing mode if the pattern claims support
-- Interaction: default, hover, focus, active, expanded, scroll top/middle/bottom when relevant
-
-Acceptance checks:
-
-- The layout reflows without unusable two-dimensional scrolling.
-- Long and empty content do not break alignment or hide essential content.
-- Focus order remains logical and visible.
-- Scrollable regions and sticky elements behave as declared.
-- Screenshot diffs are reviewed when the pattern has visual fixtures.
+Pattern verification covers the relevant viewport, container, content, direction, writing-mode, interaction, overflow, focus, and sticky/scroll cases. See the [detailed verification matrix](layout/index.md#verification-matrix).

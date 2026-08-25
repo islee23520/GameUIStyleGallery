@@ -17,7 +17,10 @@ Before editing generated artifacts, validators, lifecycle state, or ownership po
 - Do not use one domain to bypass another domain's constraints.
 - Treat `consumer-reference/` as shared non-domain schema, provenance, routing, and evidence infrastructure; it owns no profile values, visual defaults, component implementation, or product CSS.
 - Keep dependency direction consumer/profile -> Layout. Do not import consumer-reference records, profile data, tokens, or decorative values into `layout/**`, `patterns/**`, `scripts/pattern-data.mjs`, or `CATALOG.md`.
-- Include the consumer-reference handoff field in implementation handoffs. Use one normalized repository-relative JSON record or `not_applicable` with a sentence reason.
+- Include the consumer-reference handoff field in implementation handoffs. For this repository-wide agent surface use `consumer_reference: consumer-reference/agent-native/registry.json`; otherwise use one normalized repository-relative JSON record or `not_applicable` with a sentence reason.
+- Keep material v2, v1 trust/conformance, CLI/MCP transport, and A2A/AG-UI extension planes separate. Material admission never imports profiles, source code, fixtures, schemas, tests, `.omo`, or visual defaults.
+- Validate canonical evidence v2 against its recorded immutable Git revision. Use current-authoring source checks only when creating or finalizing new capture evidence; do not recapture merely because later repository changes differ.
+- Treat `consumer-reference/policies/lifecycle-dispositions.json` as the lifecycle index. Preserve named owners, caller status `unknown`, deadlines, extension dispositions, and immutable archive bindings until their machine gate authorizes a transition.
 - Treat `patterns/**`, `recipes/**`, `GUIDE.md`, and `CATALOG.md` as the Layout corpus at their existing paths.
 - Treat the Layout domain as a layout pattern library, not a visual design system.
 - Start with semantic HTML before adding layout classes.
@@ -29,6 +32,12 @@ Before editing generated artifacts, validators, lifecycle state, or ownership po
 - Make constraints explicit: widths, heights, gaps, breakpoints, scroll containers, and fixed or sticky anchors should be easy to find.
 - Make scroll responsibility obvious in both class names and CSS.
 - Keep decorative styling out of reusable pattern CSS.
+
+## Agent Retrieval Route
+
+- When repository filesystem access is available, traverse the local Markdown corpus first: start at this file and `README.md`, follow the relevant task route or domain index, and read the selected source files directly.
+- When the relevant path is not yet clear, use `sg-material search --query "<narrow query>" --paths-only --limit <N>` to obtain a small deterministic set of repository-relative candidate paths, then continue by reading those files locally.
+- Use `sg-material context` as a fallback when repository files cannot be read directly or when a bounded, provenance-linked context package must be transferred to another process. Do not make context packaging the default local retrieval path.
 
 The remaining pattern, CSS, naming, token, checklist, and verification rules apply to the Layout domain. Non-Layout domain documents may discuss product-layer behavior, but they do not authorize decorative or motion properties in reusable Layout pattern CSS.
 

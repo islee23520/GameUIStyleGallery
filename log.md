@@ -1,15 +1,16 @@
 # StyleGallery Log
 
-## 2026-07-15
+## 2026-08-18
 
-- Added experimental Unity scene and prefab system guides covering additive bootstrap and persistent lifetime, plus asset-to-instance, variant, nesting, unpacking, pooling, and teardown decisions.
-- Replaced the Unity hub's planned scene/prefab placeholders with real Band 2b routes and validator-enforced nested-hub navigation.
-- Added an experimental Unity engine-animation pack with separate 3D character/humanoid and 2D sprite/skeletal routes, plus explicit UI-motion handoffs.
-- Expanded the Unity hub beyond UI-only implementation with a first engine-systems band and planned scene, prefab, and content pack hooks.
-- Reinforced Game UI as three navigable bands: engine-neutral guidance, Unity implementation, and bounded Unity organization discovery.
-- Added a Unity sub-hub with implementation and discovery reading orders, and routed all Unity leaves through it.
-- Deepened Unity stack selection, ownership mapping, CLI evidence limits, and discovery-not-authority boundaries without refreshing the tracked 804-repository snapshot.
-- Completed an Aside Browser membership re-check of all 804 Unity-Technologies public repositories; membership and fork/archive states were unchanged, so the tracked inventory was not rewritten.
+- Added the StyleGallery homepage example planned from a clean npm installation and verified across desktop, tablet, and mobile Chrome CDP viewports.
+- Added pinned Pretext text-layout measurement as an npm-installed verification dependency while keeping browser Canvas execution outside the Node CLI and MCP surfaces.
+- Added deterministic hero-heading line-count, DOM overflow, accessibility, console, request, and screenshot checks.
+
+## 2026-07-23
+
+- Added the agent-native knowledge interface with content-addressed identity, epistemic and execution records, deterministic retrieval, and governed learning.
+- Added the `sg` CLI and a read-only MCP surface derived from one operation registry.
+- Added A2A Task and AG-UI event projections, closed schemas, executable conformance receipts, adversarial tests, and CI coverage.
 
 ## 2026-07-13
 
