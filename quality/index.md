@@ -47,5 +47,6 @@ Use this script for lightweight tree tests:
 | Review product-level interface craft. | [README](../README.md) | [Interface Craft Decisions](../design-engineering/interface-craft.md) | The first selected route is Design Engineering and shared quality gates remain visible. |
 | Compare an Apple interaction convention. | [README](../README.md) | [Apple Interaction](../platform-guides/apple-interaction.md) | The first selected route is Platform Guides and source/version limits are reached within two hops. |
 | Declare whether a consumer reference applies. | [README](../README.md) | [Consumer Reference](../consumer-reference/index.md) | The handoff reaches the shared contract without classifying it as a sixth domain. |
+| Find the authority route for uGUI, UI Toolkit, or NGUI. | [README](../README.md) | [Unity UI Systems](../game-ui/unity/ui-systems.md) | The first selected route is Game UI, and the system-specific source and version boundary is reached within three hops. |
 
 Record `PASS` only when the expected primary route is the first route selected. A link resolving successfully is not enough; the selected route must match the task intent.

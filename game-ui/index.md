@@ -27,6 +27,7 @@ The studio-indexed game-definition gallery is maintained in the separate private
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.
 - [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.
 - [Unity Repository Map](unity/repository-map.md) maps the public Unity-Technologies repository snapshot by UI relevance, authority, and lifecycle.
+- [Unity Organization Compressed Wiki](unity/org-wiki.md) routes all 804 captured public repositories through a tracked inventory and bounded exclusive clusters.
 
 ## Domain Contract
 
