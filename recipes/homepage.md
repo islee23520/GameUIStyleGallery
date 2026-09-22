@@ -37,7 +37,15 @@ Reject this recipe when the page is primarily a document, dashboard, form, comma
 
 Order sections by the visitor's decision path, not by visual symmetry. Put the primary heading, explanation, proof, and action in semantic order before layout classes. Repeated proof should be a list when each item has the same role.
 
+## Scroll Story Composition
+
+When a section explains a product through changing visual chapters, compose existing containment, stacking, overlay, and sticky responsibilities before proposing a new spatial pattern. Name the sticky containing block, stage height, document scroll track, offset, release boundary, and long-content fallback. Prevent clipping when copy is taller than the stage.
+
+Motion owns continuous progress and scene changes through the [Scroll-driven Story recipe](../motion/interaction-recipes.md#scroll-driven-story). The [Scroll Story Lab](../examples/scroll-story/README.md) demonstrates this composition with two products. Photography, device mockups, transforms, opacity, and timing remain in those consuming examples.
+
 ## Scroll Ownership
+
+A short full-page showcase can compose a viewport shell and [overlay-stack](../patterns/overlay-exception/overlay-stack.md) responsibilities with the [Full-viewport Scene Navigation contract](../motion/interaction-recipes.md#full-viewport-scene-navigation). Declare the document as fixed in scene mode, the chapter copy as the native overflow owner, and the document as the scroll owner in reading mode. The failure to prevent is a clipped or unreachable chapter when the viewport or text size changes. The [worked example](../examples/scene-navigation/README.md) uses a shrinkable stage between header and footer; it introduces no new reusable Layout pattern.
 
 Prefer normal document scrolling. Avoid nested scroll regions unless a section has an explicit independent task, such as a horizontally scrolling media reel with named keyboard and overflow behavior.
 
