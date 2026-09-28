@@ -413,7 +413,7 @@ for (const [relative, title] of [
     ? `${line.slice(0, -2)}, \`${relative}\` |` : line).join("\n");
 }
 
-for (const section of ["genres", "platforms"]) {
+for (const section of ["genres", "platforms", "strategy"]) {
   for (const name of fs.readdirSync(path.join(root, "game-ui", section)).filter((entry) => entry.endsWith(".md"))) {
     const relative = `game-ui/${section}/${name}`;
     baseFiles[relative] = name === "index.md"

@@ -12,6 +12,7 @@ try {
   execFileSync(process.execPath, [path.join(root, "scripts/build-site.mjs"), "--out", out], { stdio: "pipe" });
   const { elementSlugs } = await import(pathToFileURL(path.join(root, "gallery-site/elements.mjs")).href);
   const { genreWireframes, inputTargetWireframes } = await import(pathToFileURL(path.join(root, "gallery-site/genre-wireframes.mjs")).href);
+  const { strategyGames } = await import(pathToFileURL(path.join(root, "gallery-site/pc-strategy-states.mjs")).href);
 
   const files = [];
   (function walk(dir) {
@@ -40,6 +41,24 @@ try {
       assert.ok(body.includes("Observed Screens") || section === "platforms", `${target}: missing observation boundary`);
     }
   }
+  assert.ok(fileSet.has("strategy/index.html"), "missing PC strategy index");
+  assert.ok(fileSet.has("assets/pc-strategy.js"), "missing strategy state controller");
+  for (const [slug, spec] of Object.entries(strategyGames)) {
+    const relative = `strategy/${slug}/index.html`;
+    assert.ok(fileSet.has(relative), `missing ${relative}`);
+    const content = fs.readFileSync(path.join(out, relative), "utf8");
+    const embedded = content.match(/<script type="application\/json" id="pc-strategy-spec">([^<]+)<\/script>/)?.[1];
+    assert.ok(embedded, `${relative}: missing state payload`);
+    const delivered = JSON.parse(embedded);
+    assert.deepEqual(delivered.states.map(({ id }) => id), spec.states.map(({ id }) => id));
+    assert.equal(new Set(delivered.states.map(({ id }) => id)).size, spec.states.length);
+    for (const { id } of spec.states) assert.ok(content.includes(`data-strategy-state="${id}"`), `${relative}: no control for ${id}`);
+    for (const required of ["loading", "empty", "error", "confirm"]) assert.ok(delivered.states.some(({ id }) => id === required), `${relative}: missing ${required}`);
+    assert.ok(content.includes('aria-pressed="false"'));
+    assert.ok(!/<(?:img|video|source)\b[^>]*\bsrc=/i.test(content), `${relative}: copied media`);
+  }
+  assert.ok(strategyGames["total-war-warhammer-iii"].states.some(({ surface }) => surface === "campaign"));
+  assert.ok(strategyGames["total-war-warhammer-iii"].states.some(({ surface }) => surface === "battle"));
 
   const docs = [];
   (function walk(dir) {
