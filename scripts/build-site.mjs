@@ -8,6 +8,7 @@ const out = path.resolve(root, process.argv.includes("--out") ? process.argv[pro
 const repoBlob = "https://github.com/islee23520/GameUIStyleGallery/blob/main/";
 const { elements, stateLabels, demoLabels } = await import(pathToFileURL(path.join(root, "gallery-site/elements.mjs")).href);
 const { genreWireframes, inputTargetWireframes } = await import(pathToFileURL(path.join(root, "gallery-site/genre-wireframes.mjs")).href);
+const { strategyGames } = await import(pathToFileURL(path.join(root, "gallery-site/pc-strategy-states.mjs")).href);
 
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const readJson = (relative) => JSON.parse(read(relative));
@@ -163,6 +164,7 @@ const docTitle = (repoPath) => {
 const guideLinks = [
   ["Element patterns", "game-ui/elements.md"],
   ["Genre guide index", "game-ui/genres/index.md"],
+  ["PC strategy comparison", "game-ui/strategy/index.md"],
   ["Input and screen targets", "game-ui/platforms/index.md"],
   ["Unity uGUI implementation", "game-ui/unity/ugui-implementation.md"],
   ["Unity UI systems", "game-ui/unity/ui-systems.md"],
@@ -183,7 +185,7 @@ function nav(current) {
   <div class="brand-row"><a class="brand" href="/">Game UI <strong>Gallery</strong></a></div>
   <button class="btn btn-ghost nav-toggle" type="button" aria-expanded="false" aria-controls="nav-body">Menu</button>
   <div class="nav-body" id="nav-body">
-    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/genres/", "Genres", "genres")}${item("/platforms/", "Input targets", "platforms")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
+    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/genres/", "Genres", "genres")}${item("/platforms/", "Input targets", "platforms")}${item("/strategy/", "PC strategy", "strategy")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
     ${groups}
     <div class="nav-group"><h2>Guides</h2><ul>${guides}</ul></div>
   </div>
@@ -386,6 +388,31 @@ function briefPage(dir, slug, wireframes) {
   return page({ title, description: `${title}: bounded observations and a proposed layout.`, current: dir, body });
 }
 
+function pcStrategyPage(slug, spec) {
+  const controls = spec.states.map((state) => `<button type="button" data-strategy-state="${esc(state.id)}" aria-pressed="false">${esc(state.label)}</button>`).join("");
+  const sources = spec.sources.map(([label, url]) => `<li><a href="${esc(url)}" rel="noopener">${esc(label)}</a></li>`).join("");
+  const body = `<p class="crumbs"><a href="/strategy/">PC strategy</a> / ${esc(spec.title)}</p>
+<h1 class="display">${esc(spec.title)}</h1>
+<p class="lead">${esc(spec.intro)}</p>
+<p class="meta">Original wireframes. These task and state examples are not screenshots or replicas of shipped game UI.</p>
+<div class="strategy-workbench">
+  <aside class="panel strategy-state-rail" aria-label="Example states"><h2>Example states</h2><div role="group" aria-label="Select state">${controls}</div></aside>
+  <section class="strategy-main" aria-label="PC-first strategy wireframe">
+    <div class="device"><div class="viewport strategy-frame" id="strategy-frame" aria-label="Strategy state wireframe"></div></div>
+    <div class="panel strategy-detail"><p class="mono" id="strategy-context"></p><h2 id="strategy-state-heading"></h2><p id="strategy-state-description"></p><div class="btn-row" id="strategy-actions"></div><span class="sr-only" aria-live="polite" id="strategy-announcement"></span></div>
+  </section>
+</div>
+<section class="prose"><h2>Evidence boundary</h2><p>Official publisher descriptions establish subject matter and game modes, not these panel coordinates, control behavior, error states, or timing. Those are locally authored design examples for PC mouse and keyboard review.</p><ul>${sources}</ul><p><a href="${docHref(`game-ui/strategy/${slug}.md`)}">Read the state-by-state brief</a></p></section>
+<script type="application/json" id="pc-strategy-spec">${JSON.stringify({ ...spec, slug }).replace(/</g, "\\u003c")}</script>`;
+  return page({ title: `${spec.title} PC UI states`, description: spec.intro, current: "strategy", body, scripts: ["/assets/pc-strategy.js"] });
+}
+
+function pcStrategyIndex() {
+  const cards = Object.entries(strategyGames).map(([slug, spec]) => `<li><a class="element-card" href="/strategy/${slug}/"><h2>${esc(spec.title)}</h2><span class="meta">${esc(spec.short)}</span><span>${spec.states.length} proposed states · PC-first</span></a></li>`).join("");
+  const body = `<h1 class="display">PC strategy state studies</h1><p class="lead">Compare character-and-realm decisions with a separate campaign-and-battle command model. Every frame is an original wireframe, not an asset or pixel copy.</p><ul class="element-grid genre-grid">${cards}</ul><p><a href="${docHref("game-ui/strategy/index.md")}">Read the family comparison</a></p>`;
+  return page({ title: "PC strategy studies", description: "CK3 and Total War WARHAMMER III interactive PC strategy wireframes", current: "strategy", body });
+}
+
 function showcasePage() {
   const body = `<h1 class="display">Primitives</h1>
 <p class="lead">Every reusable primitive from DESIGN.md in its states, used to verify the system before product pages.</p>
@@ -431,6 +458,8 @@ write("genres/index.html", briefIndex("genres", genreWireframes, "Genre UI patte
 for (const slug of Object.keys(genreWireframes)) write(`genres/${slug}/index.html`, briefPage("genres", slug, genreWireframes));
 write("platforms/index.html", briefIndex("platforms", inputTargetWireframes, "Input and screen targets", "Adapt each genre to mouse and keyboard, controller and TV, handheld, or touch; these are viewing contexts, not store exclusivity."));
 for (const slug of Object.keys(inputTargetWireframes)) write(`platforms/${slug}/index.html`, briefPage("platforms", slug, inputTargetWireframes));
+write("strategy/index.html", pcStrategyIndex());
+for (const [slug, spec] of Object.entries(strategyGames)) write(`strategy/${slug}/index.html`, pcStrategyPage(slug, spec));
 write("showcase/index.html", showcasePage());
 write("docs/index.html", docsIndexPage());
 for (const doc of docPaths) write(docHref(doc).slice(1), docPage(doc));

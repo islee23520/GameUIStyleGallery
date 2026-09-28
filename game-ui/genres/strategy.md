@@ -35,6 +35,8 @@ Locally authored analysis from three itch.io game pages opened through Aside on 
 
 No device support is inferred from screenshots. Choose the target's navigation, text scale, and safe area from [Input And Screen Targets](../platforms/index.md).
 
+For character- and realm-led versus campaign-and-battle PC strategy examples, use the separately bounded [PC Strategy State Studies](../strategy/index.md). The small itch.io sample on this page does not establish CK3 or Total War's shipped layout.
+
 ## Unsupported Absolutes
 
 - Three pages do not represent a genre census.

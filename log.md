@@ -2,6 +2,15 @@
 
 ## 2026-09-28
 
+Understood as: prioritize PC UI and add original state-by-state wireframe studies for Crusader Kings III and Total War: WARHAMMER III, with a bounded Paradox versus Total War family comparison.
+
+- Added separate CK3 character/realm and WARHAMMER III campaign/battle state models; the site exposes selectable loading, empty, error, modal and task-specific examples with keyboard navigation.
+- Added PC strategy briefs and a family comparison from official product descriptions. Exact shipped UI placement, controls and exceptional states are unknown, so the HTML wireframes are labelled local proposals and contain no publisher assets.
+- Registered the three documents in the Game UI domain, routed two interactive pages from the site navigation, and extended the build test to check all state IDs and the campaign/battle distinction.
+
+Consumer reference: not_applicable
+Consumer reference reason: These locally authored PC game UI examples select no consumer-reference profile or record.
+
 Understood as: differentiate game UI by genre and by input/screen target without restoring the removed third-party catalog.
 
 - Added sixteen locally authored genre briefs grounded in three manually viewed itch.io game pages each. They separate visible screen observations from wireframe proposals, name thin or overlapping evidence, and store no screenshots, scraped records, or counts in the repository.

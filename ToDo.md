@@ -14,3 +14,4 @@ description: Ordered module list for the game UI fork and its public site.
 - [x] Deployment of gameuigallery.linalab.io through linalab-ci
 - [x] Genre-specific briefs and wireframes based on bounded, manually viewed game pages
 - [x] Mouse/keyboard, controller/TV, handheld, and touch/mobile input-target briefs
+- [x] PC-first CK3 and Total War WARHAMMER III interactive state examples and strategy-family comparison

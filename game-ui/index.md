@@ -32,6 +32,9 @@ These workflows and worked cases are usable experimental guidance. Expected-resu
 - [Game UI Element Patterns](elements.md) maps 21 common game UI elements to local player tasks and failure cases.
 - [Genre Guide Index](genres/index.md) compares bounded observations and distinct HUD proposals across 16 genre labels.
 - [Input And Screen Targets](platforms/index.md) separates mouse/keyboard, controller/TV, handheld, and touch/mobile adaptation.
+- [PC Strategy State Studies](strategy/index.md) compares Paradox and Total War decision surfaces and routes to CK3 and WARHAMMER III interactive examples.
+- [Crusader Kings III PC UI State Brief](strategy/crusader-kings-iii.md) covers realm, character, event, war and exceptional states.
+- [Total War WARHAMMER III PC UI State Brief](strategy/total-war-warhammer-iii.md) separates campaign decisions from battle commands and exceptional states.
 - [action guide](genres/action.md)
 - [adventure guide](genres/adventure.md)
 - [card-game guide](genres/card-game.md)

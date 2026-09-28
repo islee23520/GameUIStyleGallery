@@ -119,6 +119,8 @@ export const canonicalDomains = [
       { path: "game-ui/verification-workflow.md", provenance: "local" },
       { path: "game-ui/elements.md", provenance: "local" },
       { path: "game-ui/unity/ugui-implementation.md", provenance: "local" },
+      { path: "game-ui/strategy/crusader-kings-iii.md", provenance: "local" },
+      { path: "game-ui/strategy/total-war-warhammer-iii.md", provenance: "local" },
       { path: "game-ui/genres/action.md", provenance: "local" },
       { path: "game-ui/genres/adventure.md", provenance: "local" },
       { path: "game-ui/genres/card-game.md", provenance: "local" },
@@ -140,7 +142,7 @@ export const canonicalDomains = [
       { path: "game-ui/platforms/mouse-keyboard.md", provenance: "local" },
       { path: "game-ui/platforms/touch-mobile.md", provenance: "local" },
     ],
-    referenceDocuments: ["game-ui/genres/index.md", "game-ui/platforms/index.md"],
+    referenceDocuments: ["game-ui/genres/index.md", "game-ui/platforms/index.md", "game-ui/strategy/index.md"],
   },
   {
     slug: "platform-guides",
