@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const out = path.resolve(root, process.argv.includes("--out") ? process.argv[process.argv.indexOf("--out") + 1] : "dist/site");
 const repoBlob = "https://github.com/islee23520/GameUIStyleGallery/blob/main/";
 const { elements, stateLabels, demoLabels } = await import(pathToFileURL(path.join(root, "gallery-site/elements.mjs")).href);
+const { genreWireframes, inputTargetWireframes } = await import(pathToFileURL(path.join(root, "gallery-site/genre-wireframes.mjs")).href);
 
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const readJson = (relative) => JSON.parse(read(relative));
@@ -161,6 +162,8 @@ const docTitle = (repoPath) => {
 
 const guideLinks = [
   ["Element patterns", "game-ui/elements.md"],
+  ["Genre guide index", "game-ui/genres/index.md"],
+  ["Input and screen targets", "game-ui/platforms/index.md"],
   ["Unity uGUI implementation", "game-ui/unity/ugui-implementation.md"],
   ["Unity UI systems", "game-ui/unity/ui-systems.md"],
   ["Classification", "game-ui/classification.md"],
@@ -180,7 +183,7 @@ function nav(current) {
   <div class="brand-row"><a class="brand" href="/">Game UI <strong>Gallery</strong></a></div>
   <button class="btn btn-ghost nav-toggle" type="button" aria-expanded="false" aria-controls="nav-body">Menu</button>
   <div class="nav-body" id="nav-body">
-    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
+    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/genres/", "Genres", "genres")}${item("/platforms/", "Input targets", "platforms")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
     ${groups}
     <div class="nav-group"><h2>Guides</h2><ul>${guides}</ul></div>
   </div>
@@ -346,10 +349,41 @@ function homePage() {
   const body = `<section class="hero">
   <h1 class="display">Game UI patterns you can see move.</h1>
   <p class="lead">Wireframes, states, and interruptible tweens for 21 game interface elements, mapped to Unity uGUI samples.</p>
-  <div class="btn-row"><a class="btn btn-primary" href="/elements/in-game/">Open the HUD demo</a><a class="btn" href="/docs/">Read the guides</a></div>
+  <div class="btn-row"><a class="btn btn-primary" href="/genres/">Compare genres</a><a class="btn" href="/platforms/">Choose an input target</a><a class="btn" href="/elements/in-game/">Open the HUD demo</a></div>
 </section>
 ${groups}`;
   return page({ title: "Overview", description: "Game UI element patterns with wireframes, tween demos, and Unity uGUI samples.", current: "home", body });
+}
+
+function proposalFrame(regions, label) {
+  const needsLegend = (r) => r.kind === "bar" || r.h < 9 || r.w < 15;
+  const boxes = regions.map((r) => `<div class="genre-region" data-kind="${esc(r.kind)}" aria-label="${esc(r.label)}" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%">${needsLegend(r) ? "" : esc(r.label)}</div>`).join("");
+  const legend = regions.filter(needsLegend);
+  return `<div class="device"><div class="viewport genre-viewport" role="img" aria-label="Proposed ${esc(label)} layout"><div class="safe-area" aria-hidden="true"></div>${boxes}</div></div>${legend.length ? `<p class="genre-legend"><strong>Small regions:</strong> ${legend.map((r) => esc(r.label)).join(" · ")}</p>` : ""}`;
+}
+
+function briefList(dir, wireframes) {
+  return Object.entries(wireframes).map(([slug, regions]) => {
+    const file = `game-ui/${dir}/${slug}.md`;
+    if (!fs.existsSync(path.join(root, file))) throw new Error(`Missing brief: ${file}`);
+    return { slug, file, title: docTitle(file), regions };
+  });
+}
+
+function briefIndex(dir, wireframes, title, summary) {
+  const cards = briefList(dir, wireframes).map(({ slug, title: name, regions }) => `<li><a class="element-card" href="/${dir}/${slug}/">${proposalFrame(regions, name)}<h2>${esc(name)}</h2><span class="meta">Read observations and inspect a proposed layout</span></a></li>`).join("");
+  return page({ title, description: summary, current: dir, body: `<h1 class="display">${esc(title)}</h1><p class="lead">${esc(summary)}</p><ul class="element-grid genre-grid">${cards}</ul>` });
+}
+
+function briefPage(dir, slug, wireframes) {
+  const file = `game-ui/${dir}/${slug}.md`;
+  const title = docTitle(file);
+  const regions = wireframes[slug];
+  const source = read(file);
+  const content = markdown(source.replace(/^---\n[\s\S]*?\n---\n\s*# [^\n]+\n/, ""), file);
+  const proposal = dir === "genres" ? "The regions below are a locally designed hypothesis. The cited stills establish only what appears in those samples, not input or motion behavior." : "This is an input and viewing target, not a claim that the cited games are exclusive to one store or device.";
+  const body = `<p class="crumbs"><a href="/${dir}/">${dir === "genres" ? "Genres" : "Input targets"}</a> / ${esc(title)}</p><h1 class="display">${esc(title)}</h1><p class="lead">${esc(proposal)}</p><div class="genre-stage">${proposalFrame(regions, title)}</div><article class="prose">${content}</article>`;
+  return page({ title, description: `${title}: bounded observations and a proposed layout.`, current: dir, body });
 }
 
 function showcasePage() {
@@ -393,6 +427,10 @@ fs.mkdirSync(out, { recursive: true });
 fs.cpSync(path.join(root, "gallery-site/assets"), path.join(out, "assets"), { recursive: true });
 write("index.html", homePage());
 for (const element of elements) write(`elements/${element.slug}/index.html`, elementPage(element));
+write("genres/index.html", briefIndex("genres", genreWireframes, "Genre UI patterns", "Genre tags overlap. Compare the observed screens, then test a layout proposal for your game's actual task."));
+for (const slug of Object.keys(genreWireframes)) write(`genres/${slug}/index.html`, briefPage("genres", slug, genreWireframes));
+write("platforms/index.html", briefIndex("platforms", inputTargetWireframes, "Input and screen targets", "Adapt each genre to mouse and keyboard, controller and TV, handheld, or touch; these are viewing contexts, not store exclusivity."));
+for (const slug of Object.keys(inputTargetWireframes)) write(`platforms/${slug}/index.html`, briefPage("platforms", slug, inputTargetWireframes));
 write("showcase/index.html", showcasePage());
 write("docs/index.html", docsIndexPage());
 for (const doc of docPaths) write(docHref(doc).slice(1), docPage(doc));

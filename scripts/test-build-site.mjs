@@ -11,6 +11,7 @@ const out = fs.mkdtempSync(path.join(os.tmpdir(), "gameui-site-"));
 try {
   execFileSync(process.execPath, [path.join(root, "scripts/build-site.mjs"), "--out", out], { stdio: "pipe" });
   const { elementSlugs } = await import(pathToFileURL(path.join(root, "gallery-site/elements.mjs")).href);
+  const { genreWireframes, inputTargetWireframes } = await import(pathToFileURL(path.join(root, "gallery-site/genre-wireframes.mjs")).href);
 
   const files = [];
   (function walk(dir) {
@@ -28,6 +29,17 @@ try {
   assert.ok(!files.some((f) => f.startsWith("catalog/") || f.endsWith(".json")), "the site must not publish catalog records");
   assert.equal(elementSlugs.length, 21);
   for (const slug of elementSlugs) assert.ok(fileSet.has(`elements/${slug}/index.html`), `missing element page ${slug}`);
+  for (const [section, entries] of [["genres", genreWireframes], ["platforms", inputTargetWireframes]]) {
+    assert.ok(fileSet.has(`${section}/index.html`), `missing ${section} index`);
+    for (const [slug, regions] of Object.entries(entries)) {
+      assert.ok(regions.length > 0, `${section}/${slug}: no proposed regions`);
+      const target = `${section}/${slug}/index.html`;
+      assert.ok(fileSet.has(target), `missing ${target}`);
+      const body = fs.readFileSync(path.join(out, target), "utf8");
+      assert.ok(body.includes('class="viewport genre-viewport"'), `${target}: missing wireframe`);
+      assert.ok(body.includes("Observed Screens") || section === "platforms", `${target}: missing observation boundary`);
+    }
+  }
 
   const docs = [];
   (function walk(dir) {

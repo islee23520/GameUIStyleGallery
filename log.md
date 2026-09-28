@@ -2,6 +2,15 @@
 
 ## 2026-09-28
 
+Understood as: differentiate game UI by genre and by input/screen target without restoring the removed third-party catalog.
+
+- Added sixteen locally authored genre briefs grounded in three manually viewed itch.io game pages each. They separate visible screen observations from wireframe proposals, name thin or overlapping evidence, and store no screenshots, scraped records, or counts in the repository.
+- Added four input and screen target briefs for mouse/keyboard, controller/TV, handheld, and touch/mobile, bounded by Microsoft, Steam, and Apple platform guidance.
+- Registered the guides in Game UI navigation and the domain manifest, and added site pages with distinct wireframes for each genre and target. The site build test now requires those pages and checks their wireframe presence.
+
+Consumer reference: not_applicable
+Consumer reference reason: These locally authored Game UI briefs select no consumer-reference profile or record.
+
 Understood as: Interface In Game's terms and conditions prohibit spidering, crawling, and scraping, so remove every collected record and the collector, then remove every reference to that site; future references are gathered by hand from sources whose terms allow it.
 
 - Removed `game-ui/interfaceingame/data/`, `scripts/crawl-interfaceingame.mjs`, `scripts/generate-interfaceingame-docs.mjs`, `scripts/test-interfaceingame-catalog.mjs`, the generated game catalog and genre/element matrix, and the site's catalog page, `catalog/data.json`, and `catalog.js`.
