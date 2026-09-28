@@ -2,6 +2,26 @@
 
 ## 2026-09-28
 
+Understood as: keep this fork as the game UI gallery, serve web guidance from the separate upstream clone `uiStyleGallery`, remove Ouroforge, and publish the Game UI domain as a visual site.
+
+- Removed the private OuroforgeGameCodex submodule checkout; no tracked file references it.
+- Added `scripts/sg-gallery-router-mcp.mjs`: `game-ui` questions route to this repository and `frontend` questions to the sibling `uiStyleGallery` clone (`UI_STYLE_GALLERY_ROOT` overrides the path). Its test needs that clone, so it is a local integration check, not a CI step.
+- Added the Unity `UITween` sample and a shared tween contract with the site's `gallery-site/assets/tween.js`.
+- Added `Concept.md`, `DESIGN.md`, `ToDo.md`, the `gallery-site/` sources, `scripts/build-site.mjs` (`bun run site:build` into `dist/site`), and `scripts/test-build-site.mjs`. The site has 21 element pages with wireframes, state switchers, and tween demos, a catalog browser over 16305 captures that links to Interface In Game without hosting images, and rendered Game UI docs. `gameuigallery.linalab.io` is served by linalab-ci from `main`.
+- Extension inventories and the material registry were regenerated for the changed sources.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds a Game UI site, routing, and samples and selects no consumer-reference profile or record.
+
+Understood as: in this fork, restore the Game UI domain, catalog the whole Interface In Game archive as governed data, and add a Unity uGUI implementation guide with compiled samples.
+
+- Restored the Game UI domain removed by `b205c4d`, including the Unity organization-wiki and source-contract validators and their CI steps. This fork governs itself: the owner decision for the refreshed workflow, page-evidence, and extension-inventory hashes is recorded here rather than inherited from upstream.
+- Added `game-ui/interfaceingame/` with metadata-only data for 401 games, 16305 captures (15394 images, 911 videos), 24 articles, and site facets; `scripts/crawl-interfaceingame.mjs` rebuilds it and `scripts/generate-interfaceingame-docs.mjs` generates the catalog and genre/element matrix. No media is stored.
+- Added the element pattern guide for all 21 site elements and `game-ui/unity/ugui-implementation.md` with eight uGUI samples under `game-ui/unity/samples/ugui/`, compile-checked in Unity 6000.7.0a5 batch mode.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds Game UI documentation and data and selects no consumer-reference profile or record.
+
 Understood as: switch the repository package manager from npm to Bun and release `stylegallery@0.1.8`.
 
 - Replaced `package-lock.json` with `bun.lock`, migrated from the npm lockfile so every one of the 184 resolved package versions and the `brace-expansion` override are unchanged, and declared `"packageManager": "bun@1.3.14"`. Scripts still run on Node.js 22; Bun installs dependencies and runs package scripts.
