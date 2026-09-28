@@ -321,7 +321,9 @@
     "showcase:serve": "node scripts/serve-showcase.mjs",
     "test:compiler": "node --test scripts/test-sg-compiler.mjs",
     "sg:v1": "node scripts/sg.mjs",
-    "sg:mcp:v1": "node scripts/sg-mcp.mjs"
+    "sg:mcp:v1": "node scripts/sg-mcp.mjs",
+    "site:build": "node scripts/build-site.mjs",
+    "test:site": "node scripts/test-build-site.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",

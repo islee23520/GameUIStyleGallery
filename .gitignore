@@ -6,3 +6,4 @@ blob-report/
 
 # style.gallery website lives in the private changeroa/style-gallery-site repository; clone it here for local builds.
 site/
+dist/
