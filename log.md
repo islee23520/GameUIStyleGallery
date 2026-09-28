@@ -2,6 +2,17 @@
 
 ## 2026-09-28
 
+Understood as: keep this fork as the game UI gallery, serve web guidance from the separate upstream clone `uiStyleGallery`, remove Ouroforge, and publish the Game UI domain as a visual site.
+
+- Removed the private OuroforgeGameCodex submodule checkout; no tracked file references it.
+- Added `scripts/sg-gallery-router-mcp.mjs`: `game-ui` questions route to this repository and `frontend` questions to the sibling `uiStyleGallery` clone (`UI_STYLE_GALLERY_ROOT` overrides the path). Its test needs that clone, so it is a local integration check, not a CI step.
+- Added the Unity `UITween` sample and a shared tween contract with the site's `gallery-site/assets/tween.js`.
+- Added `Concept.md`, `DESIGN.md`, `ToDo.md`, the `gallery-site/` sources, `scripts/build-site.mjs` (`bun run site:build` into `dist/site`), and `scripts/test-build-site.mjs`. The site has 21 element pages with wireframes, state switchers, and tween demos, a catalog browser over 16305 captures that links to Interface In Game without hosting images, and rendered Game UI docs. `gameuigallery.linalab.io` is served by linalab-ci from `main`.
+- Extension inventories and the material registry were regenerated for the changed sources.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds a Game UI site, routing, and samples and selects no consumer-reference profile or record.
+
 Understood as: in this fork, restore the Game UI domain, catalog the whole Interface In Game archive as governed data, and add a Unity uGUI implementation guide with compiled samples.
 
 - Restored the Game UI domain removed by `b205c4d`, including the Unity organization-wiki and source-contract validators and their CI steps. This fork governs itself: the owner decision for the refreshed workflow, page-evidence, and extension-inventory hashes is recorded here rather than inherited from upstream.
