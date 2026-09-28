@@ -409,7 +409,7 @@ function pcStrategyPage(slug, spec) {
 
 function pcStrategyIndex() {
   const cards = Object.entries(strategyGames).map(([slug, spec]) => `<li><a class="element-card" href="/strategy/${slug}/"><h2>${esc(spec.title)}</h2><span class="meta">${esc(spec.short)}</span><span>${spec.states.length} proposed states · PC-first</span></a></li>`).join("");
-  const body = `<h1 class="display">PC strategy state studies</h1><p class="lead">Compare character-and-realm decisions with a separate campaign-and-battle command model. Every frame is an original wireframe, not an asset or pixel copy.</p><ul class="element-grid genre-grid">${cards}</ul><p><a href="${docHref("game-ui/strategy/index.md")}">Read the family comparison</a></p>`;
+  const body = `<h1 class="display">PC strategy state studies</h1><p class="lead">Compare character-and-realm decisions with a separate campaign-and-battle command model. Every frame is an original wireframe, not an asset or pixel copy.</p><ul class="element-grid genre-grid"><li><a class="element-card" href="/strategy/norland/"><h2>Norland</h2><span class="meta">Live-observation-informed UI layer study</span><span>Settlement and world game views with distinct HUD and overlays</span></a></li>${cards}</ul><p><a href="${docHref("game-ui/strategy/index.md")}">Read the family comparison</a></p>`;
   return page({ title: "PC strategy studies", description: "CK3 and Total War WARHAMMER III interactive PC strategy wireframes", current: "strategy", body });
 }
 
@@ -459,6 +459,7 @@ for (const slug of Object.keys(genreWireframes)) write(`genres/${slug}/index.htm
 write("platforms/index.html", briefIndex("platforms", inputTargetWireframes, "Input and screen targets", "Adapt each genre to mouse and keyboard, controller and TV, handheld, or touch; these are viewing contexts, not store exclusivity."));
 for (const slug of Object.keys(inputTargetWireframes)) write(`platforms/${slug}/index.html`, briefPage("platforms", slug, inputTargetWireframes));
 write("strategy/index.html", pcStrategyIndex());
+write("strategy/norland/index.html", read("gallery-site/norland-wireframe.html"));
 for (const [slug, spec] of Object.entries(strategyGames)) write(`strategy/${slug}/index.html`, pcStrategyPage(slug, spec));
 write("showcase/index.html", showcasePage());
 write("docs/index.html", docsIndexPage());

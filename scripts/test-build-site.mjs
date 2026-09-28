@@ -42,6 +42,11 @@ try {
     }
   }
   assert.ok(fileSet.has("strategy/index.html"), "missing PC strategy index");
+  assert.ok(fileSet.has("strategy/norland/index.html"), "missing Norland wireframe");
+  const norland = fs.readFileSync(path.join(out, "strategy/norland/index.html"), "utf8");
+  assert.ok(norland.includes('data-view="settlement"') && norland.includes('data-view="world"'), "Norland must distinguish its game views");
+  assert.ok(norland.includes('id="detail"') && norland.includes('id="veil"'), "Norland must distinguish panels and overlays");
+  assert.ok(fs.readFileSync(path.join(out, "strategy/index.html"), "utf8").includes('href="/strategy/norland/"'), "strategy index must link Norland");
   assert.ok(fileSet.has("assets/pc-strategy.js"), "missing strategy state controller");
   for (const [slug, spec] of Object.entries(strategyGames)) {
     const relative = `strategy/${slug}/index.html`;
