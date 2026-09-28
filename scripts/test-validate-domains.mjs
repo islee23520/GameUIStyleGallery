@@ -404,18 +404,11 @@ for (const route of ["state-management/index.md", "state-management/recipes/inde
 }
 
 for (const [relative, title] of [
-  ["game-ui/interfaceingame/elements.md", "Interface In Game Element Patterns"],
+  ["game-ui/elements.md", "Game UI Element Patterns"],
   ["game-ui/unity/ugui-implementation.md", "Unity uGUI Game UI Implementation"],
 ]) {
   baseFiles[relative] = leafPage({ title, domain: "game-ui", parent: "../index.md", next: "../index.md", provenanceKind: "local" });
   baseFiles["game-ui/index.md"] += `\n- [${title}](${relative.slice("game-ui/".length)})\n`;
-  baseFiles["DOMAINS.md"] = baseFiles["DOMAINS.md"].split("\n").map((line) => line.includes("| `game-ui/index.md` |")
-    ? `${line.slice(0, -2)}, \`${relative}\` |` : line).join("\n");
-}
-for (const relative of ["game-ui/interfaceingame/index.md", "game-ui/interfaceingame/catalog.md", "game-ui/interfaceingame/genre-element-matrix.md"]) {
-  baseFiles[relative] = relative.endsWith("/index.md")
-    ? indexPage("Interface In Game Catalog", [["Elements", "elements.md"]])
-    : leafPage({ title: relative, domain: "game-ui", parent: "index.md", next: "index.md" });
   baseFiles["DOMAINS.md"] = baseFiles["DOMAINS.md"].split("\n").map((line) => line.includes("| `game-ui/index.md` |")
     ? `${line.slice(0, -2)}, \`${relative}\` |` : line).join("\n");
 }

@@ -2,6 +2,16 @@
 
 ## 2026-09-28
 
+Understood as: Interface In Game's terms and conditions prohibit spidering, crawling, and scraping, so remove every collected record and the collector, then remove every reference to that site; future references are gathered by hand from sources whose terms allow it.
+
+- Removed `game-ui/interfaceingame/data/`, `scripts/crawl-interfaceingame.mjs`, `scripts/generate-interfaceingame-docs.mjs`, `scripts/test-interfaceingame-catalog.mjs`, the generated game catalog and genre/element matrix, and the site's catalog page, `catalog/data.json`, and `catalog.js`.
+- Moved the element guide to `game-ui/elements.md` as a locally authored vocabulary without site facets, capture counts, or citation links, removed `game-ui/interfaceingame/`, the Interface In Game research note in `game-ui/index.md`, the site's source-capture panels, and the router's external reference. The site test now fails if a `catalog/` page, a JSON file, or any Interface In Game reference is published.
+- Added `.omo/` to `.gitignore` so local evidence is never committed.
+- Extension inventories and the material registry were regenerated for the changed sources.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change removes collected third-party records and selects no consumer-reference profile or record.
+
 Understood as: keep this fork as the game UI gallery, serve web guidance from the separate upstream clone `uiStyleGallery`, remove Ouroforge, and publish the Game UI domain as a visual site.
 
 - Removed the private OuroforgeGameCodex submodule checkout; no tracked file references it.

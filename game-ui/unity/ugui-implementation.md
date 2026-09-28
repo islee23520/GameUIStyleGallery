@@ -1,7 +1,7 @@
 ---
 type: Domain Guide
 title: Unity uGUI Game UI Implementation
-description: Canvas, prefab, input, state, and performance workflow for implementing the Interface In Game catalog with Unity uGUI.
+description: Canvas, prefab, input, state, and performance workflow for implementing the game UI element patterns with Unity uGUI.
 domain: game-ui
 lifecycle: experimental
 provenance_kind: local
@@ -16,7 +16,7 @@ Primary role: Unity implementation guide for game-interface briefs.
 
 ## Repository Boundary
 
-The [Interface In Game catalog](../interfaceingame/index.md) supplies screenshot and video metadata, not Unity hierarchies, behavior, or licensed art. These samples implement local StyleGallery player-task and layer roles; they do not reconstruct any game's proprietary interface. Build a brief from [Element Patterns](../interfaceingame/elements.md) before choosing a prefab structure.
+Reference screenshots supply no Unity hierarchies, behavior, or licensed art. These samples implement local StyleGallery player-task and layer roles; they do not reconstruct any game's proprietary interface. Build a brief from [Element Patterns](../elements.md) before choosing a prefab structure.
 
 ## Version Boundary
 
@@ -114,9 +114,9 @@ In the actual Unity Editor Play Mode, open and close each screen repeatedly; tes
 
 ## Source, License, And Attribution
 
-The component architecture is locally authored. [Unity uGUI source at the pinned revision](https://github.com/Unity-Technologies/uGUI/tree/9edb4420267b6652090ece4c28c38bd98746a68e) informs the component boundary; [Interface In Game](https://interfaceingame.com/) supplies only linked metadata. No game screenshot, icon, font, or other protected asset is bundled with the samples.
+The component architecture is locally authored. [Unity uGUI source at the pinned revision](https://github.com/Unity-Technologies/uGUI/tree/9edb4420267b6652090ece4c28c38bd98746a68e) informs the component boundary. No game screenshot, icon, font, or other protected asset is bundled with the samples.
 
 ## IA Navigation
 
 Parent: [Game UI](../index.md).
-Next: [Interface In Game Catalog](../interfaceingame/index.md).
+Next: [Game UI Element Patterns](../elements.md).

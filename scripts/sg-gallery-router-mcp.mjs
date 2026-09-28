@@ -24,7 +24,6 @@ const routes = {
     root: gameRoot,
     domains: new Set(["game-ui"]),
     entry: "game-ui/index.md",
-    reference: "https://interfaceingame.com/",
   },
   frontend: {
     root: webRoot,
@@ -56,14 +55,13 @@ export async function routeGallery({ area, query, limit = 8 }) {
     entry: route.entry,
     query,
     matches,
-    ...(route.reference ? { external_reference: route.reference, live_lookup_required: true } : {}),
   };
 }
 
 export function createGalleryRouterServer() {
   const server = new McpServer({ name: "StyleGallery Fork Router", version: "2.0.0" });
   server.registerTool("gallery-route", {
-    description: "Route game UI questions to GameUIStyleGallery and frontend design questions to the sibling uiStyleGallery; game UI also requires a live Interface In Game lookup.",
+    description: "Route game UI questions to GameUIStyleGallery and frontend design questions to the sibling uiStyleGallery.",
     inputSchema: z.strictObject({ area: z.enum(["game-ui", "frontend"]), query: z.string().min(1), limit: z.number().int().min(1).max(20).default(8) }),
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   }, async (input) => {

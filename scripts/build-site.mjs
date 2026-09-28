@@ -17,19 +17,13 @@ const write = (relative, content) => {
   fs.writeFileSync(target, content);
 };
 
-const manifest = readJson("game-ui/interfaceingame/data/manifest.json");
-const games = readJson("game-ui/interfaceingame/data/games.json");
-const screenshots = readJson("game-ui/interfaceingame/data/screenshots.json");
-const taxonomies = readJson("game-ui/interfaceingame/data/taxonomies.json");
-
-const elementsDoc = read("game-ui/interfaceingame/elements.md");
-const mapRows = [...elementsDoc.matchAll(/^\| `([a-z-]+)` \| ([^|]+) \| (\d+) \| `([a-z-]+)` \| ([^|]+) \| ([^|]+) \|$/gm)].map((m) => ({
+const elementsDoc = read("game-ui/elements.md");
+const mapRows = [...elementsDoc.matchAll(/^\| `([a-z-]+)` \| ([^|]+) \| `([a-z-]+)` \| ([^|]+) \| ([^|]+) \|$/gm)].map((m) => ({
   slug: m[1],
   label: m[2].trim(),
-  captures: Number(m[3]),
-  primary: m[4],
-  secondary: m[5].trim(),
-  layer: m[6].trim(),
+  primary: m[3],
+  secondary: m[4].trim(),
+  layer: m[5].trim(),
 }));
 const mapBySlug = new Map(mapRows.map((row) => [row.slug, row]));
 
@@ -37,7 +31,6 @@ function guideFor(slug) {
   const start = elementsDoc.indexOf(`(\`${slug}\`)`);
   const section = elementsDoc.slice(start, elementsDoc.indexOf("\n### ", start + 1) > 0 ? elementsDoc.indexOf("\n### ", start + 1) : elementsDoc.indexOf("\n## ", start));
   const field = (name) => section.match(new RegExp(`^- ${name}: (.+)$`, "m"))?.[1] ?? "";
-  const examples = [...field("Examples").matchAll(/\[([^\]]+)\]\((https:\/\/interfaceingame\.com\/[^)]+)\)/g)].map((m) => ({ title: m[1], url: m[2] }));
   const sentence = (value) => value.charAt(0).toUpperCase() + value.slice(1);
   return {
     question: sentence(field("Player question")),
@@ -45,7 +38,6 @@ function guideFor(slug) {
     states: field("States"),
     input: field("Input and focus"),
     failures: field("Failure modes"),
-    examples,
   };
 }
 
@@ -168,7 +160,7 @@ const docTitle = (repoPath) => {
 };
 
 const guideLinks = [
-  ["Element patterns", "game-ui/interfaceingame/elements.md"],
+  ["Element patterns", "game-ui/elements.md"],
   ["Unity uGUI implementation", "game-ui/unity/ugui-implementation.md"],
   ["Unity UI systems", "game-ui/unity/ui-systems.md"],
   ["Classification", "game-ui/classification.md"],
@@ -188,7 +180,7 @@ function nav(current) {
   <div class="brand-row"><a class="brand" href="/">Game UI <strong>Gallery</strong></a></div>
   <button class="btn btn-ghost nav-toggle" type="button" aria-expanded="false" aria-controls="nav-body">Menu</button>
   <div class="nav-body" id="nav-body">
-    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/catalog/", "Catalog", "catalog")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
+    <div class="nav-group"><h2>Browse</h2><ul>${item("/", "Overview", "home")}${item("/showcase/", "Primitives", "showcase")}</ul></div>
     ${groups}
     <div class="nav-group"><h2>Guides</h2><ul>${guides}</ul></div>
   </div>
@@ -213,7 +205,7 @@ ${scripts.map((src) => `<script type="module" src="${src}"></script>`).join("\n"
 ${nav(current)}
 <main class="shell-main" id="main">
 ${body}
-<footer class="footer">Interface In Game facets and capture links come from <a href="https://interfaceingame.com/" rel="noopener">interfaceingame.com</a>. Screenshots belong to their publishers and are linked, never copied. Source: <a href="https://github.com/islee23520/GameUIStyleGallery" rel="noopener">GameUIStyleGallery</a>.</footer>
+<footer class="footer">Wireframes, patterns, and samples are locally authored; no third-party screenshots or records are stored. Source: <a href="https://github.com/islee23520/GameUIStyleGallery" rel="noopener">GameUIStyleGallery</a>.</footer>
 </main>
 </div>
 </body>
@@ -299,7 +291,7 @@ function elementPage(element) {
 <header class="element-head">
   <h1 class="display">${esc(element.label)}</h1>
   <p class="lead">${esc(g.question)}</p>
-  <p class="meta">${element.map.captures.toLocaleString("en-US")} captures on Interface In Game. Primary class <code>${esc(element.map.primary)}</code>. Layer: ${esc(element.map.layer)}.</p>
+  <p class="meta">Primary class <code>${esc(element.map.primary)}</code>. Layer: ${esc(element.map.layer)}.</p>
 </header>
 <section class="workbench" aria-label="Wireframe and tween demo">
   <div class="workbench-grid">
@@ -340,7 +332,6 @@ function elementPage(element) {
   <div class="panel"><h3>Input and focus</h3><p>${esc(g.input)}</p></div>
   <div class="panel"><h3>Failure modes</h3><p>${esc(g.failures)}</p></div>
   <div class="panel"><h3>Unity uGUI samples</h3><ul>${sampleLinks}</ul><p class="meta">Guide: <a href="${docHref("game-ui/unity/ugui-implementation.md")}">Unity uGUI implementation</a></p></div>
-  <div class="panel"><h3>Source captures</h3><ul class="source-list">${g.examples.map((e) => `<li><a href="${esc(e.url)}" rel="noopener">${esc(e.title)}</a></li>`).join("")}</ul><p class="meta"><a href="/catalog/?element=${element.slug}">All ${esc(element.label)} captures</a></p></div>
 </section>
 <script type="application/json" id="element-spec">${JSON.stringify({ slug: element.slug, demo: element.demo, cancel: element.cancel, tabs: element.tabs, carousel: element.carousel, line: element.line, autoOpen: element.autoOpen ?? false }).replace(/</g, "\\u003c")}</script>`;
   return page({ title: element.label, description: `${element.label} game UI pattern: wireframe, states, tween demo, and Unity uGUI samples.`, current: `element:${element.slug}`, body, scripts: ["/assets/element.js"] });
@@ -354,43 +345,11 @@ function homePage() {
     .join("");
   const body = `<section class="hero">
   <h1 class="display">Game UI patterns you can see move.</h1>
-  <p class="lead">Wireframes, states, and interruptible tweens for 21 game interface elements, mapped to Unity uGUI samples and the Interface In Game archive.</p>
-  <div class="btn-row"><a class="btn btn-primary" href="/elements/in-game/">Open the HUD demo</a><a class="btn" href="/catalog/">Browse the catalog</a></div>
-  <div class="hero-stats"><div><strong>${manifest.counts.games}</strong><span class="meta">games</span></div><div><strong>${manifest.counts.screenshots.toLocaleString("en-US")}</strong><span class="meta">captures, linked not copied</span></div><div><strong>${elements.length}</strong><span class="meta">element patterns</span></div></div>
+  <p class="lead">Wireframes, states, and interruptible tweens for 21 game interface elements, mapped to Unity uGUI samples.</p>
+  <div class="btn-row"><a class="btn btn-primary" href="/elements/in-game/">Open the HUD demo</a><a class="btn" href="/docs/">Read the guides</a></div>
 </section>
 ${groups}`;
-  return page({ title: "Overview", description: "Game UI element patterns with wireframes, tween demos, Unity uGUI samples, and an Interface In Game catalog.", current: "home", body });
-}
-
-function catalogPage() {
-  const body = `<h1 class="display">Interface In Game catalog</h1>
-<p class="lead">Every capture in the archive as metadata. Open a card to view the screenshot on its source page.</p>
-<div class="catalog-tools">
-  <label class="sr-only" for="q">Search captures</label>
-  <input class="search" id="q" type="search" placeholder="Search game or capture title" autocomplete="off">
-  <div class="filter-row" id="filters"></div>
-  <p class="meta" id="count" aria-live="polite">Loading catalog</p>
-</div>
-<ul class="result-grid" id="results"></ul>
-<div class="pager"><button class="btn" type="button" id="prev">Previous</button><span class="meta" id="page"></span><button class="btn" type="button" id="next">Next</button></div>`;
-  return page({ title: "Catalog", description: "Search 16,305 Interface In Game captures by element, genre, theme, and platform.", current: "catalog", body, scripts: ["/assets/catalog.js"] });
-}
-
-function catalogData() {
-  const gameIndex = new Map(games.map((g, i) => [g.slug, i]));
-  const elementKeys = Object.keys(taxonomies.elements);
-  return {
-    source: manifest.source,
-    retrieved_on: manifest.retrieved_on,
-    facets: {
-      element: elementKeys.map((k) => [k, taxonomies.elements[k]]),
-      genre: Object.entries(taxonomies.genres),
-      theme: Object.entries(taxonomies.themes),
-      platform: Object.entries(taxonomies.platforms),
-    },
-    games: games.map((g) => [g.title, g.url, (g.release_date ?? "").slice(0, 4), g.genres, g.themes, g.platforms]),
-    captures: screenshots.map((s) => [gameIndex.get(s.game), s.title, s.url, s.elements.map((e) => elementKeys.indexOf(e)), s.media_type === "video" ? 1 : 0]),
-  };
+  return page({ title: "Overview", description: "Game UI element patterns with wireframes, tween demos, and Unity uGUI samples.", current: "home", body });
 }
 
 function showcasePage() {
@@ -401,8 +360,8 @@ function showcasePage() {
   <div class="panel"><h3>Pills and tags</h3><div class="pill-group"><button class="pill" type="button" aria-pressed="false">Filter</button><button class="pill" type="button" aria-pressed="true">Selected filter</button><span class="tag">Tag</span><span class="tag">Main menu</span></div></div>
   <div class="panel"><h3>Nav items</h3><ul class="source-list"><li><a class="nav-item" href="#">Default</a></li><li><a class="nav-item" href="#" aria-current="page">Current page</a></li></ul></div>
   <div class="panel"><h3>Inputs</h3><div class="field"><label for="s-in">Duration (s)</label><input id="s-in" type="number" value="0.35"></div><input class="search" type="search" placeholder="Search field" aria-label="Search field example"></div>
-  <div class="panel"><h3>Capture card</h3><ul class="result-grid"><li class="capture-card"><h3>Ability Wheel</h3><p class="meta">Onimusha: Way of the Sword</p><div class="pill-group"><span class="tag">In game</span></div><a href="#">Open source capture</a></li></ul></div>
-  <div class="panel"><h3>Empty state</h3><div class="empty-state">No captures match these filters.</div></div>
+  <div class="panel"><h3>Capture card</h3><ul class="result-grid"><li class="capture-card"><h3>Ability wheel</h3><p class="meta">Reference title</p><div class="pill-group"><span class="tag">In game</span></div><a href="#">Open reference</a></li></ul></div>
+  <div class="panel"><h3>Empty state</h3><div class="empty-state">No items match these filters.</div></div>
 </div>`;
   return page({ title: "Primitives", description: "Design system primitives and states.", current: "showcase", body });
 }
@@ -426,7 +385,7 @@ function docPage(repoPath) {
 }
 
 function notFoundPage() {
-  return page({ title: "Not found", description: "Page not found.", current: "", body: `<h1 class="display">This screen does not exist.</h1><p class="lead">The link may be old. Start from the overview or search the catalog.</p><div class="btn-row"><a class="btn btn-primary" href="/">Overview</a><a class="btn" href="/catalog/">Catalog</a></div>` });
+  return page({ title: "Not found", description: "Page not found.", current: "", body: `<h1 class="display">This screen does not exist.</h1><p class="lead">The link may be old. Start from the overview.</p><div class="btn-row"><a class="btn btn-primary" href="/">Overview</a><a class="btn" href="/docs/">Documents</a></div>` });
 }
 
 fs.rmSync(out, { recursive: true, force: true });
@@ -434,10 +393,8 @@ fs.mkdirSync(out, { recursive: true });
 fs.cpSync(path.join(root, "gallery-site/assets"), path.join(out, "assets"), { recursive: true });
 write("index.html", homePage());
 for (const element of elements) write(`elements/${element.slug}/index.html`, elementPage(element));
-write("catalog/index.html", catalogPage());
-write("catalog/data.json", JSON.stringify(catalogData()));
 write("showcase/index.html", showcasePage());
 write("docs/index.html", docsIndexPage());
 for (const doc of docPaths) write(docHref(doc).slice(1), docPage(doc));
 write("404.html", notFoundPage());
-process.stdout.write(`${JSON.stringify({ out: path.relative(root, out), elements: elements.length, docs: docPaths.length, captures: screenshots.length })}\n`);
+process.stdout.write(`${JSON.stringify({ out: path.relative(root, out), elements: elements.length, docs: docPaths.length })}\n`);

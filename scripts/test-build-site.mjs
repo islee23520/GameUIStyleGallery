@@ -22,9 +22,10 @@ try {
   })(out);
   const fileSet = new Set(files);
 
-  for (const required of ["index.html", "404.html", "catalog/index.html", "catalog/data.json", "showcase/index.html", "docs/index.html", "assets/site.css", "assets/tween.js", "assets/element.js", "assets/catalog.js"]) {
+  for (const required of ["index.html", "404.html", "showcase/index.html", "docs/index.html", "assets/site.css", "assets/tween.js", "assets/element.js"]) {
     assert.ok(fileSet.has(required), `missing ${required}`);
   }
+  assert.ok(!files.some((f) => f.startsWith("catalog/") || f.endsWith(".json")), "the site must not publish catalog records");
   assert.equal(elementSlugs.length, 21);
   for (const slug of elementSlugs) assert.ok(fileSet.has(`elements/${slug}/index.html`), `missing element page ${slug}`);
 
@@ -42,8 +43,7 @@ try {
   const broken = [];
   for (const file of html) {
     const content = fs.readFileSync(path.join(out, file), "utf8");
-    assert.ok(!/<(img|video|source|picture)\b[^>]*interfaceingame\.com/i.test(content), `${file} embeds Interface In Game media`);
-    assert.ok(!/src="https?:\/\/[^"]*interfaceingame\.com/i.test(content), `${file} loads a resource from interfaceingame.com`);
+    assert.ok(!/interfaceingame/i.test(content), `${file} references a removed third-party archive`);
     for (const [, href] of content.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
       const clean = href.replace(/^\//, "");
       const candidates = [clean, `${clean}.html`, path.posix.join(clean, "index.html")];
@@ -52,13 +52,7 @@ try {
   }
   assert.deepEqual(broken, [], "internal links must resolve");
 
-  const data = JSON.parse(fs.readFileSync(path.join(out, "catalog/data.json"), "utf8"));
-  assert.equal(data.games.length, 401);
-  assert.equal(data.captures.length, 16305);
-  assert.equal(data.facets.element.length, 21);
-  assert.ok(data.captures.every(([gameIndex, , url]) => Number.isInteger(gameIndex) && url.startsWith("https://interfaceingame.com/")));
-
-  console.log(`site build test passed: ${html.length} pages, ${elementSlugs.length} element pages, ${docs.length} docs, ${data.captures.length} captures`);
+  console.log(`site build test passed: ${html.length} pages, ${elementSlugs.length} element pages, ${docs.length} docs`);
 } finally {
   fs.rmSync(out, { recursive: true, force: true });
 }

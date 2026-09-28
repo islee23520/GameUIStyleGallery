@@ -117,10 +117,9 @@ export const canonicalDomains = [
       { path: "game-ui/decision-tree.md", provenance: "local" },
       { path: "game-ui/screen-recipes.md", provenance: "local" },
       { path: "game-ui/verification-workflow.md", provenance: "local" },
-      { path: "game-ui/interfaceingame/elements.md", provenance: "local" },
+      { path: "game-ui/elements.md", provenance: "local" },
       { path: "game-ui/unity/ugui-implementation.md", provenance: "local" },
     ],
-    referenceDocuments: ["game-ui/interfaceingame/index.md", "game-ui/interfaceingame/catalog.md", "game-ui/interfaceingame/genre-element-matrix.md"],
   },
   {
     slug: "platform-guides",
