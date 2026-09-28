@@ -3,6 +3,7 @@ playwright-report/
 test-results/
 blob-report/
 .tmp/
+.omo/
 
 # style.gallery website lives in the private changeroa/style-gallery-site repository; clone it here for local builds.
 site/

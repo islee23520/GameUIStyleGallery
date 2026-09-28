@@ -10,9 +10,9 @@ Out of scope: reusable Layout CSS, universal visual prescriptions, and treating 
 
 ## Evidence And Research Boundary
 
-The player-task classes and classification axes are a local taxonomy proposed for StyleGallery review, not Interface In Game's universal ontology.
+The player-task classes and classification axes are a local taxonomy proposed for StyleGallery review, not a universal ontology.
 
-Interface In Game was reviewed on 2026-07-14 through its [home page](https://interfaceingame.com/), [games index](https://interfaceingame.com/games/), and representative records for [Team Fortress 2](https://interfaceingame.com/games/team-fortress-2/), [Genshin Impact (Mobile)](https://interfaceingame.com/games/genshin-impact-mobile/), and [Gris](https://interfaceingame.com/games/gris/). In this bounded sample, the site exposed site-local facets such as Genres, Themes, and Platforms, while screenshots used Elements. The sample informs the local separation of player task from other axes; it does not cover the archive or establish the site's full information model.
+References are gathered by hand from sources whose terms allow it. This domain stores no third-party screenshot archives, crawled records, or media; it keeps locally authored analysis only.
 
 ## Start Here
 
@@ -29,10 +29,7 @@ These workflows and worked cases are usable experimental guidance. Expected-resu
 - [Game UI Classification](classification.md) separates player purpose from visual language, input, state, and motion.
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
-- [Interface In Game Catalog](interfaceingame/index.md) indexes the 2026-09-28 game, capture, facet, and article snapshot with a separate local thumbnail cache.
-- [Interface In Game Element Patterns](interfaceingame/elements.md) maps the site's 21 elements to local player tasks and failure cases.
-- [Interface In Game Game Catalog](interfaceingame/catalog.md) lists all captured game records.
-- [Interface In Game Genre And Element Matrix](interfaceingame/genre-element-matrix.md) shows coverage and co-occurrence.
+- [Game UI Element Patterns](elements.md) maps 21 common game UI elements to local player tasks and failure cases.
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
 - [Unity uGUI Game UI Implementation](unity/ugui-implementation.md) gives Canvas, input, focus, and component recipes with compilable samples.
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.

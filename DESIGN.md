@@ -10,9 +10,9 @@ description: Tokens, primitives, motion, and accessibility contract for the game
 
 - Embedded refs: shortlisted `playstation.md` (gaming channel layout, quiet display type), `raycast.md` (dark developer chrome), `mintlify.md` (documentation reading) -> picked `taste-skill.md` (Layer A) + `playstation.md` (Layer B) because the audience is game UI designers and engineers and the console-store voice carries the domain; `interaction-skill.md` stacks for the tween demos.
 - Lazyweb: 4 queries (design system documentation gallery, game store library browse filter, developer docs sidebar code sample, animation playground inspector controls), 11 screens saved, viewed PlayStation Now, Rive, Origami, Segment -> taken: dark browse grid with rail navigation (PlayStation Now), stage-plus-right-inspector for motion tools (Rive, Origami), fixed left navigation with reading column for docs (Segment). Screens stay in `.omo/evidence/gameui-site/lazyweb/`, never shipped.
-- StyleGallery patterns (local corpus): `fixed-sidenav-shell` for the site shell (side nav fixed, main column owns scroll), `main-with-rail` for element pages (stage dominant, inspector rail), `ram-grid` for the catalog results (as many columns as space allows).
+- StyleGallery patterns (local corpus): `fixed-sidenav-shell` for the site shell (side nav fixed, main column owns scroll), `main-with-rail` for element pages (stage dominant, inspector rail), `ram-grid` for card lists (as many columns as space allows).
 - beui.dev sources read: `center-morph-modal` (backdrop fade 0.28 s, surface unfold 0.43 s, content scale 0.88 -> 1 with 0.16 s delay, faster exit 0.1 s, reduced motion = opacity only 0.1-0.14 s), `tabs`, `loader`, `morphing-modal`. Mechanisms are re-expressed through the project tween engine; no beui code is vendored.
-- Imagen drafts: `gpt-image-2` via CLIProxy, prompts seeded with the PlayStation tokens (see `.omo/evidence/gameui-site/draft-a-element-page.png`, `draft-b-catalog.png`) -> used as the composition contract for the element page and catalog if generation succeeded; otherwise recorded as skipped in the QA notes.
+- Imagen drafts: `gpt-image-2` via CLIProxy, prompts seeded with the PlayStation tokens (see `.omo/evidence/gameui-site/draft-a-element-page.png`) -> used as the composition contract for the element page if generation succeeded; otherwise recorded as skipped in the QA notes.
 
 ## 1. Atmosphere & Identity
 
@@ -76,7 +76,7 @@ Base unit 4px: --space-1 4, --space-2 8, --space-3 12, --space-4 16, --space-5 2
 - Shell: `fixed-sidenav-shell`. Side nav 16rem wide at >= 960px, the main column owns vertical scroll; below 960px the nav becomes a top bar with a disclosure menu and the document scrolls.
 - Content width: reading column max 72ch; element page stage max 1120px.
 - Element page: `main-with-rail`. Stage (wireframe) takes the flexible track, inspector rail 20rem; stacks below the stage under 1100px container width.
-- Catalog: `ram-grid` with `repeat(auto-fill, minmax(min(17rem, 100%), 1fr))`.
+- Card lists: `ram-grid` with `repeat(auto-fill, minmax(min(17rem, 100%), 1fr))`.
 - Wireframe viewport: fixed 16:9 `aspect-ratio`, internal coordinates in percentages so it scales; safe-area guide inset 4% (dashed).
 
 ## 5. Components
@@ -96,8 +96,8 @@ Base unit 4px: --space-1 4, --space-2 8, --space-3 12, --space-4 16, --space-5 2
 ### Panel
 - Surface-panel fill, 1px border-default, --radius-md. Used for inspector, cards, nav.
 
-### Catalog card
-- Game title (H3), capture title, element tags, genre and year metadata, external link "Open source" (target _blank, rel noopener). Text only; no media. Hover: border to accent-interact at 40% and lift translateY(-2px).
+### Capture card
+- Title (H3), subtitle, tags, external link "Open reference" (rel noopener). Text only; no media. Hover: border to accent-interact at 40% and lift translateY(-2px).
 
 ### Wireframe stage
 - Device frame (surface-raised, radius-lg) containing the 16:9 viewport (surface-sunken). Regions are `<div class="wf-region" role="group" aria-label>` with dashed or solid wire-ink strokes and a small label. Focusable controls inside use `tabindex` roving focus; the focus frame is a 2px `--wire-focus` outline that moves with arrow keys. Escape triggers the element's cancel behavior.
@@ -143,7 +143,7 @@ Nested corners are concentric (viewport radius = frame radius minus frame paddin
 ## 8. Accessibility Constraints & Accepted Debt
 
 - WCAG 2.2 AA: 4.5:1 body contrast, 3:1 large text and UI strokes, visible focus-visible ring on every control, full keyboard reachability, wireframe demos operable by keyboard (arrow keys, Enter, Escape), `prefers-reduced-motion` respected, `aria-live` announcements for demo state changes.
-- No Interface In Game image or video is embedded; captures are linked only.
+- No third-party screenshot, video, or crawled record is embedded or published.
 
 | Item | Location | Why accepted | Owner / Exit |
 | --- | --- | --- | --- |

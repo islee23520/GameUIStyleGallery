@@ -94,8 +94,8 @@
         "scripts/test-lifecycle-disposition.mjs",
         "scripts/validate-lifecycle-disposition.mjs"
       ],
-      "scanned_file_count": 550,
-      "scanned_paths_content_id": "sha256:3a6cf3d0ea3cc9ea17a59d6ca2a020456f59fb66e8fd7f5f8eaa03dc0d1838b2"
+      "scanned_file_count": 538,
+      "scanned_paths_content_id": "sha256:1f61dcc58c53bb494ba6666aca5c656365e2904d34d7db218881ba95656ced87"
     },
     "implementation": {
       "path": "scripts/agent-native/v2/extensions/a2a-projection.mjs",

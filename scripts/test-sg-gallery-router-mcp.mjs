@@ -26,7 +26,6 @@ try {
   const game = await route("game-ui", "inventory element patterns");
   assert.equal(game.repository_root, gameRoot);
   assert.equal(game.entry, "game-ui/index.md");
-  assert.equal(game.external_reference, "https://interfaceingame.com/");
   assert.ok(game.matches.length > 0);
   assert.ok(game.matches.every((match) => match.domain === "game-ui"));
 
