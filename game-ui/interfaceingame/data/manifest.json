@@ -1,0 +1,14 @@
+{
+  "source": "https://interfaceingame.com/",
+  "retrieved_on": "2026-09-28",
+  "method": "WordPress REST (games, articles) plus paginated game pages; metadata and source URLs only, no media binaries.",
+  "counts": {
+    "games": 401,
+    "source_reported_games": 401,
+    "screenshots": 16305,
+    "images": 15394,
+    "videos": 911,
+    "articles": 24,
+    "source_reported_articles": 24
+  }
+}
