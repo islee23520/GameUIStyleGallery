@@ -30,6 +30,28 @@ These workflows and worked cases are usable experimental guidance. Expected-resu
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
 - [Game UI Element Patterns](elements.md) maps 21 common game UI elements to local player tasks and failure cases.
+- [Genre Guide Index](genres/index.md) compares bounded observations and distinct HUD proposals across 16 genre labels.
+- [Input And Screen Targets](platforms/index.md) separates mouse/keyboard, controller/TV, handheld, and touch/mobile adaptation.
+- [action guide](genres/action.md)
+- [adventure guide](genres/adventure.md)
+- [card-game guide](genres/card-game.md)
+- [fighting guide](genres/fighting.md)
+- [fps guide](genres/fps.md)
+- [indie guide](genres/indie.md)
+- [mmo guide](genres/mmo.md)
+- [music guide](genres/music.md)
+- [platformer guide](genres/platformer.md)
+- [racing guide](genres/racing.md)
+- [rpg guide](genres/rpg.md)
+- [simulation guide](genres/simulation.md)
+- [sport guide](genres/sport.md)
+- [strategy guide](genres/strategy.md)
+- [survival guide](genres/survival.md)
+- [visual-novel guide](genres/visual-novel.md)
+- [controller-tv guide](platforms/controller-tv.md)
+- [handheld guide](platforms/handheld.md)
+- [mouse-keyboard guide](platforms/mouse-keyboard.md)
+- [touch-mobile guide](platforms/touch-mobile.md)
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
 - [Unity uGUI Game UI Implementation](unity/ugui-implementation.md) gives Canvas, input, focus, and component recipes with compilable samples.
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.

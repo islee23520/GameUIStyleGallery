@@ -413,6 +413,18 @@ for (const [relative, title] of [
     ? `${line.slice(0, -2)}, \`${relative}\` |` : line).join("\n");
 }
 
+for (const section of ["genres", "platforms"]) {
+  for (const name of fs.readdirSync(path.join(root, "game-ui", section)).filter((entry) => entry.endsWith(".md"))) {
+    const relative = `game-ui/${section}/${name}`;
+    baseFiles[relative] = name === "index.md"
+      ? indexPage(`${section} navigation`, [["Game UI", "../index.md"]])
+      : leafPage({ title: relative, domain: "game-ui", parent: "index.md", next: "index.md", provenanceKind: "local" });
+    baseFiles["game-ui/index.md"] += `\n- [${relative}](${section}/${name})\n`;
+    baseFiles["DOMAINS.md"] = baseFiles["DOMAINS.md"].split("\n").map((line) => line.includes("| `game-ui/index.md` |")
+      ? `${line.slice(0, -2)}, \`${relative}\` |` : line).join("\n");
+  }
+}
+
 const cases = [
   { name: "empty_manifest", mutate: ["DOMAINS.md", baseFiles["DOMAINS.md"], "# Empty manifest\n"], expect: "DOMAINS.md: missing canonical domain contract" },
   { name: "manifest_extra_domain", mutate: ["DOMAINS.md", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |", "| Platform Guides | [Platform Guides](platform-guides/index.md) | `experimental` |\n| Other | [Other](other/index.md) | `experimental` |"], expect: "DOMAINS.md: missing canonical domain contract" },

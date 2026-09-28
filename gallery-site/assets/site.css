@@ -485,6 +485,66 @@ h3,
   opacity: 0.55;
 }
 
+.genre-grid {
+  margin-block-start: var(--space-8);
+}
+
+.genre-grid .device {
+  padding: var(--space-2);
+  box-shadow: none;
+}
+
+.genre-grid h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.genre-stage {
+  max-width: 1000px;
+  margin-block: var(--space-8);
+}
+
+.genre-viewport {
+  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+}
+
+.genre-region {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0.3em;
+  border: 1px solid var(--wire-ink);
+  border-radius: var(--radius-sm);
+  background: var(--wire-fill);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.genre-region[data-kind="world"] {
+  border-style: dashed;
+  opacity: 0.5;
+}
+
+.genre-region[data-kind="aim"] {
+  border: 0;
+  background: transparent;
+  font-size: 1.5em;
+}
+
+.genre-region[data-kind="bar"] {
+  background: linear-gradient(90deg, var(--wire-fill-strong) 66%, var(--wire-fill) 66%);
+  padding: 0;
+}
+
+.genre-legend {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
 .element-head {
   display: grid;
   gap: var(--space-3);
