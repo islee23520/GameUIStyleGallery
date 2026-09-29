@@ -8,6 +8,7 @@ These studies are **not reproductions** of any game's shipped interface. Officia
 
 - [Crusader Kings III](crusader-kings-iii.md): character, dynasty, succession, realm, council, event, and war decisions over a persistent political map.
 - [Total War: WARHAMMER III](total-war-warhammer-iii.md): turn-based faction management and a separate real-time battle command shell.
+- [Norland combat preparation observation](norland-combat-observation.md): live army roster, developer simulator, and tutorial element inventory; the manual battlefield was **not reached**.
 - [Strategy genre brief](../genres/strategy.md): a *different*, small itch.io sample; it is not evidence for either focal game's actual pixels.
 - [Mouse and keyboard target](../platforms/mouse-keyboard.md): pointer, hotkeys, focus, and resizable panel constraints.
 
