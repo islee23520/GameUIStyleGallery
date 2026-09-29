@@ -142,7 +142,7 @@ export const canonicalDomains = [
       { path: "game-ui/platforms/mouse-keyboard.md", provenance: "local" },
       { path: "game-ui/platforms/touch-mobile.md", provenance: "local" },
     ],
-    referenceDocuments: ["game-ui/genres/index.md", "game-ui/platforms/index.md", "game-ui/strategy/index.md"],
+    referenceDocuments: ["game-ui/genres/index.md", "game-ui/platforms/index.md", "game-ui/strategy/index.md", "game-ui/strategy/norland-combat-observation.md"],
   },
   {
     slug: "platform-guides",
