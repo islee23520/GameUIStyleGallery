@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An original interactive Norland UI layer study grounded in live gameplay observation.">
+<title>Norland UI layers | Game UI Gallery</title>
+<style>
+  :root { color-scheme:dark; font:16px/1.5 system-ui,sans-serif; background:#0b0c0e; color:#f2f4f7; }
+  * { box-sizing:border-box; }
+  body { margin:0; }
+  a { color:#53b1ff; }
+  button { font:inherit; color:inherit; cursor:pointer; background:#1b1e24; border:1px solid #353a43; border-radius:7px; padding:7px 10px; }
+  button:hover { background:#323943; }
+  button:focus-visible,a:focus-visible { outline:2px solid #1eaedb; outline-offset:2px; }
+  button[aria-pressed="true"] { background:#39414a; border-color:#d7dbe2; }
+  main { max-width:1320px; margin:auto; padding:24px clamp(12px,3vw,40px) 48px; }
+  h1 { font-size:clamp(2rem,4vw,3.25rem); font-weight:300; margin:8px 0; }
+  h2 { font-size:1.5rem; font-weight:400; margin:0 0 12px; }
+  p { color:#a4abb6; max-width:70ch; }
+  .crumbs { font-size:.875rem; margin:0 0 20px; }
+  .workbench { display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,300px); gap:20px; }
+  .card { min-width:0; background:#131519; border:1px solid #353a43; border-radius:12px; }
+  .heading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:14px; }
+  .switch,.commands { display:flex; flex-wrap:wrap; gap:6px; }
+  .scroll-note { display:none; color:#a4abb6; font-size:.875rem; padding:0 12px 8px; }
+  .viewport-scroll { overflow-x:auto; padding:12px; }
+  .viewport { position:relative; min-width:720px; aspect-ratio:16/9; overflow:hidden; background:#08090b; border:1px solid #353a43; }
+  .scene { position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent 0 38px,#ffffff0a 39px 40px),repeating-linear-gradient(90deg,transparent 0 38px,#ffffff0a 39px 40px); }
+  [data-view="world"] .scene { background:repeating-linear-gradient(35deg,transparent 0 70px,#ffffff14 71px 72px),repeating-linear-gradient(110deg,transparent 0 90px,#ffffff14 91px 92px); }
+  .scene-label { position:absolute; top:62px; left:16px; color:#a4abb6; font-size:.875rem; }
+  .landmark { position:absolute; display:grid; place-items:center; border:2px dashed #d7dbe2; background:#d7dbe214; font-size:.875rem; }
+  .hall { left:42%; top:37%; width:110px; height:75px; } .field { left:15%; top:61%; width:85px; height:58px; } .store { right:16%; top:56%; width:90px; height:60px; }
+  [data-view="world"] .landmark { border-radius:45%; }
+  [data-view="world"] .hall { left:34%; top:35%; width:180px; height:150px; } [data-view="world"] .field { left:8%; top:48%; width:135px; height:100px; } [data-view="world"] .store { right:7%; top:29%; width:160px; height:140px; }
+  .status { position:absolute; inset:0 0 auto; min-height:48px; display:flex; align-items:center; gap:8px; padding:6px 12px; background:#131519; border-bottom:1px solid #353a43; font-size:.8125rem; }
+  .status span { padding:3px 6px; background:#d7dbe218; } .spacer { flex:1; }
+  .notice { position:absolute; right:14px; top:64px; width:160px; padding:8px; background:#131519; border:1px dashed #d7dbe2; font-size:.8125rem; }
+  .commands { position:absolute; inset:auto 0 0; justify-content:center; padding:8px; background:#131519; border-top:1px solid #353a43; }
+  .commands button { font-size:.8125rem; }
+  .detail { position:absolute; left:12px; bottom:65px; width:min(48%,380px); max-height:55%; overflow:auto; background:#131519; border:1px solid #d7dbe2; padding:12px; font-size:.875rem; }
+  .detail[hidden],.veil[hidden] { display:none; }
+  .detail h3 { margin:0 0 8px; } .detail p { margin:6px 0; } .detail button { float:right; }
+  .veil { position:absolute; inset:0; display:grid; place-items:center; background:#000b; }
+  .dialog { width:min(80%,390px); padding:20px; background:#131519; border:1px solid #d7dbe2; }
+  .dialog h3 { margin:0 0 8px; } .dialog p { margin:0 0 16px; }
+  .inspector { padding:18px; align-self:start; position:sticky; top:16px; }
+  .inspector small { color:#a4abb6; } .inspector p { margin:8px 0 16px; font-size:.875rem; }
+  .inspector dl { margin:0; } .inspector dt { color:#a4abb6; margin-top:12px; font-size:.8125rem; } .inspector dd { margin:0; }
+  .scope { margin-top:28px; border-top:1px solid #353a43; padding-top:20px; }
+  @media(max-width:1000px) { .workbench { grid-template-columns:1fr; } .inspector { position:static; } }
+  @media(max-width:760px) { .scroll-note { display:block; } }
+</style>
+<main>
+  <p class="crumbs"><a href="/strategy/">PC strategy</a> / Norland</p>
+  <h1>Norland · UI layers</h1>
+  <p>Original interactive wireframe based on a live Windows game session. The settlement and world map are different <strong>game views</strong>; character, construction, economy and city details are <strong>UI over a view</strong>. This is a study of responsibilities, not a reproduction of the shipped pixels.</p>
+  <div class="workbench">
+    <section class="card" aria-label="Interactive wireframe"><div class="heading"><strong id="heading">Settlement overview</strong><div class="switch"><button type="button" data-view="settlement" aria-pressed="true">Settlement</button><button type="button" data-view="world" aria-pressed="false">World map</button></div></div>
+      <div class="scroll-note">Swipe sideways to see the whole PC game frame →</div>
+      <div class="viewport-scroll"><div class="viewport" id="viewport" data-view="settlement"><div class="scene"><span class="scene-label" id="scene-label">Settlement · terrain and characters</span><div class="landmark hall" id="hall">Hall</div><div class="landmark field" id="field">Field</div><div class="landmark store" id="store">Store</div></div>
+        <div class="status"><span>Wood 24</span><span>Food 32</span><span>Gold 510</span><span>People 19</span><div class="spacer"></div><button type="button" id="lord">Lord</button><span>Day 2 · 08:00</span></div><div class="notice">Tutorial / event notice</div><div class="detail" id="detail" hidden></div><div class="commands" id="commands"></div>
+        <div class="veil" id="veil" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><h3 id="dialog-title">Pause</h3><p id="dialog-copy"></p><div class="switch" id="dialog-actions"></div></div></div>
+      </div></div>
+    </section>
+    <aside class="card inspector" aria-live="polite"><small>Selected layer</small><h2 id="inspector-title">Settlement overview</h2><p id="inspector-copy">The spatial scene stays separate from persistent resource, lord and time UI.</p><dl><dt>Game view</dt><dd id="view-description">Settlement terrain</dd><dt>Interface</dt><dd id="layer-description">Persistent HUD</dd><dt>Evidence boundary</dt><dd id="limit">A still cannot prove focus, input blocking or timing.</dd></dl></aside>
+  </div>
+  <section class="scope"><h2>Observed versus proposed</h2><p>The Windows session showed a main menu, new-game setup, settlement, lord detail, construction, economy, knowledge, statistics, world map, selected cities/villages, pause, settings and save dialog. This wireframe abstracts their layer ownership. No diplomatic order, manual battle or branching-event result was tested. The controls here do not connect to Norland or write a save.</p><p>For a field-by-field account of the later army roster, developer battle simulator and tutorial, read the <a href="/docs/game-ui/strategy/norland-combat-observation.html">Norland combat preparation report</a>. It explicitly marks the tactical battlefield as not observed; simulator statistics are not a combat result screen.</p><p>Original study only; no third-party screenshot or game artwork is hosted by this site.</p></section>
+</main>
+<script>
+  const state={view:'settlement',panel:null,modal:null};
+  const $=id=>document.getElementById(id);
+  const panels={lord:['Lord detail','Profile · needs · skills · relationships','Selection panel','The settlement remains under the selected lord.'],construction:['Construction','Housing · production · service','Task panel','No building is placed.'],economy:['Economy','Production · distribution · trade','Task panel','No wage, price or stock is edited.'],knowledge:['Knowledge','Books · owners · study requirements','Task panel','Values are schematic.'],statistics:['Statistics','Resources · supply · demand','Task panel','No live telemetry is connected.'],city:['Neighboring city','Ruler · opinion · resources · army','Map selection panel','No diplomatic order was executed.'],village:['Village','Relation · tribute · available actions','Map selection panel','No raid or trade was executed.'],army:['Army','Warriors · equipment · leadership','Map selection panel','No army order was executed.']};
+  function button(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);return b;}
+  function render(){const world=state.view==='world';$('viewport').dataset.view=state.view;$('scene-label').textContent=world?'World · provinces and cities':'Settlement · terrain and characters';$('hall').textContent=world?'Home city':'Hall';$('field').textContent=world?'Village':'Field';$('store').textContent=world?'Neighbor city':'Store';document.querySelectorAll('button[data-view]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.view===state.view));});
+    const list=world?[['Own city','city'],['Neighbor','city'],['Village','village'],['Army','army']]:[['Construction','construction'],['Economy','economy'],['Knowledge','knowledge'],['Statistics','statistics']];$('commands').replaceChildren(...list.map(([label,id])=>button(label,()=>{state.panel=id;state.modal=null;render();})),button('Pause',()=>{state.panel=null;state.modal='pause';render();}));
+    const detail=$('detail');detail.hidden=!state.panel;if(state.panel){const [title,content]=panels[state.panel];const h=document.createElement('h3');h.textContent=title;const p=document.createElement('p');p.textContent=content;detail.replaceChildren(button('Close',()=>{state.panel=null;render();}),h,p);}
+    $('veil').hidden=!state.modal;if(state.modal){$('dialog-title').textContent=state.modal==='pause'?'Pause menu':state.modal==='save'?'Save dialog':'Settings';$('dialog-copy').textContent=state.modal==='save'?'Illustrative only. No game save can be written here.':state.modal==='settings'?'No setting is changed by this wireframe.':'The current game view remains behind this overlay.';$('dialog-actions').replaceChildren(...(state.modal==='pause'?[button('Resume',()=>{state.modal=null;render();}),button('Settings',()=>{state.modal='settings';render();}),button('Save…',()=>{state.modal='save';render();})]:[button('Back',()=>{state.modal='pause';render();})]));}
+    const info=state.modal?[state.modal==='pause'?'Pause menu':state.modal==='save'?'Save dialog':'Settings','System overlay','Input blocking in the actual game was not tested.']:state.panel?[panels[state.panel][0],panels[state.panel][2],panels[state.panel][3]]:[world?'World overview':'Settlement overview','Persistent HUD','A still cannot prove focus, input blocking or timing.'];$('heading').textContent=info[0];$('inspector-title').textContent=info[0];$('inspector-copy').textContent=state.modal?'The game view remains underneath a system overlay.':state.panel?'This selection or task panel overlays the unchanged game view.':'The spatial scene stays separate from persistent resource, lord and time UI.';$('view-description').textContent=world?'World provinces':'Settlement terrain';$('layer-description').textContent=info[1];$('limit').textContent=info[2];
+  }
+  document.querySelectorAll('button[data-view]').forEach(b=>{b.addEventListener('click',()=>{state.view=b.dataset.view;state.panel=null;state.modal=null;render();});});$('lord').addEventListener('click',()=>{state.panel='lord';state.modal=null;render();});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(state.modal==='save'||state.modal==='settings')state.modal='pause';else if(state.modal)state.modal=null;else state.panel=null;render();}});render();
+</script>
+</html>

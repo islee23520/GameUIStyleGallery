@@ -23,10 +23,10 @@ Use this file before editing repository documentation. It names which file is au
 | Layout recipes | `recipes/*.md` | Manual | None | `stable` | Pattern-stack changes, route changes, or broken recipe links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Recipe owner |
 | Quality gates and evidence | `quality/**/*.md` | Manual | None | `stable` | Claim-boundary changes, evidence-family changes, or broken quality links. | `scripts/validate-okf.mjs`, `scripts/validate-links.mjs`, `scripts/validate-ia.mjs` | Quality owner |
 | Consumer reference contract | `consumer-reference/contract.md`, `consumer-reference/schema/item.schema.json` | Manual | None | `stable` contract with related fixtures | Handoff shape, path boundary, lifecycle, ownership, or dependency-direction changes. | `scripts/validate-consumer-reference.mjs`, `scripts/test-validate-consumer-reference.mjs` | Repository governance owner with Validation owner |
-| Agent-native knowledge interface v1 | `consumer-reference/agent-native/registry.json`, `consumer-reference/agent-native/schema/*.json`, `scripts/agent-native/{registry,identity,queries}.mjs`, `scripts/sg.mjs`, `scripts/sg-mcp.mjs` | Manual, with protocol projections derived from one operation registry | Frozen v1 CLI JSON, read-only MCP tools/resources, and compatibility projections | `experimental`, byte-compatible v1 interface | Identity grammar, canonical hashing, registry records, operation metadata, capability/effect semantics, receipt/conformance rules, or retrieval changes. | `npm run test:agent-native` | Repository governance owner with Validation owner |
-| Governed material interface v2 | `consumer-reference/agent-native/v2/admission-policy.json`, its closed schemas, and admitted tracked Markdown | `scripts/agent-native/v2/generate-material-registry.mjs` | `consumer-reference/agent-native/v2/material-registry.json`; separate `sg-material` CLI and material MCP | `experimental`, read-only and isolated from v1 | Admission roots/exclusions, source hash, identity, operation inventory, query/context bounds, package exposure, or source drift changes. | `npm run validate:material`, `npm run test:material`, generated drift | Repository governance owner with Validation owner |
+| Agent-native knowledge interface v1 | `consumer-reference/agent-native/registry.json`, `consumer-reference/agent-native/schema/*.json`, `scripts/agent-native/{registry,identity,queries}.mjs`, `scripts/sg.mjs`, `scripts/sg-mcp.mjs` | Manual, with protocol projections derived from one operation registry | Frozen v1 CLI JSON, read-only MCP tools/resources, and compatibility projections | `experimental`, byte-compatible v1 interface | Identity grammar, canonical hashing, registry records, operation metadata, capability/effect semantics, receipt/conformance rules, or retrieval changes. | `bun run test:agent-native` | Repository governance owner with Validation owner |
+| Governed material interface v2 | `consumer-reference/agent-native/v2/admission-policy.json`, its closed schemas, and admitted tracked Markdown | `scripts/agent-native/v2/generate-material-registry.mjs` | `consumer-reference/agent-native/v2/material-registry.json`; separate `sg-material` CLI and material MCP | `experimental`, read-only and isolated from v1 | Admission roots/exclusions, source hash, identity, operation inventory, query/context bounds, package exposure, or source drift changes. | `bun run validate:material`, `bun run test:material`, generated drift | Repository governance owner with Validation owner |
 | Experimental protocol extensions | `scripts/agent-native/v2/experimental-extension-registry.mjs`, `scripts/agent-native/v2/extensions/*.mjs`, lifecycle extension records | Manual | A2A `1.0` and AG-UI `0.0.57` projections | `experimental`, retained pending owner review | Protocol version, caller inventory, forwarding, migration evidence, or disposition changes. | `scripts/agent-native/v2/test-agent-extension-boundary.mjs`, lifecycle suites | Repository governance owner with protocol and Validation owners |
-| Lifecycle dispositions and archives | `consumer-reference/policies/lifecycle-dispositions.json`, its five records, and `consumer-reference/schema/lifecycle-disposition.schema.json` | Manual, with immutable archive receipts | Retrieval metadata for historical sentinel/calibration and page evidence | `pending_owner` for three families; both extensions `retain` | Owner, deadline, caller status, archive object/ref, approval, transition, or post-deadline action changes. | `npm run validate:lifecycle-dispositions`, `npm run test:lifecycle-dispositions` | Repository governance owner with named family owner and Validation owner |
+| Lifecycle dispositions and archives | `consumer-reference/policies/lifecycle-dispositions.json`, its five records, and `consumer-reference/schema/lifecycle-disposition.schema.json` | Manual, with immutable archive receipts | Retrieval metadata for historical sentinel/calibration and page evidence | `pending_owner` for three families; both extensions `retain` | Owner, deadline, caller status, archive object/ref, approval, transition, or post-deadline action changes. | `bun run validate:lifecycle-dispositions`, `bun run test:lifecycle-dispositions` | Repository governance owner with named family owner and Validation owner |
 | Portable token source | `consumer-reference/fixtures/token-portability/valid-reference.json`, `consumer-reference/schema/portable-tokens.schema.json` | `scripts/build-reference-artifacts.mjs` with Style Dictionary `5.5.0` | `consumer-reference/generated/tokens.css`, `consumer-reference/generated/manifest.json` | `stable` restricted adapter contract, `generated` output | Allowed token shape, adapter/version pin, source token count, warning, declaration, or content hash changes. | `scripts/validate-reference-artifacts.mjs`, `scripts/test-reference-adapters.mjs` | Repository governance owner with Validation owner |
 | Governed local reference profiles | `design-engineering/reference-profiles/governed-local/editorial/profile.json`, `design-engineering/reference-profiles/governed-local/editorial/tokens.dtcg.json`, `design-engineering/reference-profiles/governed-local/editorial/local-foundations.json`, `design-engineering/reference-profiles/governed-local/terminal/profile.json`, `design-engineering/reference-profiles/governed-local/terminal/tokens.dtcg.json`, `design-engineering/reference-profiles/governed-local/terminal/local-foundations.json` | Manual | None | `experimental`, `example_only`, non-default related fixtures | Layout revision, identity values, UA/reset assumptions, explicit selection, or fixture relationship changes. | `scripts/validate-consumer-reference.mjs`, `scripts/test-validate-consumer-reference.mjs` | Design Engineering owner with Validation owner |
 | Component-state evidence matrices | Each profile's declared `components/*.component.json`, `states/*.states.json`, `fixtures/*.fixture.json`, and `evidence/*.evidence.json` records | `scripts/generate-consumer-reference-evidence.mjs` | `design-engineering/reference-profiles/governed-local/editorial/generated/state-matrix.md`, `design-engineering/reference-profiles/governed-local/editorial/generated/keyboard-matrix.md`, `design-engineering/reference-profiles/governed-local/editorial/generated/evidence-coverage.md`, `design-engineering/reference-profiles/governed-local/terminal/generated/state-matrix.md`, `design-engineering/reference-profiles/governed-local/terminal/generated/keyboard-matrix.md`, `design-engineering/reference-profiles/governed-local/terminal/generated/evidence-coverage.md` | `generated` output from `experimental` canonical records | Declared record paths, capture-session identity, scenario/mode/channel counts, claim boundary, generated escaping, or generator output changes. | `scripts/validate-component-state.mjs`, `scripts/test-validate-component-state.mjs`, `scripts/test-validate-component-state-artifacts.mjs`, `scripts/test-generate-consumer-reference-evidence.mjs` | Design Engineering owner with Validation owner |
@@ -43,6 +43,8 @@ Use this file before editing repository documentation. It names which file is au
 | Game UI domain guidance | `game-ui/**/*.md` | Manual | None | `experimental` | Classification, hierarchy, engine implementation, evidence boundary, or route changes. | `scripts/validate-domains.mjs` | Game UI domain owner |
 | Platform Guides domain guidance | `platform-guides/*.md` | Manual | None | `experimental` | Platform version, upstream revision, evidence boundary, or guidance changes. | `scripts/validate-domains.mjs` | Platform Guides domain owner |
 | Design Terminology domain guidance | `design-terminology/*.md` | Manual; term and relation tables remain authoring sources | None | `experimental` | Source-kind, source-vocabulary, concept-family, relation-model, or conflict-case changes. | `scripts/validate-domains.mjs`, `scripts/validate-design-terminology.mjs` | Design Terminology domain owner |
+| Expression domain guidance | `expression/**/*.md` | Manual | None | `experimental` | Direction value, technique code, brand-study policy, or guidance changes. | `scripts/validate-domains.mjs` | Expression domain owner |
+| Showcase works | `showcase/**` | Manual | None | `experimental` | Work content, brief contract, or outcome-check changes. | `scripts/check-showcase.mjs`, `scripts/test-check-showcase.mjs` | Expression domain owner |
 | Pattern data and examples | `scripts/pattern-data.mjs` | Manual data source | `patterns/**/*.md`, `patterns/**/index.md`, `patterns/index.md`, `CATALOG.md` | `generated` output from `stable` source | Source-lineage URL changes, generated drift, category changes, or pattern count changes. | `scripts/validate-patterns.mjs`, `scripts/validate-catalog.mjs`, `scripts/validate-governance.mjs` | Pattern-data owner |
 | Pattern generator | `scripts/generate-patterns.mjs` | Manual code source | `patterns/**/*.md`, `patterns/**/index.md`, `patterns/index.md`, `CATALOG.md` | `stable` generator, `generated` output | Generated structure changes, generated-warning changes, or generated metadata changes. | `node -c scripts/generate-patterns.mjs`, generated drift check, `scripts/validate-governance.mjs` | Pattern-data owner |
 | Validation scripts | `scripts/validate-*.mjs`, `scripts/test-validate-*.mjs` | Manual code source | CI validation output | `stable` | Validator scope changes, fixture changes, or CI parity changes. | `node -c`, matching fixture tests, `.github/workflows/validate.yml` | Validation owner |
@@ -80,7 +82,7 @@ Current generated artifacts:
 - `design-engineering/reference-profiles/governed-local/terminal/generated/evidence-coverage.md`
 - `tests/snapshots/consumer-reference-card-grid.png` (proposed; update only by an explicit local baseline proposal, never in CI)
 
-Portable token artifacts are regenerated only from the restricted fixture through the pinned adapter. Run `npm run build`; never broaden the allowed token subset to accommodate an adapter false-success, and revert the adapter with both generated files if the pin regresses.
+Portable token artifacts are regenerated only from the restricted fixture through the pinned adapter. Run `bun run build`; never broaden the allowed token subset to accommodate an adapter false-success, and revert the adapter with both generated files if the pin regresses.
 
 Component-state evidence matrices are regenerated only from the records declared by each `profile.json`. Run `node scripts/generate-consumer-reference-evidence.mjs --json`; never hand-edit any of the six matrices or substitute undeclared record paths.
 
@@ -105,7 +107,8 @@ Use these states in reviews and governance notes. Do not invent new lifecycle la
 Default lifecycle:
 
 - Root docs, guides, recipes, quality docs, validators, and CI are `stable` unless a page explicitly says otherwise.
-- `DOMAINS.md`, the scope decision, and `layout/index.md` are `stable`; domain leaves under `motion/`, `design-engineering/`, `game-ui/`, `platform-guides/`, and `design-terminology/` begin `experimental`.
+- `DOMAINS.md`, the scope decision, and `layout/index.md` are `stable`; domain leaves under `motion/`, `design-engineering/`, `game-ui/`, `platform-guides/`, `design-terminology/`, and `expression/` begin `experimental`.
+- `showcase/` works are `experimental` product pages. Layout authoring rules do not apply to them; the `scripts/check-showcase.mjs` outcome checks in [Showcase QA](showcase/QA.md) do.
 - Generated pattern docs, generated pattern indexes, and `CATALOG.md` are `generated`.
 - Draft research artifacts under `.omo/` are `draft` or `experimental` and are not contributor-facing source of truth.
 
@@ -133,6 +136,7 @@ Consumer-reference ownership records the current truth as `owner.enforcement: "p
 | `game-ui/**` | Game UI domain owner | Player-task classification, hierarchy responsibility, reference records, engine-specific subtrees, and cross-engine boundaries. |
 | `platform-guides/**` | Platform Guides domain owner | Platform/source/version limits, comparison boundaries, and stale review. |
 | `design-terminology/**` | Design Terminology domain owner | Term-family classification, comparative system definitions, conflict-case boundaries, and external vocabulary citations. |
+| `expression/**`, `showcase/**`, `scripts/*showcase*.mjs` | Expression domain owner | Direction values stay out of Layout, brand studies follow policy, and techniques keep reduced-motion and offscreen behavior explicit. |
 | `scripts/validate-*.mjs`, `scripts/test-validate-*.mjs`, `.github/workflows/validate.yml`, `.github/workflows/evidence-freshness.yml` | Validation owner | Validator scope, negative fixtures, blocking/advisory boundaries, CI parity. |
 
 ## Shared Promotion Governance
@@ -183,7 +187,7 @@ node scripts/validate-catalog.mjs --json
 For portable token source, adapter, or generated artifact changes, run:
 
 ```sh
-npm ci --ignore-scripts --no-audit --no-fund
+bun install --frozen-lockfile --ignore-scripts
 node scripts/build-reference-artifacts.mjs --adapter style-dictionary --fail-on-warning --json
 node scripts/validate-reference-artifacts.mjs --manifest consumer-reference/generated/manifest.json --json
 node scripts/test-reference-adapters.mjs --json
@@ -193,7 +197,7 @@ git diff --exit-code -- consumer-reference/generated
 For the proposed Chromium sentinel, also run:
 
 ```sh
-npm run test:sentinel
+bun run test:sentinel
 node scripts/test-consumer-reference-sentinel.mjs
 node scripts/validate-baseline-manifest.mjs --json
 node scripts/test-validate-baseline-manifest.mjs --json
@@ -210,13 +214,13 @@ mkdir -p "$STATE_EVIDENCE_ROOT"
 node scripts/create-component-state-session.mjs --output "$STATE_EVIDENCE_ROOT/capture-session.json" --json
 STATE_SESSION_RECEIPT="$STATE_EVIDENCE_ROOT/capture-session.json" \
   STATE_ARTIFACT_DIR="$STATE_EVIDENCE_ROOT/runtime" \
-  npm run test:component-state:runtime -- --reporter=line
+  bun run test:component-state:runtime -- --reporter=line
 node scripts/finalize-component-state-evidence.mjs --artifact-root "$STATE_EVIDENCE_ROOT" --json
 node scripts/validate-component-state.mjs \
   --artifact-root "$STATE_EVIDENCE_ROOT" \
   --runtime-manifest "$STATE_EVIDENCE_ROOT/runtime-manifest.json" \
   --json
-npm run test:component-state:runtime-negative
+bun run test:component-state:runtime-negative
 ```
 
 For shared promotion governance, also run:

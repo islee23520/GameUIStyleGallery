@@ -16,9 +16,9 @@ Primary role: repository guide.
 
 The existing Layout corpus remains a gallery of minimal, portable CSS layout patterns at its current paths. Each pattern documents one primary spatial problem and the smallest robust HTML/CSS structure that solves it. Motion, visual treatment, and platform guidance do not expand reusable Layout pattern CSS; they live in their own domains and carry explicit evidence boundaries.
 
-[Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or a seventh domain.
+[Consumer Reference](consumer-reference/index.md) is shared non-domain infrastructure for optional consumer-owned reference handoffs. It carries schema, routing, provenance, and evidence metadata without owning profiles, visual values, components, or an eighth domain.
 
-[Agent-Native StyleGallery](consumer-reference/agent-native/README.md) is the machine-facing entry point over that governed knowledge. Frozen v1 provides claim/evidence/governance records through `sg` and its MCP; isolated material v2 indexes admitted Markdown and exposes `sg-material` plus a separate read-only MCP. Lifecycle records own extension and archive dispositions. These material, trust/conformance, transport, and extension planes do not create a seventh domain, replace the Markdown corpus, permit mutation, or feed visual defaults back into Layout.
+[Agent-Native StyleGallery](consumer-reference/agent-native/README.md) documents the frozen v1 claim/evidence/governance interface. The `sg` CLI and main MCP server also expose [website compilation](scripts/compiler/README.md) through a separately installed compiler; isolated material v2 indexes admitted Markdown through `sg-material` and its read-only MCP. Lifecycle records own extension and archive dispositions. These interfaces do not create a seventh domain, replace the Markdown corpus, permit mutation of governed knowledge, or feed visual defaults back into Layout.
 
 ## Quick Start
 
@@ -46,15 +46,30 @@ sg context sg:profile/editorial-reference-profile --format json
 sg ops --format json
 ```
 
-Every command writes deterministic JSON to stdout. Invalid input returns an error object and a nonzero exit status. See [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) for the command contract, StableRef and VersionID model, MCP resources, and trust boundaries.
+Every command writes JSON to stdout. Knowledge results retain their deterministic v1 payloads; `discover` and `ops` also report the local compiler installation. Invalid input returns an error object and a nonzero exit status. See [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) for the frozen knowledge contract, StableRef and VersionID model, MCP resources, and trust boundaries.
+
+Compile a website directly through SG after [installing the compiler](scripts/compiler/README.md#setup):
+
+```sh
+export SG_COMPILER_ROOT=/absolute/path/to/site-compiler
+sg compile --url https://example.com --out ./captures/example
+sg timeline --url https://example.com --out ./captures/example --step 500
+sg workflow
+```
+
+`compile`, `timeline`, `transcribe`, `sale`, `gate`, and `build` are direct SG commands and MCP tool names. See [SG Website Compilation](scripts/compiler/README.md) for all commands, configuration, output ownership, and verification.
+
+Start with `sg workflow` to select the stages for reconstruction, adaptation, or sale-package production. For a faithful clone, use available original media and fill document gaps by inspecting the source. The automatic `build` command is a sale-edition preview with restricted source access; it is not the general clone builder.
 
 Material v2 searches the admitted Markdown corpus and returns JSON without an additional format flag:
 
 ```sh
-sg-material discover
-sg-material search --query "sticky layout" --paths-only --limit 5
-sg-material context --query "responsive sidebar" --budget-tokens 4096
+npx --package stylegallery sg-material discover
+npx --package stylegallery sg-material search --query "sticky layout" --paths-only --limit 5
+npx --package stylegallery sg-material context --query "responsive sidebar" --budget-tokens 4096
 ```
+
+With a global install, the same commands are available as `sg-material discover`, `sg-material search`, and `sg-material context`.
 
 For a coding agent with repository filesystem access, local guided traversal is the default: read `AGENTS.md` and this README, follow the narrowest relevant task route or domain index, and inspect the selected Markdown files directly. Use `search --paths-only` only when the path is unclear; it returns a deterministic `paths` array of repository-relative candidates without full result metadata. Reserve `context` for environments that cannot read repository files or for transferring a bounded, provenance-linked package.
 
@@ -66,7 +81,7 @@ The [Toss-inspired homepage clone](examples/toss-homepage-clone/README.md) appli
 
 The [Scroll Story Lab](examples/scroll-story/README.md) adds runnable scroll-controlled product chapters, an image sequence with bounded decoding, native CSS scrubbing, and a static reading path. Start from [Motion’s scroll-driven story](motion/interaction-recipes.md#scroll-driven-story) for ownership and failure cases. The [Scene Navigation example](examples/scene-navigation/README.md) keeps the entire page fixed while wheel, keys, chapter links, and art-surface swipes select scenes; its [separate contract](motion/interaction-recipes.md#full-viewport-scene-navigation) covers input ownership, history, focus, and reading escape.
 
-### Read-only MCP server
+### MCP server
 
 Launch the packaged stdio server with:
 
@@ -87,9 +102,20 @@ Example MCP client configuration:
 }
 ```
 
-The MCP surface exposes governed read operations only. It cannot modify repository knowledge.
+The main MCP server exposes governed read operations and compiler execution tools. Configure `SG_COMPILER_ROOT` in its environment to use the compiler. Execution tools declare file and network effects; the knowledge registry remains a read-only API. The frozen read-only server remains available as `bun run sg:mcp:v1`.
 
-The separate Material v2 MCP server is available as `stylegallery-material-mcp`.
+The separate Material v2 MCP server is available as `stylegallery-material-mcp`. Attach it for Markdown retrieval and authoring work; the main server covers governed knowledge reads and compiler execution.
+
+```json
+{
+  "mcpServers": {
+    "stylegallery-material": {
+      "command": "npx",
+      "args": ["--yes", "--package", "stylegallery", "stylegallery-material-mcp"]
+    }
+  }
+}
+```
 
 ## 한국어 빠른 시작
 
@@ -122,6 +148,7 @@ For UI state ownership, asynchronous races, drafts, URL/history, and persistence
 | [Game UI](game-ui/index.md) | Game-interface classification, hierarchy, reference records, and engine-specific implementation guides. | Reusable Layout CSS or claims that one engine structure is universal. |
 | [Platform Guides](platform-guides/index.md) | Bounded comparison with named platform conventions. | Affiliation, imitation, or authority over web and accessibility contracts. |
 | [Design Terminology](design-terminology/index.md) | Comparative design-term definitions, term families, and cross-system conflict cases for named systems. | StyleGallery's own vocabulary, motion terminology, visual token values, or authority over external vocabularies. |
+| [Expression](expression/index.md) | Art direction for finished pages: direction briefs, named directions with values, visual technique recipes, and brand-study policy. | Layout mechanics, motion timing, governed tokens, or decorative values in reusable Layout pattern CSS. |
 
 The canonical domain manifest and provenance policy are in [StyleGallery Domains](DOMAINS.md).
 
@@ -159,6 +186,8 @@ Use each root hub for one primary job.
 | [Game UI](game-ui/index.md) | Game UI domain hub | You need to classify a game interface or understand its screen hierarchy. |
 | [Platform Guides](platform-guides/index.md) | Platform Guides domain hub | You need a bounded platform comparison. |
 | [Design Terminology](design-terminology/index.md) | Design Terminology domain hub | You need to compare how named design systems define or classify design terms. |
+| [Expression](expression/index.md) | Expression domain hub | You need a page to look and feel finished: type, color, texture, atmosphere, or a brand study. |
+| [Showcase](showcase/README.md) | Free-form work area | You are building a complete expressive page checked by outcome instead of Layout authoring rules. |
 
 ## Task Routes
 
@@ -174,6 +203,7 @@ Each common task has one primary route. Use secondary links only after the prima
 | `classify a game interface or map it to an engine` | [Game UI](game-ui/index.md) | It separates engine-neutral roles from implementation-specific guidance. |
 | `compare a named platform convention` | [Platform Guides](platform-guides/index.md) | It requires platform and evidence boundaries before adaptation. |
 | `compare how design systems define a term` | [Design Terminology](design-terminology/index.md) | It separates external terminology comparison from StyleGallery's own controlled vocabulary. |
+| `build a striking landing page in one shot` | [Showcase](showcase/README.md) | It removes Layout authoring rules, supplies directions and techniques, and checks the result by outcome. |
 | `turn raw content into a homepage or ordinary webpage` | [Webpage Generation Workflow](guides/webpage-generation-workflow.md) | It starts with use case, content-to-layout fit, harmony, and handoff. |
 | `plan a screen before the layout problem is obvious` | [Layout Planning Guide](GUIDE.md) | It sequences task, content, scroll, recipe, and verification choices. |
 | `choose a pattern when the name is unknown` | [Decision Tree](guides/decision-tree.md) | It routes from constraints to pattern categories. |
@@ -186,7 +216,7 @@ Each common task has one primary route. Use secondary links only after the prima
 | `check whether a layout or design claim is admissible` | [Quality Gates](quality/index.md) | It routes claims to gates and evidence boundaries. |
 | `prove repository checks and evidence coverage` | [Executable Evidence Coverage](quality/evidence/executable-evidence.md) | It maps validators, fixtures, CI commands, and their boundaries. |
 | `declare consumer reference applicability` | [Consumer Reference](consumer-reference/index.md) | It provides the required handoff field without moving consumer values into Layout. |
-| `use StyleGallery from an agent or automation` | [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) | It routes frozen v1 trust queries, material v2 discovery/search/get/context, both read-only MCPs, extensions, lifecycle dispositions, and archive boundaries. |
+| `use StyleGallery from an agent or automation` | [Agent-Native StyleGallery](consumer-reference/agent-native/README.md) | It routes frozen v1 trust queries, material v2 discovery/search/get/context, extensions, lifecycle dispositions, and archive boundaries. Use [SG Website Compilation](scripts/compiler/README.md) for compiler commands in the main CLI and MCP. |
 | `prove an existing consumer migration` | [Consumer Migration Readiness](design-engineering/consumer-migration-readiness.md) | It requires thirteen explicit behavior classifications, runtime proof, adoption mappings, and source-bound page evidence when applicable. |
 | `change generated patterns, catalog, or governance policy` | [Governance, Lifecycle, And Docs-As-Code](GOVERNANCE.md) | It identifies source files, generated artifacts, validators, lifecycle state, and review ownership. |
 | `run findability QA` | [Tree-Test Findability QA](quality/index.md#tree-test-findability-qa) | It tests whether task routes are discoverable, not just linked. |
@@ -200,7 +230,7 @@ Each common task has one primary route. Use secondary links only after the prima
 ## How To Use This Repository
 
 - Start with [StyleGallery Domains](DOMAINS.md) when the owning domain is not already clear.
-- Use [Layout](layout/index.md), [Motion](motion/index.md), [Design Engineering](design-engineering/index.md), [Game UI](game-ui/index.md), [Platform Guides](platform-guides/index.md), or [Design Terminology](design-terminology/index.md) as the domain-local entry point.
+- Use [Layout](layout/index.md), [Motion](motion/index.md), [Design Engineering](design-engineering/index.md), [Game UI](game-ui/index.md), [Platform Guides](platform-guides/index.md), [Design Terminology](design-terminology/index.md), or [Expression](expression/index.md) as the domain-local entry point.
 - Start with [Layout Planning Guide](GUIDE.md) when you are designing a screen before a layout problem is obvious.
 - Use the [Webpage Generation Workflow](guides/webpage-generation-workflow.md) when raw content needs to become a homepage or ordinary webpage before a layout recipe is obvious.
 - Use the [Documentation Mode Taxonomy](guides/documentation-mode-taxonomy.md) when adding or reviewing docs so each page has a clear primary reading mode.

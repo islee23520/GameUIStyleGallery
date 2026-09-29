@@ -10,9 +10,9 @@ Out of scope: reusable Layout CSS, universal visual prescriptions, and treating 
 
 ## Evidence And Research Boundary
 
-The player-task classes and classification axes are a local taxonomy proposed for StyleGallery review, not Interface In Game's universal ontology.
+The player-task classes and classification axes are a local taxonomy proposed for StyleGallery review, not a universal ontology.
 
-Interface In Game was reviewed on 2026-07-14 through its [home page](https://interfaceingame.com/), [games index](https://interfaceingame.com/games/), and representative records for [Team Fortress 2](https://interfaceingame.com/games/team-fortress-2/), [Genshin Impact (Mobile)](https://interfaceingame.com/games/genshin-impact-mobile/), and [Gris](https://interfaceingame.com/games/gris/). In this bounded sample, the site exposed site-local facets such as Genres, Themes, and Platforms, while screenshots used Elements. The sample informs the local separation of player task from other axes; it does not cover the archive or establish the site's full information model.
+References are gathered by hand from sources whose terms allow it. This domain stores no third-party screenshot archives, crawled records, or media; it keeps locally authored analysis only.
 
 ## Start Here
 
@@ -29,11 +29,44 @@ These workflows and worked cases are usable experimental guidance. Expected-resu
 - [Game UI Classification](classification.md) separates player purpose from visual language, input, state, and motion.
 - [Game UI Screen Hierarchy](screen-hierarchy.md) defines engine-neutral layers from application shell to atomic control.
 - [Game UI Reference Record](reference-record.md) provides the minimum evidence schema for gallery entries.
+- [Game UI Element Patterns](elements.md) maps 21 common game UI elements to local player tasks and failure cases.
+- [Genre Guide Index](genres/index.md) compares bounded observations and distinct HUD proposals across 16 genre labels.
+- [Input And Screen Targets](platforms/index.md) separates mouse/keyboard, controller/TV, handheld, and touch/mobile adaptation.
+- [PC Strategy State Studies](strategy/index.md) compares Paradox and Total War decision surfaces and routes to CK3 and WARHAMMER III interactive examples.
+- [Crusader Kings III PC UI State Brief](strategy/crusader-kings-iii.md) covers realm, character, event, war and exceptional states.
+- [Total War WARHAMMER III PC UI State Brief](strategy/total-war-warhammer-iii.md) separates campaign decisions from battle commands and exceptional states.
+- [action guide](genres/action.md)
+- [adventure guide](genres/adventure.md)
+- [card-game guide](genres/card-game.md)
+- [fighting guide](genres/fighting.md)
+- [fps guide](genres/fps.md)
+- [indie guide](genres/indie.md)
+- [mmo guide](genres/mmo.md)
+- [music guide](genres/music.md)
+- [platformer guide](genres/platformer.md)
+- [racing guide](genres/racing.md)
+- [rpg guide](genres/rpg.md)
+- [simulation guide](genres/simulation.md)
+- [sport guide](genres/sport.md)
+- [strategy guide](genres/strategy.md)
+- [survival guide](genres/survival.md)
+- [visual-novel guide](genres/visual-novel.md)
+- [controller-tv guide](platforms/controller-tv.md)
+- [handheld guide](platforms/handheld.md)
+- [mouse-keyboard guide](platforms/mouse-keyboard.md)
+- [touch-mobile guide](platforms/touch-mobile.md)
 
 ## External Codex
 
-The studio-indexed game-definition gallery is maintained in the separate private [`OuroforgeGameCodex`](https://github.com/islee23520/OuroforgeGameCodex) repository (오로포지 게임 도감) and consumed by this gallery as a git submodule at [`../vendor/ouroforge-game-codex/`](../vendor/ouroforge-game-codex/). It defines what each catalogued game IS — genre, platform, engine, graphics style, UI elements, scenario lore, and core mechanics — for titles across Blizzard Entertainment, Origin Systems, NCsoft, Nexon, Gravity Co., Actoz Soft, and Tomis Information & Telecom. The codex is not a governed Game UI domain leaf; it is referenced here as an informational pointer rather than a leaf route.
+The studio-indexed game-definition gallery is maintained in the separate private [`OuroforgeGameCodex`](https://github.com/islee23520/OuroforgeGameCodex) repository (오로포지 게임 도감). It defines what each catalogued game is — genre, platform, engine, graphics style, UI elements, scenario lore, and core mechanics — for titles across Blizzard Entertainment, Origin Systems, NCsoft, Nexon, Gravity Co., Actoz Soft, and Tomis Information & Telecom. The codex is not a governed Game UI domain leaf; it is an informational pointer, not a leaf route.
+
+- [Unity Game UI](unity/index.md) routes Unity implementation and organization-discovery questions.
 - [Unity UI Architecture](unity/architecture.md) maps the hierarchy roles to Unity Scenes, Canvas layers, prefabs, runtime instances, input, and motion ownership.
+- [Unity Organization Term Lexicon](unity/org-term-lexicon.md) looks up the public Unity-Technologies snapshot by term.
+- [Unity Animation Systems](unity/animation/index.md) routes 2D and 3D animation ownership, including [2D](unity/animation/animation-2d.md) and [3D](unity/animation/animation-3d.md).
+- [Unity Scene Systems](unity/scene/index.md) assigns bootstrap, additive load, persistence, and unload.
+- [Unity Prefab Systems](unity/prefab/index.md) separates prefab assets, instances, variants, and pooling.
+- [Unity uGUI Game UI Implementation](unity/ugui-implementation.md) gives Canvas, input, focus, and component recipes with compilable samples.
 - [Unity UI Systems](unity/ui-systems.md) compares uGUI, UI Toolkit, and NGUI ownership and capability shapes at pinned sources.
 - [Unity CLI Loop](unity/cli-loop.md) defines a source-pinned command loop for Unity UI inspection and stack-specific interaction evidence.
 - [Unity Repository Map](unity/repository-map.md) maps the public Unity-Technologies repository snapshot by UI relevance, authority, and lifecycle.

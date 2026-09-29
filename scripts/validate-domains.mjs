@@ -18,22 +18,22 @@ const referenceDocuments = [
 const requiredCrossDomainStrings = [
   {
     relative: "guides/vocabulary.md",
-    required: "Use for: Layout, Motion, Design Engineering, Game UI, Platform Guides, Design Terminology, root routing, and `domain` frontmatter on governed leaves.",
+    required: "Use for: Layout, Motion, Design Engineering, Game UI, Platform Guides, Design Terminology, Expression, root routing, and `domain` frontmatter on governed leaves.",
     failure: "guides/vocabulary.md: missing canonical domain vocabulary list",
   },
   {
     relative: "quality/index.md",
-    required: "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, Platform Guides, and Design Terminology claims are admissible.",
+    required: "`quality/` is shared StyleGallery infrastructure for deciding whether Layout, Motion, Design Engineering, Game UI, Platform Guides, Design Terminology, and Expression claims are admissible.",
     failure: "quality/index.md: missing canonical domain quality scope",
   },
   {
     relative: "README.md",
-    required: "without owning profiles, visual values, components, or a seventh domain",
+    required: "without owning profiles, visual values, components, or an eighth domain",
     failure: "README.md: missing canonical Consumer Reference boundary",
   },
   {
     relative: "quality/index.md",
-    required: "without classifying it as a seventh domain",
+    required: "without classifying it as an eighth domain",
     failure: "quality/index.md: missing canonical Consumer Reference boundary",
   },
   {
@@ -54,6 +54,9 @@ export const canonicalDomains = [
     slug: "motion",
     label: "Motion",
     leaves: [
+      { path: "motion/accessible-motion.md", provenance: "local" },
+      { path: "motion/interruption-and-retargeting.md", provenance: "local" },
+      { path: "motion/rendering-and-performance.md", provenance: "local" },
       { path: "motion/vocabulary.md", provenance: "external", sourcePath: "skills/animation-vocabulary/SKILL.md" },
       { path: "motion/review-workflow.md", provenance: "external", sourcePath: "skills/review-animations/SKILL.md" },
       { path: "motion/practice-reference.md", provenance: "external", sourcePath: "skills/review-animations/STANDARDS.md" },
@@ -61,12 +64,17 @@ export const canonicalDomains = [
       { path: "motion/motion-brief.md", provenance: "local" },
       { path: "motion/interaction-recipes.md", provenance: "local" },
       { path: "motion/observed-choreography.md", provenance: "local" },
+      { path: "motion/techniques/scroll-choreography.md", provenance: "local" },
+      { path: "motion/techniques/kinetic-type.md", provenance: "local" },
     ],
   },
   {
     slug: "design-engineering",
     label: "Design Engineering",
     leaves: [
+      { path: "design-engineering/native-interaction-contracts.md", provenance: "local" },
+      { path: "design-engineering/text-input-and-internationalization.md", provenance: "local" },
+      { path: "design-engineering/loading-and-feedback.md", provenance: "local" },
       { path: "design-engineering/interface-craft.md", provenance: "external", sourcePath: "skills/emil-design-eng/SKILL.md" },
       { path: "design-engineering/consumer-migration-readiness.md", provenance: "local" },
       { path: "design-engineering/decision-tree.md", provenance: "local" },
@@ -106,15 +114,50 @@ export const canonicalDomains = [
       { path: "game-ui/unity/cli-loop.md", provenance: "external", sourcePath: "README.md" },
       { path: "game-ui/unity/repository-map.md", provenance: "repository" },
       { path: "game-ui/unity/org-wiki.md", provenance: "repository" },
+      { path: "game-ui/unity/index.md", provenance: "local" },
+      { path: "game-ui/unity/org-term-lexicon.md", provenance: "local" },
+      { path: "game-ui/unity/animation/index.md", provenance: "local" },
+      { path: "game-ui/unity/animation/animation-2d.md", provenance: "local" },
+      { path: "game-ui/unity/animation/animation-3d.md", provenance: "local" },
+      { path: "game-ui/unity/scene/index.md", provenance: "local" },
+      { path: "game-ui/unity/prefab/index.md", provenance: "local" },
       { path: "game-ui/decision-tree.md", provenance: "local" },
       { path: "game-ui/screen-recipes.md", provenance: "local" },
       { path: "game-ui/verification-workflow.md", provenance: "local" },
+      { path: "game-ui/elements.md", provenance: "local" },
+      { path: "game-ui/unity/ugui-implementation.md", provenance: "local" },
+      { path: "game-ui/strategy/crusader-kings-iii.md", provenance: "local" },
+      { path: "game-ui/strategy/total-war-warhammer-iii.md", provenance: "local" },
+      { path: "game-ui/genres/action.md", provenance: "local" },
+      { path: "game-ui/genres/adventure.md", provenance: "local" },
+      { path: "game-ui/genres/card-game.md", provenance: "local" },
+      { path: "game-ui/genres/fighting.md", provenance: "local" },
+      { path: "game-ui/genres/fps.md", provenance: "local" },
+      { path: "game-ui/genres/indie.md", provenance: "local" },
+      { path: "game-ui/genres/mmo.md", provenance: "local" },
+      { path: "game-ui/genres/music.md", provenance: "local" },
+      { path: "game-ui/genres/platformer.md", provenance: "local" },
+      { path: "game-ui/genres/racing.md", provenance: "local" },
+      { path: "game-ui/genres/rpg.md", provenance: "local" },
+      { path: "game-ui/genres/simulation.md", provenance: "local" },
+      { path: "game-ui/genres/sport.md", provenance: "local" },
+      { path: "game-ui/genres/strategy.md", provenance: "local" },
+      { path: "game-ui/genres/survival.md", provenance: "local" },
+      { path: "game-ui/genres/visual-novel.md", provenance: "local" },
+      { path: "game-ui/platforms/controller-tv.md", provenance: "local" },
+      { path: "game-ui/platforms/handheld.md", provenance: "local" },
+      { path: "game-ui/platforms/mouse-keyboard.md", provenance: "local" },
+      { path: "game-ui/platforms/touch-mobile.md", provenance: "local" },
     ],
+    referenceDocuments: ["game-ui/genres/index.md", "game-ui/platforms/index.md", "game-ui/strategy/index.md", "game-ui/strategy/norland-combat-observation.md"],
   },
   {
     slug: "platform-guides",
     label: "Platform Guides",
     leaves: [
+      { path: "platform-guides/adaptive-navigation.md", provenance: "local" },
+      { path: "platform-guides/preferences-and-accessibility.md", provenance: "local" },
+      { path: "platform-guides/input-and-focus.md", provenance: "local" },
       { path: "platform-guides/apple-interaction.md", provenance: "external", sourcePath: "skills/apple-design/SKILL.md" },
       { path: "platform-guides/adaptation-workflow.md", provenance: "local" },
       { path: "platform-guides/android-interaction.md", provenance: "local" },
@@ -126,12 +169,28 @@ export const canonicalDomains = [
     slug: "design-terminology",
     label: "Design Terminology",
     leaves: [
+      { path: "design-terminology/token-semantics.md", provenance: "local" },
+      { path: "design-terminology/interaction-semantics.md", provenance: "local" },
+      { path: "design-terminology/typography-semantics.md", provenance: "local" },
       { path: "design-terminology/source-kinds.md", provenance: "repository" },
       { path: "design-terminology/source-vocabularies.md", provenance: "repository" },
       { path: "design-terminology/concept-families.md", provenance: "repository" },
       { path: "design-terminology/relation-types.md", provenance: "repository" },
       { path: "design-terminology/conflict-cases.md", provenance: "repository" },
       { path: "design-terminology/comparison-workflow.md", provenance: "local" },
+    ],
+  },
+  {
+    slug: "expression",
+    label: "Expression",
+    leaves: [
+      { path: "expression/direction-brief.md", provenance: "local" },
+      { path: "expression/brand-studies.md", provenance: "local" },
+      { path: "expression/directions/nocturne-editorial.md", provenance: "local" },
+      { path: "expression/directions/warm-print.md", provenance: "local" },
+      { path: "expression/techniques/gradient-atmosphere.md", provenance: "local" },
+      { path: "expression/techniques/grain-and-texture.md", provenance: "local" },
+      { path: "expression/techniques/webgl-hero.md", provenance: "local" },
     ],
   },
 ];
@@ -206,8 +265,8 @@ function checkManifest() {
     && content.includes(`snapshot \`${revision}\``)
     && content.includes("## Shared Non-Domain Infrastructure")
     && content.includes("[Consumer Reference](consumer-reference/index.md)")
-    && content.includes("infrastructure outside the six-domain contract")
-    && content.includes("cannot add a seventh domain row");
+    && content.includes("infrastructure outside the seven-domain contract")
+    && content.includes("cannot add an eighth domain row");
 
   for (const domain of domains) {
     const domainRow = domainRows.find((row) => row[0] === domain.label);

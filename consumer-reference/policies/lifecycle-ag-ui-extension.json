@@ -94,8 +94,8 @@
         "scripts/test-lifecycle-disposition.mjs",
         "scripts/validate-lifecycle-disposition.mjs"
       ],
-      "scanned_file_count": 490,
-      "scanned_paths_content_id": "sha256:0c0a5c98965116dbac5d8b4298808a2a9cd9c8696c448e02e8d04a00b35a8df4"
+      "scanned_file_count": 566,
+      "scanned_paths_content_id": "sha256:9cd6413afb0adc74d909207bdb93b023745f0e9d1c0a7c8c9b76cc728049495c"
     },
     "implementation": {
       "path": "scripts/agent-native/v2/extensions/agui-projection.mjs",
@@ -113,10 +113,10 @@
         "role": "repository_reference",
         "lines": {
           "start": 1,
-          "end": 166
+          "end": 178
         },
-        "file_sha256": "fb201d32ede32e5f6d6fd27e5cfb0d4c8f9fa616f7d7807872990359a7562595",
-        "content_id": "sha256:fb201d32ede32e5f6d6fd27e5cfb0d4c8f9fa616f7d7807872990359a7562595",
+        "file_sha256": "1e7d148cfa6b2397b9282bbc7d84a1887bad48b646f875608f93ba9c534676f6",
+        "content_id": "sha256:1e7d148cfa6b2397b9282bbc7d84a1887bad48b646f875608f93ba9c534676f6",
         "reference_lines": [
           22
         ],
@@ -129,14 +129,14 @@
         "role": "repository_reference",
         "lines": {
           "start": 1,
-          "end": 231
+          "end": 235
         },
-        "file_sha256": "ebe00444f0064fa43c502d72351a3d3d0cae2df470709d0a1fdac4d1b4744fb0",
-        "content_id": "sha256:ebe00444f0064fa43c502d72351a3d3d0cae2df470709d0a1fdac4d1b4744fb0",
+        "file_sha256": "478b8e34486895df48c07008d90d65d9c96d21211312586db3bacfca10d9309a",
+        "content_id": "sha256:478b8e34486895df48c07008d90d65d9c96d21211312586db3bacfca10d9309a",
         "reference_lines": [
           28,
-          89,
-          91
+          91,
+          93
         ],
         "reference_kinds": [
           "documentation_reference"
@@ -149,8 +149,8 @@
           "start": 1,
           "end": 168
         },
-        "file_sha256": "6e59c913b175039819143b53078817630e3664db1c0342f89545038d0e53a52e",
-        "content_id": "sha256:6e59c913b175039819143b53078817630e3664db1c0342f89545038d0e53a52e",
+        "file_sha256": "7b4a91037ccbe9fe1a8dfc424dce99ec3959321dc1ca3215e9e1b40e01cc48c7",
+        "content_id": "sha256:7b4a91037ccbe9fe1a8dfc424dce99ec3959321dc1ca3215e9e1b40e01cc48c7",
         "reference_lines": [
           25,
           139,
@@ -183,12 +183,14 @@
         "role": "repository_reference",
         "lines": {
           "start": 1,
-          "end": 100
+          "end": 212
         },
-        "file_sha256": "d3965f8126d7932652afd19a795df4062884322bc9cf7fc8bc534f12c41ed5a6",
-        "content_id": "sha256:d3965f8126d7932652afd19a795df4062884322bc9cf7fc8bc534f12c41ed5a6",
+        "file_sha256": "7d0e1af880fafaa45f408188dac80b45758bdf32c93f15ac05495d08c200993f",
+        "content_id": "sha256:7d0e1af880fafaa45f408188dac80b45758bdf32c93f15ac05495d08c200993f",
         "reference_lines": [
-          56
+          68,
+          81,
+          168
         ],
         "reference_kinds": [
           "documentation_reference"
@@ -199,13 +201,13 @@
         "role": "repository_reference",
         "lines": {
           "start": 1,
-          "end": 300
+          "end": 343
         },
-        "file_sha256": "8c7b5043c80560db60bce667eff7fdcad8b477553a554a5d3c55e4a3e1ee7cc9",
-        "content_id": "sha256:8c7b5043c80560db60bce667eff7fdcad8b477553a554a5d3c55e4a3e1ee7cc9",
+        "file_sha256": "2a8917c93c21ad1354cab330d311b86e772c4c344e991ccb139fab44c7db6af6",
+        "content_id": "sha256:2a8917c93c21ad1354cab330d311b86e772c4c344e991ccb139fab44c7db6af6",
         "reference_lines": [
-          214,
-          230
+          241,
+          257
         ],
         "reference_kinds": [
           "forwarder_path",
@@ -308,8 +310,8 @@
           "start": 1,
           "end": 142
         },
-        "file_sha256": "4d589470e789d637a7f690c24e4ae6eab2ca3cf785fa1b2f85859dea5dcf1d27",
-        "content_id": "sha256:4d589470e789d637a7f690c24e4ae6eab2ca3cf785fa1b2f85859dea5dcf1d27",
+        "file_sha256": "ea9ac05f4dce124d8dbbeab2e6708b7d709f8a6652134d904568780a047818bf",
+        "content_id": "sha256:ea9ac05f4dce124d8dbbeab2e6708b7d709f8a6652134d904568780a047818bf",
         "reference_lines": [
           87
         ],
@@ -323,12 +325,12 @@
         "role": "repository_reference",
         "lines": {
           "start": 1,
-          "end": 259
+          "end": 294
         },
-        "file_sha256": "101a99d9cca3d1de2284b50a8c01d1b27c3b1e8df875d66d78ed796347612b26",
-        "content_id": "sha256:101a99d9cca3d1de2284b50a8c01d1b27c3b1e8df875d66d78ed796347612b26",
+        "file_sha256": "b36511ee2e4ad5e0617bdd481e0a0dc586e0343918fc9c4fbdf235771bbdc4a6",
+        "content_id": "sha256:b36511ee2e4ad5e0617bdd481e0a0dc586e0343918fc9c4fbdf235771bbdc4a6",
         "reference_lines": [
-          54
+          55
         ],
         "reference_kinds": [
           "forwarder_path",
@@ -424,18 +426,18 @@
           "start": 1,
           "end": 142
         },
-        "file_sha256": "4d589470e789d637a7f690c24e4ae6eab2ca3cf785fa1b2f85859dea5dcf1d27",
-        "content_id": "sha256:4d589470e789d637a7f690c24e4ae6eab2ca3cf785fa1b2f85859dea5dcf1d27"
+        "file_sha256": "ea9ac05f4dce124d8dbbeab2e6708b7d709f8a6652134d904568780a047818bf",
+        "content_id": "sha256:ea9ac05f4dce124d8dbbeab2e6708b7d709f8a6652134d904568780a047818bf"
       },
       {
         "path": "scripts/agent-native/v2/test-sg-material-package.mjs",
         "role": "projection_adapter_conformance_test",
         "lines": {
           "start": 1,
-          "end": 259
+          "end": 294
         },
-        "file_sha256": "101a99d9cca3d1de2284b50a8c01d1b27c3b1e8df875d66d78ed796347612b26",
-        "content_id": "sha256:101a99d9cca3d1de2284b50a8c01d1b27c3b1e8df875d66d78ed796347612b26"
+        "file_sha256": "b36511ee2e4ad5e0617bdd481e0a0dc586e0343918fc9c4fbdf235771bbdc4a6",
+        "content_id": "sha256:b36511ee2e4ad5e0617bdd481e0a0dc586e0343918fc9c4fbdf235771bbdc4a6"
       }
     ],
     "docs_and_registry": [
@@ -446,8 +448,8 @@
           "start": 1,
           "end": 168
         },
-        "file_sha256": "6e59c913b175039819143b53078817630e3664db1c0342f89545038d0e53a52e",
-        "content_id": "sha256:6e59c913b175039819143b53078817630e3664db1c0342f89545038d0e53a52e"
+        "file_sha256": "7b4a91037ccbe9fe1a8dfc424dce99ec3959321dc1ca3215e9e1b40e01cc48c7",
+        "content_id": "sha256:7b4a91037ccbe9fe1a8dfc424dce99ec3959321dc1ca3215e9e1b40e01cc48c7"
       },
       {
         "path": "consumer-reference/agent-native/registry.json",
@@ -475,10 +477,10 @@
       "role": "installed_package_exposure",
       "lines": {
         "start": 1,
-        "end": 300
+        "end": 343
       },
-      "file_sha256": "8c7b5043c80560db60bce667eff7fdcad8b477553a554a5d3c55e4a3e1ee7cc9",
-      "content_id": "sha256:8c7b5043c80560db60bce667eff7fdcad8b477553a554a5d3c55e4a3e1ee7cc9"
+      "file_sha256": "2a8917c93c21ad1354cab330d311b86e772c4c344e991ccb139fab44c7db6af6",
+      "content_id": "sha256:2a8917c93c21ad1354cab330d311b86e772c4c344e991ccb139fab44c7db6af6"
     },
     "forwarding": {
       "path": "scripts/agent-native/agui-projection.mjs",

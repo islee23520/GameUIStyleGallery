@@ -4,6 +4,7 @@ title: Unity Organization Term Lexicon
 description: Word-based decomposition of Unity-Technologies public repository insights for Game UI discovery, indexed from the tracked 804-row snapshot.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 platform: Unity-Technologies public GitHub organization
 platform_version: public repository snapshot captured 2026-07-14T12:59:16Z
 reviewed_on: 2026-07-15

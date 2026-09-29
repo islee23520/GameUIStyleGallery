@@ -4,6 +4,7 @@ title: Unity 3D Animation
 description: Ownership guide for Unity character, humanoid, rigged, sequenced, and camera-coupled animation.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity 3D Animation

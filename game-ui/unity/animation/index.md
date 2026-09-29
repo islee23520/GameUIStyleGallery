@@ -4,6 +4,7 @@ title: Unity Animation Systems
 description: Decision hub for Unity world, character, content, camera, and UI-handoff animation ownership.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity Animation Systems

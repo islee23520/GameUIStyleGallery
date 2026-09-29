@@ -4,6 +4,7 @@ title: Unity 2D Animation
 description: Ownership guide for Unity sprite flipbook, skeletal 2D, sorting, Tilemap, and UI-handoff animation.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity 2D Animation

@@ -4,6 +4,7 @@ title: Unity Game UI
 description: Navigable hub for Unity implementation guidance and Unity organization snapshot discovery.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity Game UI

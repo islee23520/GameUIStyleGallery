@@ -17,6 +17,8 @@ Out of scope: universal timing or easing rules, unmeasured performance claims, a
 | Build a scroll-driven product story and inspect runnable examples. | [Scroll-driven Story](interaction-recipes.md#scroll-driven-story) and [Scroll Story Lab](../examples/scroll-story/README.md) |
 | Keep the page fixed while navigating between full-screen chapters. | [Full-viewport Scene Navigation](interaction-recipes.md#full-viewport-scene-navigation) and [runnable example](../examples/scene-navigation/README.md) |
 | Apply feedback, disclosure, modal, reorder, progress, and drag contracts. | [Motion Interaction Recipes](interaction-recipes.md) |
+| Copy a working GSAP ScrollTrigger and Lenis setup, pinned horizontal travel, or a CSS scroll-timeline scrub. | [Scroll Choreography Technique](techniques/scroll-choreography.md) |
+| Copy split-word headline rises, scroll-lit paragraphs, count-ups, or a marquee. | [Kinetic Type Technique](techniques/kinetic-type.md) |
 
 These workflows and worked cases are usable experimental guidance. Expected-result tables are test designs; actual product, engine, and reader evidence must be recorded separately. Review on a failed task, a source change, or a changed ownership contract.
 
@@ -26,6 +28,12 @@ These workflows and worked cases are usable experimental guidance. Expected-resu
 - [Motion Review Workflow](review-workflow.md) structures evidence-first review and remediation.
 - [Motion Practice Reference](practice-reference.md) classifies mechanics, heuristics, platform notes, and unsupported claims.
 - [Observed Choreography Transcription](observed-choreography.md) transcribes an observed scroll choreography into Scene Composition Contract vocabulary.
+
+## Source-Backed Deep Dives
+
+- [Accessible Motion And Equivalent Feedback](accessible-motion.md). Separate motion preferences, automatic updates, and equivalent feedback.
+- [Interruption And Retargeting](interruption-and-retargeting.md). Resolve repeated input, cancellation, and stale completion callbacks.
+- [Motion Rendering And Performance](rendering-and-performance.md). Choose native mechanisms and diagnose measured delivery failures.
 
 ## Domain Contract
 

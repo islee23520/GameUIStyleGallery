@@ -4,6 +4,7 @@ title: Unity Scene Systems
 description: Ownership guide for Unity bootstrap, additive scene composition, persistent services, activation, unload, and teardown.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity Scene Systems

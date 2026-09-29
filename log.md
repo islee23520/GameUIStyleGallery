@@ -1,5 +1,128 @@
 # StyleGallery Log
 
+## 2026-09-29
+
+Understood as: finish the diverged `main` merge, keep the remote gallery (genres, platforms, strategy studies, site, and the two-corpus router) together with the local Unity guides and the Ouroforge pointer, and push the result.
+
+- Resolved `game-ui/index.md` by keeping the remote genre, platform, and strategy routes and the local Ouroforge codex pointer, Unity hub, term lexicon, animation, scene, and prefab guides.
+- Kept the remote gallery router: `game-ui` stays in this repository and `frontend` routes to the sibling `uiStyleGallery` clone.
+- Registered the seven local Unity guides as Game UI leaves and admitted them to material v2. The sealed allow-set is now 199 documents; the admission policy version and material registry were regenerated for the merged tree.
+
+Consumer reference: not_applicable
+Consumer reference reason: This merge resolution selects no consumer-reference profile or record.
+
+## 2026-09-28
+
+Understood as: prioritize PC UI and add original state-by-state wireframe studies for Crusader Kings III and Total War: WARHAMMER III, with a bounded Paradox versus Total War family comparison.
+
+- Added separate CK3 character/realm and WARHAMMER III campaign/battle state models; the site exposes selectable loading, empty, error, modal and task-specific examples with keyboard navigation.
+- Added PC strategy briefs and a family comparison from official product descriptions. Exact shipped UI placement, controls and exceptional states are unknown, so the HTML wireframes are labelled local proposals and contain no publisher assets.
+- Registered the three documents in the Game UI domain, routed two interactive pages from the site navigation, and extended the build test to check all state IDs and the campaign/battle distinction.
+
+Consumer reference: not_applicable
+Consumer reference reason: These locally authored PC game UI examples select no consumer-reference profile or record.
+
+Understood as: differentiate game UI by genre and by input/screen target without restoring the removed third-party catalog.
+
+- Added sixteen locally authored genre briefs grounded in three manually viewed itch.io game pages each. They separate visible screen observations from wireframe proposals, name thin or overlapping evidence, and store no screenshots, scraped records, or counts in the repository.
+- Added four input and screen target briefs for mouse/keyboard, controller/TV, handheld, and touch/mobile, bounded by Microsoft, Steam, and Apple platform guidance.
+- Registered the guides in Game UI navigation and the domain manifest, and added site pages with distinct wireframes for each genre and target. The site build test now requires those pages and checks their wireframe presence.
+
+Consumer reference: not_applicable
+Consumer reference reason: These locally authored Game UI briefs select no consumer-reference profile or record.
+
+Understood as: Interface In Game's terms and conditions prohibit spidering, crawling, and scraping, so remove every collected record and the collector, then remove every reference to that site; future references are gathered by hand from sources whose terms allow it.
+
+- Removed `game-ui/interfaceingame/data/`, `scripts/crawl-interfaceingame.mjs`, `scripts/generate-interfaceingame-docs.mjs`, `scripts/test-interfaceingame-catalog.mjs`, the generated game catalog and genre/element matrix, and the site's catalog page, `catalog/data.json`, and `catalog.js`.
+- Moved the element guide to `game-ui/elements.md` as a locally authored vocabulary without site facets, capture counts, or citation links, removed `game-ui/interfaceingame/`, the Interface In Game research note in `game-ui/index.md`, the site's source-capture panels, and the router's external reference. The site test now fails if a `catalog/` page, a JSON file, or any Interface In Game reference is published.
+- Added `.omo/` to `.gitignore` so local evidence is never committed.
+- Extension inventories and the material registry were regenerated for the changed sources.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change removes collected third-party records and selects no consumer-reference profile or record.
+
+Understood as: keep this fork as the game UI gallery, serve web guidance from the separate upstream clone `uiStyleGallery`, remove Ouroforge, and publish the Game UI domain as a visual site.
+
+- Removed the private OuroforgeGameCodex submodule checkout; no tracked file references it.
+- Added `scripts/sg-gallery-router-mcp.mjs`: `game-ui` questions route to this repository and `frontend` questions to the sibling `uiStyleGallery` clone (`UI_STYLE_GALLERY_ROOT` overrides the path). Its test needs that clone, so it is a local integration check, not a CI step.
+- Added the Unity `UITween` sample and a shared tween contract with the site's `gallery-site/assets/tween.js`.
+- Added `Concept.md`, `DESIGN.md`, `ToDo.md`, the `gallery-site/` sources, `scripts/build-site.mjs` (`bun run site:build` into `dist/site`), and `scripts/test-build-site.mjs`. The site has 21 element pages with wireframes, state switchers, and tween demos, a catalog browser over 16305 captures that links to Interface In Game without hosting images, and rendered Game UI docs. `gameuigallery.linalab.io` is served by linalab-ci from `main`.
+- Extension inventories and the material registry were regenerated for the changed sources.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds a Game UI site, routing, and samples and selects no consumer-reference profile or record.
+
+Understood as: in this fork, restore the Game UI domain, catalog the whole Interface In Game archive as governed data, and add a Unity uGUI implementation guide with compiled samples.
+
+- Restored the Game UI domain removed by `b205c4d`, including the Unity organization-wiki and source-contract validators and their CI steps. This fork governs itself: the owner decision for the refreshed workflow, page-evidence, and extension-inventory hashes is recorded here rather than inherited from upstream.
+- Added `game-ui/interfaceingame/` with metadata-only data for 401 games, 16305 captures (15394 images, 911 videos), 24 articles, and site facets; `scripts/crawl-interfaceingame.mjs` rebuilds it and `scripts/generate-interfaceingame-docs.mjs` generates the catalog and genre/element matrix. No media is stored.
+- Added the element pattern guide for all 21 site elements and `game-ui/unity/ugui-implementation.md` with eight uGUI samples under `game-ui/unity/samples/ugui/`, compile-checked in Unity 6000.7.0a5 batch mode.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds Game UI documentation and data and selects no consumer-reference profile or record.
+
+Understood as: switch the repository package manager from npm to Bun and release `stylegallery@0.1.8`.
+
+- Replaced `package-lock.json` with `bun.lock`, migrated from the npm lockfile so every one of the 184 resolved package versions and the `brace-expansion` override are unchanged, and declared `"packageManager": "bun@1.3.14"`. Scripts still run on Node.js 22; Bun installs dependencies and runs package scripts.
+- CI workflows add `oven-sh/setup-bun` pinned by commit, install with `bun install --frozen-lockfile --ignore-scripts`, and run `bun run` and `bunx playwright`. Playwright container jobs install `unzip` first because the pinned image does not include it. The setup-bun pin joins the immutable action pins.
+- New capture sessions and the conformance matrix source binding hash `bun.lock` in place of `package-lock.json`; the capture-session schema accepts `bun.lock` as a source path and still accepts `package-lock.json` for earlier sessions. Existing capture evidence remains bound to its recorded revision.
+- With owner approval, the sentinel-calibration and page-evidence records and their validator constants were refreshed for the new workflow bytes, including the calibration and page-evidence job hashes and the protected hashes of `scripts/run-consumer-page-evidence-ci.mjs` and `quality/evidence/executable-evidence.md`, whose commands now name Bun. Owners, deadlines, and decisions are unchanged.
+- Development commands in the documentation now use `bun run`. Consumer install commands such as `npx stylegallery` and `npm install --global stylegallery` are unchanged because the package is still published to the npm registry.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change replaces the repository package manager and selects no consumer-reference profile or record.
+
+Understood as: remove the Game UI domain from the repository together with the Expression change.
+
+- Removed the Game UI domain: its thirteen governed files under `game-ui/`, the Unity organization-wiki and Unity source-contract validators with their fixture tests and CI steps, and every route, manifest row, governance row, ownership entry, quality scenario, validator requirement, example link, and packaged path that referred to it. Earlier log entries remain as history.
+- The domain set is Layout, Motion, Design Engineering, Platform Guides, Design Terminology, and Expression. Domain-count sentences return to six governed domains, so `quality/evidence/executable-evidence.md` returns to its previously sealed bytes. Material v2 admits 180 documents.
+- Removing the two Unity steps changed `.github/workflows/validate.yml`. With owner approval, only the whole-file active and derived retired workflow hashes were refreshed in the sentinel-calibration and page-evidence records and their validator constants; the calibration and page-evidence job bytes, owners, deadlines, and decisions are unchanged. The A2A and AG-UI extension source inventories were regenerated for the edited documents.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change removes a documentation domain and its validators and selects no consumer-reference profile or record.
+
+## 2026-09-27
+
+Understood as: let StyleGallery produce finished, expressive pages without loosening the Layout contract, and keep only the parts that belong in the official repository.
+
+- Added Expression as a governed domain: a direction brief, an unofficial brand-study policy, two named directions with concrete values (Nocturne Editorial, Warm Print), and three visual technique recipes (gradient atmosphere, grain and texture, WebGL hero field). Expression owns art direction; it owns no Layout mechanics, motion timing, or governed tokens.
+- Added two executable Motion techniques: scroll choreography (GSAP ScrollTrigger with Lenis on one ticker, pinned horizontal travel, a CSS scroll-timeline alternative) and kinetic type (split-word rises, scroll-lit paragraphs, count-ups, marquees).
+- Added the `showcase/` work area, which is not a domain: a work contract, a QA contract with fifteen ideal-state properties and twenty-one scenarios, the outcome checker `scripts/check-showcase.mjs`, its fixture self-test, and `scripts/serve-showcase.mjs`. Layout authoring rules do not apply to showcase CSS; outcome checks for overflow, focus, contrast, reduced motion, honest actions, hash navigation, short viewports, offscreen loops, and offline and no-script reading do. No works are committed.
+- Added the Creative Build Route to AGENTS.md and registered the domain in the manifest, root routes, governance, ownership, IA, and domain validators and fixtures, and admitted the eleven new documents to Material v2.
+- The A2A and AG-UI extension source inventories were regenerated for the edited caller documents, as in the 2026-09-21 research expansion.
+
+Consumer reference: not_applicable
+Consumer reference reason: This change adds domain guidance and showcase tooling and selects no consumer-reference profile or record.
+
+## 2026-09-22
+
+- Prepared `stylegallery@0.1.7` with direct website capture, transcription, and workflow commands in the SG CLI and MCP. The compiler remains a separately installed checkout; frozen v1 knowledge entrypoints remain available.
+- Routed faithful reconstruction, adaptation, and sale-package work through the compiler's task-aware workflow. Reconstruction prioritizes usable original media, additional observation, explicit replacement decisions, and visual QA. The automatic sale-edition builder is labeled as a package preview.
+- Added compiler transport, cancellation, packaged-install, and local real-capture checks. These verify the integration; they do not establish an improvement in clone quality.
+
+Implementation handoff: `consumer_reference: consumer-reference/agent-native/registry.json`.
+
+Consumer reference: declared
+Consumer reference record: consumer-reference/agent-native/registry.json
+
+## 2026-09-21
+
+Understood as: substantially enrich Motion, Design Engineering, Platform Guides, and Design Terminology with primary-source research integrated into governed local documents. The user excluded Layout and Game UI from this work.
+
+- Added twelve local research guides: motion accessibility/interruption/rendering; native interaction contracts, multilingual input, and asynchronous feedback; platform adaptation/preferences/input; and token, interaction, and typography semantics. Each separates source-backed findings, local proposals, failure cases, and unexecuted verification scenarios.
+- Inspected 66 cited official source pages on 2026-09-21. Recorded source status and target-version limits; read Apple page bodies through official documentation JSON when the HTML reader exposed a JavaScript shell. Preserved prior source-review dates for unrelated term records.
+- Added fourteen source-qualified terms and nine scoped relations, bringing the terminology tables to twenty-five terms and seventeen relations. These are author-reviewed experimental judgments, not independent semantic approval.
+- Registered the twelve leaves in domain membership, local navigation, the closed Material v2 admission set, and npm packaging. The admitted corpus has 181 documents. New guidance remains experimental and does not add profile values, native implementations, or a domain.
+- Verified Markdown structure, links, IA, governance, domain membership, terminology, consumer handoffs, and material admission in an isolated checkout of the research changes. Domain/terminology/governance, consumer/evidence, and frozen-v1 regression suites passed; package installation and CLI/MCP retrieval passed. Fixed the package inventory test's omission of the three existing license/notice files while preserving its exact allow-list assertion.
+- Checked every cited URL and fragment. Applied two fresh-reader corrections to the term-comparison method and contributor verification route. Eight author-selected search probes retrieved the intended guide within the first two results; these are retrieval smoke checks, not an independent usability evaluation. No browser, native IME, assistive-technology, or product performance execution is claimed.
+
+Implementation handoff: `consumer_reference: consumer-reference/agent-native/registry.json`.
+
+Consumer reference: declared
+Consumer reference record: consumer-reference/agent-native/registry.json
+
+Terminology reliance: `dtcg.alias`, `fluent.alias-token`, `fluent.global-token`, `carbon.color-token`, `dtcg.resolver-modifier`, `html.popover`, `apple.popover`, `html.dialog`, `aria.dialog`, `apple.text-style`, `fluent.type-ramp`, `material3.typography`, `dtcg.typography`, `css.font`, `dtcg.token`, `dtcg.group`, and `css.custom-property`. Relation types used: `partial_overlap`, `implementation_representation`, and `not_comparable`. Named sources for these terms were rechecked on 2026-09-21; the older Figma, historical-format, component/pattern, and Layout relations retain their original review scope. Direct locators and boundaries are in [Term Cases](design-terminology/conflict-cases.md).
+
 ## 2026-09-09
 
 - Added a full-page fixed-viewport scene-navigation example with chapter hashes/history, wheel-burst gating, keyboard and art-surface swipe navigation, native copy overflow, immediate reduced-motion transitions, and a complete reading escape.

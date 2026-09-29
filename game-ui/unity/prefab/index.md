@@ -4,6 +4,7 @@ title: Unity Prefab Systems
 description: Ownership guide for Unity prefab assets, instances, variants, nesting, unpacking, runtime instantiation, pooling, and teardown.
 domain: game-ui
 lifecycle: experimental
+provenance_kind: local
 ---
 
 # Unity Prefab Systems
