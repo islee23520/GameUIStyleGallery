@@ -1,3 +1,7 @@
+clone:
+  git:
+    settings:
+      recursive: false
 when:
   - event: [manual, push]
 steps:
