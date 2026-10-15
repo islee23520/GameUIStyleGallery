@@ -1,0 +1,8 @@
+when:
+  - event: [manual, push]
+steps:
+  build:
+    image: node:22-bookworm-slim
+    commands:
+      - npm install --no-audit --no-fund
+      - npm run build --if-present
