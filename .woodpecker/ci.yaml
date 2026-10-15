@@ -1,12 +1,13 @@
 clone:
   git:
+    image: woodpeckerci/plugin-git
     settings:
       recursive: false
 when:
   - event: [manual, push]
 steps:
   build:
-    image: node:22-bookworm-slim
+    image: oven/bun:1
     commands:
-      - npm install --no-audit --no-fund
-      - npm run build --if-present
+      - bun install --frozen-lockfile
+      - bun run build
