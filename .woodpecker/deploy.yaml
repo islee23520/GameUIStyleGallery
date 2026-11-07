@@ -4,10 +4,14 @@
 when:
   - event: [push, manual]
     branch: main
-
 labels:
   wsl: deploy
-
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      # The vendor submodule is private and NOT needed by the site build; do not clone it in CI.
+      recursive: false
 steps:
   build:
     image: bash
@@ -16,7 +20,6 @@ steps:
       # use the same binary the approver's independent rebuild uses so both produce byte-identical output.
       - /opt/linalab/node/bin/node scripts/build-site.mjs --out out
       - /opt/linalab/node/bin/node scripts/test-build-site.mjs
-
   deploy-request:
     image: bash
     environment:
