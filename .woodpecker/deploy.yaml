@@ -1,0 +1,26 @@
+# Deploy request lane for the WSL host. It builds the static site, then ASKS the host to deploy it.
+# It cannot deploy by itself: the host controller re-verifies this exact run against the Woodpecker
+# server, and an operator must approve (after an independent rebuild) before anything is published.
+when:
+  - event: [push, manual]
+    branch: main
+
+labels:
+  wsl: deploy
+
+steps:
+  build:
+    image: bash
+    commands:
+      # node built-ins only: no package install. The build is deterministic. The host does not put node on the agent PATH;
+      # use the same binary the approver's independent rebuild uses so both produce byte-identical output.
+      - /opt/linalab/node/bin/node scripts/build-site.mjs --out out
+      - /opt/linalab/node/bin/node scripts/test-build-site.mjs
+
+  deploy-request:
+    image: bash
+    environment:
+      DEPLOY_REQUEST_TOKEN:
+        from_secret: deploy_request_token
+    commands:
+      - bun /opt/linalab/wsl/deploy-approve/ci-request.ts out
