@@ -7,7 +7,7 @@ when:
   - event: [manual, push]
 steps:
   build:
-    image: oven/bun:1
+    image: bash
     commands:
       - bun install --frozen-lockfile
       - bun run build
